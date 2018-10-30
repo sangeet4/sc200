@@ -4,8 +4,12 @@ before_script:
 - apt-get update -qq && apt-get install
 
 stages:
+- coverage
 - build
 - test
+
+Coverage:
+  script:
 
 Build:
   script: mvn package

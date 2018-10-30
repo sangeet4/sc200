@@ -10,11 +10,9 @@ stages:
 - test
 
 Build:
-  script:
-  - mvn package
+  script: mvn package
 
 
 Test:
-  script:
-  -mvn test
+  script: mvn test
 

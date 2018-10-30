@@ -1,6 +1,4 @@
-image:
-  - maven:latest
-  - openjdk:10.0.2
+image: " maven:latest openjdk:10.0.2"
 
 before_script:
 - apt-get update -qq && apt-get install

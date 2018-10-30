@@ -69,6 +69,7 @@ public class MovieServiceImpl implements MovieService{
             Movie savedMovie = movieRepository.save(movie1.get());
             return savedMovie;
         }
+        return null;
 
     }
 

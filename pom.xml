@@ -11,6 +11,13 @@
     <name>parentPom</name>
     <description>Demo project for Spring Boot</description>
 
+    <modules>
+        <module>zuulgateway</module>
+        <module>config-server</module>
+        <module>eureka-registry</module>
+        <module>movie-cruiser-app</module>
+    </modules>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>

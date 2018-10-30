@@ -12,5 +12,9 @@ Build:
 
 
 Test:
-  script: mvn test
+  script:
+  - cd config-server; mvn test;cd ..
+  - cd eureka-server; mvn test;cd ..
+  - cd movie-server; mvn test; cd ..
+  - cd zuulgateway; mvn test; cd ..
 

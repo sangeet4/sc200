@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/eureka-registry/pom.xml" />
         <option value="$PROJECT_DIR$/movie-cruiser-app/target/maven-archiver/pom.properties" />
         <option value="$PROJECT_DIR$/movie-cruiser-app/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>

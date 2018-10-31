@@ -19,6 +19,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
+              { "glob": "**/*", "input": "./node_modules/monaco-editor/min/vs", "output": "libs/vs" },
               "src/favicon.ico",
               "src/assets"
             ],
@@ -76,6 +77,7 @@
             ],
             "scripts": [],
             "assets": [
+              {"glob": "**/*", "input": "../node_modules/ngx-monaco-editor/assets/monaco", "output": "./assets/monaco/"},
               "src/favicon.ico",
               "src/assets"
             ]

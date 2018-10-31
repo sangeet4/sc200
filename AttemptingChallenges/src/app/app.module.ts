@@ -1,9 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
 import { EditorComponent } from './editor/editor.component';
 import { DirectoryComponent } from './directory/directory.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { MonacoEditorModule } from 'ngx-monaco';
+import { AppComponent } from './app.component';
+
 
 @NgModule({
   declarations: [
@@ -12,7 +14,9 @@ import { DirectoryComponent } from './directory/directory.component';
     DirectoryComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    MonacoEditorModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

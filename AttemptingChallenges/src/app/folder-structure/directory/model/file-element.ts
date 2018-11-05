@@ -3,5 +3,7 @@ export class FileElement {
   isFolder: boolean;
   name: string;
   parent: string;
+  url:string;
+  content:string;
 }
 

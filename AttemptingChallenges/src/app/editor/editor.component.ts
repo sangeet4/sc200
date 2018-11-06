@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { MonacoFile } from 'ngx-monaco';
 import { ActivatedRoute } from '@angular/router';
-
+import { FilesService } from '../files.service'
 
 @Component({
   selector: 'app-editor',
@@ -10,24 +10,38 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditorComponent implements OnInit {
 
-  @Input() displayFile: string;
-  // @Input() input;
+  @Input() displayFile : string;
 
 
   private fileName = 'index.js';
   private content = '//Welcome';
 
-  constructor(private activatedroute: ActivatedRoute) { }
+  constructor(private activatedroute: ActivatedRoute , private filesService : FilesService) { }
 
-  ngOnInit() {
+  
+  ngOnInit(): void {
+    this.activatedroute.params.subscribe((params) => {
+      this.content="hello";
+      console.log("dfhfvdhdfbfv");
+});}
 
-    this.content = this.displayFile;
-    console.log(this.displayFile);
-    // this.activatedroute.params.subscribe(params => this.file.content = params['name']);
-    // // console.log(name);
-    // // this.file.content = name;
-    // console.log(this.file.content);
-  }
+  //   ngOnInit(){
+  //     this.activatedroute.params.subscribe((params)=>this.content = params.toString())
+        
+  //     console.log("{sfhjdgfdbjhdgbjvv");
+  // }
+
+  // ngOnInit(): void {
+
+  // // this.content = this.displayFile;
+  //  console.log("fdbhjdbhjfbejhfb");
+   
+  //   console.log(this.displayFile);
+  //   // this.activatedroute.params.subscribe(params => this.file.content = params['name']);
+  //   // // console.log(name);
+  //   // // this.file.content = name;
+  //   // console.log(this.file.content);
+  // }
 
   title = 'app';
   options = {

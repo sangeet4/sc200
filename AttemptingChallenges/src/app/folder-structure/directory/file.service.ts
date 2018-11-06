@@ -24,6 +24,7 @@ export class FileService implements IFileService {
     fileElement.id = v4();
     this.map.set(fileElement.id, this.clone(fileElement));
     return fileElement;
+    console.log(fileElement);
   }
   addFiles(fileElem: FileElement) {
     fileElem.id = v4();

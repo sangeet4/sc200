@@ -2,7 +2,7 @@ import { EditorComponent } from './editor/editor.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MonacoEditorModule, COMPLETION_PROVIDERS } from 'ngx-monaco';
+import { MonacoEditorModule } from 'ngx-monaco';
 import { AppComponent } from './app.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
@@ -22,6 +22,7 @@ import { FolderStructureModule } from './folder-structure/folder-structure.modul
   declarations: [
     AppComponent,
     EditorComponent
+
   ],
   imports: [
     CommonModule,

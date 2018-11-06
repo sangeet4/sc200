@@ -1,0 +1,3 @@
+writing the rules for test cases and making it the server knows how to count the score.
+
+how to run the code using other program in server

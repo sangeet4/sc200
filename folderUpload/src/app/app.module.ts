@@ -15,4 +15,4 @@ import { FolderUpload } from './comp/folder_upload';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class FolderUploadModule { }

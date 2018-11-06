@@ -10,17 +10,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditorComponent implements OnInit {
 
-  @Input() files: File[];
-  @Input() input;
+  @Input() displayFile: string;
+  // @Input() input;
+
 
   private fileName = 'index.js';
-  private content = '//Welcome454645';
+  private content = '//Welcome';
 
   constructor(private activatedroute: ActivatedRoute) { }
 
   ngOnInit() {
 
-    console.log(this.input);
+    this.content = this.displayFile;
+    console.log(this.displayFile);
     // this.activatedroute.params.subscribe(params => this.file.content = params['name']);
     // // console.log(name);
     // // this.file.content = name;
@@ -43,10 +45,6 @@ export class EditorComponent implements OnInit {
     this.content = file.content;
     console.log(this.content);
  //   console.log(file.content);
-  }
-
-  onClick() {
-    window.open(this.file.uri);
   }
 
 }

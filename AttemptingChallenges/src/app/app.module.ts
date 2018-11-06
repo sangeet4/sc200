@@ -16,12 +16,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule}  from '@angular/router'
-import { FolderStructureModule } from './folder-structure/folder-structure.module'
+import { FolderStructureModule } from './folder-structure/folder-structure.module';
+import { ContainerComponent } from './container/container.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditorComponent
+    EditorComponent,
+    ContainerComponent
 
   ],
   imports: [
@@ -43,7 +45,7 @@ import { FolderStructureModule } from './folder-structure/folder-structure.modul
     MatCardModule,
     RouterModule.forRoot([
       {path: ':name' , component : EditorComponent },
-      {path: '' , component : EditorComponent },
+      {path: '' , component : EditorComponent }
       
     ]),
     MonacoEditorModule.forRoot()

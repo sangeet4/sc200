@@ -48,3 +48,10 @@
     </ng-container>
   </ng-template>
 </mat-menu>
+<mat-menu #moveMenu="matMenu">
+  <ng-template matMenuContent let-self="self">
+    <ng-container *ngFor="let element of uploadedElements">
+      <button *ngIf="element.isFolder && element.id !== self.id" mat-menu-item (click)="moveElement(self, element)">{{element.name}}</button>
+    </ng-container>
+  </ng-template>
+</mat-menu>

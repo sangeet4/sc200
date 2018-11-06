@@ -36,6 +36,11 @@ export class AppComponent {
     this.updateFileElementQuery();
   }
 
+  // addFileElement(fileElement:{name:string,isFolder:boolean,parent:string,url:string,content:null,id:string}){
+  //   this.fileService.add(fileElement);
+  //   this.updateFileElementQuery();
+  // }
+
 
   removeElement(element: FileElement) {
     this.fileService.delete(element.id);

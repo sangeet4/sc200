@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FileService } from './folder-structure/directory/file.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,11 @@ export class FilesService {
     console.log(this.textFiles);
     console.log(this.fileContent);
     console.log(this.allFiles);
+
+  
       
   }
+
 
   GetAllFiles(){
     return this.allFiles;

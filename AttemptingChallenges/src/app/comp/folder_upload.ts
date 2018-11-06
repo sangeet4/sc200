@@ -1,5 +1,6 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import { FilesService } from '../files.service'
+import { FileService } from '../folder-structure/directory/file.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class FolderUpload {
   canDropFolder = typeof DataTransferItem.prototype.webkitGetAsEntry === 'function';
   uploadPaths = [];
   
-  constructor(private cdr: ChangeDetectorRef , private filesServie : FilesService) {}
+  constructor(private cdr: ChangeDetectorRef , private filesServie : FilesService,private fileService:FileService) {}
   
   dragenter(event) {
     // indicates valid drop data
@@ -129,6 +130,7 @@ export class FolderUpload {
       // console.log(this.uploadPaths);
       this.filesServie.StoreFiles(this.uploadPaths, textFiles , fileContent);
       this.filesServie.DisplayFiles();
+      this.fileService.addUploadedFiles();
       // Read in the image file as a data URL.
       // reader.readAsDataURL(f);
     }

@@ -2,6 +2,8 @@
   <mat-icon *ngIf="canNavigateUp" class="pointer" (click)="navigateUp()">arrow_back</mat-icon>
   <span style="margin-left: 8px">{{path || 'Files'}}</span>
   <span class="spacer"></span>
+  <folder-upload></folder-upload>
+  <span class="spacer"></span>
   <mat-icon class="pointer" (click)="openNewFolderDialog()">create_new_folder</mat-icon>
   &nbsp;
   <mat-icon class="pointer" (click)="openNewFileDialog()">create_new_file</mat-icon>

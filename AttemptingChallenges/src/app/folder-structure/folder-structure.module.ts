@@ -17,9 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { RenameDialogComponent } from './directory/modals/rename-dialog/rename-dialog.component';
 import { NewFolderDialogComponent } from './directory/modals/new-folder-dialog/new-folder-dialog.component';
 import { NewFileDialogComponent } from './directory/modals/new-file-dialog/new-file-dialog.component';
-import { RouterModule}  from '@angular/router'
-
-
+import { FolderUpload } from '../comp/folder_upload'
+ 
 @NgModule({
   imports: [
     CommonModule,
@@ -36,8 +35,7 @@ import { RouterModule}  from '@angular/router'
     BrowserModule,
     FormsModule,
     FlexLayoutModule,
-    MatCardModule,
-    
+    MatCardModule    
   ],
   exports: [DirectoryComponent],
   providers: [FileService],
@@ -47,6 +45,7 @@ import { RouterModule}  from '@angular/router'
   declarations: [DirectoryComponent,
     RenameDialogComponent,
     NewFolderDialogComponent,
-    NewFileDialogComponent]
+    NewFileDialogComponent,
+    FolderUpload]
 })
 export class FolderStructureModule { }

@@ -33,13 +33,13 @@ export class DirectoryComponent {
   }
 
   navigate(element: FileElement) {
-    console.log("again clicked ");
+    // console.log("again clicked ");
 
     if (element.isFolder) {
       this.navigatedDown.emit(element);
     }
     else {
-      console.log("routes changes ");
+      // console.log("routes changes ");
       // send the file content to the editor or in simple what you have to do 
       // is send the file name from directory component to the editor component
        
@@ -68,10 +68,10 @@ export class DirectoryComponent {
   openNewFileDialog() {
     let dialogRef1 = this.dialog.open(NewFileDialogComponent);
     dialogRef1.afterClosed().subscribe(res => {
-      console.log(res);
+      // console.log(res);
       if (res) {
         this.fileAdded.emit({ name: res });
-        console.log("files added");
+        // console.log("files added");
       }
     });
   }

@@ -13,6 +13,7 @@ export class DescriptionComponent implements OnInit {
   constructor(private fb: FormBuilder, private questService: ChallengeService) {}
 
   availbLang = [ 'Java', 'Python', 'C', 'Cpp', 'Javascript' ];
+  readOnlyFlag = false;
 
   questDesc: FormGroup;
 
@@ -24,6 +25,10 @@ export class DescriptionComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.quest2send);
+    console.log(this.flag);
+    if (this.flag === 2) {
+      this.readOnlyFlag = true;
+    }
     this.questDesc = this.fb.group({
       id : [this.quest2send.id, [Validators.required]],
       challengeTitle : [this.quest2send.challengeTitle, [Validators.required]],
@@ -40,7 +45,6 @@ export class DescriptionComponent implements OnInit {
       level : [this.quest2send.level, [Validators.required, Validators.min(1), Validators.max(10)]],
       rating : [this.quest2send.rating, [Validators.required, Validators.min(1), Validators.max(10)]]
     });
-    console.log(this.flag);
   }
 
   get id() {return this.questDesc.get('id'); }

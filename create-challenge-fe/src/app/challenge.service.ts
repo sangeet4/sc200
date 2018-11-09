@@ -16,4 +16,12 @@ export class ChallengeService {
     return this.http.post(this.baseUrl, quest);
   }
 
+  getChallengeById(id: number): Observable<any> {
+    return this.http.get(this.baseUrl + '/' + id);
+  }
+
+  updateChallenge(id: number, quest: QuestDetail): Observable<any> {
+    return this.http.put(this.baseUrl + '/' + id, quest);
+  }
+
 }

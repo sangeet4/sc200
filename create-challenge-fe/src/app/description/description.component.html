@@ -137,6 +137,7 @@
         </mat-error>
       </mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!questDesc.valid">Submit</button>
+    <button *ngIf="flag==1" mat-raised-button color="primary" type="submit" [disabled]="!questDesc.valid">Submit</button>
+    <button *ngIf="flag==2" mat-raised-button color="primary" type="submit" [disabled]="!questDesc.valid">Update</button>
   </form>
 </div>

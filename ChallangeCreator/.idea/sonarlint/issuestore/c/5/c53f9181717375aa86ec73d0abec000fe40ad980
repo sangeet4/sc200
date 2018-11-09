@@ -1,0 +1,4 @@
+
+‚squid:S1488G"fImmediately return this expression instead of assigning it to the temporary variable "savedChallange".(Ä­é…øÿÿÿÿ
+Csquid:S1905P"'Remove this unnecessary cast to "List".(£³¸şÿÿÿÿ
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÉùÑæ

@@ -68,7 +68,7 @@ public class ChallangeServiceImpl implements ChallangeService {
         Optional<Challange> challange1= getChallangeById(id);
         if(challange1.isPresent())
         {
-            Challange savedChallange = challangeRepository.save(challange1.get());
+            Challange savedChallange = challangeRepository.save(challange);// earlier was saving & returning the fetched challange and not the updated challenge
             return savedChallange;
         }
 

@@ -17,13 +17,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule}  from '@angular/router'
 import { FolderStructureModule } from './folder-structure/folder-structure.module';
-import { ContainerComponent } from './container/container.component'
+import { FolderUpload } from './comp/folder_upload';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     EditorComponent,
-    ContainerComponent
+    FolderUpload
 
   ],
   imports: [
@@ -43,10 +46,13 @@ import { ContainerComponent } from './container/container.component'
     FolderStructureModule,
     FlexLayoutModule,
     MatCardModule,
+    HttpClientModule,
     RouterModule.forRoot([
-      {path: ':name' , component : EditorComponent },
-      {path: '' , component : EditorComponent }
-      
+      {path: ':name' , component : EditorComponent, outlet : 'editor' },
+      {path: ':name' , component : FolderStructureModule , outlet : 'directory' },
+      {path: '' , component : EditorComponent, outlet : 'editor' },
+      {path: '' , component : FolderStructureModule , outlet : 'editor' },
+      // {path: '' , component : EditorComponent }
     ]),
     MonacoEditorModule.forRoot()
   ],

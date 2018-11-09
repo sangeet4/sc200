@@ -2,6 +2,8 @@ import { Component, OnInit, Input} from '@angular/core';
 import { MonacoFile } from 'ngx-monaco';
 import { ActivatedRoute } from '@angular/router';
 import { FilesService } from '../files.service'
+import { File } from '../folder-structure/directory/model/file';
+
 
 @Component({
   selector: 'app-editor',
@@ -14,16 +16,18 @@ export class EditorComponent implements OnInit {
 
 
   private fileName = 'index.js';
-  private content = '//Welcome';
+  private content ;
 
   constructor(private activatedroute: ActivatedRoute , private filesService : FilesService) { }
 
   
   ngOnInit(): void {
     this.activatedroute.params.subscribe((params) => {
-      this.content="hello";
-      console.log("dfhfvdhdfbfv");
-});}
+      this.file.content="hello " + params.name;
+      // console.log("hello " + params.name );
+      // document.getElementById("editor").load();
+});
+}
 
   //   ngOnInit(){
   //     this.activatedroute.params.subscribe((params)=>this.content = params.toString())
@@ -57,9 +61,21 @@ export class EditorComponent implements OnInit {
 
   onFileChange(file: MonacoFile) {
     this.content = file.content;
-    console.log(this.content);
+    // console.log(this.content);
  //   console.log(file.content);
   }
+
+   public onClick(){
+
+    console.log(this.file.uri , this.file.content);
+    // var a =this.file.uri; 
+    // var b = this.file.content;
+    // var file : any[];
+
+    this.filesService.SaveFile(this.file)
+          .subscribe();
+  }
+
 
 }
 

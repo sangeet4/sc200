@@ -17,7 +17,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { RenameDialogComponent } from './directory/modals/rename-dialog/rename-dialog.component';
 import { NewFolderDialogComponent } from './directory/modals/new-folder-dialog/new-folder-dialog.component';
 import { NewFileDialogComponent } from './directory/modals/new-file-dialog/new-file-dialog.component';
-import { FolderUpload } from '../comp/folder_upload'
  
 @NgModule({
   imports: [
@@ -45,7 +44,6 @@ import { FolderUpload } from '../comp/folder_upload'
   declarations: [DirectoryComponent,
     RenameDialogComponent,
     NewFolderDialogComponent,
-    NewFileDialogComponent,
-    FolderUpload]
-})
+    NewFileDialogComponent]
+  })
 export class FolderStructureModule { }

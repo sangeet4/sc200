@@ -6,7 +6,7 @@
             <app-directory [fileElements]="fileElements | async" [path]="currentPath" [canNavigateUp]="canNavigateUp"
             (folderAdded)="addFolder($event)" (elementRemoved)="removeElement($event)" (fileAdded)="addFile($event)"
             (navigatedDown)="navigateToFolder($event)" (navigatedUp)="navigateUp()" (elementRenamed)="renameElement($event)"
-            (elementMoved)="moveElement($event)"></app-directory>
+            (elementMoved)="moveElement($event)" (show)="addFileElementArray()" ></app-directory>
     </mat-card>
 <router-outlet name="editor" ></router-outlet>
 </div>

@@ -15,23 +15,29 @@ export class AppComponent {
   public fileElements: Observable<FileElement[]>;
 
   files: File[];
+  
   currentRoot: FileElement;
   currentPath: string;
   canNavigateUp = false;
 
   constructor(public fileService: FileService, public filesService: FilesService) { }
-
+  
+ 
   ngOnInit() {
     this.fileElements = this.filesService.allFiles;
     console.log(this.fileElements);
+    
     // const folderA = this.fileService.add({ name: 'Folder A', isFolder: true, parent: 'root' ,url:null,content:null});
     // this.updateFileElementQuery();
     }
+    private fileElement_array : FileElement[];
+    
 
   addFile(file: { name: string }) {
     this.fileService.addFiles({ isFolder: false, name: file.name, parent: this.currentRoot ? this.currentRoot.id : 'root',url:null,content:null });
     this.updateFileElementQuery();
   }
+
 
 
   addFolder(folder: { name: string }) {
@@ -43,6 +49,15 @@ export class AppComponent {
   //   this.fileService.add(fileElement);
   //   this.updateFileElementQuery();
   // }
+
+  addFileElementArray(){
+    this.fileElement_array = this.fileService.addUploadedFiles()
+    var len = this.fileElement_array.length;
+    for(let i=0;i<len;i++){
+      this.fileService.add(this.fileElement_array[i]);
+    }
+    this.updateFileElementQuery();
+  }
 
 
   removeElement(element: FileElement) {

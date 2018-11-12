@@ -49,39 +49,51 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Override
     public UserProfile searchUserProfileById(String id) throws UserProfileNotFoundException {
        // Voting voting= votingRepository.findById(id).get();
-        if(userProfileRepository.existsById(userProfile.getEmail())) {
+        if(userProfileRepository.existsById(id)) {
             UserProfile userProfile = userProfileRepository.findById(id).get();
             return userProfile;
+        }
+        else{
+            throw new UserProfileNotFoundException("UserProfile not found");
         }
     }
     @Override
       public boolean deleteUserProfilebyId(String id) {
 
-      //  if (movieRepository.existsById(id))
-         //   return false;
-        userProfileRepository.deleteById(id);
-        return true;
+       if (userProfileRepository.existsById(id)) {
+
+           userProfileRepository.deleteById(id);
+           return true;
+       }
+       else{
+           return false;
+       }
     }
 
     @Override
     public UserProfile  updateuserProfileById(String id,UserProfile userProfile1) throws UserProfileNotFoundException{
        // Movie movie=movieRepository.findById(id).get();
-        UserProfile userProfile=userProfileRepository.findById(id).get();
-        userProfile.setChallengeAttempted(userProfile1.getChallengeAttempted());
-        userProfile.setFirstName(userProfile1.getFirstName());
-        userProfile.setLastName(userProfile1.getLastName());
-        userProfile.setContactNumber(userProfile1.getContactNumber());
-        userProfile.setUserName(userProfile1.getUserName());
-        userProfile.setRanking(userProfile1.getRanking());
-        userProfile.setScore(userProfile1.getScore());
-        userProfile.setChallengeCreated(userProfile1.getChallengeCreated());
-        userProfile.setChallengeDownvoted(userProfile1.getChallengeDownvoted());
-        userProfile.setChallengeUpvoted(userProfile1.getChallengeUpvoted());
+        if(userProfileRepository.existsById(id)) {
+            UserProfile userProfile = userProfileRepository.findById(id).get();
+            userProfile.setChallengeAttempted(userProfile1.getChallengeAttempted());
+            userProfile.setFirstName(userProfile1.getFirstName());
+            userProfile.setLastName(userProfile1.getLastName());
+            userProfile.setContactNumber(userProfile1.getContactNumber());
+            userProfile.setUserName(userProfile1.getUserName());
+            userProfile.setRanking(userProfile1.getRanking());
+            userProfile.setScore(userProfile1.getScore());
+            userProfile.setChallengeCreated(userProfile1.getChallengeCreated());
+            userProfile.setChallengeDownvoted(userProfile1.getChallengeDownvoted());
+            userProfile.setChallengeUpvoted(userProfile1.getChallengeUpvoted());
 
 
-        //Movie movie2=movieRepository.save(movie);
-        UserProfile userProfile2=userProfileRepository.save(userProfile);
-        return userProfile2;
+            //Movie movie2=movieRepository.save(movie);
+            UserProfile userProfile2 = userProfileRepository.save(userProfile);
+            return userProfile2;
+        }
+        else{
+            throw new UserProfileNotFoundException("UserProfile not found");
+        }
     }
 
 

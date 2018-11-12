@@ -51,11 +51,7 @@ export class AppComponent {
 
     //need to change the parent from string to id of its parent.
 
-   
-
-
-
-
+    //to show the file structure once the folder is uploaded.
     for(let i=0;i<this.fileElement_array.length;i++){
       if(this.fileElement_array[i].isFolder){
         this.addFolder(this.fileElement_array[i]);

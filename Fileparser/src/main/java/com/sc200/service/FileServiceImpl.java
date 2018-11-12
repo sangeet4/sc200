@@ -27,7 +27,7 @@ public class FileServiceImpl implements FileService {
 
         //create layers of directories
 
-        File files = new File("Directory/Sub2/Sub-Sub2/");
+        File files = new File(path);
         if(!files.exists()) {
             if(files.mkdirs()) {
                 return true;

@@ -18,7 +18,6 @@ export interface IFileService {
 export class FileService implements IFileService {
 
   private map = new Map<string, FileElement>();
-  
 
   constructor(private filesService:FilesService) { }
 
@@ -33,14 +32,14 @@ export class FileService implements IFileService {
     this.map.set(fileElem.id, this.clone(fileElem));
     return fileElem;
   }
-  
+
+  fileElements_array:FileElement[]=[];
+
   //take input in uploaded files
   addUploadedFiles(){
     var fileelem:FileElement;
-    var fileElements_array:FileElement[]=[];
-    var fileElements_array2:FileElement[]=[];
-    var temp = this.filesService.GetAllFiles();
-    //var temp=["Pictures/Screenshot from 2018-10-05 14-13-32.png", "Pictures/Screenshot from 2018-10-05 20-31-48.png", "Pictures/Screenshot from 2018-10-31 11-00-57.png", "Pictures/Screenshot from 2018-10-15 12-24-40.png", "Pictures/Screenshot from 2018-09-27 09-36-05.png", "Pictures/Screenshot from 2018-09-08 18-10-45.png", "Pictures/Screenshot from 2018-10-15 18-12-37.png", "Pictures/Screenshot from 2018-09-14 14-49-36.png", "Pictures/Screenshot from 2018-10-31 18-40-44.png", "Pictures/Screenshot from 2018-10-17 12-32-50.png", "Pictures/Screenshot from 2018-11-02 17-32-46.png", "Pictures/Screenshot from 2018-09-27 12-59-26.png", "Pictures/Screenshot from 2018-09-08 18-10-53.png", "Pictures/Screenshot from 2018-10-16 19-32-32.png", "Pictures/Screenshot from 2018-10-14 00-43-14.png", "Pictures/Screenshot from 2018-09-27 09-27-13.png", "Pictures/Screenshot from 2018-10-14 00-42-42.png", "Pictures/Screenshot from 2018-10-18 01-45-38.png", "Pictures/Screenshot from 2018-09-08 18-10-25.png", "Pictures/Screenshot from 2018-10-18 01-46-05.png"];
+    // var fileElements_array:FileElement[]=[];
+    var temp=["Pictures/Screenshot from 2018-10-05 14-13-32.png", "Pictures/Screenshot from 2018-10-05 20-31-48.png", "Pictures/Screenshot from 2018-10-31 11-00-57.png", "Pictures/Screenshot from 2018-10-15 12-24-40.png", "Pictures/Screenshot from 2018-09-27 09-36-05.png", "Pictures/Screenshot from 2018-09-08 18-10-45.png", "Pictures/Screenshot from 2018-10-15 18-12-37.png", "Pictures/Screenshot from 2018-09-14 14-49-36.png", "Pictures/Screenshot from 2018-10-31 18-40-44.png", "Pictures/Screenshot from 2018-10-17 12-32-50.png", "Pictures/Screenshot from 2018-11-02 17-32-46.png", "Pictures/Screenshot from 2018-09-27 12-59-26.png", "Pictures/Screenshot from 2018-09-08 18-10-53.png", "Pictures/Screenshot from 2018-10-16 19-32-32.png", "Pictures/Screenshot from 2018-10-14 00-43-14.png", "Pictures/Screenshot from 2018-09-27 09-27-13.png", "Pictures/Screenshot from 2018-10-14 00-42-42.png", "Pictures/Screenshot from 2018-10-18 01-45-38.png", "Pictures/Screenshot from 2018-09-08 18-10-25.png", "Pictures/Screenshot from 2018-10-18 01-46-05.png"];
     var len = temp.length;
     for(let i = 0 ; i<len;i++){
       var splitted=temp[i].split('/');
@@ -68,7 +67,7 @@ export class FileService implements IFileService {
           url:temp[i],
           parent:split_string[j-1]
         }
-          fileElements_array.push(fileelem);
+          this.fileElements_array.push(fileelem);
         }
         else{
           //if it is first file then its parent is root else the previous folder
@@ -82,7 +81,7 @@ export class FileService implements IFileService {
             url:null
             
           }
-
+          
           }
           else{
           var fileelem:FileElement =
@@ -94,27 +93,12 @@ export class FileService implements IFileService {
             url:null
           }
         }
-          fileElements_array.push(fileelem);
+          this.fileElements_array.push(fileelem);
         }
       }
     }
-   
-    let length_folder = fileElements_array.length;
-    var count = 0;
-    //need to remove the repeated folders 
-    for(let i=0;i<length_folder-1;i++){
-      if(fileElements_array[i]!=null){
-      for(let j=i+1;j<length_folder;j++){
-        if( (fileElements_array[i].parent == fileElements_array[j].parent ) &&( fileElements_array[i].name == fileElements_array[j].name))
-        {
-          fileElements_array[j]=null;
-        }
-      }
-    }
-    else{;}
-    fileElements_array2.push(fileElements_array[i]);
-    }
-    console.log(fileElements_array2);    
+//    console.log(this.fileElements_array);
+    
   }
 
   delete(id: string) {

@@ -6,6 +6,7 @@ import { NewFolderDialogComponent } from './modals/new-folder-dialog/new-folder-
 import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component';
 import { NewFileDialogComponent } from './modals/new-file-dialog/new-file-dialog.component';
 import { Router } from '@angular/router';
+//import {ChangeDetectorRef} from '@angular/core';
 
 @Component({
   selector: 'app-directory',
@@ -14,7 +15,10 @@ import { Router } from '@angular/router';
 })
 export class DirectoryComponent {
 
-  constructor(public dialog: MatDialog, private router: Router) { }
+  constructor(public dialog: MatDialog, private router: Router ) { 
+    // , private cd : ChangeDetectorRef
+    // this.cd.detectChanges();
+  }
 
   @Input() fileElements: FileElement[];
   @Input() canNavigateUp: string;

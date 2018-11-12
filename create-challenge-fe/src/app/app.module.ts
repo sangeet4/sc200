@@ -10,11 +10,16 @@ import {MatFormFieldModule,
         MatSelectModule,
         MatButtonModule,
         MatInputModule} from '@angular/material';
+import { AppRoutingModule } from './app-routing.module';
+import { UpdateChallengeComponent } from './update-challenge/update-challenge.component';
+import { AddChallengeComponent } from './add-challenge/add-challenge.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DescriptionComponent
+    DescriptionComponent,
+    UpdateChallengeComponent,
+    AddChallengeComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +29,8 @@ import {MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

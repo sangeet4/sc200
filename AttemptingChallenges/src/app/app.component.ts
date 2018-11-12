@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FileElement } from './folder-structure/directory/model/file-element';
 import { FileService } from './folder-structure/directory/file.service';
 import { Observable } from 'rxjs';
+import { FilesService } from './files.service'
 
 @Component({
   selector: 'app-root',
@@ -18,11 +19,13 @@ export class AppComponent {
   currentPath: string;
   canNavigateUp = false;
 
-  constructor(public fileService: FileService) { }
+  constructor(public fileService: FileService, public filesService: FilesService) { }
 
   ngOnInit() {
-    const folderA = this.fileService.add({ name: 'Folder A', isFolder: true, parent: 'root' ,url:null,content:null});
-    this.updateFileElementQuery();
+    this.fileElements = this.filesService.allFiles;
+    console.log(this.fileElements);
+    // const folderA = this.fileService.add({ name: 'Folder A', isFolder: true, parent: 'root' ,url:null,content:null});
+    // this.updateFileElementQuery();
     }
 
   addFile(file: { name: string }) {

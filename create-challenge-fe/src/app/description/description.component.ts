@@ -1,5 +1,5 @@
 import { QuestDetail } from './../quest-detail';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ChallengeService } from '../challenge.service';
 
@@ -13,27 +13,37 @@ export class DescriptionComponent implements OnInit {
   constructor(private fb: FormBuilder, private questService: ChallengeService) {}
 
   availbLang = [ 'Java', 'Python', 'C', 'Cpp', 'Javascript' ];
+  readOnlyFlag = false;
 
   questDesc: FormGroup;
 
+  @Input()
   quest2send: QuestDetail;
 
+  @Input()
+  flag: number;
+
   ngOnInit() {
+    console.log(this.quest2send);
+    console.log(this.flag);
+    if (this.flag === 2) {
+      this.readOnlyFlag = true;
+    }
     this.questDesc = this.fb.group({
-      id : ['', [Validators.required]],
-      challengeTitle : ['', [Validators.required]],
-      challengeDesc : ['', [Validators.required]],
-      problemStat : ['', [Validators.required]],
-      inputFormat : ['', [Validators.required]],
-      constraints : ['', [Validators.required]],
-      outputFormat : ['', [Validators.required]],
-      maxScore : ['', [Validators.required, Validators.min(5), Validators.max(100)]],
-      maxRuntime : ['', Validators.required],
-      progLang : ['', Validators.required],
-      solutionUrl : ['', [Validators.required,
+      id : [this.quest2send.id, [Validators.required]],
+      challengeTitle : [this.quest2send.challengeTitle, [Validators.required]],
+      challengeDesc : [this.quest2send.challengeDesc, [Validators.required]],
+      problemStat : [this.quest2send.problemStat, [Validators.required]],
+      inputFormat : [this.quest2send.inputFormat, [Validators.required]],
+      constraints : [this.quest2send.constraints, [Validators.required]],
+      outputFormat : [this.quest2send.outputFormat, [Validators.required]],
+      maxScore : [this.quest2send.maxScore, [Validators.required, Validators.min(5), Validators.max(100)]],
+      maxRuntime : [this.quest2send.maxRuntime, Validators.required],
+      progLang : [this.quest2send.progLang, Validators.required],
+      solutionUrl : [this.quest2send.solutionUrl, [Validators.required,
         Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
-      level : ['', [Validators.required, Validators.min(1), Validators.max(10)]],
-      rating : ['', [Validators.required, Validators.min(1), Validators.max(10)]]
+      level : [this.quest2send.level, [Validators.required, Validators.min(1), Validators.max(10)]],
+      rating : [this.quest2send.rating, [Validators.required, Validators.min(1), Validators.max(10)]]
     });
   }
 
@@ -64,17 +74,30 @@ export class DescriptionComponent implements OnInit {
   get rating() { return this.questDesc.get('rating'); }
 
   onSubmit() {
-    if (this.questDesc.invalid) {
-      console.log('POST Failed');
-      return;
+    if (this.flag === 1) {
+      if (this.questDesc.invalid) {
+        console.log('POST Failed');
+        return;
+      }
+      console.log(this.questDesc.value);
+      alert('The form was submitted');
+      this.questService.createChallenge(this.questDesc.value)
+        .subscribe(data => {
+          console.log('POST Successful');
+        });
+    } else {
+      if (this.questDesc.invalid) {
+        console.log('PUT Failed');
+        return;
+      }
+      console.log(this.questDesc.value);
+      alert('The form was updated');
+      this.questService.updateChallenge(this.quest2send.id, this.questDesc.value)
+        .subscribe(data => {
+          console.log(data);
+          console.log('PUT Successful');
+        });
     }
-    // this.quest2send = new QuestDetail();
-    console.log(this.questDesc.value);
-    alert('The form was submitted');
-    this.questService.createChallenge(this.questDesc.value)
-      .subscribe(data => {
-        console.log('POST Successful');
-      });
     this.questDesc.reset();
   }
 

@@ -2,7 +2,7 @@
   <form class="quest-container" [formGroup]="questDesc" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline">
       <mat-label>Challenge Id</mat-label>
-      <input type="number" matInput placeholder="Challenge Id" class="form-control" id="id" formControlName="id"
+      <input type="number" matInput placeholder="Challenge Id" class="form-control" id="id" formControlName="id" [readonly]="readOnlyFlag"
         required>
       <mat-error *ngIf="id.invalid && (id.dirty || id.touched)">
         Challenge Id shouldn't be null.
@@ -137,6 +137,7 @@
         </mat-error>
       </mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!questDesc.valid">Submit</button>
+    <button *ngIf="flag==1" mat-raised-button color="primary" type="submit" [disabled]="!questDesc.valid">Submit</button>
+    <button *ngIf="flag==2" mat-raised-button color="primary" type="submit" [disabled]="!questDesc.valid">Update</button>
   </form>
 </div>

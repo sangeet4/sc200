@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 @RestController
 @RequestMapping(value = "/sc200/userProfile")
-
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 
 public class UserProfileController {
 
@@ -54,7 +54,7 @@ public class UserProfileController {
            UserProfile userProfile=userProfileService.searchUserProfileById(id);
           responseEntity= new ResponseEntity<String>(userProfile.toString(),HttpStatus.FOUND);
         }catch (Exception e){
-           responseEntity= new ResponseEntity<String>("Not Found",HttpStatus.NOT_FOUND);
+           responseEntity= new ResponseEntity<String>(e.getMessage(),HttpStatus.NOT_FOUND);
       }
        return responseEntity;
         //return new ResponseEntity<UserProfile>(userProfileService.searchUserProfileById(id), HttpStatus.OK);
@@ -63,10 +63,14 @@ public class UserProfileController {
     public ResponseEntity<?> deleteById(@PathVariable("id") String id){
         ResponseEntity responseEntity;
 
-            userProfileService.deleteUserProfilebyId(id);
-            responseEntity= new ResponseEntity<String>("Successfully deleted",HttpStatus.OK);
+           if (userProfileService.deleteUserProfilebyId(id)==true) {
+               responseEntity = new ResponseEntity<String>("Successfully deleted", HttpStatus.OK);
 
-        return  responseEntity;
+           }
+           else{
+               responseEntity= new ResponseEntity<String>("UserProfile does not exist",HttpStatus.NOT_FOUND);
+           }
+        return responseEntity;
     }
 
     @PutMapping("updating/{id}")

@@ -6,6 +6,7 @@ import { NewFolderDialogComponent } from './modals/new-folder-dialog/new-folder-
 import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component';
 import { NewFileDialogComponent } from './modals/new-file-dialog/new-file-dialog.component';
 import { Router } from '@angular/router';
+import { FileService } from './file.service';
 //import {ChangeDetectorRef} from '@angular/core';
 
 @Component({
@@ -15,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class DirectoryComponent {
 
-  constructor(public dialog: MatDialog, private router: Router ) { 
+  constructor(public dialog: MatDialog, private router: Router,private fileService:FileService ) { 
     // , private cd : ChangeDetectorRef
     // this.cd.detectChanges();
   }
@@ -35,6 +36,7 @@ export class DirectoryComponent {
   deleteElement(element: FileElement) {
     this.elementRemoved.emit(element);
   }
+
 
   navigate(element: FileElement) {
     // console.log("again clicked ");

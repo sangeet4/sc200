@@ -22,13 +22,13 @@ export class FileService implements IFileService {
   constructor(private filesService:FilesService) { }
 
   add(fileElement: FileElement) {
-    fileElement.id = v4();
+    //fileElement.id = v4();
     this.map.set(fileElement.id, this.clone(fileElement));
     return fileElement;
     console.log(fileElement);
   }
   addFiles(fileElem: FileElement) {
-    fileElem.id = v4();
+    //fileElem.id = v4();
     this.map.set(fileElem.id, this.clone(fileElem));
     return fileElem;
   }
@@ -98,12 +98,22 @@ export class FileService implements IFileService {
     }
    //need to remove duplicates in the fileElements_array;
    this.fileElements_array=this.remove_duplicates(this.fileElements_array);
-   console.log(this.fileElements_array);
-   for(let i =0;i<this.fileElements_array.length;i++){
-     this.map.set(this.fileElements_array[i].id,this.clone(this.fileElements_array[i]));
-     
-   }
-   //console.log(this.map);
+   for(let i=0;i<this.fileElements_array.length;i++){
+    if(this.fileElements_array[i].parent=='root'){
+      ;
+    }
+    else{
+      let temp = this.fileElements_array[i].parent;
+      var temp_id;
+      for(let j=0;j<this.fileElements_array.length;j++){
+        if(temp==this.fileElements_array[j].name){
+          temp_id=this.fileElements_array[j].id;
+        }
+      }
+      this.fileElements_array[i].parent=temp_id;
+    }
+  }
+  console.log(this.fileElements_array);
    return this.fileElements_array;
    
   }
@@ -120,7 +130,7 @@ export class FileService implements IFileService {
 
   private querySubject: BehaviorSubject<FileElement[]>;
   queryInFolder(folderId: string) {
-    console.log(this.map);
+    //console.log(this.map);
     const result: FileElement[] = [];
     this.map.forEach(element => {
       if (element.parent === folderId) {

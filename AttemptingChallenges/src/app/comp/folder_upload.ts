@@ -187,9 +187,4 @@ export class FolderUpload {
     //this.router.navigate(['/a']);
     this.fileService.addUploadedFiles();
   }
-
-  public onShow(){
-    
-    console.log(this.fileService.fileElements_array);
-  }
 }

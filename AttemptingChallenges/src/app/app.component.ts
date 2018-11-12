@@ -48,6 +48,7 @@ export class AppComponent {
   }
   onShow(){
     this.fileElement_array = this.fileService.fileElements_array;
+    this.filesService.DisplayFiles();
 
     //need to change the parent from string to id of its parent.
 

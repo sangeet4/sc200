@@ -52,6 +52,24 @@ export class FilesService {
   GetAllFiles(){
     return this.allFiles;
   }
+ 
+
+  GetContent(fileName){
+
+    console.log(fileName);
+    var index;
+    for(var i=0; i < this.textFiles.length; i++ )
+    {
+      var temp = this.textFiles[i];
+      if(fileName == this.textFiles[i]){
+          index = i;
+    }
+
+    return this.fileContent[index];
+
+  }
 
 
+
+}
 }

@@ -10,18 +10,46 @@ import java.io.IOException;
 public class FileServiceImpl implements FileService {
 
     public String parseFile(com.sc200.domain.File file) throws IOException {
-        int lastIndex = file.getPath().lastIndexOf('/');
-        String directory = file.getPath().substring(0,lastIndex);
+        int lastIndex = file.getUri().lastIndexOf("/");
+        String directory = file.getUri().substring(0,lastIndex);
+        int firstIndex = file.getUri().indexOf("/");
+        String directory1 = file.getUri().substring(0,firstIndex);
 
         if(createDirectories(directory) && createFile(file)) {
             return "Successfully Created";
         }
         else {
-            return "Directory already exists";
+
+            recursiveDelete(new File(directory1));
+            if(createDirectories(directory) && createFile(file)) {
+                return "Successfully Created";
+            }
+            else {
+                return "Directory already exists";
+            }
         }
 
 
     }
+
+
+    public static void recursiveDelete(File file) {
+        //to end the recursive loop
+        if (!file.exists())
+            return;
+
+        //if directory, go inside and call recursively
+        if (file.isDirectory()) {
+            for (File f : file.listFiles()) {
+                //call recursively
+                recursiveDelete(f);
+            }
+        }
+        //call delete to delete files and empty directory
+        file.delete();
+        System.out.println("Deleted file/folder: "+file.getAbsolutePath());
+    }
+
 
     public boolean createDirectories(String path) {
 
@@ -42,11 +70,11 @@ public class FileServiceImpl implements FileService {
     public boolean createFile(com.sc200.domain.File file) throws IOException {
 
         //Create the file
-        File newFile = new File(file.getPath());
+        File newFile = new File(file.getUri());
         if (newFile.createNewFile())
         {
             FileWriter writer = new FileWriter(newFile);
-            writer.write(file.getInput());
+            writer.write(file.getContent());
             writer.close();
             return true;
         } else {

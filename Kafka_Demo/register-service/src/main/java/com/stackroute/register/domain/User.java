@@ -12,16 +12,10 @@ import org.springframework.data.annotation.Id;
 
 public class User {
     @Id
-    private String userName;
-    private String userId;
     private String email;
+    private String userName;
     private String password;
     private String firstName;
     private String lastName;
     private long contactNumber;
-
-
-
-
-
 }

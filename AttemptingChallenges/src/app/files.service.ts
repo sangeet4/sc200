@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { File } from './folder-structure/directory/model/file'
+import { containsElement } from '@angular/animations/browser/src/render/shared';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,7 +21,10 @@ export class FilesService {
   allFiles;
   textFiles;
   fileContent;
+  files:[string];
   url = "localhost:8020/file/create";
+  url1 = "172.23.239.117:8021/compile";
+  newurl:string = "";
 
 
   StoreFiles(allFiles , textFiles , fileContent){
@@ -45,11 +49,27 @@ export class FilesService {
     // file.content = content;
     
     //console.log(file.content);
+    console.log(file);
     return this.http.post(this.url, file, httpOptions);
 
   }
 
+  RunFile(file){
+    
+    // var file : File;
+    // file.url = url;
+    // file.content = content;
+    
+    //console.log(file.content);
+   // console.log(file.uri);
+      this.newurl= this.GetFilePath(file.uri);
+    console.log(this.newurl);
+    return this.http.post(this.url1,this.newurl, httpOptions);
+
+  }
+
   GetAllFiles(){
+    console.log(this.allFiles);
     return this.allFiles;
   }
  
@@ -68,8 +88,14 @@ export class FilesService {
     return this.fileContent[index];
 
   }
-
-
-
+}
+GetFilePath(fileName){
+   this.files = this.GetAllFiles();
+  for(let i=0;i<this.files.length;i++){
+    if(this.files[i].includes(fileName)){
+      console.log(this.files[i]);
+      return this.files[i];
+    }
+  }
 }
 }

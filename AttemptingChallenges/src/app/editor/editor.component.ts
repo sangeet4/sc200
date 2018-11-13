@@ -15,7 +15,7 @@ export class EditorComponent implements OnInit {
   @Input() displayFile : string;
 
 
-  private fileName = 'index.js';
+  private fileName ;
   private content ;
 
   constructor(private activatedroute: ActivatedRoute , private filesService : FilesService) { }
@@ -25,6 +25,7 @@ export class EditorComponent implements OnInit {
     this.activatedroute.params.subscribe((params) => {
 
       this.fileName = params.name + "." + params.file;
+      this.file.uri=this.fileName;
       this.file.language = params.file;
       console.log(this.fileName);
       this.file.content= this.filesService.GetContent(this.fileName);
@@ -79,6 +80,19 @@ export class EditorComponent implements OnInit {
     this.filesService.SaveFile(this.file)
           .subscribe();
   }
+  public Run(){
+
+    //console.log(this.file.uri , this.file.content);
+   // var a =this.file.uri; 
+    // var b = this.file.content;
+    // var file : any[];
+
+    this.filesService.RunFile(this.file)
+          .subscribe();
+
+  }
+
+  
 
 
 }

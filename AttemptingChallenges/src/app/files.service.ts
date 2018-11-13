@@ -23,9 +23,10 @@ export class FilesService {
   textFiles;
   fileContent;
   files:[string];
-  url = "172.23.239.117:8020/file/create";
-  url1 = "172.23.239.117:8021/compile";
+  url = "http://172.23.239.117:8020/file/create";
+  url1 = "http://172.23.239.117:8021/compile";
   newurl:string = "";
+  httpresponse;
 
 
   StoreFiles(allFiles , textFiles , fileContent){
@@ -50,10 +51,12 @@ export class FilesService {
     // file.content = content;
     
     //console.log(file.content);
+   // console.log(file);
+   this.newurl= this.GetFilePath(file.uri);
+   file.uri=this.newurl;
+    //file.content=file.content.replace(/"/g, " \\\"");
     console.log(file);
-    file.content=file.content.replace(/"/g, " \\\"");
-    console.log(file.content);
-    return this.http.post(this.url, file, httpOptions);
+     return this.http.post(this.url, file, httpOptions);
 
   }
 
@@ -67,8 +70,11 @@ export class FilesService {
    // console.log(file.uri);
       this.newurl= this.GetFilePath(file.uri);
     console.log(this.newurl);
-    return this.http.post(this.url1,this.newurl, httpOptions);
+     return this.http.post(this.url1,this.newurl, httpOptions);
 
+  }
+  showResponse(){
+    return this.httpresponse;
   }
 
   GetAllFiles(){

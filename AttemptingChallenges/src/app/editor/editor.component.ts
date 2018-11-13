@@ -17,6 +17,7 @@ export class EditorComponent implements OnInit {
 
   private fileName ;
   private content ;
+  httpResponse;
 
   constructor(private activatedroute: ActivatedRoute , private filesService : FilesService) { }
 
@@ -29,6 +30,7 @@ export class EditorComponent implements OnInit {
       this.file.language = params.file;
       console.log(this.fileName);
       this.file.content= this.filesService.GetContent(this.fileName);
+      this.content = this.file.content;
       console.log("hello " + this.file.content );
       // // document.getElementById("editor").load();
 });
@@ -71,6 +73,7 @@ export class EditorComponent implements OnInit {
   }
 
    public onClick(){
+     console.log
      this.file.content=this.content;
     console.log(this.file.uri , this.file.content);
     // var a =this.file.uri; 
@@ -88,7 +91,14 @@ export class EditorComponent implements OnInit {
     // var file : any[];
 
     this.filesService.RunFile(this.file)
-          .subscribe();
+          .subscribe(data =>{
+            this.httpResponse = data;
+          });
+
+  }
+  public showResults(){
+
+    console.log(this.httpResponse);
 
   }
 

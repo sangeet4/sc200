@@ -6,7 +6,7 @@
   </mat-tab>
   <mat-tab label="Update Profile">
     <div *ngIf="profile">
-      <app-update-profile></app-update-profile>
+      <app-update-profile [profile]="profile"></app-update-profile>
     </div>
   </mat-tab>
   <mat-tab label="Challenges Attempted"> 

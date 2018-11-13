@@ -8,9 +8,10 @@ import { ChallengeAttemptedComponent } from './challenge-attempted/challenge-att
 import { ChallengeCreatedComponent } from './challenge-created/challenge-created.component';
 import { ChallengeVotedComponent } from './challenge-voted/challenge-voted.component';
 import { ProfileComponent } from './profile/profile.component';
-import { MatTabsModule, MatCardModule } from '@angular/material';
+import { MatTabsModule, MatCardModule, MatFormFieldControl, MatFormFieldModule, MatButtonModule, MatInputModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatTabsModule,
     AppRoutingModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

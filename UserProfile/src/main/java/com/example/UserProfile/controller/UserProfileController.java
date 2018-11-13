@@ -77,8 +77,8 @@ public class UserProfileController {
     public ResponseEntity<?> updateuserProfileById(@Valid@RequestBody UserProfile userProfile ,@PathVariable("id") String id){
         ResponseEntity responseEntity;
        try {
-            userProfileService.updateuserProfileById(id,userProfile);
-            responseEntity = new ResponseEntity<String>("Successfully Updated",HttpStatus.CREATED);
+            UserProfile updatedProfile = userProfileService.updateuserProfileById(id,userProfile);
+            responseEntity = new ResponseEntity<UserProfile>(updatedProfile, HttpStatus.OK);
        }catch (Exception e){
             responseEntity =new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
        }

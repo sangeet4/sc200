@@ -71,7 +71,7 @@ export class EditorComponent implements OnInit {
   }
 
    public onClick(){
-
+     this.file.content=this.content;
     console.log(this.file.uri , this.file.content);
     // var a =this.file.uri; 
     // var b = this.file.content;

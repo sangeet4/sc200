@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { File } from './folder-structure/directory/model/file'
 import { containsElement } from '@angular/animations/browser/src/render/shared';
+import { MonacoFile } from 'ngx-monaco';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,7 +23,7 @@ export class FilesService {
   textFiles;
   fileContent;
   files:[string];
-  url = "localhost:8020/file/create";
+  url = "172.23.239.117:8020/file/create";
   url1 = "172.23.239.117:8021/compile";
   newurl:string = "";
 
@@ -42,7 +43,7 @@ export class FilesService {
       
   }
 
-  SaveFile(file){
+  SaveFile(file:MonacoFile){
     
     // var file : File;
     // file.url = url;
@@ -50,6 +51,8 @@ export class FilesService {
     
     //console.log(file.content);
     console.log(file);
+    file.content=file.content.replace(/"/g, " \\\"");
+    console.log(file.content);
     return this.http.post(this.url, file, httpOptions);
 
   }

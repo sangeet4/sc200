@@ -10,7 +10,7 @@ public class ShellScriptExecutor {
     public static void main(String[] args) throws InterruptedException {
         try{
             System.out.println("start excution......");
-            String[] command = {"/bin/bash", "shellScript.sh", "helloWorld"};
+            String[] command = {"/bin/bash", "shellScript.sh", "a/" , "HelloWorld"};
             ProcessBuilder p = new ProcessBuilder(command);
             Process p2 = p.start();
             BufferedReader br = new BufferedReader(new InputStreamReader(p2.getInputStream()));

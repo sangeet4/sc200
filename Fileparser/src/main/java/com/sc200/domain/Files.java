@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Builder
-public class File {
+public class Files {
 
     private String uri;
 
@@ -18,7 +18,7 @@ public class File {
 
     private String language;
 
-    public File(String path, String language, String input) {
+    public Files(String path, String language, String input) {
         this.uri = path;
         this.content = input;
         this.language = language;

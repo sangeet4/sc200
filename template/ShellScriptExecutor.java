@@ -17,6 +17,7 @@ public class ShellScriptExecutor {
      */
     public static void main(String[] args) throws InterruptedException {
 
+	System.out.println(args[0]);
         walkin(new File(args[0]));
     }
 

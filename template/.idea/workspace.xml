@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="add6af7b-2fa5-4efc-94e5-95dfbe30cd3b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Compilation/src/main/java/com/sc200/controller/CompilerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Compilation/src/main/java/com/sc200/controller/CompilerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Compilation/src/main/java/com/sc200/service/CompileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Compilation/src/main/java/com/sc200/service/CompileServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Compilation/src/main/resources/shellScript.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../Compilation/src/main/resources/shellScript.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Fileparser/src/main/java/com/sc200/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Fileparser/src/main/java/com/sc200/controller/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Fileparser/src/main/java/com/sc200/domain/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Fileparser/src/main/java/com/sc200/domain/File.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Fileparser/src/main/java/com/sc200/service/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Fileparser/src/main/java/com/sc200/service/FileServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaCodeForCompilation/ShellScriptExecutor$StreamGobbler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaCodeForCompilation/a/HelloWorld.class" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaCodeForCompilation/a/HelloWorld.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaCodeForCompilation/a/HelloWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaCodeForCompilation/a/HelloWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaCodeForCompilation/shellScript.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaCodeForCompilation/shellScript.sh" afterDir="false" />
-    </list>
+    <list default="true" id="add6af7b-2fa5-4efc-94e5-95dfbe30cd3b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +42,7 @@
     <session id="-1346423100">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.opened" value="2" />
@@ -132,7 +122,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Fileparser" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -161,7 +151,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25778133" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

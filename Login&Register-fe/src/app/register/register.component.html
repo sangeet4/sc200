@@ -27,10 +27,10 @@
         </div>
     </div> 
     <div class="form-group">
-        <label for="phone">Mobile Number</label>
-        <input type="text" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
-        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-            <div *ngIf="f.phone.errors"> Valid phone is required</div>
+        <label for="contactNumber">Mobile Number</label>
+        <input type="text" formControlName="contactNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contactNumber.errors }" />
+        <div *ngIf="submitted && f.contactNumber.errors" class="invalid-feedback">
+            <div *ngIf="f.contactNumber.errors"> Valid phone is required</div>
             
         </div>
     </div>   

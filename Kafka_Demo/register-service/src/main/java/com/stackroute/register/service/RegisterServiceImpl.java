@@ -30,7 +30,7 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public User saveUser(User user) throws UserNameExistsException {
-        if(userRepository.existsById(user.getUserId())){
+        if(userRepository.existsById(user.getEmail())){
 
             String message = env.getProperty("user-service.impl.usernameEx");
 

@@ -15,34 +15,59 @@ export class AppComponent {
   public fileElements: Observable<FileElement[]>;
 
   files: File[];
+  
   currentRoot: FileElement;
   currentPath: string;
   canNavigateUp = false;
 
   constructor(public fileService: FileService, public filesService: FilesService) { }
-
+  
+ 
   ngOnInit() {
     this.fileElements = this.filesService.allFiles;
     console.log(this.fileElements);
-    // const folderA = this.fileService.add({ name: 'Folder A', isFolder: true, parent: 'root' ,url:null,content:null});
-    // this.updateFileElementQuery();
+    
+     //const folderA = this.fileService.add({ name: 'Folder A', isFolder: true, parent: 'root' ,url:null,content:null});
+     //this.fileService.add({ name: 'Folder B', isFolder: true, parent:folderA.id,url:null,content:null});
+     this.updateFileElementQuery();
+     //console.log(folderA.id);
     }
+    private fileElement_array : FileElement[];
+    
 
-  addFile(file: { name: string }) {
-    this.fileService.addFiles({ isFolder: false, name: file.name, parent: this.currentRoot ? this.currentRoot.id : 'root',url:null,content:null });
+  addFile(file: { name: string, parent:string,url:string,id:string }) {
+    this.fileService.addFiles({id:file.id, isFolder: false, name: file.name, parent:file.parent,url:file.url,content:null });
     this.updateFileElementQuery();
   }
 
 
-  addFolder(folder: { name: string }) {
-    this.fileService.add({ isFolder: true, name: folder.name, parent: this.currentRoot ? this.currentRoot.id : 'root',url:null,content:null });
+
+  addFolder(folder: { name: string,parent:string,url:string,id:string }) {
+    this.fileService.add({id:folder.id, isFolder: true, name: folder.name, parent: folder.parent,url:folder.url,content:null });
     this.updateFileElementQuery();
   }
+  onShow(){
+    this.fileElement_array = this.fileService.fileElements_array;
+    this.filesService.DisplayFiles();
 
-  // addFileElement(fileElement:{name:string,isFolder:boolean,parent:string,url:string,content:null,id:string}){
-  //   this.fileService.add(fileElement);
-  //   this.updateFileElementQuery();
-  // }
+    //need to change the parent from string to id of its parent.
+
+    //to show the file structure once the folder is uploaded.
+    for(let i=0;i<this.fileElement_array.length;i++){
+      if(this.fileElement_array[i].isFolder){
+        this.addFolder(this.fileElement_array[i]);
+        this.updateFileElementQuery();
+      }
+      else{
+        
+        this.addFile(this.fileElement_array[i]);
+        this.updateFileElementQuery();
+      }
+    }
+  
+  }
+
+ 
 
 
   removeElement(element: FileElement) {

@@ -185,7 +185,6 @@ export class FolderUpload {
 //need to send a http request
   public onCLick(){
     //this.router.navigate(['/a']);
-
+    this.fileService.addUploadedFiles();
   }
-
 }

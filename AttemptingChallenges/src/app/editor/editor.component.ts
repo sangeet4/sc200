@@ -23,9 +23,13 @@ export class EditorComponent implements OnInit {
   
   ngOnInit(): void {
     this.activatedroute.params.subscribe((params) => {
-      this.file.content="hello " + params.name;
-      // console.log("hello " + params.name );
-      // document.getElementById("editor").load();
+
+      this.fileName = params.name + "." + params.file;
+      this.file.language = params.file;
+      console.log(this.fileName);
+      this.file.content= this.filesService.GetContent(this.fileName);
+      console.log("hello " + this.file.content );
+      // // document.getElementById("editor").load();
 });
 }
 

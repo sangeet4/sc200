@@ -48,10 +48,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path: ':name' , component : EditorComponent, outlet : 'editor' },
-      {path: ':name' , component : FolderStructureModule , outlet : 'directory' },
-      {path: '' , component : EditorComponent, outlet : 'editor' },
-      {path: '' , component : FolderStructureModule , outlet : 'editor' },
+      {path: ':file/:name' , component : EditorComponent},
+      //{path: ':name' , component : FolderStructureModule , outlet : 'directory' },
+      {path: '' , component : EditorComponent },
+      //{path: '' , component : FolderStructureModule , outlet : 'editor' },
       // {path: '' , component : EditorComponent }
     ]),
     MonacoEditorModule.forRoot()

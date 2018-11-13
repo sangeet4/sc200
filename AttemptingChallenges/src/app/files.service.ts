@@ -20,7 +20,7 @@ export class FilesService {
   allFiles;
   textFiles;
   fileContent;
-  url = "localhost:8080/file/";
+  url = "localhost:8020/file/create";
 
 
   StoreFiles(allFiles , textFiles , fileContent){
@@ -44,7 +44,7 @@ export class FilesService {
     // file.url = url;
     // file.content = content;
     
-    console.log(file.content);
+    //console.log(file.content);
     return this.http.post(this.url, file, httpOptions);
 
   }
@@ -52,6 +52,24 @@ export class FilesService {
   GetAllFiles(){
     return this.allFiles;
   }
+ 
+
+  GetContent(fileName){
+
+    console.log(fileName);
+    var index;
+    for(var i=0; i < this.textFiles.length; i++ )
+    {
+      var temp = this.textFiles[i];
+      if(fileName == this.textFiles[i]){
+          index = i;
+    }
+
+    return this.fileContent[index];
+
+  }
 
 
+
+}
 }

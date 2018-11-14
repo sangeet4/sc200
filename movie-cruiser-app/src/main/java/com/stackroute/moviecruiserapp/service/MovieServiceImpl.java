@@ -38,19 +38,12 @@ public class MovieServiceImpl implements MovieService{
     }
 
     public Movie getMovieByTitle(String title) throws MovieNotFoundException {
-//        Optional<Movie> movie;
-//        List<Movie> movieList=getAllMovies();
-//        for(Movie movie2:movieList){
-//            if(movie2.getTitle().equals(title))
-//                return movie2;
-//        }
         Movie savedMovie= movieRepository.getMovieByTitle(title);
         if(savedMovie == null){
             LOGGER.warn("Movie not found exception - {}", title);
             throw new MovieNotFoundException(title);
         }
         return savedMovie;
-       // throw new MovieNotFoundException(title);
     }
 
 
@@ -59,7 +52,9 @@ public class MovieServiceImpl implements MovieService{
         if(!movieRepository.existsById(id))
             throw new MovieNotFoundException(id);
         Optional<Movie> movie1=getMovieById(id);
-        movieRepository.delete(movie1.get());
+        if(movie1.isPresent()) {
+            movieRepository.delete(movie1.get());
+        }
         return getAllMovies();
     }
 
@@ -69,19 +64,19 @@ public class MovieServiceImpl implements MovieService{
         if(!movieRepository.existsById(id))
             throw new MovieNotFoundException(id);
         Optional<Movie> movie1=getMovieById(id);
-        movie1.get().setComments(comments);
-        Movie savedMovie=movieRepository.save(movie1.get());
-        return savedMovie;
+        if(movie1.isPresent()) {
+            movie1.get().setComments(comments);
+            Movie savedMovie = movieRepository.save(movie1.get());
+            return savedMovie;
+        }
+        return null;
+
     }
 
 
     public Movie addMovie(Movie movie) throws MovieAlreadyExistsException {
         if(movieRepository.existsById(movie.getId()))
             throw new MovieAlreadyExistsException(movie);
-//        for(Movie movie2:movieList){
-//            if(movie2.getId()==(movie.getId()))
-//                throw new MovieAlreadyExistsException(movie);
-//        }
         Movie savedMovie=movieRepository.save(movie);
         if(savedMovie == null){
             LOGGER.warn("Movie already exists exception ");

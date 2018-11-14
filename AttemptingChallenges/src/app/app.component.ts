@@ -31,10 +31,8 @@ export class AppComponent {
       console.log("hey the service is invoked", data);
       this.fileElements = this.filesService.allFiles;
       this.updateFileElementQuery();
-    });
-    console.log("bjhbhgb");
     
-    console.log(this.fileElements);
+    });
     // if(this.fileElements==undefined){
     //   this.fileElements = this.filesService.allFiles;
     // }

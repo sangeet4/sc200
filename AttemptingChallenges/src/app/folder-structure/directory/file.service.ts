@@ -161,22 +161,14 @@ export class FileService implements IFileService {
       
       this.filesService.setPaths(data['paths']); 
       this.filesService.setContent(data['contents']);
-      // console.log(data['contents']);
-      // for(var i=0; i<this.fileElements_array.length;i++)
-      // {
-      //   console.log(data['contents'][i]);
-      //   this.fileElements_array[i].content = data['contents'][i];
-      //   console.log(this.fileElements_array[i].content);
-      // }
-
       console.log("1232");
-      this.filesService.DisplayFiles();
       this.addUploadedFiles();
-
+      
   });
-
+  console.log("dkv");
+  console.log("1232");
   return this.querySubject.asObservable();
-
+ 
   }
 
   remove_duplicates(fileElements_array:FileElement[]){

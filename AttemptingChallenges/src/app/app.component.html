@@ -1,8 +1,8 @@
-<div *ngIf="fileElements.length>0">    
-    <folder-upload></folder-upload>
-    <div style="padding: 20px; height: 100%; box-sizing: border-box;">
+<div style="display: flex"><folder-upload></folder-upload>
+<button (click) = "onShow()">Refresh</button>
+</div>
+<div style="padding: 20px; height: 100%; box-sizing: border-box;">
         <mat-card style="height: 100%; box-sizing: border-box; padding:0">
-            <button (click) = "onShow()">Show</button>
             <br>
         
             <app-directory [fileElements]="fileElements | async" [path]="currentPath" [canNavigateUp]="canNavigateUp"
@@ -12,6 +12,5 @@
             
     </mat-card>
 <router-outlet></router-outlet>
-</div>
 </div>
 <!-- <app-editor></app-editor> -->

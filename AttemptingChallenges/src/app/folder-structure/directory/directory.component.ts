@@ -8,7 +8,6 @@ import { NewFileDialogComponent } from './modals/new-file-dialog/new-file-dialog
 import { Router } from '@angular/router';
 import { FileService } from './file.service';
 //import {ChangeDetectorRef} from '@angular/core';
-
 @Component({
   selector: 'app-directory',
   templateUrl: './directory.component.html',

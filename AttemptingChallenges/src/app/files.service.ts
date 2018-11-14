@@ -75,7 +75,7 @@ export class FilesService {
 
   }
 getTemplate(){
-  return this.http.post(this.url + "file", "Hello/", httpOptions);
+  return this.http.post(this.url + "file", "src/", httpOptions);
 }
 
 setPaths(data){
@@ -88,20 +88,18 @@ setTextFiles(){
 
   for(var i=0; i < this.allFiles.length; i++ )
   {
-    // console.log(this.allFiles[i]);
+    if(this.allFiles[i]!=null){
     var index = this.allFiles[i].lastIndexOf("/");
-    // console.log(index);
     this.textFiles[i] = this.allFiles[i].substring(index+1,this.allFiles[i].length);
-    // console.log(index);
-    // console.log(this.textFiles[i]);
+    }
   }
-
-
 }
+
 
 setContent(data){
 
   this.fileContent = data;
+  console.log(this.fileContent);
 }
 
   showResponse(){
@@ -109,7 +107,6 @@ setContent(data){
   }
 
   GetAllFiles(){
-    console.log(this.allFiles);
     return this.allFiles;
   }
  

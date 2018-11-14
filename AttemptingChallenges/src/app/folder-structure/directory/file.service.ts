@@ -39,8 +39,13 @@ export class FileService implements IFileService {
   addUploadedFiles(){
     var fileelem:FileElement;
     var temp = this.filesService.GetAllFiles();
+    console.log("from uploaded files function");
+    console.log(temp);
+    
+    
     var len = temp.length;
     for(let i = 0 ; i<len;i++){
+      if(temp[i]!=null){
       var splitted=temp[i].split('/');
 
       var len_temp = splitted.length;
@@ -52,10 +57,14 @@ export class FileService implements IFileService {
       
 //storing the splitted strings into an array and checkign whether it is a file or folder
       for(let j=0;j<len_temp;j++){
+        
          split_string.push(splitted[j]);
       }
+     
 
       for(let j=0;j<len_temp;j++){
+        
+        
         if(split_string[j].indexOf('.')>0){
 
         var fileelem:FileElement=
@@ -95,7 +104,9 @@ export class FileService implements IFileService {
           this.fileElements_array.push(fileelem);
         }
       }
+    
     }
+    
    //need to remove duplicates in the fileElements_array;
    this.fileElements_array=this.remove_duplicates(this.fileElements_array);
    for(let i=0;i<this.fileElements_array.length;i++){
@@ -113,10 +124,12 @@ export class FileService implements IFileService {
       this.fileElements_array[i].parent=temp_id;
     }
   }
+  console.log("after id update");
   console.log(this.fileElements_array);
   return this.fileElements_array;
    
   }
+}
  
   delete(id: string) {
     this.map.delete(id);

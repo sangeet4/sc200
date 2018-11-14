@@ -114,7 +114,7 @@ export class FileService implements IFileService {
     }
   }
   console.log(this.fileElements_array);
-   return this.fileElements_array;
+  return this.fileElements_array;
    
   }
  
@@ -155,14 +155,29 @@ export class FileService implements IFileService {
 
 
 
+  getStructureOnInit(){
 
+    this.filesService.getTemplate().subscribe(data=>{
+      
+      this.filesService.setPaths(data['paths']); 
+      this.filesService.setContent(data['contents']);
+      // console.log(data['contents']);
+      // for(var i=0; i<this.fileElements_array.length;i++)
+      // {
+      //   console.log(data['contents'][i]);
+      //   this.fileElements_array[i].content = data['contents'][i];
+      //   console.log(this.fileElements_array[i].content);
+      // }
 
+      console.log("1232");
+      this.filesService.DisplayFiles();
+      this.addUploadedFiles();
 
+  });
 
+  return this.querySubject.asObservable();
 
-
-
-
+  }
 
   remove_duplicates(fileElements_array:FileElement[]){
     var fileElements_array2:FileElement[] = [];

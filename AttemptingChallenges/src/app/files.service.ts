@@ -5,6 +5,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { File } from './folder-structure/directory/model/file'
 import { containsElement } from '@angular/animations/browser/src/render/shared';
 import { MonacoFile } from 'ngx-monaco';
+import { FileElement } from './folder-structure/directory/model/file-element';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,13 +18,13 @@ const httpOptions = {
 })
 export class FilesService {
 
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient) { }
  
   allFiles;
-  textFiles;
+  textFiles : String[] = [];
   fileContent;
   files:[string];
-  url = "http://172.23.239.117:8020/file/create";
+  url = "http://172.23.239.117:8020/";
   url1 = "http://172.23.239.117:8021/compile";
   newurl:string = "";
   httpresponse;
@@ -56,7 +57,7 @@ export class FilesService {
    file.uri=this.newurl;
     //file.content=file.content.replace(/"/g, " \\\"");
     console.log(file);
-     return this.http.post(this.url, file, httpOptions);
+    return this.http.post(this.url + "file/create", file, httpOptions);
 
   }
 
@@ -69,10 +70,40 @@ export class FilesService {
     //console.log(file.content);
    // console.log(file.uri);
       this.newurl= this.GetFilePath(file.uri);
-    console.log(this.newurl);
+      console.log(this.newurl);
      return this.http.post(this.url1,this.newurl, httpOptions);
 
   }
+getTemplate(){
+  return this.http.post(this.url + "file", "Hello/", httpOptions);
+}
+
+setPaths(data){
+
+  this.allFiles = data;
+  this.setTextFiles();
+}
+
+setTextFiles(){
+
+  for(var i=0; i < this.allFiles.length; i++ )
+  {
+    // console.log(this.allFiles[i]);
+    var index = this.allFiles[i].lastIndexOf("/");
+    // console.log(index);
+    this.textFiles[i] = this.allFiles[i].substring(index+1,this.allFiles[i].length);
+    // console.log(index);
+    // console.log(this.textFiles[i]);
+  }
+
+
+}
+
+setContent(data){
+
+  this.fileContent = data;
+}
+
   showResponse(){
     return this.httpresponse;
   }
@@ -89,6 +120,7 @@ export class FilesService {
     var index;
     for(var i=0; i < this.textFiles.length; i++ )
     {
+      console.log(this.textFiles[i]);
       var temp = this.textFiles[i];
       if(fileName == this.textFiles[i]){
           index = i;

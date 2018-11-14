@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1cd555f-515a-4059-bfb1-29ceb3331c84" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/log.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/log.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stackroute/register/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stackroute/register/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stackroute/register/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stackroute/register/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stackroute/register/kafka/consumer/KafkaConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stackroute/register/kafka/consumer/KafkaConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/stackroute/register/service/RegisterServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/stackroute/register/service/RegisterServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/stackroute/register/RegisterNewApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/stackroute/register/RegisterNewApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/stackroute/register/controller/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/stackroute/register/controller/RegisterController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/stackroute/register/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/stackroute/register/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/stackroute/register/exceptions/NoSuchUserException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/stackroute/register/exceptions/NoSuchUserException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/stackroute/register/exceptions/NullDetailsException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/stackroute/register/exceptions/NullDetailsException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/stackroute/register/exceptions/UserNameExistsException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/stackroute/register/exceptions/UserNameExistsException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/stackroute/register/kafka/consumer/KafkaConsumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/stackroute/register/kafka/consumer/KafkaConsumer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/stackroute/register/kafka/producer/UserResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/stackroute/register/kafka/producer/UserResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/stackroute/register/service/RegisterService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/stackroute/register/service/RegisterService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/stackroute/register/service/RegisterServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/stackroute/register/service/RegisterServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Login&amp;Register-fe/src/app/_services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Login&amp;Register-fe/src/app/_services/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Login&amp;Register-fe/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../Login&amp;Register-fe/src/environments/environment.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,6 +15,7 @@
     <session id="-926542345">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.44" value="1" />
           <entry key="project.opened" value="2" />
@@ -85,7 +69,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/stackroute/register/domain/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
+            <state relative-caret-position="240">
               <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -255,7 +239,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542112297085" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542112527995" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -317,7 +301,7 @@
       <window_info anchor="bottom" id="Messages" weight="0.32952693" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32952693" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32952693" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -388,7 +372,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/stackroute/register/domain/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
+        <state relative-caret-position="240">
           <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />

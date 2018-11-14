@@ -114,7 +114,7 @@ export class FileService implements IFileService {
     }
   }
   console.log(this.fileElements_array);
-   return this.fileElements_array;
+  return this.fileElements_array;
    
   }
  
@@ -155,14 +155,21 @@ export class FileService implements IFileService {
 
 
 
+  getStructureOnInit(){
 
-
-
-
-
-
-
-
+    this.filesService.getTemplate().subscribe(data=>{
+      
+      this.filesService.setPaths(data['paths']); 
+      this.filesService.setContent(data['contents']);
+      console.log("1232");
+      this.addUploadedFiles();
+      
+  });
+  console.log("dkv");
+  console.log("1232");
+  return this.querySubject.asObservable();
+ 
+  }
 
   remove_duplicates(fileElements_array:FileElement[]){
     var fileElements_array2:FileElement[] = [];

@@ -15,17 +15,24 @@ export class EditorComponent implements OnInit {
   @Input() displayFile : string;
 
 
-  private fileName = 'index.js';
+  private fileName ;
   private content ;
+  httpResponse;
 
   constructor(private activatedroute: ActivatedRoute , private filesService : FilesService) { }
 
   
   ngOnInit(): void {
     this.activatedroute.params.subscribe((params) => {
-      this.file.content="hello " + params.name;
-      // console.log("hello " + params.name );
-      // document.getElementById("editor").load();
+
+      this.fileName = params.name + "." + params.file;
+      this.file.uri=this.fileName;
+      this.file.language = params.file;
+      console.log(this.fileName);
+      this.file.content= this.filesService.GetContent(this.fileName);
+      this.content = this.file.content;
+      console.log("hello " + this.file.content );
+      // // document.getElementById("editor").load();
 });
 }
 
@@ -66,7 +73,8 @@ export class EditorComponent implements OnInit {
   }
 
    public onClick(){
-
+     console.log
+     this.file.content=this.content;
     console.log(this.file.uri , this.file.content);
     // var a =this.file.uri; 
     // var b = this.file.content;
@@ -75,6 +83,26 @@ export class EditorComponent implements OnInit {
     this.filesService.SaveFile(this.file)
           .subscribe();
   }
+  public Run(){
+
+    //console.log(this.file.uri , this.file.content);
+   // var a =this.file.uri; 
+    // var b = this.file.content;
+    // var file : any[];
+
+    this.filesService.RunFile(this.file)
+          .subscribe(data =>{
+            this.httpResponse = data;
+          });
+
+  }
+  public showResults(){
+
+    console.log(this.httpResponse);
+
+  }
+
+  
 
 
 }

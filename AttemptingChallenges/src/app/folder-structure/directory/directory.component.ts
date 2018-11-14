@@ -49,7 +49,9 @@ export class DirectoryComponent {
       // send the file content to the editor or in simple what you have to do 
       // is send the file name from directory component to the editor component
        
-      this.router.navigate(['/' + element.name]);
+      var names = element.name.split(".");
+      this.router.navigate(["/" + names[1] + "/" + names[0]]);
+
     }
 
   }

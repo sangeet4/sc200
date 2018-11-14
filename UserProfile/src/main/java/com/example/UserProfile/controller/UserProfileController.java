@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 @RestController
 @RequestMapping(value = "/sc200/userProfile")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin
 
 public class UserProfileController {
 
@@ -52,7 +52,7 @@ public class UserProfileController {
       try{
           // Movie movie= movieService.searchMovieById(id);
            UserProfile userProfile=userProfileService.searchUserProfileById(id);
-          responseEntity= new ResponseEntity<String>(userProfile.toString(),HttpStatus.FOUND);
+          responseEntity= new ResponseEntity<UserProfile>(userProfile,HttpStatus.OK);
         }catch (Exception e){
            responseEntity= new ResponseEntity<String>(e.getMessage(),HttpStatus.NOT_FOUND);
       }
@@ -77,8 +77,8 @@ public class UserProfileController {
     public ResponseEntity<?> updateuserProfileById(@Valid@RequestBody UserProfile userProfile ,@PathVariable("id") String id){
         ResponseEntity responseEntity;
        try {
-            userProfileService.updateuserProfileById(id,userProfile);
-            responseEntity = new ResponseEntity<String>("Successfully Updated",HttpStatus.CREATED);
+            UserProfile updatedProfile = userProfileService.updateuserProfileById(id,userProfile);
+            responseEntity = new ResponseEntity<UserProfile>(updatedProfile, HttpStatus.OK);
        }catch (Exception e){
             responseEntity =new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
        }

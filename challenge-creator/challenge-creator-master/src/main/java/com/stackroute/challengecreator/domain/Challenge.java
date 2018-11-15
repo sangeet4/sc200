@@ -17,6 +17,8 @@ public class Challenge {
     @Id
     private int id ;
 
+    private String userId;
+
     @NotNull
     private String challengeTitle;
 

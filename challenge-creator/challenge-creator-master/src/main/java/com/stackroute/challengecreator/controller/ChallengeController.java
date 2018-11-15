@@ -5,6 +5,7 @@ import com.stackroute.challengecreator.domain.ChallengeObjL1;
 import com.stackroute.challengecreator.domain.ChallengeObjL4;
 import com.stackroute.challengecreator.exceptions.ChallengeAlreadyExistsException;
 import com.stackroute.challengecreator.exceptions.ChallengeNotFoundException;
+import com.stackroute.challengecreator.kafka.producer.ChallengeResource;
 import com.stackroute.challengecreator.service.ChallengeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,9 @@ public class ChallengeController {
     private String exceptionMessage="";
 
     @Autowired
+    ChallengeResource challengeResource;
+
+    @Autowired
     public ChallengeController(ChallengeService challengeService) {
         this.challengeService = challengeService;
     }
@@ -32,7 +36,9 @@ public class ChallengeController {
     @PostMapping()
     public ResponseEntity<?> saveChallenge(@RequestBody @Valid Challenge challenge) throws ChallengeAlreadyExistsException {
 
+        challengeResource.putIntoTopic(challenge);
         ChallengeObjL1 savedChallenge = challengeService.addChallengeObjL1(challenge);
+        challengeResource.putIntoTopic2(savedChallenge);
         ResponseEntity responseEntity = new ResponseEntity(savedChallenge, HttpStatus.CREATED);
 
         return responseEntity;

@@ -48,6 +48,7 @@ public class ChallengeServiceImpl implements ChallengeService {
         if(!tempSavedChallenge.isPresent())
         {
             challengeObjL4.setId(challenge.getId());
+            challengeObjL4.setUserId(challenge.getUserId());
             challengeObjL4.setChallengeTitle(challenge.getChallengeTitle());
             challengeObjL4.setChallengeDescription(challenge.getChallengeDescription());
             challengeObjL4.setChallengeStatement(challenge.getChallengeStatement());
@@ -114,6 +115,7 @@ public class ChallengeServiceImpl implements ChallengeService {
                     else
                     {
                         challengeObjL4.setId(challenge.getId());
+                        challengeObjL4.setUserId(challenge.getUserId());
                         challengeObjL4.setChallengeTitle(challenge.getChallengeTitle());
                         challengeObjL4.setChallengeDescription(challenge.getChallengeDescription());
                         challengeObjL4.setChallengeStatement(challenge.getChallengeStatement());
@@ -140,6 +142,7 @@ public class ChallengeServiceImpl implements ChallengeService {
                 else
                 {
                     challengeObjL4.setId(challenge.getId());
+                    challengeObjL4.setUserId(challenge.getUserId());
                     challengeObjL4.setChallengeTitle(challenge.getChallengeTitle());
                     challengeObjL4.setChallengeDescription(challenge.getChallengeDescription());
                     challengeObjL4.setChallengeStatement(challenge.getChallengeStatement());
@@ -177,6 +180,7 @@ public class ChallengeServiceImpl implements ChallengeService {
             }
             else {
                 challengeObjL4.setId(challenge.getId());
+                challengeObjL4.setUserId(challenge.getUserId());
                 challengeObjL4.setChallengeTitle(challenge.getChallengeTitle());
                 challengeObjL4.setChallengeDescription(challenge.getChallengeDescription());
                 challengeObjL4.setChallengeStatement(challenge.getChallengeStatement());

@@ -15,6 +15,8 @@ public class ChallengeObjL4 {
     @Id
     private int id ;
 
+    private String userId;
+
     private String challengeTitle;
 
     private String challengeDescription;

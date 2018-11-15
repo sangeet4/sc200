@@ -62,7 +62,7 @@ export class FileService implements IFileService {
       }
      
 
-      for(let j=0;j<len_temp;j++){
+      for(let j=0;j<split_string.length;j++){
         
         
         if(split_string[j].indexOf('.')>0){
@@ -87,7 +87,6 @@ export class FileService implements IFileService {
             parent:'root',
             isFolder:true,
             url:null
-            
           }
           
           }
@@ -106,7 +105,9 @@ export class FileService implements IFileService {
       }
     
     }
-    
+  
+  }
+  console.log(this.filesService.DisplayFiles());
    //need to remove duplicates in the fileElements_array;
    this.fileElements_array=this.remove_duplicates(this.fileElements_array);
    for(let i=0;i<this.fileElements_array.length;i++){
@@ -122,13 +123,14 @@ export class FileService implements IFileService {
         }
       }
       this.fileElements_array[i].parent=temp_id;
+      this.fileElements_array[i].content=this.filesService.GetContent(this.fileElements_array[i].name);
     }
   }
   console.log("after id update");
   console.log(this.fileElements_array);
   return this.fileElements_array;
    
-  }
+  
 }
  
   delete(id: string) {

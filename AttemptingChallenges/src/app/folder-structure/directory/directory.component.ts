@@ -56,6 +56,7 @@ export class DirectoryComponent {
   }
 
   navigateUp() {
+    this.router.navigate([""]);
     this.navigatedUp.emit();
   }
 

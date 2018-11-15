@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-//import { FileService } from './folder-structure/directory/file.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { File } from './folder-structure/directory/model/file'
@@ -47,15 +46,10 @@ export class FilesService {
 
   SaveFile(file:MonacoFile){
     
-    // var file : File;
-    // file.url = url;
-    // file.content = content;
-    
-    //console.log(file.content);
-   // console.log(file);
+  
    this.newurl= this.GetFilePath(file.uri);
    file.uri=this.newurl;
-    //file.content=file.content.replace(/"/g, " \\\"");
+   
     console.log(file);
     return this.http.post(this.url + "file/create", file, httpOptions);
 
@@ -63,12 +57,7 @@ export class FilesService {
 
   RunFile(file){
     
-    // var file : File;
-    // file.url = url;
-    // file.content = content;
-    
-    //console.log(file.content);
-   // console.log(file.uri);
+   
       this.newurl= this.GetFilePath(file.uri);
       console.log(this.newurl);
      return this.http.post(this.url1,this.newurl, httpOptions);
@@ -111,21 +100,22 @@ setContent(data){
   }
  
 
-  GetContent(fileName){
+  GetContent(fileName:string){
 
-    console.log(fileName);
-    var index;
-    for(var i=0; i < this.textFiles.length; i++ )
+   
+    let index;
+    for(let i=0; i < this.textFiles.length; i++ )
     {
       console.log(this.textFiles[i]);
-      var temp = this.textFiles[i];
       if(fileName == this.textFiles[i]){
-          index = i;
-    }
+        index=i;
+         }
+        }
 
+    
     return this.fileContent[index];
 
-  }
+  
 }
 GetFilePath(fileName){
    this.files = this.GetAllFiles();

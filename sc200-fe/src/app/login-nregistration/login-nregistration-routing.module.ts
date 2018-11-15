@@ -17,6 +17,7 @@ const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'profile/:id', loadChildren: '../profile/profile.module#ProfileModule'},
     { path: 'challenge', loadChildren: '../create-challenge/create-challenge.module#CreateChallengeModule'},
+    { path: 'attempt', loadChildren: '../attempting-challenge/attempting-challenge.module#AttemptingChallengeModule'},
     { path: '**', redirectTo: 'logout' }
   ]}
 

@@ -10,7 +10,9 @@
       <div class="navbar-nav">
   
        <div> <p class=" btn btn-success my-3 my-sm-1">Hi {{currentUser.firstName}}!</p>  
-        </div>    
+        </div> 
+        <p><a [routerLink]="['/challenge/add']" class="btn btn-outline-success my-3 my-sm-1" >Create Challenge</a>
+        </p>   
         <p><a [routerLink]="['/profile', currentUser.email]" class="btn btn-outline-success my-3 my-sm-1" >User Profile</a>
         </p>
         <p><a [routerLink]="['/login']"class="btn btn-outline-success my-2 my-sm-1">Log Out</a></p>

@@ -5,7 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 
 const profileRoutes: Routes = [
-  {path: '', component: ProfileComponent}
+  {path: '', component: ProfileComponent},
+  { path: '../../challenge', loadChildren: '../create-challenge/create-challenge.module#CreateChallengeModule'},
+
 ];
 
 @NgModule({

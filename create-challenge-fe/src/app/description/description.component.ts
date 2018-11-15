@@ -32,15 +32,18 @@ export class DescriptionComponent implements OnInit {
     this.questDesc = this.fb.group({
       id : [this.quest2send.id, [Validators.required]],
       challengeTitle : [this.quest2send.challengeTitle, [Validators.required]],
-      challengeDesc : [this.quest2send.challengeDesc, [Validators.required]],
-      problemStat : [this.quest2send.problemStat, [Validators.required]],
+      challengeDescription : [this.quest2send.challengeDescription, [Validators.required]],
+      challengeStatement : [this.quest2send.challengeStatement, [Validators.required]],
       inputFormat : [this.quest2send.inputFormat, [Validators.required]],
       constraints : [this.quest2send.constraints, [Validators.required]],
       outputFormat : [this.quest2send.outputFormat, [Validators.required]],
       maxScore : [this.quest2send.maxScore, [Validators.required, Validators.min(5), Validators.max(100)]],
       maxRuntime : [this.quest2send.maxRuntime, Validators.required],
-      progLang : [this.quest2send.progLang, Validators.required],
+      programmingLang : [this.quest2send.programmingLang, Validators.required],
+      topic : [this.quest2send.topic, Validators.required],
       solutionUrl : [this.quest2send.solutionUrl, [Validators.required,
+        Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
+      boilerPlateUrl : [this.quest2send.boilerPlateUrl, [Validators.required,
         Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
       level : [this.quest2send.level, [Validators.required, Validators.min(1), Validators.max(10)]],
       rating : [this.quest2send.rating, [Validators.required, Validators.min(1), Validators.max(10)]]
@@ -51,9 +54,9 @@ export class DescriptionComponent implements OnInit {
 
   get title() { return this.questDesc.get('challengeTitle'); }
 
-  get desc() { return this.questDesc.get('challengeDesc'); }
+  get desc() { return this.questDesc.get('challengeDescription'); }
 
-  get stat() { return this.questDesc.get('problemStat'); }
+  get stat() { return this.questDesc.get('challengeStatement'); }
 
   get inFormat() { return this.questDesc.get('inputFormat'); }
 
@@ -65,9 +68,13 @@ export class DescriptionComponent implements OnInit {
 
   get maxRuntime() { return this.questDesc.get('maxRuntime'); }
 
-  get progLang() { return this.questDesc.get('progLang'); }
+  get programmingLang() { return this.questDesc.get('programmingLang'); }
+
+  get topic() { return this.questDesc.get('topic'); }
 
   get solutionUrl() { return this.questDesc.get('solutionUrl'); }
+
+  get boilerPlateUrl() { return this.questDesc.get('boilerPlateUrl'); }
 
   get level() { return this.questDesc.get('level'); }
 

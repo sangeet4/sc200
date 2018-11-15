@@ -52,8 +52,7 @@
             <version>0.7.9</version>
         </dependency>
 
-<<<<<<< HEAD
-=======
+
         <!--<dependency>-->
         <!--<groupId>org.springframework.boot</groupId>-->
         <!--<artifactId>spring-boot-starter-actuator</artifactId>-->
@@ -64,12 +63,12 @@
         <!--<version>2.0.1.RELEASE</version>-->
         <!--</dependency>-->
 
->>>>>>> d0c617c67e2909d6de62a5b350991fbe35c6d98c
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.3.0</version>
         </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -186,14 +185,14 @@
     </build>
 
 
-<<<<<<< HEAD
+
 </project>
-=======
-</project>
+
+
 
 
 
 
         <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
 
->>>>>>> d0c617c67e2909d6de62a5b350991fbe35c6d98c
+

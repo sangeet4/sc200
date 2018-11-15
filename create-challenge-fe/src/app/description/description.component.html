@@ -17,7 +17,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Challenge Description</mat-label>
-      <textarea matInput placeholder="Challenge Description" class="form-control" id="description" formControlName="challengeDesc"
+      <textarea matInput placeholder="Challenge Description" class="form-control" id="description" formControlName="challengeDescription"
         required></textarea>
       <mat-error *ngIf="desc.invalid && (desc.dirty || desc.touched)">
         Challenge Description shouldn't be empty.
@@ -25,7 +25,7 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Problem Statement</mat-label>
-      <textarea matInput placeholder="Problem Statement" class="form-control" id="statement" formControlName="problemStat"
+      <textarea matInput placeholder="Problem Statement" class="form-control" id="statement" formControlName="challengeStatement"
         required cdkTextareaAutosize cdkAutosizeMinRows="20" cdkAutosizeMaxRows="30"></textarea>
       <mat-error *ngIf="stat.invalid && (stat.dirty || stat.touched)">
         Problem Statement shouldn't be empty.
@@ -45,6 +45,14 @@
         required cdkTextareaAutosize cdkAutosizeMinRows="5" cdkAutosizeMaxRows="10"></textarea>
       <mat-error *ngIf="constraints.invalid && (constraints.dirty || constraints.touched)">
         Constraints shouldn't be empty.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Topic</mat-label>
+      <textarea matInput placeholder="Topic" class="form-control" id="topic" formControlName="topic"
+        required cdkTextareaAutosize cdkAutosizeMinRows="0" cdkAutosizeMaxRows="2"></textarea>
+      <mat-error *ngIf="topic.invalid && (topic.dirty || topic.touched)">
+        Topic shouldn't be empty.
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -82,12 +90,12 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Language</mat-label>
-      <mat-select class="form-control" id="lang" formControlName="progLang" required>
+      <mat-select class="form-control" id="lang" formControlName="programmingLang" required>
         <mat-option *ngFor="let lan of availbLang" [value]="lan">
           {{ lan }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="progLang.invalid && (progLang.dirty || progLang.touched)">
+      <mat-error *ngIf="programmingLang.invalid && (programmingLang.dirty || programmingLang.touched)">
         Programming Language shouldn't be empty.
       </mat-error>
     </mat-form-field>
@@ -100,6 +108,19 @@
           Solution URL shouldn't be empty.
         </mat-error>
         <mat-error *ngIf="solutionUrl.invalid">
+          URL is invalid.
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>BoilerPlate URL</mat-label>
+      <input matInput placeholder="BoilerPlate-URL" class="form-control" type="url" id="BoilerUrl" formControlName="boilerPlateUrl"
+        required>
+      <mat-error *ngIf="boilerPlateUrl.errors && (boilerPlateUrl.dirty || boilerPlateUrl.touched)">
+        <mat-error *ngIf="boilerPlateUrl.errors.required">
+          BoilerPlate URL shouldn't be empty.
+        </mat-error>
+        <mat-error *ngIf="boilerPlateUrl.invalid">
           URL is invalid.
         </mat-error>
       </mat-error>

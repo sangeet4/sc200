@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { AlertComponent } from './_directives';
 import { AuthGuard } from './_guards';
@@ -12,6 +16,7 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { HeaderComponent } from './header/header.component';
 import { fakeBackendProvider } from './_helpers';
+import { RecommedationCardComponent } from './home/recommedation-card/recommedation-card.component';
 
 import { LoginNRegistrationRoutingModule } from './login-nregistration-routing.module';
 import { LoginNRegistrationComponent } from './login-nregistration.component';
@@ -22,6 +27,16 @@ import { LoginNRegistrationComponent } from './login-nregistration.component';
     LoginNRegistrationRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
+    MatCardModule,
+    HttpClientModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
+
   ],
   declarations: [
     AlertComponent,
@@ -29,7 +44,8 @@ import { LoginNRegistrationComponent } from './login-nregistration.component';
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
-    LoginNRegistrationComponent
+    LoginNRegistrationComponent,
+    RecommedationCardComponent
   ],
   providers: [
     AuthGuard,

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-recommedation-card',
@@ -8,28 +8,26 @@ import {HttpClient } from '@angular/common/http';
 })
 export class RecommedationCardComponent implements OnInit {
   title = 'RecommendationSystem';
-  name:string= '' ;
-  challenges=[];
-  isClicked:boolean=false;
+  challenges = [];
+  isClicked: boolean = false;
 
   @Input()
-  inName: string;
+  name: string;
 
-  constructor(private http:HttpClient) {
-   }
-   ngOnInit() {
-     this.name = this.inName;
-    this.http.get('http://172.23.239.218:8081/api/v1/recommendation/'+this.name).subscribe((res:any)=> {
-      this.challenges=res;
+  constructor(private http: HttpClient) {
+  }
+  ngOnInit() {
+    this.http.get('http://172.23.239.218:8081/api/v1/recommendation/' + this.name).subscribe((res: any) => {
+      this.challenges = res;
       // console.log(this.challenges);
-  })
+    })
   }
-   search(){
+  search() {
     // var http:HttpClient;
-    
+
 
   }
-  attempt(){
+  attempt() {
 
   }
 

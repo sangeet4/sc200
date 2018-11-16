@@ -15,7 +15,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { HeaderComponent } from './header/header.component';
-import { fakeBackendProvider } from './_helpers';
+
 import { RecommedationCardComponent } from './home/recommedation-card/recommedation-card.component';
 
 import { LoginNRegistrationRoutingModule } from './login-nregistration-routing.module';
@@ -56,7 +56,6 @@ import { LoginNRegistrationComponent } from './login-nregistration.component';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
     // provider used to create fake backend
-    fakeBackendProvider
   ]
 })
 export class LoginNRegistrationModule { }

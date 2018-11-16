@@ -16,7 +16,7 @@ public class UserResource {
 
     @Autowired
     private KafkaTemplate<String, User> kafkaTemplate;
-    private static final String TOPIC = "test5";
+    private static final String TOPIC = "userProfile";
 
 //    @PostMapping("user")
 //    public ResponseEntity<?> addUser(@RequestBody User user) {

@@ -7,6 +7,8 @@ import { RegisterComponent } from './register';
 import { AuthGuard } from './_guards';
 import { HeaderComponent } from './header/header.component';
 import { LoginNRegistrationComponent } from './login-nregistration.component';
+import { EditorComponent } from '../attempting-challenge/editor/editor.component'
+import { AttemptingChallengeModule } from '../attempting-challenge/attempting-challenge.module';
 
 const routes: Routes = [
   {path: '', component: LoginNRegistrationComponent,
@@ -18,13 +20,14 @@ const routes: Routes = [
     { path: 'profile/:id', loadChildren: '../profile/profile.module#ProfileModule'},
     { path: 'challenge', loadChildren: '../create-challenge/create-challenge.module#CreateChallengeModule'},
     { path: 'attempt', loadChildren: '../attempting-challenge/attempting-challenge.module#AttemptingChallengeModule'},
+    {path: ':file/:name' , component : EditorComponent},
     { path: '**', redirectTo: 'logout' }
   ]}
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), AttemptingChallengeModule],
   exports: [RouterModule]
 })
 export class LoginNRegistrationRoutingModule { }

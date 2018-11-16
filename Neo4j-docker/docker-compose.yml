@@ -1,0 +1,41 @@
+version: '2.0'
+services:
+  spring:
+    image: springboot-recommendation1
+    build: recommendation/
+    restart: always
+    network_mode: host
+    container_name: spring-recommendation1
+    depends_on:
+      - neo4j
+    ports:
+      - 8086:8086
+    expose:
+      - 8086
+
+  ontology:    
+   image:  springboot-ontology
+   build:  neo4jservice/
+   restart:  always
+   network_mode:  host
+   container_name:  neo4jservice
+   depends_on:
+     -  neo4j
+   ports:
+     -  8085:8085
+   expose:
+     -  8085
+
+  neo4j:
+    network_mode: host
+    image: neo4j:latest
+    ports:
+     - "7474:7474"
+     - "7687:7687"
+    volumes:
+     - './neo4j-data:/data'
+
+
+
+
+ 

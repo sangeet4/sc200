@@ -6,26 +6,29 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+
 
 @Data
 @NoArgsConstructor
 @Builder
 public class Directory {
 
-    private String[] paths;
+    private ArrayList<String> paths;
 
-    private String[] contents;
+    private ArrayList<String> contents;
 
-    public Directory(String[] paths, String[] contents) {
+    public Directory(ArrayList<String> paths, ArrayList<String> contents) {
         this.paths = paths;
         this.contents = contents;
     }
 
-    public String[] getContents() {
+    public ArrayList<String> getContents() {
         return contents;
     }
 
-    public String[] getPaths() {
+    public ArrayList<String> getPaths() {
         return paths;
     }
+
 }

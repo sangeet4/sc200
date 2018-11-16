@@ -11,13 +11,14 @@ import java.io.InputStreamReader;
 
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
 
 @Service
 public class FileServiceImpl implements FileService {
 
-    private String[] paths;
+    private ArrayList<String> paths = new ArrayList<String>();
 
-    private String[] contents;
+    private ArrayList<String> contents = new ArrayList<String>();
 
 
     public String parseFile(Files files) throws IOException {
@@ -94,18 +95,28 @@ public class FileServiceImpl implements FileService {
 
     }
 
-    public String[] getPaths() {
-        return paths;
+    public ArrayList<String> getPaths() {
+        return this.paths;
     }
 
-    public String[] getContents() {
-        return contents;
+    public ArrayList<String> getContents() {
+        return this.contents;
     }
 
     @Override
     public void setPathsAndContent(File dir) {
 
-        //System.out.println(dir);
+        this.contents = new ArrayList<String>();
+        this.paths = new ArrayList<String>();
+        String pattern = ".java"; //for example ".java"
+        String pattern1 = ".yml";
+        String pattern2 = ".properties";
+        String pattern3 = ".css";
+        String pattern4 = ".html";
+        String pattern5 = ".js";
+        String pattern6 = ".ts";
+        String pattern7 = ".json";
+
         File listFile[] = dir.listFiles();
         String path[] = new String[listFile.length];
         String content[] = new String[listFile.length];
@@ -114,7 +125,9 @@ public class FileServiceImpl implements FileService {
                 if(listFile[i].isDirectory()) {
                     setPathsAndContent(listFile[i]);
                 } else {
-                       try{
+                    if(listFile[i].getName().endsWith(pattern) || listFile[i].getName().endsWith(pattern1) || listFile[i].getName().endsWith(pattern2) || listFile[i].getName().endsWith(pattern3) || listFile[i].getName().endsWith(pattern4) || listFile[i].getName().endsWith(pattern5) || listFile[i].getName().endsWith(pattern6) || listFile[i].getName().endsWith(pattern7) )
+                    {
+                        try{
                             content[i] = readFile(listFile[i].getPath());
 //                            System.out.println(listFile[i].getEncoding());
                         }
@@ -123,56 +136,51 @@ public class FileServiceImpl implements FileService {
                             System.out.println("bshfjbdj");
                         }
                         path[i] = listFile[i].getPath();
-
+                    }
                 }
             }
+
+        //System.out.println(dir);
+
         }
 
         for(int i=0; i<listFile.length; i++) {
+//            this.paths[i] = path[i];
             System.out.println(path[i]);
+            this.paths.add(path[i]);
 //            this.paths[i] = path[i];
         }
-        this.paths =path;
 
         for(int i=0; i<listFile.length; i++) {
-            System.out.println(content[i]);
 //            this.contents[i] = content[i];
+            this.contents.add(content[i]);
         }
-
-        this.contents = content;
+//        System.out.println(this.contents);
     }
 
 
-    public static String readFile(String Path)
-    {
-        if(Path.contains(".java") || Path.contains(".ts") || Path.contains(".html") || Path.contains(".css") || Path.contains(".json"))
-        {
-            try {
+    public static String readFile(String Path) {
+        try {
 
-                BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(new FileInputStream(Path), "UTF-8"));
-                StringBuilder stringBuilder = new StringBuilder();
-                String line = null;
-                String ls = System.getProperty("line.separator");
-                while ((line = reader.readLine()) != null) {
-                    stringBuilder.append(line);
-                    stringBuilder.append(ls);
-                }
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(new FileInputStream(Path)));
+            StringBuilder stringBuilder = new StringBuilder();
+            String line = null;
+            String ls = System.getProperty("line.separator");
+            while ((line = reader.readLine()) != null) {
+                stringBuilder.append(line);
+                stringBuilder.append(ls);
+            }
+            if(stringBuilder.length()>0) {
                 stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-                reader.close();
-                String content = stringBuilder.toString();
-                return content;
+            }
+            reader.close();
+            String content = stringBuilder.toString();
+            return content;
 
-            }
-            catch (Exception e)
-            {
-                System.out.println("fbhd");
-                return "fcbdj";
-            }
-        }
-        else
-        {
-            return "";
+        } catch (Exception e) {
+            System.out.println("\n\n\n\n" + e.getMessage() +  "\n\n\n\n" );
+            return "Error";
         }
     }
 

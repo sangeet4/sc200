@@ -1,0 +1,20 @@
+
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ö¨Æ·þÿÿÿÿ8ƒÕ½±ñ,
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(àŸâ¦8Ëóƒ²ñ,
+V
+squid:S106@"9Replace this use of System.out or System.err by a logger.(øŒ¼Æ8¶³¶ñ,
+isquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¼¹î8ý£Ê²ñ,
+isquid:CommentedOutCodeLine'"<This block of commented-out lines of code should be removed.(±¯€¤8éžœ²ñ,
+[
+squid:S106p"9Replace this use of System.out or System.err by a logger.(úšŽúÿÿÿÿ8·Çô´ñ,
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(£òŽ˜ÿÿÿÿÿ8íü—²ñ,
+fsquid:S00100G"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©±¨
+nsquid:CommentedOutCodeLine8"<This block of commented-out lines of code should be removed.(›†žåûÿÿÿÿ8—èý¯ñ,
+gsquid:S1450"PRemove the "i" field and declare it as a local variable in the relevant methods.(±•ÆŽ
+isquid:CommentedOutCodeLineA"<This block of commented-out lines of code should be removed.(÷Ì·×8•»È²ñ,
+isquid:CommentedOutCodeLineO"<This block of commented-out lines of code should be removed.(Ä®ñ³8¥í‡²ñ,
+Žsquid:S1319_"pThe type of the "value" object should be an interface such as "List" rather than the implementation "ArrayList".(ÂîŸÿ8þ½ü¯ñ,
+nsquid:CommentedOutCodeLine""<This block of commented-out lines of code should be removed.(£òŽ˜ÿÿÿÿÿ8íü—²ñ,
+<squid:S1068"%Remove this unused "i" private field.(±•ÆŽ
+?squid:S1643o"Use a StringBuilder instead.(ÛÚ‰‰ÿÿÿÿÿ8·Çô´ñ,
+isquid:CommentedOutCodeLine5"<This block of commented-out lines of code should be removed.(±¯€¤8™à™²ñ,

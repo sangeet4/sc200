@@ -51,6 +51,7 @@ public class FileController {
 
             fileService.setPathsAndContent(new File(folderName));
             Directory directory = new Directory(fileService.getPaths(),fileService.getContents());
+            System.out.println(directory.toString());
             responseEntity = new ResponseEntity<Directory>(directory , HttpStatus.OK);
         }
         catch (Exception e){
@@ -62,4 +63,6 @@ public class FileController {
 
         return  responseEntity;
     }
+
+
 }

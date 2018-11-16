@@ -1,7 +1,9 @@
 package com.example.UserProfile.controller;
 
+import com.example.UserProfile.domain.Challenge;
 import com.example.UserProfile.domain.UserProfile;
 import com.example.UserProfile.exception.UserProfileAlreadyExitsException;
+import com.example.UserProfile.kafka.producer.UserResource;
 import com.example.UserProfile.service.UserProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
@@ -15,11 +17,15 @@ import java.util.Arrays;
 import java.util.List;
 @RestController
 @RequestMapping(value = "/sc200/userProfile")
+//@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @CrossOrigin
-
 public class UserProfileController {
 
     private UserProfileService userProfileService;
+
+
+    @Autowired
+    UserResource userResource;
 
     @Autowired
     public UserProfileController(UserProfileService userProfileService) {
@@ -32,6 +38,8 @@ public class UserProfileController {
         ResponseEntity responseEntity;
               try {
                   userProfileService.saveUserProfile(userProfile);
+                 userResource.putIntoTopic(userProfile);
+
                   responseEntity = new ResponseEntity<String>("Successfully Created", HttpStatus.CREATED);
               }
               catch(UserProfileAlreadyExitsException e){
@@ -52,8 +60,11 @@ public class UserProfileController {
       try{
           // Movie movie= movieService.searchMovieById(id);
            UserProfile userProfile=userProfileService.searchUserProfileById(id);
-          responseEntity= new ResponseEntity<UserProfile>(userProfile,HttpStatus.OK);
-        }catch (Exception e){
+         responseEntity= new ResponseEntity<UserProfile>(userProfile,HttpStatus.OK);
+         // UserProfile updatedProfile = userProfileService.updateuserProfileById(id,userProfile);
+          //responseEntity = new ResponseEntity<UserProfile>(updatedProfile, HttpStatus.OK);
+
+      }catch (Exception e){
            responseEntity= new ResponseEntity<String>(e.getMessage(),HttpStatus.NOT_FOUND);
       }
        return responseEntity;
@@ -77,8 +88,12 @@ public class UserProfileController {
     public ResponseEntity<?> updateuserProfileById(@Valid@RequestBody UserProfile userProfile ,@PathVariable("id") String id){
         ResponseEntity responseEntity;
        try {
-            UserProfile updatedProfile = userProfileService.updateuserProfileById(id,userProfile);
-            responseEntity = new ResponseEntity<UserProfile>(updatedProfile, HttpStatus.OK);
+           // userProfileService.updateuserProfileById(id,userProfile);
+           // responseEntity = new ResponseEntity<String>("Successfully Updated",HttpStatus.CREATED);
+
+           UserProfile updatedProfile = userProfileService.updateuserProfileById(id,userProfile);
+           responseEntity = new ResponseEntity<UserProfile>(updatedProfile, HttpStatus.OK);
+
        }catch (Exception e){
             responseEntity =new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
        }

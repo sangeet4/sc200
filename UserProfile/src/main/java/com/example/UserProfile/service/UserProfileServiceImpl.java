@@ -79,12 +79,14 @@ public class UserProfileServiceImpl implements UserProfileService {
             userProfile.setFirstName(userProfile1.getFirstName());
             userProfile.setLastName(userProfile1.getLastName());
             userProfile.setContactNumber(userProfile1.getContactNumber());
-            userProfile.setUserName(userProfile1.getUserName());
+            userProfile.setUsername(userProfile1.getUsername());
             userProfile.setRanking(userProfile1.getRanking());
             userProfile.setScore(userProfile1.getScore());
             userProfile.setChallengeCreated(userProfile1.getChallengeCreated());
             userProfile.setChallengeDownvoted(userProfile1.getChallengeDownvoted());
             userProfile.setChallengeUpvoted(userProfile1.getChallengeUpvoted());
+            userProfile.setDateOfBirth(userProfile1.getDateOfBirth());
+            userProfile.setPreferredLang(userProfile1.getPreferredLang());
 
 
             //Movie movie2=movieRepository.save(movie);

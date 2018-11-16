@@ -19,7 +19,7 @@ import java.util.Arrays;
 
 public class UserProfile {
 
-//private Challenge challenge;
+
 
 
 
@@ -30,11 +30,12 @@ public class UserProfile {
     private String email;
     private String firstName;
     private String lastName;
-    private String userName;
-
+    private String username;
+    private String dateOfBirth;
     private String contactNumber;
     private int score;
     private int ranking;
+    private String preferredLang;
     private Challenge challengeAttempted[];
     private Challenge challengeCreated[];
     private Challenge challengeUpvoted[];

@@ -20,6 +20,8 @@
         <module>FileParser</module>
 	<module>Compilation</module>
 	<module>AuthenticationService</module>
+	<module>UserProfile</module>
+
  
     </modules>
 

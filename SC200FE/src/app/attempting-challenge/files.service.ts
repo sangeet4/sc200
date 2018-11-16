@@ -65,7 +65,7 @@ export class FilesService {
   }
 getTemplate(){
   console.log("into the get template func");
-  return this.http.post(this.url + "file", "src/", httpOptions);
+  return this.http.post(this.url + "file", "Hello/", httpOptions);
 }
 
 setPaths(data){

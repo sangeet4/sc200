@@ -25,26 +25,6 @@
   </div>
 </div>
 
-<!-- <cdk-tree>
-  <mat-grid-tile *ngFor = "let element of fileElements" class=file-or-folder>
-      <div fxLayout="column" fxLayoutAlign="space-between center" (click)="navigate(element)" (contextmenu)="openMenu($event, menuTrigger)">
-         <cdk-nested-tree-node> <mat-icon color="primary" class="file-or-folder-icon pointer" *ngIf="element.isFolder">folder</mat-icon>
-          <span>{{element.name}}</span>  
-        </cdk-nested-tree-node>
-        <cdk-nested-tree-node>
-          <mat-icon color="primary" class="file-or-folder-icon pointer" *ngIf="!element.isFolder">insert_drive_file</mat-icon>
-          <span>{{element.name}}</span>
-          </cdk-nested-tree-node>
-        </div>
-  </mat-grid-tile>
-</cdk-tree> -->
-<!-- <cdk-tree>
-    <cdk-nested-tree-node>
-      parent node
-      <cdk-nested-tree-node> -- child node1 </cdk-nested-tree-node>
-      <cdk-nested-tree-node> -- child node2 </cdk-nested-tree-node>
-    </cdk-nested-tree-node>
-  </cdk-tree> -->
 
 <mat-menu #rootMenu="matMenu">
   <ng-template matMenuContent let-element="element">

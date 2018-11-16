@@ -22,20 +22,17 @@ export class FileService implements IFileService {
   constructor(private filesService:FilesService) { }
 
   add(fileElement: FileElement) {
-    //fileElement.id = v4();
     this.map.set(fileElement.id, this.clone(fileElement));
     return fileElement;
     console.log(fileElement);
   }
   addFiles(fileElem: FileElement) {
-    //fileElem.id = v4();
     this.map.set(fileElem.id, this.clone(fileElem));
     return fileElem;
   }
 
   fileElements_array:FileElement[]=[];
 
-  //take input in uploaded files
   addUploadedFiles(){
     var fileelem:FileElement;
     var temp = this.filesService.GetAllFiles();

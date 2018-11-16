@@ -33,15 +33,6 @@ export class AppComponent {
       this.updateFileElementQuery();
     
     });
-    // if(this.fileElements==undefined){
-    //   this.fileElements = this.filesService.allFiles;
-    // }
-    
-     //const folderA = this.fileService.add({ name: 'Folder A', isFolder: true, parent: 'root' ,url:null,content:null});
-     //this.fileService.add({ name: 'Folder B', isFolder: true, parent:folderA.id,url:null,content:null});
-     
-
-     //console.log(folderA.id);
     }
     private fileElement_array : FileElement[];
     

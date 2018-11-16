@@ -47,10 +47,7 @@ import {CdkTreeModule} from '@angular/cdk/tree';
     HttpClientModule,
     RouterModule.forRoot([
       {path: ':file/:name' , component : EditorComponent},
-      //{path: ':name' , component : FolderStructureModule , outlet : 'directory' },
       {path: '' , component : EditorComponent },
-      //{path: '' , component : FolderStructureModule , outlet : 'editor' },
-      // {path: '' , component : EditorComponent }
     ]),
     MonacoEditorModule.forRoot()
   ],

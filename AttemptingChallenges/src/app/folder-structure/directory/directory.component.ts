@@ -7,7 +7,6 @@ import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.comp
 import { NewFileDialogComponent } from './modals/new-file-dialog/new-file-dialog.component';
 import { Router } from '@angular/router';
 import { FileService } from './file.service';
-//import {ChangeDetectorRef} from '@angular/core';
 @Component({
   selector: 'app-directory',
   templateUrl: './directory.component.html',
@@ -16,8 +15,6 @@ import { FileService } from './file.service';
 export class DirectoryComponent {
 
   constructor(public dialog: MatDialog, private router: Router,private fileService:FileService ) { 
-    // , private cd : ChangeDetectorRef
-    // this.cd.detectChanges();
   }
 
   @Input() fileElements: FileElement[];
@@ -38,15 +35,11 @@ export class DirectoryComponent {
 
 
   navigate(element: FileElement) {
-    // console.log("again clicked ");
 
     if (element.isFolder) {
       this.navigatedDown.emit(element);
     }
     else {
-      // console.log("routes changes ");
-      // send the file content to the editor or in simple what you have to do 
-      // is send the file name from directory component to the editor component
        
       var names = element.name.split(".");
       this.router.navigate(["/" + names[1] + "/" + names[0]]);

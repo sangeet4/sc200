@@ -65,21 +65,6 @@ public class ChallengeController {
         return responseEntity;
     }
 
-//    @PutMapping(value = "/{id}")
-//    public ResponseEntity<?> updateChallenge(@PathVariable(value = "id") int challengeId ,@Valid @RequestBody Challenge challenge ){
-//
-//        ResponseEntity responseEntity;
-//        try {
-//            Challenge savedChallenge = challengeService.updateChallenge(challengeId,challenge);
-//            responseEntity = new ResponseEntity<Challenge>(savedChallenge, HttpStatus.OK);
-//        }
-//        catch (ChallengeNotFoundException ex){
-//            responseEntity = new ResponseEntity<String>(exceptionMessage,HttpStatus.CONFLICT);
-//        }
-//
-//        return responseEntity;
-//    }
-//
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> getChallengeById(@PathVariable(value = "id") int challengeId){
 
@@ -124,20 +109,4 @@ public class ChallengeController {
 
         return responseEntity;
     }
-//
-//    @DeleteMapping(value = "/{id}")
-//    public ResponseEntity<?> deleteChallenge(@PathVariable(value = "id") int challengeId){
-//
-//        ResponseEntity responseEntity;
-//
-//        try {
-//            List<Challenge> challengeList = challengeService.deleteChallenge(challengeId);
-//            responseEntity = new ResponseEntity(challengeList,HttpStatus.OK);
-//        }
-//        catch (ChallengeNotFoundException ex){
-//            responseEntity = new ResponseEntity(exceptionMessage,HttpStatus.CONFLICT);
-//        }
-//
-//        return responseEntity;
-//    }
 }

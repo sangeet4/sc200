@@ -30,6 +30,7 @@ const TREE_DATA = {'root':{'a':{'b':{'d':{'c':{'HelloWorld.java' : null}}}, 'd':
  * Each node in Json object represents a to-do item or a category.
  * If a node is a category, it has children items and new items can be added under the category.
  */
+
 @Injectable()
 export class ChecklistDatabase {
   dataChange: BehaviorSubject<TodoItemNode[]> = new BehaviorSubject<TodoItemNode[]>([]);

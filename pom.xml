@@ -16,6 +16,11 @@
         <module>config-server</module>
         <module>eureka-registry</module>
         <module>movie-cruiser-app</module>
+        <module>challenge-creator</module>
+        <module>register-service</module>
+        <module>Fileparser</module>
+        <module>Compilation</module>
+
     </modules>
 
     <parent>

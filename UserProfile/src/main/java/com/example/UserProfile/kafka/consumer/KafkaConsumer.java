@@ -21,18 +21,18 @@ public class KafkaConsumer {
    public UserProfileRepository userProfileRepository;
 
 
-    @KafkaListener(topics = "test5", groupId = "group_id6", containerFactory = "userKafkaListenerFactory")
+    @KafkaListener(topics = "test5", groupId = "listenfromself", containerFactory = "userKafkaListenerFactory")
     public void consumeJson(@Payload UserProfile user) {
         System.out.println("Consumed JSON Message: " + user);
         System.out.println("filtered data is "+user.getFirstName());
     }
-    @KafkaListener(topics = "test-challenge", groupId = "group_id7", containerFactory = "challengeKafkaListenerFactory")
+    @KafkaListener(topics = "test-challenge", groupId = "listenchallenge", containerFactory = "challengeKafkaListenerFactory")
     public void consumeJsonFromChallengeService(@Payload Challenge challenge) {
 
         System.out.println("Consumed JSON Message of challenge: " + challenge);
        System.out.println("filtered data is "+challenge.getChallengeName());
   }
-  @KafkaListener(topics = "userProfile", groupId = "group_id8", containerFactory = "registrationKafkaListenerFactory")
+  @KafkaListener(topics = "userProfile", groupId = "listenregistration", containerFactory = "registrationKafkaListenerFactory")
     public void consumeJsonfromRegService(@Payload UserProfile userProfile) {
 
         System.out.println("Consumed JSON Message of UserProfile from RegService: " + userProfile);

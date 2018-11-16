@@ -49,14 +49,14 @@ export class DirectoryComponent {
       // is send the file name from directory component to the editor component
        
       var names = element.name.split(".");
-      this.router.navigate(["/" + names[1] + "/" + names[0]]);
+      this.router.navigate(["attempt"+"/" + names[1] + "/" + names[0]]);
 
     }
 
   }
 
   navigateUp() {
-    this.router.navigate([""]);
+    this.router.navigate(["/attempt"]);
     this.navigatedUp.emit();
   }
 

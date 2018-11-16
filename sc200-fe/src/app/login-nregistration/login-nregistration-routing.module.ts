@@ -20,14 +20,12 @@ const routes: Routes = [
     { path: 'profile/:id', loadChildren: '../profile/profile.module#ProfileModule'},
     { path: 'challenge', loadChildren: '../create-challenge/create-challenge.module#CreateChallengeModule'},
     { path: 'attempt', loadChildren: '../attempting-challenge/attempting-challenge.module#AttemptingChallengeModule'},
-    {path: ':file/:name' , component : EditorComponent},
-    { path: '**', redirectTo: 'logout' }
+    //{ path: '**', redirectTo: 'logout' }
   ]}
-
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), AttemptingChallengeModule],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class LoginNRegistrationRoutingModule { }

@@ -14,10 +14,10 @@ public class KafkaConsumer {
 //        System.out.println("Consumed JSON Message: " + user);
 //    }
 
-    @KafkaListener(topics = "test5", groupId = "group_id6", containerFactory = "userKafkaListenerFactory")
-    public void consumeJson(@Payload User user) {
-        //fetching the data from created topic named as test5
-        System.out.println("Consumed JSON Message: " + user);
-        System.out.println("filtered data is "+user.getEmail());
-    }
+//    @KafkaListener(topics = "test5", groupId = "group_id6", containerFactory = "userKafkaListenerFactory")
+//    public void consumeJson(@Payload User user) {
+//        //fetching the data from created topic named as test5
+//        System.out.println("Consumed JSON Message: " + user);
+//        System.out.println("filtered data is "+user.getEmail());
+//    }
 }

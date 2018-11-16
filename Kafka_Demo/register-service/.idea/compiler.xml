@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="moviesNew" />
+        <module name="registerService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="moviesNew" target="1.8" />
+      <module name="registerService" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

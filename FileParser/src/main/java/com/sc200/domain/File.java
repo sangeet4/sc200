@@ -14,8 +14,5 @@ public class File {
 
     private String input;
 
-    public File(String path, String input) {
-        this.path = path;
-        this.input = input;
-    }
+  
 }

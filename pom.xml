@@ -19,6 +19,7 @@
         <module>RegisterService</module>
         <module>FileParser</module>
 	<module>Compilation</module>
+	<module>AuthenticationService</module>
  
     </modules>
 

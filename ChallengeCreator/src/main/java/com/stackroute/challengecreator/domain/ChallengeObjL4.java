@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class ChallengeObjL4 {
 
     @Id
-    private int id ;
+    private String id ;
 
     private String userId;
 

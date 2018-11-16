@@ -276,7 +276,7 @@ public class ChallengeServiceImpl implements ChallengeService {
     }
 
     @Override
-    public Optional<Challenge> getChallengeById(int id) throws ChallengeNotFoundException {
+    public Optional<Challenge> getChallengeById(String id) throws ChallengeNotFoundException {
         Optional<Challenge> challenge;
         challenge=challengeRepository.findById(id);
         return challenge;
@@ -302,30 +302,4 @@ public class ChallengeServiceImpl implements ChallengeService {
         }
         return challengesList;
     }
-//
-//    @Override
-//    public Challenge updateChallenge(int id, Challenge challenge) throws ChallengeNotFoundException {
-//
-//        if(!challengeRepository.existsById(id))
-//            throw new ChallengeNotFoundException(id);
-//        Optional<Challenge> challenge1= getChallengeById(id);
-//        if(challenge1.isPresent())
-//        {
-//            Challenge savedChallenge = challengeRepository.save(challenge);
-//            return savedChallenge;
-//        }
-//        return null;
-//    }
-//
-//
-//    @Override
-//    public List<Challenge> deleteChallenge(int id) throws ChallengeNotFoundException {
-//        if(!challengeRepository.existsById(id))
-//            throw new ChallengeNotFoundException(id);
-//        Optional<Challenge> challenge1=getChallengeById(id);
-//        if(challenge1.isPresent()) {
-//            challengeRepository.delete(challenge1.get());
-//        }
-//        return getAllChallenges();
-//    }
 }

@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 public class Challenge {
 
     @Id
-    private int id ;
+    private String id ;
 
     private String userId;
 
@@ -58,30 +58,4 @@ public class Challenge {
     @NotNull
     private double rating;
 
-
-//    @Override
-//    public String toString(){
-//
-//        return String.format(
-//                "Challenge[programmingLang " + programmingLang +
-//                             "topics         :{ topic   : " + topic +
-//                                               "levels  :{ level :" +level +
-//                                                           "id   :" +id +
-//                                                           "challengeTitle:"+challengeTitle+
-//                                                            "challengeDescription:"+challengeDescription+
-//                                                            "challengeStatement:" + challengeStatement +
-//                                                            "solutionUrl:"+solutionUrl+
-//                                                            "boilerPlateUrl:"+boilerPlateUrl+
-//                                                            "constraints:" + constraints +
-//                                                            "inputFormat:"+inputFormat+
-//                                                            "outputFormat:"+outputFormat+
-//                                                            "maxScore:"+maxScore+
-//                                                            "maxRuntime:" + maxRuntime +
-//                                                            "rating:" + rating+
-//                                                        "}" +
-//                                                "}"+
-//                            "]"
-//        );
-//
-//    }
 }

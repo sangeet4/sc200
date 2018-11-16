@@ -13,14 +13,6 @@ public class ChallengeResource {
     private KafkaTemplate<String, ChallengeObjL1> kafkaTemplate2;
     private static final String TOPIC = "test-challenge";
     private static final String TOPIC1 = "test-challengeObjL1";
-    //    @PostMapping("user")
-//    public ResponseEntity<?> addUser(@RequestBody User user) {
-//        ResponseEntity responseEntity;
-//        kafkaTemplate.send(TOPIC,user);
-//        responseEntity=new ResponseEntity<String>("Successfully Added", HttpStatus.CREATED);
-//        return responseEntity;
-//    }
-
     public void putIntoTopic(Challenge challenge){
         System.out.println("inside putIntoTOPIC"+challenge);
         kafkaTemplate.send(TOPIC,challenge);

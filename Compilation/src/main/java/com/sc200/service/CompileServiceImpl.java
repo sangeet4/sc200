@@ -30,7 +30,6 @@ public class CompileServiceImpl implements CompileService {
             System.out.println(relativePath);
             System.out.println(fileName);
             String[] command = {"/bin/bash", "/home/anshul/SC200/Compilation/src/main/resources/shellScript.sh", "/home/anshul/SC200/Fileparser/" + relativePath , fileName};
-//            System.out.println(command);
             ProcessBuilder p = new ProcessBuilder(command);
             Process p2 = p.start();
             BufferedReader br = new BufferedReader(new InputStreamReader(p2.getInputStream()));

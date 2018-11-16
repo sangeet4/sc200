@@ -16,9 +16,7 @@ public interface ChallengeService {
     public void addChallengeObjL4(ChallengeObjL4 challengeObjL4) throws ChallengeAlreadyExistsException;
     public List<ChallengeObjL1> getAllChallenges();
     public Map<String,ChallengeObjL4> getChallangesBySearch(String programmingLang, String topic, Double level) throws ChallengeNotFoundException ;
-    public Optional<Challenge> getChallengeById(int id) throws ChallengeNotFoundException;
+    public Optional<Challenge> getChallengeById(String id) throws ChallengeNotFoundException;
     public List<Challenge> getChallengeByTitle(String title) throws ChallengeNotFoundException;
     public List<Challenge> getChallengeByRating(double lowerBound,double upperBound) throws ChallengeNotFoundException;
-//    public Challenge updateChallenge(int id,Challenge challenge) throws ChallengeNotFoundException;
-//    public List<Challenge> deleteChallenge(int id) throws ChallengeNotFoundException;
 }

@@ -43,8 +43,6 @@ public class KafkaConfigurationCons {
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.131:9092");
         config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_id6");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-//        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-//        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),new JsonDeserializer<>(User.class));
         // added new code
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, BytesDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(config);

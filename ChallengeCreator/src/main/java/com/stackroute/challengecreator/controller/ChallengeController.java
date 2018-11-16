@@ -66,7 +66,7 @@ public class ChallengeController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<?> getChallengeById(@PathVariable(value = "id") int challengeId){
+    public ResponseEntity<?> getChallengeById(@PathVariable(value = "id") String challengeId){
 
         ResponseEntity responseEntity;
         try {

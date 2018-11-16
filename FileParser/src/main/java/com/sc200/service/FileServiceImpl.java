@@ -129,7 +129,6 @@ public class FileServiceImpl implements FileService {
                     {
                         try{
                             content[i] = readFile(listFile[i].getPath());
-//                            System.out.println(listFile[i].getEncoding());
                         }
                         catch (Exception e)
                         {
@@ -140,22 +139,16 @@ public class FileServiceImpl implements FileService {
                 }
             }
 
-        //System.out.println(dir);
-
         }
 
         for(int i=0; i<listFile.length; i++) {
-//            this.paths[i] = path[i];
             System.out.println(path[i]);
             this.paths.add(path[i]);
-//            this.paths[i] = path[i];
         }
 
         for(int i=0; i<listFile.length; i++) {
-//            this.contents[i] = content[i];
             this.contents.add(content[i]);
         }
-//        System.out.println(this.contents);
     }
 
 

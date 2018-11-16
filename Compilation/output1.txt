@@ -1,2 +1,2 @@
-Error: Could not find or load main class HelloWorld
-Caused by: java.lang.ClassNotFoundException: HelloWorld
+Error: Could not find or load main class FileparserApplicationTests
+Caused by: java.lang.ClassNotFoundException: FileparserApplicationTests

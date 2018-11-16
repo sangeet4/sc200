@@ -1,24 +1,18 @@
 package com.sc200.service;
 
-import com.sc200.domain.Files;
+import com.sc200.domain.File;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public interface FileService {
 
-
-    public String parseFile(Files files) throws IOException;
+    public String parseFile(File file) throws IOException;
 
     public boolean createDirectories(String path);
 
-    public boolean createFile(Files files) throws IOException;
+    public boolean createFile(File  file) throws IOException;
 
-    public ArrayList<String> getPaths();
+    public String createTree();
 
-    public ArrayList<String> getContents();
-
-    public void setPathsAndContent(File dir);
-
+    public  String replaceLast(String string, String toReplace, String replacement);
 }

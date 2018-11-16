@@ -2,7 +2,7 @@ version:  '2'
 services:
   eureka:
     image: eureka:v1
-    build: eureka-registry/
+    build: EurekaRegistry/
     restart: always
     container_name: eureka-container
     network_mode: host
@@ -13,7 +13,7 @@ services:
 
   config-server:
     image: config-server:v1
-    build: config-server/
+    build: ConfigServer/
     restart: always
     container_name: config-container
     network_mode: host
@@ -23,6 +23,33 @@ services:
       - 8092:8092
     expose:
       - 8092
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper
+    hostname: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    restart: always
+    
+  kafka:
+    image: wurstmeister/kafka:0.10.2.0
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 172.23.239.246
+      KAFKA_CREATE_TOPICS: "test5:1:1"
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://172.23.239.246:9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - zookeeper
+    restart: always
 
   mongodb:
     image: mongo:3.2-jessie
@@ -34,29 +61,146 @@ services:
       - config-server
     volumes:
       - '/home/cgi/data/mysql:/data/db'
-
-  movie-demo:
-    image: movie-mongo:v1
-    build: movie-cruiser-app/
-    restart: always
-    container_name: mongo-demo-compose
-    network_mode: host
-    depends_on:
-      - mongodb
+  
+  mysql:
+    image: mysql
+    container_name: test-mysql
     ports:
-      - 8090:8090
-    expose:
-      - 8090
-
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "12345678"
+    volumes:
+      - /storage/docker/mysql-datadir:/var/lib/mysql
+  
   gateway:
     image: zuulgateway:v1
-    build: zuulgateway/
+    build: ZuulGateway/
     restart: always
     container_name: zuul-container
     network_mode: host
-    depends_on:
-      - mongo-demo
     ports:
       - 8081:8081
     expose:
       - 8081
+
+  challenge-creator-demo:
+    image: challenge-creator:v1
+    build: ChallengeCreator/
+    restart: always
+    container_name: challenge-creator
+    network_mode: host
+    depends_on:
+      - mongodb
+      - kafka
+    ports:
+      - 8180:8180
+    expose:
+      - 8180
+
+  register-demo:
+    image: register:v1
+    build: RegisterService/
+    restart: always
+    container_name: register
+    network_mode: host
+    depends_on:
+      - mongodb
+      - kafka
+    ports:
+      - 8181:8181
+    expose:
+      - 8181
+
+
+  file-parser-demo:
+    image: fileParser:v1
+    build: FileParser/
+    restart: always
+    container_name: fileParser
+    network_mode: host
+    ports:
+      - 8182:8182
+    expose:
+      - 8182
+
+  compilation-demo:
+    image: compilation:v1
+    build: Compilation/
+    restart: always
+    container_name: compilation
+    network_mode: host
+    ports:
+      - 8183:8183
+    expose:
+      - 8183
+
+
+  authentication-service-demo:
+    image: authentication-service:v1
+    build: AuthenticationService/
+    restart: always
+    container_name: authentication-service
+    network_mode: host
+    depends_on:
+      - mysql
+      - kafka
+    ports:
+      - 8184:8184
+    expose:
+      - 8184
+
+
+  user-profile-demo:
+    image: authentication-service:v1
+    build: UserProfile/
+    restart: always
+    container_name: user-profile
+    network_mode: host
+    depends_on:
+      - mongodb
+      - kafka
+    ports:
+      - 8185:8185
+    expose:
+      - 8185
+
+
+  neo4j:
+    network_mode: host
+    image: neo4j:latest
+    ports:
+     - "7474:7474"
+     - "7687:7687"
+    volumes:
+     - './neo4j-data:/data'
+
+
+  recommendation:
+    image: springboot-recommendation1
+    build: Neo4j-docker/recommendation/
+    restart: always
+    network_mode: host
+    container_name: spring-recommendation1
+    depends_on:
+      - neo4j
+      - kafka
+    ports:
+      - 8186:8186
+    expose:
+      - 8186
+
+  ontology:    
+   image:  springboot-ontology
+   build:  Neo4j-docker/neo4jService/
+   restart:  always
+   network_mode:  host
+   container_name:  neo4jservice
+   depends_on:
+     -  neo4j
+     - kafka
+   ports:
+     -  8187:8187
+   expose:
+     -  8187
+
+  

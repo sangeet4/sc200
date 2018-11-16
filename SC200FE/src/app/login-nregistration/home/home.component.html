@@ -9,7 +9,7 @@
     <div class="navbar-expand ml-auto navbar-nav">
       <div class="navbar-nav">
   
-       <div> <p class=" btn btn-success my-3 my-sm-1">Hi {{currentUser.firstName}}!</p>  
+       <div> <p class=" btn btn-success my-3 my-sm-1">Hi {{currentUser.user}}!</p>  
         </div> 
         <p><a [routerLink]="['/attempt']" class="btn btn-outline-success my-3 my-sm-1" >Attempt</a>
         </p>
@@ -22,4 +22,4 @@
       </div>
     </div>
   </nav>
-  <app-recommedation-card [inName]="currentUser.username"></app-recommedation-card>
+  <app-recommedation-card [name]="currentUser.username"></app-recommedation-card>

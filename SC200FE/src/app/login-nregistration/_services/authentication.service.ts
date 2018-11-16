@@ -9,20 +9,22 @@ export class AuthenticationService {
     constructor(private http: HttpClient) { }
 
     login(username: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username: username, password: password })
-            .pipe(map(user => {
+        return this.http.post<any>(`http://172.23.239.202:8091/user/login`, { username: username, password: password })
+            .pipe(map(data => {
                 // login successful if there's a jwt token in the response
-                if (user && user.token) {
+                if (data && data.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    localStorage.setItem('currentUser', JSON.stringify(data));
+                    localStorage.setItem('token', data.token);
                 }
 
-                return user;
+                return data;
             }));
     }
 
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('token');
     }
 }

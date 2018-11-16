@@ -19,15 +19,12 @@ import { RouterModule}  from '@angular/router'
 import { FolderStructureModule } from './folder-structure/folder-structure.module';
 import { FolderUpload } from './comp/folder_upload';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
+import {CdkTreeModule} from '@angular/cdk/tree';
 @NgModule({
   declarations: [
     AppComponent,
     EditorComponent,
     FolderUpload
-
   ],
   imports: [
     CommonModule,
@@ -46,6 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
     FolderStructureModule,
     FlexLayoutModule,
     MatCardModule,
+    CdkTreeModule,
     HttpClientModule,
     RouterModule.forRoot([
       {path: ':file/:name' , component : EditorComponent},

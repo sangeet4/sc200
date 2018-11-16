@@ -18,6 +18,6 @@ public class KafkaConsumer {
     public void consumeJson(@Payload User user) {
         //fetching the data from created topic named as test5
         System.out.println("Consumed JSON Message: " + user);
-        System.out.println("filtered data is "+user.getUserId());
+        System.out.println("filtered data is "+user.getEmail());
     }
 }

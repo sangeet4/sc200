@@ -23,6 +23,9 @@ export class EditorComponent implements OnInit {
 
   
   ngOnInit(): void {
+
+
+    this.filesService.DisplayFiles();
     this.activatedroute.params.subscribe((params) => {
 
       this.fileName = params.name + "." + params.file;
@@ -30,8 +33,10 @@ export class EditorComponent implements OnInit {
       this.file.language = params.file;
       console.log(this.fileName);
       this.file.content= this.filesService.GetContent(this.fileName);
+      //console.log(this.file.content);
       this.content = this.file.content;
-      console.log("hello " + this.file.content );
+      //this.filesService.DisplayFiles();
+    //  console.log("hello " + this.file.content );
       // // document.getElementById("editor").load();
 });
 }

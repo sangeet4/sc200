@@ -1,0 +1,4 @@
+/home/cgi/challenge-creator/src/test/java/com/stackroute/challengecreator/controller/ChallengeControllerTest.java
+/home/cgi/challenge-creator/src/test/java/com/stackroute/challengecreator/ChallengeCreatorApplicationTests.java
+/home/cgi/challenge-creator/src/test/java/com/stackroute/challengecreator/service/ChallengeServiceImplTest.java
+/home/cgi/challenge-creator/src/test/java/com/stackroute/challengecreator/repository/ChallengeRepositoryTest.java

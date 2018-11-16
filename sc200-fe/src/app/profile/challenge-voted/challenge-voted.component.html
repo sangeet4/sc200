@@ -1,0 +1,12 @@
+<h2>Challenges Upvoted</h2>
+<mat-card *ngFor="let chal of profile.challengeUpvoted">
+  <mat-card-header>
+  <mat-card-title>{{chal.challengeName}}</mat-card-title>
+</mat-card-header>
+</mat-card>
+<h2 id="second">Challenges Downvoted</h2>
+<mat-card *ngFor="let chal of profile.challengeDownvoted">
+  <mat-card-header>
+  <mat-card-title>{{chal.challengeName}}</mat-card-title>
+</mat-card-header>
+</mat-card>

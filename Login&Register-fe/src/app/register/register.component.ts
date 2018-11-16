@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
                 Validators.required,
                 Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
             ]],
-            phone: ['', [Validators.required, Validators.minLength(10),Validators.maxLength(10)]]
+            contactNumber: ['', [Validators.required, Validators.minLength(10),Validators.maxLength(10)]]
         });
     }
 
@@ -43,6 +43,7 @@ export class RegisterComponent implements OnInit {
         }
 
         this.loading = true;
+        console.log(this.registerForm.value);
         this.userService.register(this.registerForm.value)
             .pipe(first())
             .subscribe(

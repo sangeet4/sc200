@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 
 @Data
-@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class File {
 
@@ -16,9 +16,5 @@ public class File {
 
 //    private String input;
 //
-    public File(String path) {
-        this.path = path;
-//        this.input = input;
-    }
 
 }

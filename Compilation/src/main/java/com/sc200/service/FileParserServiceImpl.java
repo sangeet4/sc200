@@ -16,13 +16,10 @@ public class FileParserServiceImpl implements FileParserService {
         String relativePath = "";
         for(int i=0 ; i<subStrings.length-2; i++)
         {
-//            System.out.println(subStrings[i]);
             relativePath = relativePath  + subStrings[i] + "/";
         }
 
         relativePath = relativePath + subStrings[subStrings.length-2];
-
-//        System.out.println(relativePath);
         return relativePath;
 
     }
@@ -34,10 +31,8 @@ public class FileParserServiceImpl implements FileParserService {
 
         String fileNameWithExt = "";
         fileNameWithExt = subStrings[subStrings.length-1];
-//        System.out.println(fileNameWithExt);
         String[] fileNameSubString = fileNameWithExt.split("\\." );
         String fileName = fileNameSubString[0];
-//        System.out.println(fileName + " dbbjfhd");
         return fileName;
 
     }

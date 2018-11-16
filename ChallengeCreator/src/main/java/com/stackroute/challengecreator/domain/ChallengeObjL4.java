@@ -19,7 +19,7 @@ public class ChallengeObjL4 {
 
     private String challengeTitle;
 
-    private String challengeStamp;
+    private String challengeDescription;
 
     private String challengeStatement;
 

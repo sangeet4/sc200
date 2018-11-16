@@ -14,7 +14,5 @@ public class File {
 
     public String path;
 
-//    private String input;
-//
 
 }

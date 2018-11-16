@@ -23,7 +23,7 @@ public class Challenge {
     private String challengeTitle;
 
     @NotNull
-    private String challengeStamp;
+    private String challengeDescription;
 
     @NotNull
     private String challengeStatement;
@@ -58,30 +58,4 @@ public class Challenge {
     @NotNull
     private double rating;
 
-
-//    @Override
-//    public String toString(){
-//
-//        return String.format(
-//                "Challenge[programmingLang " + programmingLang +
-//                             "topics         :{ topic   : " + topic +
-//                                               "levels  :{ level :" +level +
-//                                                           "id   :" +id +
-//                                                           "challengeTitle:"+challengeTitle+
-//                                                            "challengeDescription:"+challengeDescription+
-//                                                            "challengeStatement:" + challengeStatement +
-//                                                            "solutionUrl:"+solutionUrl+
-//                                                            "boilerPlateUrl:"+boilerPlateUrl+
-//                                                            "constraints:" + constraints +
-//                                                            "inputFormat:"+inputFormat+
-//                                                            "outputFormat:"+outputFormat+
-//                                                            "maxScore:"+maxScore+
-//                                                            "maxRuntime:" + maxRuntime +
-//                                                            "rating:" + rating+
-//                                                        "}" +
-//                                                "}"+
-//                            "]"
-//        );
-//
-//    }
 }

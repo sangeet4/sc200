@@ -19,6 +19,4 @@ public interface ChallengeService {
     public Optional<Challenge> getChallengeById(String id) throws ChallengeNotFoundException;
     public List<Challenge> getChallengeByTitle(String title) throws ChallengeNotFoundException;
     public List<Challenge> getChallengeByRating(double lowerBound,double upperBound) throws ChallengeNotFoundException;
-//    public Challenge updateChallenge(int id,Challenge challenge) throws ChallengeNotFoundException;
-//    public List<Challenge> deleteChallenge(int id) throws ChallengeNotFoundException;
 }

@@ -50,7 +50,7 @@ public class ChallengeServiceImpl implements ChallengeService {
             challengeObjL4.setId(challenge.getId());
             challengeObjL4.setUserId(challenge.getUserId());
             challengeObjL4.setChallengeTitle(challenge.getChallengeTitle());
-            challengeObjL4.setChallengeStamp(challenge.getChallengeStamp());
+            challengeObjL4.setChallengeDescription(challenge.getChallengeDescription());
             challengeObjL4.setChallengeStatement(challenge.getChallengeStatement());
             challengeObjL4.setInputFormat(challenge.getInputFormat());
             challengeObjL4.setOutputFormat(challenge.getOutputFormat());
@@ -117,7 +117,7 @@ public class ChallengeServiceImpl implements ChallengeService {
                         challengeObjL4.setId(challenge.getId());
                         challengeObjL4.setUserId(challenge.getUserId());
                         challengeObjL4.setChallengeTitle(challenge.getChallengeTitle());
-                        challengeObjL4.setChallengeStamp(challenge.getChallengeStamp());
+                        challengeObjL4.setChallengeDescription(challenge.getChallengeDescription());
                         challengeObjL4.setChallengeStatement(challenge.getChallengeStatement());
                         challengeObjL4.setInputFormat(challenge.getInputFormat());
                         challengeObjL4.setOutputFormat(challenge.getOutputFormat());
@@ -144,7 +144,7 @@ public class ChallengeServiceImpl implements ChallengeService {
                     challengeObjL4.setId(challenge.getId());
                     challengeObjL4.setUserId(challenge.getUserId());
                     challengeObjL4.setChallengeTitle(challenge.getChallengeTitle());
-                    challengeObjL4.setChallengeStamp(challenge.getChallengeStamp());
+                    challengeObjL4.setChallengeDescription(challenge.getChallengeDescription());
                     challengeObjL4.setChallengeStatement(challenge.getChallengeStatement());
                     challengeObjL4.setInputFormat(challenge.getInputFormat());
                     challengeObjL4.setOutputFormat(challenge.getOutputFormat());
@@ -182,7 +182,7 @@ public class ChallengeServiceImpl implements ChallengeService {
                 challengeObjL4.setId(challenge.getId());
                 challengeObjL4.setUserId(challenge.getUserId());
                 challengeObjL4.setChallengeTitle(challenge.getChallengeTitle());
-                challengeObjL4.setChallengeStamp(challenge.getChallengeStamp());
+                challengeObjL4.setChallengeDescription(challenge.getChallengeDescription());
                 challengeObjL4.setChallengeStatement(challenge.getChallengeStatement());
                 challengeObjL4.setInputFormat(challenge.getInputFormat());
                 challengeObjL4.setOutputFormat(challenge.getOutputFormat());
@@ -302,30 +302,4 @@ public class ChallengeServiceImpl implements ChallengeService {
         }
         return challengesList;
     }
-//
-//    @Override
-//    public Challenge updateChallenge(int id, Challenge challenge) throws ChallengeNotFoundException {
-//
-//        if(!challengeRepository.existsById(id))
-//            throw new ChallengeNotFoundException(id);
-//        Optional<Challenge> challenge1= getChallengeById(id);
-//        if(challenge1.isPresent())
-//        {
-//            Challenge savedChallenge = challengeRepository.save(challenge);
-//            return savedChallenge;
-//        }
-//        return null;
-//    }
-//
-//
-//    @Override
-//    public List<Challenge> deleteChallenge(int id) throws ChallengeNotFoundException {
-//        if(!challengeRepository.existsById(id))
-//            throw new ChallengeNotFoundException(id);
-//        Optional<Challenge> challenge1=getChallengeById(id);
-//        if(challenge1.isPresent()) {
-//            challengeRepository.delete(challenge1.get());
-//        }
-//        return getAllChallenges();
-//    }
 }

@@ -97,7 +97,7 @@ services:
     expose:
       - 8180
 
-  Register-demo:
+  register-demo:
     image: register:v1
     build: RegisterService/
     restart: always
@@ -112,7 +112,7 @@ services:
       - 8181
 
 
-  fileParser-demo:
+  file-parser-demo:
     image: fileParser:v1
     build: FileParser/
     restart: always

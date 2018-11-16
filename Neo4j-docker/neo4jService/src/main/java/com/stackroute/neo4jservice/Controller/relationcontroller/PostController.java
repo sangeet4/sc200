@@ -48,6 +48,7 @@ public class PostController {
         // create a post object from data
         Post post = new Post();
         post.setId(data.getId());
+
         post.setDate(java.util.Calendar.getInstance().getTime());
         //System.out.println("......in controller......."+post.getId());
         post.setChallenge(data.getChallenge());

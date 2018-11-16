@@ -14,8 +14,26 @@ public class User{
     private String name;
     @Property
     private String preferredLang;
+    private String firstName;
+    private String lastName;
 
-    public User(String id,String name, String preferredLang) {
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public User(String id, String name, String preferredLang) {
         this.id=id;
         this.name = name;
         this.preferredLang = preferredLang;

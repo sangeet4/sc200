@@ -17,9 +17,29 @@ public class DataModelForPost {
 //    @JsonIgnore
     @Property
     private String languageName;
-//    @JsonIgnore
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    //    @JsonIgnore
     @Property
     private String conceptName;
+
+    private String programmingLang;
+    private String topic;
+
+    public String getProgrammingLang() {
+        return programmingLang;
+    }
+
+    public void setProgrammingLang(String programmingLang) {
+        this.programmingLang = programmingLang;
+    }
 
     @StartNode
     Challenge challenge;

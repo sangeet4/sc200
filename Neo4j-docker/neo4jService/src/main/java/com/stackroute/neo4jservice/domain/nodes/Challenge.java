@@ -19,6 +19,15 @@ public class Challenge {
     private double level;
     @Property
     private String challengeStamp;
+    private String challengeTitle;
+
+    public String getChallengeTitle() {
+        return challengeTitle;
+    }
+
+    public void setChallengeTitle(String challengeTitle) {
+        this.challengeTitle = challengeTitle;
+    }
 
     @JsonIgnore
     @Relationship(type="isTypeOf")
@@ -29,7 +38,7 @@ public class Challenge {
 
     public Challenge(String id, String title, double level, String challengeStamp) {
         this.id = id;
-        this.title = title;
+        this.title=title;
         this.level = level;
         this.challengeStamp = challengeStamp;
     }
@@ -72,7 +81,7 @@ public class Challenge {
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
                 ", level=" + level +
-                ", smallDescription='" + challengeStamp + '\'' +
+                ", challengeStamp='" + challengeStamp + '\'' +
                 '}';
     }
 }

@@ -23,8 +23,18 @@ public class UserController {
     @PostMapping("user")
     public ResponseEntity<?> saveUser(@RequestBody User user) {
         ResponseEntity responseEntity;
-        User savedUser = userService.saveUser(user);
-        responseEntity = new ResponseEntity<User>(savedUser, HttpStatus.CREATED);
+        User savedUser;
+        boolean userExistence=userService.checkForUserExistence(user);
+        if(userExistence==false)
+        {
+            savedUser = userService.saveUser(user);
+            responseEntity = new ResponseEntity<User>(savedUser, HttpStatus.CREATED);
+        }
+        else {
+            //get the user by id and send it as response entity
+            savedUser = userService.searchById(user);
+            responseEntity = new ResponseEntity<User>(savedUser, HttpStatus.CREATED);
+        }
 
         return responseEntity;
     }

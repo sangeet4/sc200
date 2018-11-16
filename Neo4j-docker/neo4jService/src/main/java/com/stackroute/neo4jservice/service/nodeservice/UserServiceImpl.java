@@ -1,6 +1,7 @@
 package com.stackroute.neo4jservice.service.nodeservice;
 
 import com.stackroute.neo4jservice.domain.nodes.User;
+import com.stackroute.neo4jservice.exception.UserAlreadyExistsException;
 import com.stackroute.neo4jservice.repository.noderepository.UserRepository;
 import com.stackroute.neo4jservice.service.nodeservice.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public User saveUser(User user)
         {
+//            if (userRepository.existsById(user.getId())) {
+//                throw new UserAlreadyExistsException("user already exists");
+//            }
             User savedUser = userRepository.save(user);
             return savedUser;
         }
@@ -35,5 +39,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUser() {
         return (List<User>)userRepository.findAll();
+    }
+
+    @Override
+    public boolean checkForUserExistence(User user) {
+        return ((boolean)userRepository.existsById(user.getId()));
+
+    }
+
+    @Override
+    public User searchById(User user) {
+        return (User)userRepository.findById(user.getId()).get();
     }
 }

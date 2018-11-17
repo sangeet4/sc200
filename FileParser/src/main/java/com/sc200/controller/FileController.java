@@ -29,20 +29,5 @@ public class FileController {
 
     }
 
-    @GetMapping(value = "/structure")
-    public String getDirectoryStrucuture() throws JSONException {
-       ObjectMapper mapperObj = new ObjectMapper();
-        try {
-            String jsonStr = mapperObj.writeValueAsString(fileService.createTree());
-            jsonStr = jsonStr.replaceAll("'","\"");
-            jsonStr = jsonStr.replaceFirst("\"","'");
-            jsonStr = fileService.replaceLast(jsonStr,"\"","'");
-            return jsonStr;
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return e.getMessage();
-        }
-
-    }
+  
 }

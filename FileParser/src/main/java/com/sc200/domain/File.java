@@ -2,7 +2,7 @@ package com.sc200.domain;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 
 @Data

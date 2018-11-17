@@ -11,6 +11,13 @@
 	<name>neo4jservice</name>
 	<description>Demo project for Spring Boot</description>
 
+<<<<<<< HEAD
+	<parent>
+	<groupId>com.stackroute</groupId>
+        <artifactId>SC200</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+	<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
+=======
 	<!-- <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -22,6 +29,7 @@
     		<artifactId>SC200</artifactId>
     		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
+>>>>>>> 61428b49de61710820f73ec2fd91736e4b45caa7
 	</parent>
 
 	<properties>

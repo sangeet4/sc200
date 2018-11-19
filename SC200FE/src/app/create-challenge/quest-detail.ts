@@ -1,5 +1,6 @@
 export class QuestDetail {
-    id: number;
+    id: string;
+    userId: string;
     challengeTitle: string;
     challengeDescription: string;
     challengeStatement: string;
@@ -9,14 +10,15 @@ export class QuestDetail {
     maxScore: number;
     maxRuntime: number;
     programmingLang: string;
-    topic: string
+    topic: string;
     solutionUrl: string;
     boilerPlateUrl: string;
     level: number;
     rating: number;
 
     constructor() {
-        this.id = null;
+        this.id = '';
+        this.userId = '';
         this.challengeTitle = '';
         this.challengeDescription = '';
         this.challengeStatement = '';
@@ -26,7 +28,7 @@ export class QuestDetail {
         this.maxScore = null;
         this.maxRuntime = null;
         this.programmingLang = '';
-        this.topic='';
+        this.topic = '';
         this.solutionUrl = '';
         this.boilerPlateUrl = '';
         this.level = null;

@@ -8,15 +8,15 @@ import { Profile } from './profile';
 })
 export class ProfileService {
 
-  public baseUrl = 'http://35.154.116.88:8185/sc200/userProfile';
+  public baseUrl = 'http://35.154.116.88:8185/sc200/userProfile/';
 
   constructor(private http: HttpClient) { }
 
   getProfileById(id: string): Observable<any> {
-    return this.http.get(this.baseUrl + '/getting/' + id);
+    return this.http.get(this.baseUrl  + id);
   }
 
   updateProfile(id: string, prof: Profile): Observable<any> {
-    return this.http.put(this.baseUrl + '/updating/' + id, prof);
+    return this.http.put(this.baseUrl  + id, prof);
   }
 }

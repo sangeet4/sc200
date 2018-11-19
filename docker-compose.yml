@@ -114,10 +114,10 @@ services:
 
 
   file-parser-demo:
-    image: fileParser:v1
+    image: file-parser:v1
     build: FileParser/
     restart: always
-    container_name: fileParser
+    container_name: file-parser
     network_mode: host
     ports:
       - 8182:8182

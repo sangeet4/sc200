@@ -4,7 +4,6 @@ package com.sc200.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sc200.domain.File;
 import com.sc200.service.FileService;
-import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

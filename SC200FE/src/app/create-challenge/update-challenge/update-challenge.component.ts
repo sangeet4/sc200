@@ -21,7 +21,7 @@ export class UpdateChallengeComponent implements OnInit {
       const id = parseInt(params.get('id'), 10);
       this.questId = id;
     } );
-    this.challengeService.getChallengeById(this.questId.toString())
+    this.challengeService.getChallengeById(this.questId)
       .subscribe(data => {
         this.quest = data;
         console.log(this.quest);

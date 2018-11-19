@@ -1,7 +1,5 @@
-import { User } from './../login-nregistration/_models/user';
 export class QuestDetail {
-    id: string;
-    userId: string;
+    id: number;
     challengeTitle: string;
     challengeDescription: string;
     challengeStatement: string;
@@ -18,8 +16,7 @@ export class QuestDetail {
     rating: number;
 
     constructor() {
-        this.id = '';
-        this.userId ='';
+        this.id = null;
         this.challengeTitle = '';
         this.challengeDescription = '';
         this.challengeStatement = '';

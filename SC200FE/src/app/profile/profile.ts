@@ -4,7 +4,7 @@ export class Profile {
     email: string;
     firstName: string;
     lastName: string;
-    userName: string;
+    username: string;
     contactNumber: string;
     score: number;
     ranking: number;

@@ -29,16 +29,14 @@ public class UserProfileServiceImpl implements UserProfileService {
         List<UserProfile> topFive = new ArrayList<UserProfile>();
         List<UserProfile> allElement=new ArrayList<UserProfile>();
        allElement=userProfileRepository.findAll();
-//        for(int i=0;i<3;i++){
-//            topFive.add(allElement.get(i));
-//        }
+
         return allElement;
     }
     @Override
     public UserProfile saveUserProfile(UserProfile userProfile) throws UserProfileAlreadyExitsException {
         if(userProfileRepository.existsById(userProfile.getEmail())){
            // logger.info("exception ocuured");
-            throw new UserProfileAlreadyExitsException("UserProfile already Exists");
+            throw new UserProfileAlreadyExitsException("userProfile-service.userExist");
         }
 
 
@@ -48,13 +46,13 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
     @Override
     public UserProfile searchUserProfileById(String id) throws UserProfileNotFoundException {
-       // Voting voting= votingRepository.findById(id).get();
+
         if(userProfileRepository.existsById(id)) {
             UserProfile userProfile = userProfileRepository.findById(id).get();
             return userProfile;
         }
         else{
-            throw new UserProfileNotFoundException("UserProfile not found");
+            throw new UserProfileNotFoundException("userProfile-controller.noUser");
         }
     }
     @Override
@@ -72,7 +70,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public UserProfile  updateuserProfileById(String id,UserProfile userProfile1) throws UserProfileNotFoundException{
-       // Movie movie=movieRepository.findById(id).get();
+
         if(userProfileRepository.existsById(id)) {
             UserProfile userProfile = userProfileRepository.findById(id).get();
             userProfile.setChallengeAttempted(userProfile1.getChallengeAttempted());
@@ -89,12 +87,12 @@ public class UserProfileServiceImpl implements UserProfileService {
             userProfile.setPreferredLang(userProfile1.getPreferredLang());
 
 
-            //Movie movie2=movieRepository.save(movie);
+
             UserProfile userProfile2 = userProfileRepository.save(userProfile);
             return userProfile2;
         }
         else{
-            throw new UserProfileNotFoundException("UserProfile not found");
+            throw new UserProfileNotFoundException("userProfile-controller.noUser");
         }
     }
 

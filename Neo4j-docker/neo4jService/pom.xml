@@ -31,11 +31,6 @@
 			<!--<artifactId>spring-boot-starter-data-neo4j</artifactId>-->
 		<!--</dependency>-->
 		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-neo4j -->
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-neo4j</artifactId>
-			<version>5.1.2.RELEASE</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

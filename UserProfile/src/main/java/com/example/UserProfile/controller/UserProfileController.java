@@ -40,7 +40,7 @@ public class UserProfileController {
                   userProfileService.saveUserProfile(userProfile);
                  userResource.putIntoTopic(userProfile);
 
-                  responseEntity = new ResponseEntity<String>("Successfully Created", HttpStatus.CREATED);
+                  responseEntity = new ResponseEntity<String>("userProfile.saveUser", HttpStatus.CREATED);
               }
               catch(UserProfileAlreadyExitsException e){
                   responseEntity = new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
@@ -72,11 +72,11 @@ public class UserProfileController {
         ResponseEntity responseEntity;
 
            if (userProfileService.deleteUserProfilebyId(id)==true) {
-               responseEntity = new ResponseEntity<String>("Successfully deleted", HttpStatus.OK);
+               responseEntity = new ResponseEntity<String>("userProfile-controller.deleteUser", HttpStatus.OK);
 
            }
            else{
-               responseEntity= new ResponseEntity<String>("UserProfile does not exist",HttpStatus.NOT_FOUND);
+               responseEntity= new ResponseEntity<String>("userProfile-controller.noUser",HttpStatus.NOT_FOUND);
            }
         return responseEntity;
     }

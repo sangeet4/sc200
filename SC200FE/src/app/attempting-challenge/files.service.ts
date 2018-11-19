@@ -23,8 +23,8 @@ export class FilesService {
   textFiles : String[] = [];
   fileContent;
   files:[string];
-  url = "http://localhost:8182/";
-  url1 = "http://localhost:8183/compile";
+  url = "http://35.154.116.88:8182/";
+  url1 = "http://35.154.116.88:8183/compile";
   newurl:string = "";
   httpresponse;
 

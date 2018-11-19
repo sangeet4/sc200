@@ -209,5 +209,5 @@ services:
           build: SC200FE/
           ports:
           - 4200:4200
-                                                                                                                            211,1         Bot
-
+          expose:
+          - 4200

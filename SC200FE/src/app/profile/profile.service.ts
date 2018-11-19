@@ -8,7 +8,7 @@ import { Profile } from './profile';
 })
 export class ProfileService {
 
-  public baseUrl = 'http://localhost:8090/sc200/userProfile';
+  public baseUrl = 'http://localhost:8185/sc200/userProfile';
 
   constructor(private http: HttpClient) { }
 

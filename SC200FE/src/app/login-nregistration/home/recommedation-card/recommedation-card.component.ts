@@ -17,7 +17,7 @@ export class RecommedationCardComponent implements OnInit {
   constructor(private http: HttpClient) {
   }
   ngOnInit() {
-    this.http.get('http://172.23.239.218:8081/api/v1/recommendation/' + this.name).subscribe((res: any) => {
+    this.http.get('http://localhost:8186/api/v1/challenge/recommendation/' + this.name).subscribe((res: any) => {
       this.challenges = res;
       // console.log(this.challenges);
     })

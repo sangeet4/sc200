@@ -152,7 +152,7 @@ services:
 
 
   user-profile-demo:
-    image: authentication-service:v1
+    image: user-profile-service:v1
     build: UserProfile/
     restart: always
     container_name: user-profile
@@ -204,4 +204,10 @@ services:
    expose:
      -  8187
 
-  
+  angular:
+          container_name: sc200
+          build: SC200FE/
+          ports:
+          - 4200:4200
+                                                                                                                            211,1         Bot
+

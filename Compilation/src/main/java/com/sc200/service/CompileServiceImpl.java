@@ -50,4 +50,19 @@ public class CompileServiceImpl implements CompileService {
 
         return lines;
     }
+    @Override
+    public void clone(String url) throws IOException{
+        try{
+            System.out.println("started execution");
+            System.out.println("github url: "+url);
+            String[] command = {"/bin/bash/","/home/cgi/sc200/Compilation/src/main/resources/clonescript.sh",url};
+            ProcessBuilder processBuilder = new ProcessBuilder(command);
+            Process process = processBuilder.start();
+
+            System.out.println("cloned the repository");
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }

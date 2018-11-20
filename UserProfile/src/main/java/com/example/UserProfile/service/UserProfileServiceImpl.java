@@ -1,5 +1,6 @@
 package com.example.UserProfile.service;
 
+import com.example.UserProfile.domain.Challenge;
 import com.example.UserProfile.domain.UserProfile;
 import com.example.UserProfile.exception.UserProfileAlreadyExitsException;
 import com.example.UserProfile.exception.UserProfileNotFoundException;
@@ -73,18 +74,42 @@ public class UserProfileServiceImpl implements UserProfileService {
 
         if(userProfileRepository.existsById(id)) {
             UserProfile userProfile = userProfileRepository.findById(id).get();
-            userProfile.setChallengeAttempted(userProfile1.getChallengeAttempted());
+
+
+
+
+
             userProfile.setFirstName(userProfile1.getFirstName());
             userProfile.setLastName(userProfile1.getLastName());
-            userProfile.setContactNumber(userProfile1.getContactNumber());
+            userProfile.setPhone(userProfile1.getPhone());
             userProfile.setUsername(userProfile1.getUsername());
             userProfile.setRanking(userProfile1.getRanking());
             userProfile.setScore(userProfile1.getScore());
-            userProfile.setChallengeCreated(userProfile1.getChallengeCreated());
-            userProfile.setChallengeDownvoted(userProfile1.getChallengeDownvoted());
-            userProfile.setChallengeUpvoted(userProfile1.getChallengeUpvoted());
             userProfile.setDateOfBirth(userProfile1.getDateOfBirth());
             userProfile.setPreferredLang(userProfile1.getPreferredLang());
+
+            //need to get the list already present and then add the new one
+
+            List<Challenge> attemptedChallenge = userProfile.getChallengeAttempted();
+            attemptedChallenge.add(userProfile1.getChallengeAttempted().get(0));
+            userProfile.setChallengeAttempted(attemptedChallenge);
+
+            List<Challenge> createdChallenge = userProfile.getChallengeCreated();
+            createdChallenge.add(userProfile1.getChallengeCreated().get(0));
+            userProfile.setChallengeCreated(createdChallenge);
+
+
+
+            List<Challenge> upvotedChallenge = userProfile.getChallengeUpvoted();
+            upvotedChallenge.add(userProfile1.getChallengeUpvoted().get(0));
+            userProfile.setChallengeUpvoted(upvotedChallenge);
+
+
+            List<Challenge> downvotedChallenge = userProfile.getChallengeDownvoted();
+            upvotedChallenge.add(userProfile1.getChallengeDownvoted().get(0));
+            userProfile.setChallengeUpvoted(downvotedChallenge);
+
+
 
 
 

@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.example.UserProfile.domain.Challenge;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Document(collection="userProfile1")
 
@@ -32,14 +33,14 @@ public class UserProfile {
     private String lastName;
     private String username;
     private String dateOfBirth;
-    private String contactNumber;
-    private int score;
+    private long phone;
+    private double score;
     private int ranking;
     private String preferredLang;
-    private Challenge challengeAttempted[];
-    private Challenge challengeCreated[];
-    private Challenge challengeUpvoted[];
-    private Challenge challengeDownvoted[];
+    private List<Challenge> challengeAttempted;
+    private List<Challenge> challengeCreated;
+    private List<Challenge> challengeUpvoted;
+    private List<Challenge> challengeDownvoted;
 
 
 

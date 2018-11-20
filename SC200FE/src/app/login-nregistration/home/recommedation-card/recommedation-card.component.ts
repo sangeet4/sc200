@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recommedation-card',
@@ -14,10 +15,10 @@ export class RecommedationCardComponent implements OnInit {
   @Input()
   name: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
   ngOnInit() {
-    this.http.get('http://http://35.154.116.88:8186/api/v1/challenge/recommendation/' + this.name).subscribe((res: any) => {
+    this.http.get('http://35.154.116.88:8186/api/v1/challenge/recommendation/' + this.name).subscribe((res: any) => {
       this.challenges = res;
       // console.log(this.challenges);
     })
@@ -28,7 +29,7 @@ export class RecommedationCardComponent implements OnInit {
 
   }
   attempt() {
-
+    this.router.navigate(['attempt']);
   }
 
 }

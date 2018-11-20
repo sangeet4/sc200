@@ -14,15 +14,36 @@
 
 
 <!-- <h1>Select a folder to upload</h1> -->
+<head>
+  <style>
 
-<!-- <div>
+    #drop-area {
+  border: 1px solid black;
+  width: 300px;
+  height: 100px;
+}
+
+#drop-area span {
+  color: red;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#text-output {
+  margin-top: 30px;
+}
+    </style>
+</head>
+
+ <div>
   <input
     #folderInput
     type="file"
     (change)="filesPicked(folderInput.files)"
     webkitDirectory
   >
-</div> -->
+</div> 
 
 <div >
   <input #giturl type="url" placeholder="Github url">

@@ -2,12 +2,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FileElement } from './model/file-element';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
-import { NewFolderDialogComponent } from './modals/new-folder-dialog/new-folder-dialog.component';
-import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component';
-import { NewFileDialogComponent } from './modals/new-file-dialog/new-file-dialog.component';
 import { Router } from '@angular/router';
 import { FileService } from './file.service';
-//import {ChangeDetectorRef} from '@angular/core';
+
 @Component({
   selector: 'app-directory',
   templateUrl: './directory.component.html',
@@ -64,37 +61,37 @@ export class DirectoryComponent {
     this.elementMoved.emit({ element: element, moveTo: moveTo });
   }
 
-  openNewFolderDialog() {
-    let dialogRef = this.dialog.open(NewFolderDialogComponent);
-    dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
-      if (res) {
-        this.folderAdded.emit({ name: res });
-      }
-    });
-  }
-  openNewFileDialog() {
-    let dialogRef1 = this.dialog.open(NewFileDialogComponent);
-    dialogRef1.afterClosed().subscribe(res => {
-      // console.log(res);
-      if (res) {
-        this.fileAdded.emit({ name: res });
-        // console.log("files added");
-      }
-    });
-  }
+  // openNewFolderDialog() {
+  //   let dialogRef = this.dialog.open(NewFolderDialogComponent);
+  //   dialogRef.afterClosed().subscribe(res => {
+  //     console.log(res);
+  //     if (res) {
+  //       this.folderAdded.emit({ name: res });
+  //     }
+  //   });
+  // }
+  // openNewFileDialog() {
+  //   let dialogRef1 = this.dialog.open(NewFileDialogComponent);
+  //   dialogRef1.afterClosed().subscribe(res => {
+  //     // console.log(res);
+  //     if (res) {
+  //       this.fileAdded.emit({ name: res });
+  //       // console.log("files added");
+  //     }
+  //   });
+  // }
 
 
 
-  openRenameDialog(element: FileElement) {
-    let dialogRef = this.dialog.open(RenameDialogComponent);
-    dialogRef.afterClosed().subscribe(res => {
-      if (res) {
-        element.name = res;
-        this.elementRenamed.emit(element);
-      }
-    });
-  }
+  // openRenameDialog(element: FileElement) {
+  //   let dialogRef = this.dialog.open(RenameDialogComponent);
+  //   dialogRef.afterClosed().subscribe(res => {
+  //     if (res) {
+  //       element.name = res;
+  //       this.elementRenamed.emit(element);
+  //     }
+  //   });
+  // }
 
   openMenu(event: MouseEvent, viewChild: MatMenuTrigger) {
     event.preventDefault();

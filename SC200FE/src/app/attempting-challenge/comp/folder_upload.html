@@ -24,11 +24,10 @@
   >
 </div> -->
 
-
-<div>
-  <input #giturl type="url" placeholder="github url"> 
-  <buttom type="submit"   (click)="clone(giturl.value)">Clone</buttom>
-</div>  
+<div >
+  <input #giturl type="url" placeholder="Github url">
+  <button (click)="clone(giturl.value)" type="submit">Clone</button>
+</div>
 
 <!-- 
 <div *ngIf="uploadPaths.length > 0">Upload Data

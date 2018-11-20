@@ -67,6 +67,9 @@ getTemplate(){
   console.log("into the get template func");
   return this.http.post(this.url + "file", "Hello/", httpOptions);
 }
+getRepsoitory(url:string){
+  return this.http.post(this.url1+'/clone',url);
+}
 
 setPaths(data){
 

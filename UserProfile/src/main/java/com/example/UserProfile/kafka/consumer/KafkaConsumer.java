@@ -6,6 +6,7 @@ import com.example.UserProfile.domain.UserId;
 import com.example.UserProfile.domain.UserProfile;
 import com.example.UserProfile.exception.UserProfileNotFoundException;
 import com.example.UserProfile.repository.UserProfileRepository;
+import com.example.UserProfile.service.UserProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -20,17 +21,33 @@ public class KafkaConsumer {
 @Autowired
    public UserProfileRepository userProfileRepository;
 
+@Autowired
+public UserProfileService userProfileService;
+
 
     @KafkaListener(topics = "test5", groupId = "group_id6", containerFactory = "userKafkaListenerFactory")
     public void consumeJson(@Payload UserProfile user) {
         System.out.println("Consumed JSON Message: " + user);
         System.out.println("filtered data is "+user.getFirstName());
     }
+
+    //listen to create challenge topic and update the database.
+
     @KafkaListener(topics = "test-challenge", groupId = "group_id7", containerFactory = "challengeKafkaListenerFactory")
     public void consumeJsonFromChallengeService(@Payload Challenge challenge) {
 
         System.out.println("Consumed JSON Message of challenge: " + challenge);
-       System.out.println("filtered data is "+challenge.getChallengeName());
+       System.out.println("filtered data is "+challenge.getChallengeId());
+
+       try {
+
+           UserProfile userProfile = userProfileService.searchUserProfileById(challenge.getCreaterId());
+           userProfileService.updateCreateChallengeToProfileById(challenge.getCreaterId(),challenge);
+
+       }
+       catch (UserProfileNotFoundException ex){
+           ex.printStackTrace();
+       }
   }
   @KafkaListener(topics = "userProfile", groupId = "group_id8", containerFactory = "registrationKafkaListenerFactory")
     public void consumeJsonfromRegService(@Payload UserProfile userProfile) {

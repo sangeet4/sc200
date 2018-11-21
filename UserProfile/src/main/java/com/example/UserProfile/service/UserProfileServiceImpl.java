@@ -69,6 +69,83 @@ public class UserProfileServiceImpl implements UserProfileService {
        }
     }
 
+    //for created challenge
+    @Override
+    public UserProfile updateCreateChallengeToProfileById(String id,Challenge challenge) throws  UserProfileNotFoundException{
+        if(userProfileRepository.existsById(id)){
+            UserProfile userProfile = userProfileRepository.findById(id).get();
+
+            List<Challenge> createdChallenge = userProfile.getChallengeCreated();
+            createdChallenge.add(challenge);
+            userProfile.setChallengeCreated(createdChallenge);
+            UserProfile userProfile2 = userProfileRepository.save(userProfile);
+            return userProfile2;
+        }
+        else{
+            throw new UserProfileNotFoundException("userProfile-controller.noUser");
+        }
+    }
+
+    //for attempted challenge
+    @Override
+    public UserProfile updateAttemptChallengeToProfileById(String id,Challenge challenge) throws  UserProfileNotFoundException{
+        if(userProfileRepository.existsById(id)){
+            UserProfile userProfile = userProfileRepository.findById(id).get();
+
+            List<Challenge> attemptedChallenge = userProfile.getChallengeAttempted();
+            attemptedChallenge.add(challenge);
+            userProfile.setChallengeCreated(attemptedChallenge);
+            UserProfile userProfile2 = userProfileRepository.save(userProfile);
+            return userProfile2;
+        }
+        else{
+            throw new UserProfileNotFoundException("userProfile-controller.noUser");
+        }
+    }
+
+    //for upvoted challenge
+
+    @Override
+    public UserProfile updateUpvoteChallengeToProfileById(String id,Challenge challenge) throws  UserProfileNotFoundException{
+        if(userProfileRepository.existsById(id)){
+            UserProfile userProfile = userProfileRepository.findById(id).get();
+
+            List<Challenge> upvotedChallenge = userProfile.getChallengeUpvoted();
+            upvotedChallenge.add(challenge);
+            userProfile.setChallengeCreated(upvotedChallenge);
+            UserProfile userProfile2 = userProfileRepository.save(userProfile);
+            return userProfile2;
+        }
+        else{
+            throw new UserProfileNotFoundException("userProfile-controller.noUser");
+        }
+    }
+
+    //for downvoted challenge
+
+    @Override
+    public UserProfile updateDownvoteChallengeToProfileById(String id,Challenge challenge) throws  UserProfileNotFoundException{
+        if(userProfileRepository.existsById(id)){
+            UserProfile userProfile = userProfileRepository.findById(id).get();
+
+            List<Challenge> downvotedChallenge = userProfile.getChallengeDownvoted();
+            downvotedChallenge.add(challenge);
+            userProfile.setChallengeCreated(downvotedChallenge);
+            UserProfile userProfile2 = userProfileRepository.save(userProfile);
+            return userProfile2;
+        }
+        else{
+            throw new UserProfileNotFoundException("userProfile-controller.noUser");
+        }
+    }
+
+
+
+
+
+
+
+
     @Override
     public UserProfile  updateuserProfileById(String id,UserProfile userProfile1) throws UserProfileNotFoundException{
 

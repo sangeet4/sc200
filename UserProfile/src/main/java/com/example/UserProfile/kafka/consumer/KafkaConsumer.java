@@ -82,23 +82,21 @@ public UserProfileService userProfileService;
     @KafkaListener(topics="votingTopic",groupId = "group_id10",containerFactory = "votingKafkaListenerFactory")
     public void consumeJsonFromVotingService(@Payload Challenge challenge){
         try{
-            UserProfile userProfile = userProfileService.searchUserProfileById(challenge.getUserId());
-            userProfileService.updateUpvoteChallengeToProfileById(challenge.getUserId(),challenge);
+
+            if(challenge.isFlag()) {
+                UserProfile userProfile = userProfileService.searchUserProfileById(challenge.getUserId());
+                userProfileService.updateUpvoteChallengeToProfileById(challenge.getUserId(), challenge);
+            }
+            else{
+                UserProfile userProfile = userProfileService.searchUserProfileById(challenge.getUserId());
+                userProfileService.updateDownvoteChallengeToProfileById(challenge.getUserId(), challenge);
+            }
         }
         catch (UserProfileNotFoundException ex){
             ex.printStackTrace();
         }
     }
 
-    @KafkaListener(topics="votingTopicUpvote",groupId = "group_id11",containerFactory = "votingKafkaListenerFactory")
-    public void consumeJsonFromDownvoteVotingService(@Payload Challenge challenge){
-        try{
-            UserProfile userProfile = userProfileService.searchUserProfileById(challenge.getUserId());
-            userProfileService.updateDownvoteChallengeToProfileById(challenge.getUserId(),challenge);
-        }
-        catch (UserProfileNotFoundException ex){
-            ex.printStackTrace();
-        }
-    }
+
 
 }

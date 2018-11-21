@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 
 public class Challenge {
-   public String createrId;
+   public String userId;
    public String challengeId;
    public  String challengeTitle;
    public double challengeScore;

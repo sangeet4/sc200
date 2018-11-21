@@ -41,8 +41,8 @@ public UserProfileService userProfileService;
 
        try {
 
-           UserProfile userProfile = userProfileService.searchUserProfileById(challenge.getCreaterId());
-           userProfileService.updateCreateChallengeToProfileById(challenge.getCreaterId(),challenge);
+           UserProfile userProfile = userProfileService.searchUserProfileById(challenge.getUserId());
+           userProfileService.updateCreateChallengeToProfileById(challenge.getUserId(),challenge);
 
        }
        catch (UserProfileNotFoundException ex){
@@ -53,11 +53,52 @@ public UserProfileService userProfileService;
     public void consumeJsonfromRegService(@Payload UserProfile userProfile) {
 
         System.out.println("Consumed JSON Message of UserProfile from RegService: " + userProfile);
-        System.out.println("filtered data is "+userProfile.getFirstName());
       userProfileRepository.save(userProfile);
 
 
     }
 
+    //need to add kafka listener for scoring service
+
+    @KafkaListener(topics = "scoringTopic",groupId = "group_id9",containerFactory ="scoringKafkaListenerFactory")
+    public void consumeJsonFromScoringService(@Payload Challenge challenge) {
+
+        System.out.println("Consumed JSON Message of challenge: " + challenge);
+        System.out.println("filtered data is "+challenge.getChallengeId());
+
+        try{
+            UserProfile userProfile = userProfileService.searchUserProfileById(challenge.getUserId());
+            userProfileService.updateAttemptChallengeToProfileById(challenge.getUserId(),challenge);
+        }
+        catch (UserProfileNotFoundException ex){
+            ex.printStackTrace();
+        }
+
+
+    }
+
+    // add the kafka topic for both upvoted and downvoted challenges
+
+    @KafkaListener(topics="votingTopic",groupId = "group_id10",containerFactory = "votingKafkaListenerFactory")
+    public void consumeJsonFromVotingService(@Payload Challenge challenge){
+        try{
+            UserProfile userProfile = userProfileService.searchUserProfileById(challenge.getUserId());
+            userProfileService.updateUpvoteChallengeToProfileById(challenge.getUserId(),challenge);
+        }
+        catch (UserProfileNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    @KafkaListener(topics="votingTopicUpvote",groupId = "group_id11",containerFactory = "votingKafkaListenerFactory")
+    public void consumeJsonFromDownvoteVotingService(@Payload Challenge challenge){
+        try{
+            UserProfile userProfile = userProfileService.searchUserProfileById(challenge.getUserId());
+            userProfileService.updateDownvoteChallengeToProfileById(challenge.getUserId(),challenge);
+        }
+        catch (UserProfileNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
 
 }

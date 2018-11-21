@@ -5,6 +5,8 @@ import com.stackroute.challengecreator.domain.ChallengeObjL1;
 import com.stackroute.challengecreator.domain.ChallengeObjL4;
 import com.stackroute.challengecreator.exceptions.ChallengeAlreadyExistsException;
 import com.stackroute.challengecreator.exceptions.ChallengeNotFoundException;
+import com.stackroute.challengecreator.exceptions.LangNotFoundException;
+import com.stackroute.challengecreator.exceptions.TopicNotFoundException;
 import com.stackroute.challengecreator.kafka.producer.ChallengeResource;
 import com.stackroute.challengecreator.service.ChallengeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +47,67 @@ public class ChallengeController {
         return responseEntity;
 
     }
+
+    //Added for Search
+    @GetMapping(value="search/{topic}")
+    public ResponseEntity<?> getChallengesByTopic(@Valid @PathVariable(value="topic") String topic){
+        ResponseEntity responseEntity=null;
+        System.out.println("in get mapping with topic");
+        try {
+            List<Challenge> challengeList= challengeService.getChallengesByTopicReg(topic);
+
+            responseEntity=new ResponseEntity<List<Challenge>>(challengeList, HttpStatus.OK);
+            System.out.println("returned challenges with topic "+topic);
+
+        }
+        catch (TopicNotFoundException tne){
+            System.out.println(tne.getStackTrace());
+        }
+
+        return responseEntity;
+    }
+    @GetMapping(value="suggestion/{topic}")
+    public ResponseEntity<?> getChallengeSuggestion(@Valid @PathVariable(value="topic") String topic){
+        ResponseEntity responseEntity=null;
+        System.out.println("in get mapping");
+        try {
+            List<Challenge> challengeList= challengeService.getChallengesByTopicReg(topic);
+            System.out.println(challengeList.size());
+            List<Challenge> suggestion=new ArrayList<>();
+            int n=challengeList.size()>20?20:challengeList.size();
+            suggestion=challengeList.subList(0,n);
+            responseEntity=new ResponseEntity<List<Challenge>>(suggestion, HttpStatus.OK);
+            System.out.println("returned auto complete challenges");
+
+        }
+        catch (TopicNotFoundException tne){
+            System.out.println(tne.getStackTrace());
+        }
+
+        return responseEntity;
+    }
+    @GetMapping(value="search/{programmingLang}/{topic}")
+    public ResponseEntity<?> getChallengeByLangAndTopic(@Valid @PathVariable(value="topic") String topic,
+                                                        @PathVariable(value="programmingLang") String programmingLang) {
+        List<Challenge> challengesByLang;
+        ResponseEntity responseEntity=null;
+        try {
+
+            challengesByLang = challengeService.getChallengesByLangandTopic(programmingLang,topic);
+
+            responseEntity = new ResponseEntity<List<Challenge>>(challengesByLang, HttpStatus.OK);
+        }
+        catch (LangNotFoundException ex){
+            System.out.println(exceptionMessage+" and trace is "+ex);
+        }
+        catch (TopicNotFoundException ex){
+            responseEntity = new ResponseEntity<String>(exceptionMessage, HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+
+
+    //Before adding Search
 
     @GetMapping()
     public ResponseEntity<?> getAllChallenges(){

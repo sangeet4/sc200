@@ -3,6 +3,8 @@ package com.stackroute.challengecreator.service;
 import com.stackroute.challengecreator.domain.*;
 import com.stackroute.challengecreator.exceptions.ChallengeAlreadyExistsException;
 import com.stackroute.challengecreator.exceptions.ChallengeNotFoundException;
+import com.stackroute.challengecreator.exceptions.LangNotFoundException;
+import com.stackroute.challengecreator.exceptions.TopicNotFoundException;
 import com.stackroute.challengecreator.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -302,4 +304,31 @@ public class ChallengeServiceImpl implements ChallengeService {
         }
         return challengesList;
     }
+
+
+    //Added for Search
+    public List<Challenge> getChallengesByTopic(String topic) throws TopicNotFoundException {
+        List<Challenge> topicChallenges= challengeRepository.getChallengeByTopic(topic);
+        return topicChallenges;
+    }
+
+    @Override
+    public List<Challenge> getChallengesByTopicReg(String topic) throws TopicNotFoundException {
+        List<Challenge> topicChallenges= challengeRepository.getChallengeByTopicReg(topic);
+        return topicChallenges;
+    }
+
+    @Override
+    public List<Challenge> getChallengesByLang(String programmingLang) throws LangNotFoundException {
+        List<Challenge> challengesByLang=challengeRepository.getChallengeByProgrammingLang(programmingLang);
+        return challengesByLang;
+    }
+
+    @Override
+    public List<Challenge> getChallengesByLangandTopic(String programmingLang, String topic) throws LangNotFoundException, TopicNotFoundException {
+        List<Challenge> challengesByLangandTopic=challengeRepository.getChallengeByLangandTopic(programmingLang,topic);
+        return challengesByLangandTopic;
+
+    }
+
 }

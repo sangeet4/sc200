@@ -29,7 +29,7 @@ public class CompileServiceImpl implements CompileService {
             String fileName =  this.fileParserService.findFileName(file);
             System.out.println(relativePath);
             System.out.println(fileName);
-            String[] command = {"/bin/bash", "/home/anshul/SC200/Compilation/src/main/resources/shellScript.sh", "/home/anshul/SC200/Fileparser/" + relativePath , fileName};
+            String[] command = {"/bin/bash", "/data-docker/sc200/Compilation/src/main/resources/shellScript.sh", "/data-docker/sc200/Fileparser/" + relativePath , fileName};
             ProcessBuilder p = new ProcessBuilder(command);
             Process p2 = p.start();
             BufferedReader br = new BufferedReader(new InputStreamReader(p2.getInputStream()));

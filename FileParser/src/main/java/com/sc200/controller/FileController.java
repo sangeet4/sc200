@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/file")
 public class FileController {
 
@@ -24,7 +25,15 @@ public class FileController {
     @PostMapping(value = "/create")
     public String createDirectoryLayer(@RequestBody @Valid File file) throws IOException {
 
-        return fileService.parseFile(file);
+            try {
+                System.out.println(file.toString());
+                String a = fileService.parseFile(file);
+                return a;
+            }
+            catch(Exception e)
+            {
+                return e.getMessage();
+            }
 
     }
 

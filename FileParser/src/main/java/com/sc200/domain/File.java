@@ -3,6 +3,7 @@ package com.sc200.domain;
 import lombok.Builder;
 import lombok.Data;
 import lombok.AllArgsConstructor;
+import org.apache.commons.lang.text.StrBuilder;
 
 
 @Data
@@ -10,9 +11,23 @@ import lombok.AllArgsConstructor;
 @Builder
 public class File {
 
-    private String path;
+    private String uri;
 
-    private String input;
+    private String content;
 
-  
+    private String language;
+
+
+    public String getUri() {
+        return uri;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
 }

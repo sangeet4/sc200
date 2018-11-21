@@ -13,8 +13,10 @@ public class FileServiceImpl implements FileService {
     private int i;
 
     public String parseFile(com.sc200.domain.File file) throws IOException {
-        int lastIndex = file.getPath().lastIndexOf('/');
-        String directory = file.getPath().substring(0,lastIndex);
+        System.out.println(file.toString());
+        int lastIndex = file.getUri().lastIndexOf('/');
+        System.out.println(lastIndex);
+        String directory = file.getUri().substring(0,lastIndex);
 
         if(createDirectories(directory) && createFile(file)) {
             return "Successfully Created";
@@ -45,11 +47,11 @@ public class FileServiceImpl implements FileService {
     public boolean createFile(com.sc200.domain.File file) throws IOException {
 
         //Create the file
-        File newFile = new File(file.getPath());
+        File newFile = new File(file.getUri());
         if (newFile.createNewFile())
         {
             FileWriter writer = new FileWriter(newFile);
-            writer.write(file.getInput());
+            writer.write(file.getContent());
             writer.close();
             return true;
         } else {

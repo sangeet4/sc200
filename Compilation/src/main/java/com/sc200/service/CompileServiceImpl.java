@@ -27,10 +27,9 @@ public class CompileServiceImpl implements CompileService {
             System.out.println("start excution......");
             String relativePath =  this.fileParserService.findRelativePath(file);
             String fileName =  this.fileParserService.findFileName(file);
-            System.out.println(relativePath);
-            System.out.println(fileName);
+      	    System.out.println("aaaaa shellScript");
             String[] command = {"/bin/bash", "shellScript.sh", relativePath , fileName};
-	    System.out.println(command);
+	    System.out.println("aaaaaa");
             ProcessBuilder p = new ProcessBuilder(command);
 	    System.out.println(p.toString());
 	    Process p2 = p.start();

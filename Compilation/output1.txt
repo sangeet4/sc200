@@ -1,2 +1,1 @@
-Error: Could not find or load main class FileparserApplicationTests
-Caused by: java.lang.ClassNotFoundException: FileparserApplicationTests
+Hello World from java code

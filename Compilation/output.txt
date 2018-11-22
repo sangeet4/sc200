@@ -1,3 +1,0 @@
-javac: file not found: /home/anshul/SC200/Fileparser/src/test/java/com/sc200/FileparserApplicationTests.java
-Usage: javac <options> <source files>
-use --help for a list of possible options

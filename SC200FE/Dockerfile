@@ -18,3 +18,5 @@ COPY . /usr/src/app
 
 # start app
 CMD ng serve --host 0.0.0.0 --disable-host-check
+
+HEALTHCHECK --interval=30s --timeout=30s CMD curl -f http://localhost:4200/actuator/health || exit 1

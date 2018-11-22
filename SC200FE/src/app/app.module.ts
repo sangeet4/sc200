@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
-import { LoginRegisterModule } from '../../../PlayGround/blur/src/app/login-register/login-register.module'
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -10,9 +9,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    CoreModule,
-    LoginRegisterModule
-  ],
+    CoreModule  ],
   providers: [],
   bootstrap: [AppComponent]
 })

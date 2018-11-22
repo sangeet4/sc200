@@ -123,6 +123,8 @@ services:
       - 8182:8182
     expose:
       - 8182
+    volumes:
+            - '/data-docker/sc200/FileParser/Directory:/usr/app1'
 
   compilation-demo:
     image: compilation:v1
@@ -134,6 +136,8 @@ services:
       - 8183:8183
     expose:
       - 8183
+    volumes:
+            - '/data-docker/sc200/FileParser/Directory'
 
 
   authentication-service-demo:

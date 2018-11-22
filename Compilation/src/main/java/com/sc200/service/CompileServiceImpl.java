@@ -29,9 +29,11 @@ public class CompileServiceImpl implements CompileService {
             String fileName =  this.fileParserService.findFileName(file);
             System.out.println(relativePath);
             System.out.println(fileName);
-            String[] command = {"/bin/bash", "/data-docker/sc200/Compilation/src/main/resources/shellScript.sh", relativePath , fileName};
+            String[] command = {"/bin/bash", "shellScript.sh", relativePath , fileName};
+	    System.out.println(command);
             ProcessBuilder p = new ProcessBuilder(command);
-            Process p2 = p.start();
+	    System.out.println(p.toString());
+	    Process p2 = p.start();
             BufferedReader br = new BufferedReader(new InputStreamReader(p2.getInputStream()));
             String line;
             while ((line = br.readLine()) != null) {

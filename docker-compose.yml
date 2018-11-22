@@ -137,7 +137,7 @@ services:
     expose:
       - 8183
     volumes:
-            - '/data-docker/sc200/FileParser/Directory'
+            - '/data-docker/sc200/FileParser/Directory:/usr/app1'
 
 
   authentication-service-demo:

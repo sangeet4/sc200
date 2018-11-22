@@ -1,4 +1,4 @@
-/data-docker/sc200/ChallengeCreator/src/test/java/com/stackroute/challengecreator/service/ChallengeServiceImplTest.java
-/data-docker/sc200/ChallengeCreator/src/test/java/com/stackroute/challengecreator/repository/ChallengeRepositoryTest.java
-/data-docker/sc200/ChallengeCreator/src/test/java/com/stackroute/challengecreator/controller/ChallengeControllerTest.java
-/data-docker/sc200/ChallengeCreator/src/test/java/com/stackroute/challengecreator/ChallengeCreatorApplicationTests.java
+/home/cgi/editing/ChallengeCreator/src/test/java/com/stackroute/challengecreator/service/ChallengeServiceImplTest.java
+/home/cgi/editing/ChallengeCreator/src/test/java/com/stackroute/challengecreator/ChallengeCreatorApplicationTests.java
+/home/cgi/editing/ChallengeCreator/src/test/java/com/stackroute/challengecreator/repository/ChallengeRepositoryTest.java
+/home/cgi/editing/ChallengeCreator/src/test/java/com/stackroute/challengecreator/controller/ChallengeControllerTest.java

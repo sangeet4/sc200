@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 public class Challenge {
 
     @Id
-    private String id ;
+    private String challengeId ;
 
     private String userId;
 
@@ -23,7 +23,7 @@ public class Challenge {
     private String challengeTitle;
 
     @NotNull
-    private String challengeDescription;
+    private String challengeStamp;
 
     @NotNull
     private String challengeStatement;
@@ -57,5 +57,8 @@ public class Challenge {
 
     @NotNull
     private double rating;
+
+    private double upvotes;
+    private double downvotes;
 
 }

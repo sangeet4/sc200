@@ -119,6 +119,16 @@ public class ChallengeController {
         return responseEntity;
     }
 
+    @GetMapping(value = "/basic")
+    public ResponseEntity<?> getAllChallengesBasic(){
+
+        ResponseEntity responseEntity;
+        List<Challenge> challengesList = challengeService.getAllChallengesBasic();
+        responseEntity = new ResponseEntity<List<Challenge>>(challengesList,HttpStatus.OK);
+
+        return responseEntity;
+    }
+
     @GetMapping(value = "/search")
     public ResponseEntity<?> getChallengesBySearch(@RequestParam(value = "PL") String programmingLang, @RequestParam(value = "Topic") String topic,@RequestParam(value = "Lvl") Double level) throws ChallengeNotFoundException {
 
@@ -166,6 +176,39 @@ public class ChallengeController {
         try {
             List<Challenge> challengeList = challengeService.getChallengeByRating(lowerBound,upperBound);
             responseEntity = new ResponseEntity(challengeList,HttpStatus.OK);
+        }
+        catch (ChallengeNotFoundException ex){
+            responseEntity = new ResponseEntity<String>(exceptionMessage,HttpStatus.CONFLICT);
+        }
+
+        return responseEntity;
+    }
+
+    @PutMapping()
+    public ResponseEntity<?> updateChallenge(Challenge challenge){
+
+        ResponseEntity responseEntity;
+        try {
+            challengeService.updateChallenge(challenge);
+            responseEntity = new ResponseEntity(challengeService.getChallengeById(challenge.getChallengeId()),HttpStatus.OK);
+        }
+        catch (ChallengeNotFoundException e) {
+            responseEntity = new ResponseEntity<String>(exceptionMessage,HttpStatus.CONFLICT);
+        }
+        catch (ChallengeAlreadyExistsException e) {
+            responseEntity = new ResponseEntity<String>(exceptionMessage,HttpStatus.CONFLICT);
+        }
+
+        return responseEntity;
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<?> deleteChallengeByID(@PathVariable(value = "id") String challengeId){
+
+        ResponseEntity responseEntity;
+        try {
+            List<Challenge> savedChallenge = challengeService.deleteChallengeById(challengeId);
+            responseEntity = new ResponseEntity(savedChallenge,HttpStatus.OK);
         }
         catch (ChallengeNotFoundException ex){
             responseEntity = new ResponseEntity<String>(exceptionMessage,HttpStatus.CONFLICT);

@@ -13,13 +13,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class ChallengeObjL4 {
 
     @Id
-    private String id ;
+    private String challengeId ;
 
     private String userId;
 
     private String challengeTitle;
 
-    private String challengeDescription;
+    private String challengeStamp;
 
     private String challengeStatement;
 
@@ -44,4 +44,8 @@ public class ChallengeObjL4 {
     private double maxRuntime;
 
     private double rating;
+
+    private double upvotes;
+    private double downvotes;
+
 }

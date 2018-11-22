@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Profile {
-    private String userId;
+public class Compilation {
     private String challengeId;
-    private double questScore;
+    private boolean solved;
 }

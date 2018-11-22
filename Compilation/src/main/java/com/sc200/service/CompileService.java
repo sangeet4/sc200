@@ -7,6 +7,6 @@ import java.util.ArrayList;
 
 public interface CompileService {
 
-    public ArrayList<String> runFile(File  file) throws IOException;
+    public ArrayList<String> runFile() throws IOException;
     public void clone(String url) throws IOException;
 }

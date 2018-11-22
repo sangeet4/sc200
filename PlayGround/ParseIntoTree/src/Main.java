@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args){
 
-        String[] strings = {"Test_folder/Ex_17.js","Test_folder/Ex_4.js","Test_folder/Ex_1.js","Test_folder/Ex_3.js","Test_folder/Ex_2.js"};
+        String[] strings = {"a/b/d/c/HelloWorld.java" , "c/HelloWorld.java" , "a/d/e/HelloWorld.java" };
 
         Directory directory = new Directory( "root" , new ArrayList<>());
 

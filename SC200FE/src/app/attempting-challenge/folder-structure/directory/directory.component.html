@@ -4,13 +4,13 @@
   <span class="spacer"></span>
   <!-- <folder-upload></folder-upload> -->
   
-  <span class="spacer"></span>
+  <!-- <span class="spacer"></span>
   <mat-icon class="pointer" (click)="openNewFolderDialog()">create_new_folder</mat-icon>
   &nbsp;
   <mat-icon class="pointer" (click)="openNewFileDialog()">create_new_file</mat-icon>
-</mat-toolbar>
+</mat-toolbar> -->
 
-<!-- <div class="container" fxFlex fxLayout="row" fxLayoutAlign="space-between stretch">
+<div class="container" fxFlex fxLayout="row" fxLayoutAlign="space-between stretch">
   <div class="content" fxFlex fxLayout="row">
     <mat-grid-list cols="8" rowHeight="100px" fxFlex>
       <mat-grid-tile *ngFor="let element of fileElements" class=file-or-folder>
@@ -23,27 +23,28 @@
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-</div> -->
+</div>
 
-<button (click) = "showDirectory()">show</button>
-
-
-
- <!-- <ul>
-  <li *ngFor="let dir of directories">
-      <span><input type="checkbox" [checked]="dir.checked" (click)="dir.check()"    /></span> 
-      <span (click)="dir.toggle()">{{ dir.name }}</span>
-      <div *ngIf="dir.expanded">
-          <ul >
-              <li *ngFor="let file of dir.files">{{file}}</li>
-          </ul>
-          <tree-view [directories]="dir.directories"></tree-view>
-      </div>
-  </li>
-</ul>  -->
-
-
-
+<!-- <cdk-tree>
+  <mat-grid-tile *ngFor = "let element of fileElements" class=file-or-folder>
+      <div fxLayout="column" fxLayoutAlign="space-between center" (click)="navigate(element)" (contextmenu)="openMenu($event, menuTrigger)">
+         <cdk-nested-tree-node> <mat-icon color="primary" class="file-or-folder-icon pointer" *ngIf="element.isFolder">folder</mat-icon>
+          <span>{{element.name}}</span>  
+        </cdk-nested-tree-node>
+        <cdk-nested-tree-node>
+          <mat-icon color="primary" class="file-or-folder-icon pointer" *ngIf="!element.isFolder">insert_drive_file</mat-icon>
+          <span>{{element.name}}</span>
+          </cdk-nested-tree-node>
+        </div>
+  </mat-grid-tile>
+</cdk-tree> -->
+<!-- <cdk-tree>
+    <cdk-nested-tree-node>
+      parent node
+      <cdk-nested-tree-node> -- child node1 </cdk-nested-tree-node>
+      <cdk-nested-tree-node> -- child node2 </cdk-nested-tree-node>
+    </cdk-nested-tree-node>
+  </cdk-tree> -->
 
 <mat-menu #rootMenu="matMenu">
   <ng-template matMenuContent let-element="element">
@@ -76,34 +77,3 @@
     </ng-container>
   </ng-template>
 </mat-menu>
-
-<!-- directory structure code -->
-<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
-    <button mat-icon-button disabled></button>
-    <mat-checkbox class="checklist-leaf-node"
-                  [checked]="checklistSelection.isSelected(node)"
-                  (change)="checklistSelection.toggle(node);">{{node.item}}</mat-checkbox>
-  </mat-tree-node>
-
-  <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
-    <button mat-icon-button disabled></button>
-    <mat-form-field>
-      <input matInput #itemValue placeholder="New item...">
-    </mat-form-field>
-    <button mat-button (click)="saveNode(node, itemValue.value)">Save</button>
-  </mat-tree-node>
-
-  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
-    <button mat-icon-button matTreeNodeToggle
-            [attr.aria-label]="'toggle ' + node.filename">
-      <mat-icon class="mat-icon-rtl-mirror">
-        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-      </mat-icon>
-    </button>
-    <mat-checkbox [checked]="descendantsAllSelected(node)"
-                  [indeterminate]="descendantsPartiallySelected(node)"
-                  (change)="todoItemSelectionToggle(node)">{{node.item}}</mat-checkbox>
-    <button mat-icon-button (click)="addNewItem(node)"><mat-icon>add</mat-icon></button>
-  </mat-tree-node>
-</mat-tree>

@@ -1,9 +1,100 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, Output, EventEmitter, Injectable } from '@angular/core';
 import { FileElement } from './model/file-element';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
+import { NewFolderDialogComponent } from './modals/new-folder-dialog/new-folder-dialog.component';
+import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component';
+import { NewFileDialogComponent } from './modals/new-file-dialog/new-file-dialog.component';
 import { Router } from '@angular/router';
 import { FileService } from './file.service';
+import {SelectionModel} from '@angular/cdk/collections';
+import {FlatTreeControl} from '@angular/cdk/tree';
+import {MatTreeFlattener, MatTreeFlatDataSource} from '@angular/material/tree';
+import {of as ofObservable, Observable, BehaviorSubject} from 'rxjs';
+
+
+
+export class TodoItemNode {
+  children: TodoItemNode[];
+  item: string;
+}
+
+export class TodoItemFlatNode {
+  item: string;
+  level: number;
+  expandable: boolean;
+}
+
+
+export class ChecklistDatabase {
+  dataChange: BehaviorSubject<TodoItemNode[]> = new BehaviorSubject<TodoItemNode[]>([]);
+  //public url = "http://localhost:8080/file/structure";
+  public TREE: string;
+  
+
+  get data(): TodoItemNode[] { return this.dataChange.value; }
+
+  constructor(private http: HttpClient, private fileService: FileService) {
+    // this.initialize();
+  }
+initialize() {
+  // Build the tree nodes from Json object. The result is a list of `TodoItemNode` with nested
+  //     file node as children.
+    
+        this.TREE = this.fileService.getFileStructure().toString();
+        console.log(this.TREE);
+        this.TREE = this.TREE.replace(/'/g,'\"');
+        console.log(this.TREE);
+        this.TREE = JSON.parse(this.TREE);
+        //this.TREE = {'root':{'test':{'ArrayDifference.js' : null, 'ArrayDifference2.js' : null}}, 'test':{'test2':{'ArrayDifference.js' : null}}};
+      
+        const values = this.buildFileTree(this.TREE, 0);
+        // Notify the change.
+        this.dataChange.next(values);
+       // pipe(map(response => response.toString()))
+  
+  }
+
+/**
+ * Build the file structure tree. The `value` is the Json object, or a sub-tree of a Json object.
+ * The return value is the list of `TodoItemNode`.
+ */
+buildFileTree(value: any, level: number) {
+  const data: any[] = [];
+  for (const k in value) {
+    const v = value[k];
+    const node = new TodoItemNode();
+    node.item = `${k}`;
+    if (v === null || v === undefined) {
+      // no action
+    } else if (typeof v === 'object') {
+      node.children = this.buildFileTree(v, level + 1);
+    } else {
+      node.item = v;
+    }
+    data.push(node);
+  }
+  return data;
+}
+
+/** Add an item to to-do list */
+insertItem(parent: TodoItemNode, name: string) {
+  const child = <TodoItemNode>{item: name};
+  if (parent.children) {
+    parent.children.push(child);
+    this.dataChange.next(this.data);
+  }
+}
+
+updateItem(node: TodoItemNode, name: string) {
+  node.item = name;
+  this.dataChange.next(this.data);
+}
+
+
+
+
 
 @Component({
   selector: 'app-directory',

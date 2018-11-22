@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class Profile {
     private String userId;
     private String challengeId;
+    private String challengeTitle;
     private double questScore;
 }

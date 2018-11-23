@@ -1,14 +1,18 @@
 package com.sc200.controller;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sc200.domain.File;
+import com.sc200.domain.Directory;
+import com.sc200.domain.Files;
 import com.sc200.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.io.File;
+import java.util.ArrayList;
 
 @RestController
 @CrossOrigin
@@ -23,7 +27,7 @@ public class FileController {
     }
 
     @PostMapping(value = "/create")
-    public String createDirectoryLayer(@RequestBody @Valid File file) throws IOException {
+    public String createDirectoryLayer(@RequestBody @Valid Files file) throws IOException {
 
             try {
                 System.out.println(file.toString());
@@ -36,6 +40,45 @@ public class FileController {
             }
 
     }
+    @PostMapping()
+    public ResponseEntity<?> getDirectoryStructure(@RequestBody @Valid String folderName) throws  IOException{
 
-  
+        ResponseEntity responseEntity;
+
+        try{
+
+            fileService.setPathsAndContent(new File(folderName));
+            Directory directory = new Directory(fileService.getPaths(),fileService.getContents());
+
+            ArrayList<String> temp = directory.getContents();
+            for(int i=0;i<temp.size();i++){
+                if(temp.get(i)==null){
+                    temp.remove(i);
+                }
+            }
+
+            ArrayList<String> temp1 = directory.getPaths();
+            for(int i=0;i<temp1.size();i++){
+                if(temp1.get(i)==null){
+                    temp1.remove(i);
+                }
+            }
+           Directory directory1 = new Directory(temp1,temp);
+            System.out.println(directory1.toString());
+
+
+            responseEntity = new ResponseEntity<Directory>(directory1 , HttpStatus.OK);
+        }
+        catch (Exception e){
+
+            fileService.setPathsAndContent(new File(folderName));
+            Directory directory = new Directory(fileService.getPaths(),fileService.getContents());
+            responseEntity = new ResponseEntity<String>(e.getMessage() , HttpStatus.BAD_REQUEST);
+        }
+
+        return  responseEntity;
+    }
+
+
+
 }

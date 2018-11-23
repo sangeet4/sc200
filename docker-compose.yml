@@ -215,3 +215,15 @@ services:
           - 4200:4200
           expose:
           - 4200
+
+  recommendation:
+    image: empty-container
+    build: FileParser/Directory/Challenges/
+    network_mode: host
+    container_name: empty-container
+    ports:
+      - 8188:8188
+    expose:
+      - 8188
+    volumes:
+     - './FileParser/Directory/Challenges:/usr/app/'

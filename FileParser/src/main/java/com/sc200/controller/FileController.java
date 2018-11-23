@@ -37,5 +37,20 @@ public class FileController {
 
     }
 
+    @PostMapping()
+    public String getTemplateFromBackend(@RequestBody @Valid String path) throws IOException {
+
+        try {
+            System.out.println("hello");
+            String[] a = fileService.getTemplate(path);
+            return a.toString();
+        }
+        catch(Exception e)
+        {
+            return e.getMessage();
+        }
+
+    }
+
   
 }

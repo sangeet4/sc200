@@ -15,4 +15,6 @@ public interface FileService {
     public String createTree();
 
     public  String replaceLast(String string, String toReplace, String replacement);
+
+    public String[] getTemplate(String path);
 }

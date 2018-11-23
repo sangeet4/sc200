@@ -1,5 +1,6 @@
 package com.sc200.service;
 
+import com.sun.tools.javac.util.List;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -241,6 +242,40 @@ public class FileServiceImpl implements FileService {
         } else {
             return string;
         }
+    }
+
+    @Override
+    public String[] getTemplate(String path) {
+
+        System.out.println(path);
+//        File folder = new File(path);
+//        File[] listOfFiles = folder.listFiles();
+//        System.out.println(listOfFiles.length);
+//        for (int i = 0; i < listOfFiles.length; i++) {
+//            if (listOfFiles[i].isFile()) {
+//                System.out.println("File " + listOfFiles[i].getName());
+//            } else if (listOfFiles[i].isDirectory()) {
+//                System.out.println("Directory " + listOfFiles[i].getName());
+//            }
+//        }
+
+        System.out.println("hello1");
+
+        File directory = new File("/home/anshul/SC200/sc200/FileParser/" + path);
+
+        //get all the files from a directory
+
+        File[] fList = directory.listFiles();
+        System.out.println(fList.length);
+
+        for (File file : fList){
+
+            System.out.println(file.getName());
+
+        }
+
+        System.out.println("hello2");
+        return null;
     }
 
 }

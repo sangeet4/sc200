@@ -2,10 +2,18 @@
   <form class="quest-container" [formGroup]="questDesc" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline">
       <mat-label>Challenge Id</mat-label>
-      <input type="text" matInput placeholder="Challenge Id" class="form-control" id="id" formControlName="id" [readonly]="readOnlyFlag"
+      <input type="text" matInput placeholder="Challenge Id" class="form-control" id="challengeId" formControlName="challengeId" [readonly]="readOnlyFlag"
         required>
-      <mat-error *ngIf="id.invalid && (id.dirty || id.touched)">
+      <mat-error *ngIf="challengeId.invalid && (challengeId.dirty || challengeId.touched)">
         Challenge Id shouldn't be null.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>User Id</mat-label>
+      <input type="text" matInput placeholder="User Id" class="form-control" id="userId" formControlName="userId" [readonly]="readOnlyFlag"
+        required>
+      <mat-error *ngIf="userId.invalid && (userId.dirty || userId.touched)">
+        user Id shouldn't be null.
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -16,11 +24,11 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Challenge Description</mat-label>
-      <textarea matInput placeholder="Challenge Description" class="form-control" id="description" formControlName="challengeDescription"
+      <mat-label>Challenge Stamp</mat-label>
+      <textarea matInput placeholder="Challenge Stamp" class="form-control" id="challengeStamp" formControlName="challengeStamp"
         required></textarea>
-      <mat-error *ngIf="desc.invalid && (desc.dirty || desc.touched)">
-        Challenge Description shouldn't be empty.
+      <mat-error *ngIf="challengeStamp.invalid && (challengeStamp.dirty || challengeStamp.touched)">
+        Challenge Stamp shouldn't be empty.
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">

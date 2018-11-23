@@ -112,4 +112,55 @@ public class KafkaConfiguration {
         return factory;
     }
 
+
+
+    @Bean
+    public ConsumerFactory<String, Challenge> scoringConsumerFactory() {
+        Map<String, Object> config = new HashMap<>();
+
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_id9");
+        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+//        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+//        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),new JsonDeserializer<>(User.class));
+        // added new code
+        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, BytesDeserializer.class);
+        return new DefaultKafkaConsumerFactory<>(config);
+
+    }
+
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, Challenge> scoringKafkaListenerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, Challenge> factory = new ConcurrentKafkaListenerContainerFactory<String,Challenge>();
+        factory.setConsumerFactory(challengeConsumerFactory());
+        // added new code
+        factory.setMessageConverter(new StringJsonMessageConverter());
+        return factory;
+    }
+
+    @Bean
+    public ConsumerFactory<String, Challenge> votingConsumerFactory() {
+        Map<String, Object> config = new HashMap<>();
+
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_id10");
+        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+//        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+//        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),new JsonDeserializer<>(User.class));
+        // added new code
+        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, BytesDeserializer.class);
+        return new DefaultKafkaConsumerFactory<>(config);
+
+    }
+
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, Challenge> votingKafkaListenerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, Challenge> factory = new ConcurrentKafkaListenerContainerFactory<String,Challenge>();
+        factory.setConsumerFactory(challengeConsumerFactory());
+        // added new code
+        factory.setMessageConverter(new StringJsonMessageConverter());
+        return factory;
+    }
+
+
 }

@@ -25,19 +25,15 @@ public class KafkaConsumer {
 public UserProfileService userProfileService;
 
 
-    @KafkaListener(topics = "test5", groupId = "listenfromself", containerFactory = "userKafkaListenerFactory")
+    @KafkaListener(topics = "test5", groupId = "group_id6", containerFactory = "userKafkaListenerFactory")
     public void consumeJson(@Payload UserProfile user) {
         System.out.println("Consumed JSON Message: " + user);
         System.out.println("filtered data is "+user.getFirstName());
     }
-<<<<<<< HEAD
-    @KafkaListener(topics = "test-challenge", groupId = "listenchallenge", containerFactory = "challengeKafkaListenerFactory")
-=======
 
     //listen to create challenge topic and update the database.
 
     @KafkaListener(topics = "test-challenge", groupId = "group_id7", containerFactory = "challengeKafkaListenerFactory")
->>>>>>> 0468cec1da0bd93620655ec111839683df0208f0
     public void consumeJsonFromChallengeService(@Payload Challenge challenge) {
 
         System.out.println("Consumed JSON Message of challenge: " + challenge);
@@ -53,7 +49,7 @@ public UserProfileService userProfileService;
            ex.printStackTrace();
        }
   }
-  @KafkaListener(topics = "userProfile", groupId = "listenregistration", containerFactory = "registrationKafkaListenerFactory")
+  @KafkaListener(topics = "userProfile", groupId = "group_id8", containerFactory = "registrationKafkaListenerFactory")
     public void consumeJsonfromRegService(@Payload UserProfile userProfile) {
 
         System.out.println("Consumed JSON Message of UserProfile from RegService: " + userProfile);

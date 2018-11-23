@@ -97,7 +97,9 @@ export class EditorComponent implements OnInit {
 
     this.filesService.RunFile(this.file)
           .subscribe(data =>{
-            this.httpResponse = data;
+	  this.httpResponse = data;
+	  console.log(this.httpResponse);
+	  console.log(data);
           });
 
   }

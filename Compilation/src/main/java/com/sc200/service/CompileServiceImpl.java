@@ -27,11 +27,12 @@ public class CompileServiceImpl implements CompileService {
             System.out.println("start excution......");
             String relativePath =  this.fileParserService.findRelativePath(file);
             String fileName =  this.fileParserService.findFileName(file);
-            System.out.println(relativePath);
-            System.out.println(fileName);
-            String[] command = {"/bin/bash", "/home/anshul/SC200/Compilation/src/main/resources/shellScript.sh", "/home/anshul/SC200/Fileparser/" + relativePath , fileName};
+      	    System.out.println("aaaaa shellScript");
+            String[] command = {"/bin/bash", "shellScript.sh", relativePath , fileName};
+	    System.out.println("aaaaaa");
             ProcessBuilder p = new ProcessBuilder(command);
-            Process p2 = p.start();
+	    System.out.println(p.toString());
+	    Process p2 = p.start();
             BufferedReader br = new BufferedReader(new InputStreamReader(p2.getInputStream()));
             String line;
             while ((line = br.readLine()) != null) {
@@ -49,5 +50,20 @@ public class CompileServiceImpl implements CompileService {
         }
 
         return lines;
+    }
+    @Override
+    public void clone(String url) throws IOException{
+        try{
+            System.out.println("started execution");
+            System.out.println("github url: "+url);
+            String[] command = {"/bin/bash/","/home/cgi/sc200/Compilation/src/main/resources/clonescript.sh",url};
+            ProcessBuilder processBuilder = new ProcessBuilder(command);
+            Process process = processBuilder.start();
+
+            System.out.println("cloned the repository");
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 }

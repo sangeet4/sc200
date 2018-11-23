@@ -1,5 +1,6 @@
 package com.example.UserProfile.service;
 
+import com.example.UserProfile.domain.Challenge;
 import com.example.UserProfile.domain.UserProfile;
 import com.example.UserProfile.exception.UserProfileAlreadyExitsException;
 import com.example.UserProfile.exception.UserProfileNotFoundException;
@@ -29,16 +30,14 @@ public class UserProfileServiceImpl implements UserProfileService {
         List<UserProfile> topFive = new ArrayList<UserProfile>();
         List<UserProfile> allElement=new ArrayList<UserProfile>();
        allElement=userProfileRepository.findAll();
-//        for(int i=0;i<3;i++){
-//            topFive.add(allElement.get(i));
-//        }
+
         return allElement;
     }
     @Override
     public UserProfile saveUserProfile(UserProfile userProfile) throws UserProfileAlreadyExitsException {
         if(userProfileRepository.existsById(userProfile.getEmail())){
            // logger.info("exception ocuured");
-            throw new UserProfileAlreadyExitsException("UserProfile already Exists");
+            throw new UserProfileAlreadyExitsException("userProfile-service.userExist");
         }
 
 
@@ -48,13 +47,13 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
     @Override
     public UserProfile searchUserProfileById(String id) throws UserProfileNotFoundException {
-       // Voting voting= votingRepository.findById(id).get();
+
         if(userProfileRepository.existsById(id)) {
             UserProfile userProfile = userProfileRepository.findById(id).get();
             return userProfile;
         }
         else{
-            throw new UserProfileNotFoundException("UserProfile not found");
+            throw new UserProfileNotFoundException("userProfile-controller.noUser");
         }
     }
     @Override
@@ -70,31 +69,132 @@ public class UserProfileServiceImpl implements UserProfileService {
        }
     }
 
+    //for created challenge
     @Override
-    public UserProfile  updateuserProfileById(String id,UserProfile userProfile1) throws UserProfileNotFoundException{
-       // Movie movie=movieRepository.findById(id).get();
-        if(userProfileRepository.existsById(id)) {
+    public UserProfile updateCreateChallengeToProfileById(String id,Challenge challenge) throws  UserProfileNotFoundException{
+        if(userProfileRepository.existsById(id)){
             UserProfile userProfile = userProfileRepository.findById(id).get();
-            userProfile.setChallengeAttempted(userProfile1.getChallengeAttempted());
-            userProfile.setFirstName(userProfile1.getFirstName());
-            userProfile.setLastName(userProfile1.getLastName());
-            userProfile.setContactNumber(userProfile1.getContactNumber());
-            userProfile.setUsername(userProfile1.getUsername());
-            userProfile.setRanking(userProfile1.getRanking());
-            userProfile.setScore(userProfile1.getScore());
-            userProfile.setChallengeCreated(userProfile1.getChallengeCreated());
-            userProfile.setChallengeDownvoted(userProfile1.getChallengeDownvoted());
-            userProfile.setChallengeUpvoted(userProfile1.getChallengeUpvoted());
-            userProfile.setDateOfBirth(userProfile1.getDateOfBirth());
-            userProfile.setPreferredLang(userProfile1.getPreferredLang());
 
-
-            //Movie movie2=movieRepository.save(movie);
+            List<Challenge> createdChallenge = userProfile.getChallengeCreated();
+            createdChallenge.add(challenge);
+            userProfile.setChallengeCreated(createdChallenge);
             UserProfile userProfile2 = userProfileRepository.save(userProfile);
             return userProfile2;
         }
         else{
-            throw new UserProfileNotFoundException("UserProfile not found");
+            throw new UserProfileNotFoundException("userProfile-controller.noUser");
+        }
+    }
+
+    //for attempted challenge
+    @Override
+    public UserProfile updateAttemptChallengeToProfileById(String id,Challenge challenge) throws  UserProfileNotFoundException{
+        if(userProfileRepository.existsById(id)){
+            UserProfile userProfile = userProfileRepository.findById(id).get();
+
+            List<Challenge> attemptedChallenge = userProfile.getChallengeAttempted();
+            attemptedChallenge.add(challenge);
+            userProfile.setChallengeCreated(attemptedChallenge);
+            UserProfile userProfile2 = userProfileRepository.save(userProfile);
+            return userProfile2;
+        }
+        else{
+            throw new UserProfileNotFoundException("userProfile-controller.noUser");
+        }
+    }
+
+    //for upvoted challenge
+
+    @Override
+    public UserProfile updateUpvoteChallengeToProfileById(String id,Challenge challenge) throws  UserProfileNotFoundException{
+        if(userProfileRepository.existsById(id)){
+            UserProfile userProfile = userProfileRepository.findById(id).get();
+
+            List<Challenge> upvotedChallenge = userProfile.getChallengeUpvoted();
+            upvotedChallenge.add(challenge);
+            userProfile.setChallengeCreated(upvotedChallenge);
+            UserProfile userProfile2 = userProfileRepository.save(userProfile);
+            return userProfile2;
+        }
+        else{
+            throw new UserProfileNotFoundException("userProfile-controller.noUser");
+        }
+    }
+
+    //for downvoted challenge
+
+    @Override
+    public UserProfile updateDownvoteChallengeToProfileById(String id,Challenge challenge) throws  UserProfileNotFoundException{
+        if(userProfileRepository.existsById(id)){
+            UserProfile userProfile = userProfileRepository.findById(id).get();
+
+            List<Challenge> downvotedChallenge = userProfile.getChallengeDownvoted();
+            downvotedChallenge.add(challenge);
+            userProfile.setChallengeCreated(downvotedChallenge);
+            UserProfile userProfile2 = userProfileRepository.save(userProfile);
+            return userProfile2;
+        }
+        else{
+            throw new UserProfileNotFoundException("userProfile-controller.noUser");
+        }
+    }
+
+
+
+
+
+
+
+
+    @Override
+    public UserProfile  updateuserProfileById(String id,UserProfile userProfile1) throws UserProfileNotFoundException{
+
+        if(userProfileRepository.existsById(id)) {
+            UserProfile userProfile = userProfileRepository.findById(id).get();
+
+
+
+
+
+            userProfile.setFirstName(userProfile1.getFirstName());
+            userProfile.setLastName(userProfile1.getLastName());
+            userProfile.setPhone(userProfile1.getPhone());
+            userProfile.setUsername(userProfile1.getUsername());
+            userProfile.setRanking(userProfile1.getRanking());
+            userProfile.setScore(userProfile1.getScore());
+            userProfile.setDateOfBirth(userProfile1.getDateOfBirth());
+            userProfile.setPreferredLang(userProfile1.getPreferredLang());
+
+            //need to get the list already present and then add the new one
+
+            List<Challenge> attemptedChallenge = userProfile.getChallengeAttempted();
+            attemptedChallenge.add(userProfile1.getChallengeAttempted().get(0));
+            userProfile.setChallengeAttempted(attemptedChallenge);
+
+            List<Challenge> createdChallenge = userProfile.getChallengeCreated();
+            createdChallenge.add(userProfile1.getChallengeCreated().get(0));
+            userProfile.setChallengeCreated(createdChallenge);
+
+
+
+            List<Challenge> upvotedChallenge = userProfile.getChallengeUpvoted();
+            upvotedChallenge.add(userProfile1.getChallengeUpvoted().get(0));
+            userProfile.setChallengeUpvoted(upvotedChallenge);
+
+
+            List<Challenge> downvotedChallenge = userProfile.getChallengeDownvoted();
+            upvotedChallenge.add(userProfile1.getChallengeDownvoted().get(0));
+            userProfile.setChallengeUpvoted(downvotedChallenge);
+
+
+
+
+
+            UserProfile userProfile2 = userProfileRepository.save(userProfile);
+            return userProfile2;
+        }
+        else{
+            throw new UserProfileNotFoundException("userProfile-controller.noUser");
         }
     }
 

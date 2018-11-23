@@ -23,8 +23,8 @@ export class FilesService {
   textFiles : String[] = [];
   fileContent;
   files:[string];
-  url = "http://172.23.239.117:8020/";
-  url1 = "http://172.23.239.117:8021/compile";
+  url = "http://35.154.116.88:8182/";
+  url1 = "http://35.154.116.88:8183/compile";
   newurl:string = "";
   httpresponse;
 
@@ -52,7 +52,7 @@ export class FilesService {
    
     console.log(file);
     return this.http.post(this.url + "file/create", file, httpOptions);
-
+ 
   }
 
   RunFile(file){
@@ -65,7 +65,10 @@ export class FilesService {
   }
 getTemplate(){
   console.log("into the get template func");
-  return this.http.post(this.url + "file", "Hello/", httpOptions);
+  return this.http.post(this.url + "file", "main/", httpOptions);
+}
+getRepsoitory(url:string){
+  return this.http.post(this.url1+'/clone',url);
 }
 
 setPaths(data){

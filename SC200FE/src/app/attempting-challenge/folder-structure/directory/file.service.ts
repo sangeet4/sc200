@@ -5,7 +5,7 @@ import { v4 } from 'uuid';
 import { BehaviorSubject } from 'rxjs';
 import { FilesService } from '../../files.service';
 
-
+import {HttpClient} from '@angular/common/http'
 
 export interface IFileService {
   add(fileElement: FileElement);
@@ -17,10 +17,45 @@ export interface IFileService {
 @Injectable()
 export class FileService implements IFileService {
 
+  private TREE:string;
   private map = new Map<string, FileElement>();
 
-  constructor(private filesService:FilesService) { }
+  constructor(private filesService:FilesService,private http:HttpClient) { }
 
+  
+  getFileStructure(): {} {
+    var paths:[string] = this.filesService.allFiles;
+   var temp = JSON.stringify(this.parsePathArray(paths));
+ console.log(temp);
+ return temp;
+ }
+
+ parsePathArray(paths:[string]){
+   var parsed = {};
+   for(var i=0;i<paths.length;i++){
+
+     var position = parsed;
+     var split = paths[i].split('/');
+     for(var j = 0; j < split.length; j++) {
+         if(split[j] !== "") {
+             if(typeof position[split[j]] === 'undefined' ){
+               if(split[j].indexOf('.')>0){
+                 position[split[j]]=null;
+               }
+               else{
+               position[split[j]] = {};
+               }
+             }     
+             position = position[split[j]];
+         }
+     }
+ }
+ return parsed;
+   
+ }
+  
+  
+  
   add(fileElement: FileElement) {
     //fileElement.id = v4();
     this.map.set(fileElement.id, this.clone(fileElement));

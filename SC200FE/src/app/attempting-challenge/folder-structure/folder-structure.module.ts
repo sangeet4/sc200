@@ -12,10 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { RenameDialogComponent } from './directory/modals/rename-dialog/rename-dialog.component';
-import { NewFolderDialogComponent } from './directory/modals/new-folder-dialog/new-folder-dialog.component';
-import { NewFileDialogComponent } from './directory/modals/new-file-dialog/new-file-dialog.component';
- 
+import { MatTreeModule, MatCheckboxModule } from '@angular/material';
 @NgModule({
   imports: [
     CommonModule,
@@ -30,16 +27,14 @@ import { NewFileDialogComponent } from './directory/modals/new-file-dialog/new-f
     MatButtonModule,
     FormsModule,
     FlexLayoutModule,
-    MatCardModule
+    MatCardModule,
+    MatTreeModule,
+    MatCheckboxModule
   ],
   exports: [DirectoryComponent],
   providers: [FileService],
-  entryComponents: [RenameDialogComponent,
-    NewFolderDialogComponent,
-    NewFileDialogComponent],
+  entryComponents: [],
   declarations: [DirectoryComponent,
-    RenameDialogComponent,
-    NewFolderDialogComponent,
-    NewFileDialogComponent]
+   ]
   })
 export class FolderStructureModule { }

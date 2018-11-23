@@ -12,8 +12,11 @@ import lombok.NoArgsConstructor;
 @Builder
 
 public class Challenge {
-   public int challengeId;
-   public  String challengeName;
+   public String userId;
+   public String challengeId;
+   public  String challengeTitle;
+   public double challengeScore;
+   public boolean flag;
 
 
 }

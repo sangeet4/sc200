@@ -39,4 +39,18 @@ public class CompilerController {
         }
         return responseEntity;
     }
+    //adding the git cloning
+
+    @PostMapping("/clone")
+    public ResponseEntity<?> createClonedDirectory(@RequestBody @Valid String url) throws IOException{
+        ResponseEntity responseEntity;
+        try{
+            compileService.clone(url);
+            responseEntity = new ResponseEntity<String>("created",HttpStatus.OK);
+        }
+        catch (Exception e){
+            responseEntity = new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+        }
+        return responseEntity;
+    }
 }

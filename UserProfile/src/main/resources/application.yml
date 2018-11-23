@@ -1,2 +1,13 @@
 server:
     port: 8185
+
+
+userProfile-controller:
+    saveUser: '"successfully saved user"'
+    deleteUser: '"successfully deleted user"'
+    updateUser: '" successfully updated user"'
+    noUser: '"no user with such id"'
+
+userProfile-service:
+    userExist: '"user already exists with such id"'
+

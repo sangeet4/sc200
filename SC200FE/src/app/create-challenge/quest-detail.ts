@@ -1,4 +1,3 @@
-import { User } from './../login-nregistration/_models/user';
 export class QuestDetail {
     id: string;
     userId: string;
@@ -11,7 +10,7 @@ export class QuestDetail {
     maxScore: number;
     maxRuntime: number;
     programmingLang: string;
-    topic: string
+    topic: string;
     solutionUrl: string;
     boilerPlateUrl: string;
     level: number;
@@ -19,7 +18,7 @@ export class QuestDetail {
 
     constructor() {
         this.id = '';
-        this.userId ='';
+        this.userId = '';
         this.challengeTitle = '';
         this.challengeDescription = '';
         this.challengeStatement = '';
@@ -29,7 +28,7 @@ export class QuestDetail {
         this.maxScore = null;
         this.maxRuntime = null;
         this.programmingLang = '';
-        this.topic='';
+        this.topic = '';
         this.solutionUrl = '';
         this.boilerPlateUrl = '';
         this.level = null;

@@ -17,7 +17,7 @@ export class UserService {
     }
 
     register(user: User) {
-        return this.http.post(`http://172.23.239.93:8083/api/v1/user/add`, user);
+        return this.http.post(`http://35.154.116.88:8181/api/v1/user/add`, user);
     }
 
     // update(user: User) {

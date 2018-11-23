@@ -1,5 +1,6 @@
 ﻿
 <nav class="navbar navbar-dark bg-dark mb-5">
+    <!-- <a class="navbar-brand" href="/">Sc200</a> -->
     <div class="navbar-expand mr-auto">
        <div class="navbar-nav">
         
@@ -10,11 +11,11 @@
   
        <div> <p class=" btn btn-success my-3 my-sm-1">Hi {{currentUser.username}}!</p>  
         </div> 
-        <p><a [routerLink]="['/attempt']" class="btn btn-outline-success my-3 my-sm-1" >Attempt</a>
-        </p>
+        <!-- <p><a [routerLink]="['/attempt']" class="btn btn-outline-success my-3 my-sm-1" >Attempt</a>
+        </p> -->
         <p><a [routerLink]="['/challenge/add']" class="btn btn-outline-success my-3 my-sm-1" >Create Challenge</a>
         </p>   
-        <p><a [routerLink]="['/profile', currentUser.email]" class="btn btn-outline-success my-3 my-sm-1" >User Profile</a>
+        <p><a [routerLink]="['/profile', currentUser.username]" class="btn btn-outline-success my-3 my-sm-1" >User Profile</a>
         </p>
         <p><a [routerLink]="['/login']"class="btn btn-outline-success my-2 my-sm-1">Log Out</a></p>
          

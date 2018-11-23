@@ -1,0 +1,5 @@
+
+localhost: '172.23.239.131:9092'
+#serverport:'8090'
+server:
+  port: 8190

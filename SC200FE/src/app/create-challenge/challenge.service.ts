@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ChallengeService {
 
-  public baseUrl = 'http://localhost:8080/challengeAPI/v1';
+  public baseUrl = 'http://35.154.116.88:8180/challengeAPI/v1';
 
   constructor(private http: HttpClient) { }
 

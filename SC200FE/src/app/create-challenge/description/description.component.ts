@@ -2,6 +2,7 @@ import { QuestDetail } from './../quest-detail';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ChallengeService } from '../challenge.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-description',
@@ -10,7 +11,7 @@ import { ChallengeService } from '../challenge.service';
 })
 export class DescriptionComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private questService: ChallengeService) {}
+  constructor(private fb: FormBuilder, private questService: ChallengeService, private router: Router) {}
 
   availbLang = [ 'Java', 'Python', 'C', 'Cpp', 'Javascript' ];
   readOnlyFlag = false;
@@ -87,23 +88,24 @@ export class DescriptionComponent implements OnInit {
         return;
       }
       console.log(this.questDesc.value);
-      alert('The form was submitted');
       this.questService.createChallenge(this.questDesc.value)
         .subscribe(data => {
           console.log('POST Successful');
         });
+      alert('The form was submitted');
+      this.router.navigate(['../../']);
     } else {
       if (this.questDesc.invalid) {
         console.log('PUT Failed');
         return;
       }
       console.log(this.questDesc.value);
-      alert('The form was updated');
       this.questService.updateChallenge(this.quest2send.id, this.questDesc.value)
         .subscribe(data => {
           console.log(data);
           console.log('PUT Successful');
         });
+      alert('The form was updated');
     }
     this.questDesc.reset();
   }

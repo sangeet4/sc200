@@ -33,14 +33,14 @@ public class UserProfileController {
 
     }
 
-    @PostMapping("posting")
+    @PostMapping("")
     public ResponseEntity<?> saveUserProfile(@Valid @RequestBody UserProfile userProfile){
         ResponseEntity responseEntity;
               try {
                   userProfileService.saveUserProfile(userProfile);
                  userResource.putIntoTopic(userProfile);
 
-                  responseEntity = new ResponseEntity<String>("Successfully Created", HttpStatus.CREATED);
+                  responseEntity = new ResponseEntity<String>("userProfile.saveUser", HttpStatus.CREATED);
               }
               catch(UserProfileAlreadyExitsException e){
                   responseEntity = new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
@@ -49,48 +49,42 @@ public class UserProfileController {
         return responseEntity;
     }
 
-    @GetMapping(value = "gettingall")
+    @GetMapping()
     public ResponseEntity<?> getAllUserProfiles() {
         return new ResponseEntity<List<UserProfile>>(userProfileService.getAllUserProfiles(), HttpStatus.OK);
     }
 
-    @GetMapping(path = "getting/{id}")
+    @GetMapping(path = "/{id}")
     public ResponseEntity<?> searchById(@PathVariable("id") String id) {
        ResponseEntity responseEntity;
       try{
-          // Movie movie= movieService.searchMovieById(id);
+
            UserProfile userProfile=userProfileService.searchUserProfileById(id);
          responseEntity= new ResponseEntity<UserProfile>(userProfile,HttpStatus.OK);
-         // UserProfile updatedProfile = userProfileService.updateuserProfileById(id,userProfile);
-          //responseEntity = new ResponseEntity<UserProfile>(updatedProfile, HttpStatus.OK);
-
       }catch (Exception e){
            responseEntity= new ResponseEntity<String>(e.getMessage(),HttpStatus.NOT_FOUND);
       }
        return responseEntity;
-        //return new ResponseEntity<UserProfile>(userProfileService.searchUserProfileById(id), HttpStatus.OK);
+
     }
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable("id") String id){
         ResponseEntity responseEntity;
 
            if (userProfileService.deleteUserProfilebyId(id)==true) {
-               responseEntity = new ResponseEntity<String>("Successfully deleted", HttpStatus.OK);
+               responseEntity = new ResponseEntity<String>("userProfile-controller.deleteUser", HttpStatus.OK);
 
            }
            else{
-               responseEntity= new ResponseEntity<String>("UserProfile does not exist",HttpStatus.NOT_FOUND);
+               responseEntity= new ResponseEntity<String>("userProfile-controller.noUser",HttpStatus.NOT_FOUND);
            }
         return responseEntity;
     }
 
-    @PutMapping("updating/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<?> updateuserProfileById(@Valid@RequestBody UserProfile userProfile ,@PathVariable("id") String id){
         ResponseEntity responseEntity;
        try {
-           // userProfileService.updateuserProfileById(id,userProfile);
-           // responseEntity = new ResponseEntity<String>("Successfully Updated",HttpStatus.CREATED);
-
            UserProfile updatedProfile = userProfileService.updateuserProfileById(id,userProfile);
            responseEntity = new ResponseEntity<UserProfile>(updatedProfile, HttpStatus.OK);
 

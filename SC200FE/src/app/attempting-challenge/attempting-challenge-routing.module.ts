@@ -6,7 +6,7 @@ import { AttemptingChallengeComponent } from './attempting-challenge.component';
 const routes: Routes = [
   {path: '', component: AttemptingChallengeComponent,
   children: [
-    //{path: '' , component : AttemptingChallengeComponent }
+    // {path: '' , component : AttemptingChallengeComponent },
     {path: ':file/:name' , component : EditorComponent}
   ]}
 ];

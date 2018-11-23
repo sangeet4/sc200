@@ -50,6 +50,11 @@ export class FolderUpload {
   
   uploadedFiles;
 
+  clone(url:string){
+    console.log(url);
+    this.filesServie.getRepsoitory(url);
+  }
+
   filesPicked(files) {
     // console.log(files);
     this.uploadedFiles=files;

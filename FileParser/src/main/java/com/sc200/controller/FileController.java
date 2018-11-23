@@ -78,26 +78,5 @@ public class FileController {
 
         return  responseEntity;
     }
-
-
-
-<<<<<<< HEAD
-=======
-    @PostMapping()
-    public String getTemplateFromBackend(@RequestBody @Valid String path) throws IOException {
-
-        try {
-            System.out.println("hello");
-            String[] a = fileService.getTemplate(path);
-            return a.toString();
-        }
-        catch(Exception e)
-        {
-            return e.getMessage();
-        }
-
-    }
-
   
->>>>>>> b735ce70bf6a299feb46fcedea123055527c44c8
 }

@@ -162,7 +162,7 @@ export class DirectoryComponent {
   }
   showTemplate(){
     this.filesService.getTemplate().subscribe(data => {
-      this.filesService.allFiles=data;
+      this.filesService.allFiles=data['paths'];
 
     this.database.initialize();
     });

@@ -20,13 +20,4 @@ public interface FileService {
     public ArrayList<String> getContents();
 
     public void setPathsAndContent(File dir);
-
-
-
-<<<<<<< HEAD
-=======
-    public  String replaceLast(String string, String toReplace, String replacement);
-
-    public String[] getTemplate(String path);
->>>>>>> b735ce70bf6a299feb46fcedea123055527c44c8
 }

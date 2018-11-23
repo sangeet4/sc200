@@ -25,6 +25,7 @@ export class FileService implements IFileService {
   
   getFileStructure(): {} {
     var paths:[string] = this.filesService.allFiles;
+    console.log(this.filesService.allFiles);
    var temp = JSON.stringify(this.parsePathArray(paths));
  console.log(temp);
  return temp;

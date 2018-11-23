@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewFolderDialogComponent } from './modals/new-folder-dialog/new-folder-dialog.component';
 import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component';
 import { NewFileDialogComponent } from './modals/new-file-dialog/new-file-dialog.component';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FileService } from './file.service';
 import {SelectionModel} from '@angular/cdk/collections';
 import {FlatTreeControl} from '@angular/cdk/tree';
@@ -111,6 +111,7 @@ export class ChecklistDatabase {
   providers: [ChecklistDatabase]
 })
 export class DirectoryComponent {
+  id: string;
 
   /** Map from flat node to nested node. This helps us finding the nested node to be modified */
   flatNodeMap: Map<TodoItemFlatNode, TodoItemNode> = new Map<TodoItemFlatNode, TodoItemNode>();
@@ -146,7 +147,7 @@ export class DirectoryComponent {
   @Output() navigatedUp = new EventEmitter();
   @Output() fileAdded = new EventEmitter<{ name: string }>();
 
-  constructor(public dialog: MatDialog, private router: Router, private fileService: FileService, private database: ChecklistDatabase,private filesService:FilesService) {
+  constructor(public dialog: MatDialog, private router: Router, private fileService: FileService, private database: ChecklistDatabase,private filesService:FilesService, private route:ActivatedRoute) {
     this.treeFlattener = new MatTreeFlattener(this.transformer, this.getLevel,
     this.isExpandable, this.getChildren);
     this.treeControl = new FlatTreeControl<TodoItemFlatNode>(this.getLevel, this.isExpandable);
@@ -163,7 +164,9 @@ export class DirectoryComponent {
   showTemplate(){
     this.filesService.getTemplate().subscribe(data => {
       this.filesService.allFiles=data['paths'];
-
+      this.filesService.fileContent=data['contents'];
+      console.log(data['paths']);
+      console.log(data['contents']);
     this.database.initialize();
     });
   }
@@ -173,8 +176,14 @@ export class DirectoryComponent {
   }
 
   showContent(name:string){
+    this.id = this.route.snapshot.paramMap.get('id');
+
     var filename=name.split('.');
-    this.router.navigate(['attempt/'+filename[1]+'/'+filename[0]]);
+    // console.log("show content");
+    // console.log(filename);
+    // console.log(this.router);
+    // console.log(this.router.url);
+    this.router.navigate(['attempt/' + this.id +'/'+filename[1]+'/'+filename[0]]);
   }
 
   navigate(element: FileElement) {

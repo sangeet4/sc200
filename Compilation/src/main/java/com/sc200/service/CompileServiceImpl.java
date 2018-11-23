@@ -18,17 +18,17 @@ public class CompileServiceImpl implements CompileService {
 
 
     @Override
-    public ArrayList<String> runFile() throws IOException {
+    public ArrayList<String> runFile(File file) throws IOException {
 
         ArrayList<String> lines = new ArrayList<String>();
         int i=0;
 
         try{
             System.out.println("start excution......");
-            // String relativePath =  this.fileParserService.findRelativePath(file);
-            // String fileName =  this.fileParserService.findFileName(file);
+            String relativePath =  this.fileParserService.findRelativePath(file);
+            String fileName =  this.fileParserService.findFileName(file);
       	    System.out.println("aaaaa shellScript");
-            String[] command = {"/bin/bash", "/home/cgi/Desktop/sc200/sc200/Compilation/src/main/resources/dockerize.sh"};
+            String[] command = {"/bin/bash", "shellScript.sh", relativePath , fileName};
 	    System.out.println("aaaaaa");
             ProcessBuilder p = new ProcessBuilder(command);
 	    System.out.println(p.toString());
@@ -42,7 +42,7 @@ public class CompileServiceImpl implements CompileService {
                 i++;
                 
             }
-            System.out.println("ending execution......");
+            System.out.println("ending excution......");
         }
         catch(Exception e)
         {
@@ -56,7 +56,7 @@ public class CompileServiceImpl implements CompileService {
         try{
             System.out.println("started execution");
             System.out.println("github url: "+url);
-            String[] command = {"/bin/bash","/home/cgi/Desktop/sc200/sc200/Compilation/src/main/resources/clonescript.sh",url};
+            String[] command = {"/bin/bash/","/home/cgi/sc200/Compilation/src/main/resources/clonescript.sh",url};
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             Process process = processBuilder.start();
 
@@ -66,6 +66,4 @@ public class CompileServiceImpl implements CompileService {
             ex.printStackTrace();
         }
     }
-
-
 }

@@ -30,11 +30,11 @@ public class CompilerController {
         path = path.replaceAll("\"" , "");
         File file = new File(path);
         try{
-            ArrayList<String> output = compileService.runFile();
+            ArrayList<String> output = compileService.runFile(file);
             responseEntity = new ResponseEntity<ArrayList<String>>(output , HttpStatus.OK);
         }
         catch (Exception e){
-            ArrayList<String> output = compileService.runFile();
+            ArrayList<String> output = compileService.runFile(file);
             responseEntity = new ResponseEntity<String>(e.getMessage() , HttpStatus.BAD_REQUEST);
         }
         return responseEntity;

@@ -18,6 +18,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/challengeAPI/v1")
@@ -144,8 +145,8 @@ public class ChallengeController {
 
         ResponseEntity responseEntity;
         try {
-            Challenge savedChallenge = challengeService.getChallengeById(challengeId).get();
-            responseEntity = new ResponseEntity<Challenge>(savedChallenge,HttpStatus.OK);
+            Optional<Challenge> savedChallenge = challengeService.getChallengeById(challengeId);
+            responseEntity = new ResponseEntity<Challenge>(savedChallenge.get(),HttpStatus.OK);
         }
         catch (ChallengeNotFoundException ex){
             responseEntity = new ResponseEntity<String>(exceptionMessage,HttpStatus.CONFLICT);

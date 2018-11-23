@@ -13,11 +13,11 @@ const routes: Routes = [
   children: [
     { path: '', component: HomeComponent, canActivate: [AuthGuard]},
     { path: 'logout', component: HeaderComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
+    // { path: 'login', component: LoginComponent },
+    // { path: 'register', component: RegisterComponent },
     { path: 'profile/:id', loadChildren: '../profile/profile.module#ProfileModule'},
     { path: 'challenge', loadChildren: '../create-challenge/create-challenge.module#CreateChallengeModule'},
-    { path: 'attempt', loadChildren: '../attempting-challenge/attempting-challenge.module#AttemptingChallengeModule'},
+    { path: 'attempt/:id', loadChildren: '../attempting-challenge/attempting-challenge.module#AttemptingChallengeModule'},
     { path: '**', redirectTo: 'logout' }
   ]}
 

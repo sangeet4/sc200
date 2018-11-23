@@ -27,9 +27,8 @@ public class CompileServiceImpl implements CompileService {
             System.out.println("start excution......");
             String relativePath =  this.fileParserService.findRelativePath(file);
             String fileName =  this.fileParserService.findFileName(file);
-      	    System.out.println("aaaaa shellScript");
-            String[] command = {"/bin/bash", "shellScript.sh", relativePath , fileName};
-	    System.out.println("aaaaaa");
+
+            String[] command = {"/bin/bash", "dockerize.sh"};
             ProcessBuilder p = new ProcessBuilder(command);
 	    System.out.println(p.toString());
 	    Process p2 = p.start();
@@ -56,7 +55,7 @@ public class CompileServiceImpl implements CompileService {
         try{
             System.out.println("started execution");
             System.out.println("github url: "+url);
-            String[] command = {"/bin/bash/","/home/cgi/sc200/Compilation/src/main/resources/clonescript.sh",url};
+            String[] command = {"/bin/bash","clonescript.sh",url};
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             Process process = processBuilder.start();
 

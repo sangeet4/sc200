@@ -265,9 +265,13 @@ public class ChallengeServiceImpl implements ChallengeService {
 
     @Override
     public Optional<Challenge> getChallengeById(String id) throws ChallengeNotFoundException {
-        Optional<Challenge> challenge;
-        challenge=challengeRepository.findById(id);
-        return challenge;
+        Optional<Challenge> challenge = challengeRepository.findById(id);
+        if (challenge.isPresent()) {
+            return challenge;
+        }
+        else {
+            throw new ChallengeNotFoundException(id);
+        }
     }
 
     @Override

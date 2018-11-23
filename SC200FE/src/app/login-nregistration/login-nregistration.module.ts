@@ -20,7 +20,8 @@ import { RecommedationCardComponent } from './home/recommedation-card/recommedat
 
 import { LoginNRegistrationRoutingModule } from './login-nregistration-routing.module';
 import { LoginNRegistrationComponent } from './login-nregistration.component';
-
+import { QuestionListComponent } from './home/question-list/question-list.component';
+import {NgxPaginationModule} from 'ngx-pagination' ;
 @NgModule({
   imports: [
     CommonModule,
@@ -35,7 +36,8 @@ import { LoginNRegistrationComponent } from './login-nregistration.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    NgxPaginationModule
 
   ],
   declarations: [
@@ -45,7 +47,8 @@ import { LoginNRegistrationComponent } from './login-nregistration.component';
     RegisterComponent,
     HeaderComponent,
     LoginNRegistrationComponent,
-    RecommedationCardComponent
+    RecommedationCardComponent,
+    QuestionListComponent
   ],
   providers: [
     AuthGuard,

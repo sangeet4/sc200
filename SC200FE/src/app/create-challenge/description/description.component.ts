@@ -31,10 +31,9 @@ export class DescriptionComponent implements OnInit {
       this.readOnlyFlag = true;
     }
     this.questDesc = this.fb.group({
-      challengeId : [this.quest2send.challengeId, [Validators.required]],
-      userId : [this.quest2send.userId, [Validators.required]],
+      id : [this.quest2send.id, [Validators.required]],
       challengeTitle : [this.quest2send.challengeTitle, [Validators.required]],
-      challengeStamp : [this.quest2send.challengeStamp, [Validators.required]],
+      challengeDescription : [this.quest2send.challengeDescription, [Validators.required]],
       challengeStatement : [this.quest2send.challengeStatement, [Validators.required]],
       inputFormat : [this.quest2send.inputFormat, [Validators.required]],
       constraints : [this.quest2send.constraints, [Validators.required]],
@@ -52,13 +51,11 @@ export class DescriptionComponent implements OnInit {
     });
   }
 
-  get challengeId() {return this.questDesc.get('challengeId'); }
-
-  get userId() {return this.questDesc.get('userId'); }
+  get id() {return this.questDesc.get('id'); }
 
   get title() { return this.questDesc.get('challengeTitle'); }
 
-  get challengeStamp() { return this.questDesc.get('challengeStamp'); }
+  get desc() { return this.questDesc.get('challengeDescription'); }
 
   get stat() { return this.questDesc.get('challengeStatement'); }
 

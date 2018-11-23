@@ -216,7 +216,7 @@ services:
           expose:
           - 4200
 
-  recommendation:
+  empty-container:
     image: empty-container
     build: FileParser/Directory/Challenges/
     network_mode: host

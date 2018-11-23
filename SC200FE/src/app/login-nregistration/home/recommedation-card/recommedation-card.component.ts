@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./recommedation-card.component.css']
 })
 export class RecommedationCardComponent implements OnInit {
-  title = 'RecommendationSystem';
+  title = 'the World of Programming';
   challenges = [];
   isClicked: boolean = false;
 
@@ -28,8 +28,8 @@ export class RecommedationCardComponent implements OnInit {
 
 
   }
-  attempt() {
-    this.router.navigate(['attempt']);
+  attempt(id: string) {
+    this.router.navigate(['attempt', id]);
   }
 
 }

@@ -1,8 +1,8 @@
 export class QuestDetail {
-    challengeId: string;
+    id: string;
     userId: string;
     challengeTitle: string;
-    challengeStamp: string;
+    challengeDescription: string;
     challengeStatement: string;
     inputFormat: string;
     constraints: string;
@@ -15,14 +15,12 @@ export class QuestDetail {
     boilerPlateUrl: string;
     level: number;
     rating: number;
-    upvotes:number;
-    downvotes:number;
 
     constructor() {
-        this.challengeId = '';
+        this.id = '';
         this.userId = '';
         this.challengeTitle = '';
-        this.challengeStamp = '';
+        this.challengeDescription = '';
         this.challengeStatement = '';
         this.inputFormat = '';
         this.constraints = '';
@@ -35,7 +33,5 @@ export class QuestDetail {
         this.boilerPlateUrl = '';
         this.level = null;
         this.rating = null;
-        this.upvotes = null;
-        this.downvotes = null;
     }
 }

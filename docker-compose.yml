@@ -218,7 +218,7 @@ services:
 
   empty-container:
     image: empty-container
-    build: FileParser/Directory/Challenges/
+    build: FileParser/Directory/challenges/
     network_mode: host
     container_name: empty-container
     ports:
@@ -226,4 +226,4 @@ services:
     expose:
       - 8188
     volumes:
-     - './FileParser/Directory/Challenges:/usr/app/'
+     - './FileParser/Directory/challenges:/usr/app/'

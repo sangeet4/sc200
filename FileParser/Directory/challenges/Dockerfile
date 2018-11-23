@@ -1,3 +1,3 @@
-FROM openjdk:8-jre
+FROM openjdk:8-jdk
 WORKDIR usr/app
-
+RUN exit

@@ -22,6 +22,8 @@ import { LoginNRegistrationRoutingModule } from './login-nregistration-routing.m
 import { LoginNRegistrationComponent } from './login-nregistration.component';
 import { QuestionListComponent } from './home/question-list/question-list.component';
 import {NgxPaginationModule} from 'ngx-pagination' ;
+import {SearchService} from './home/search.service';
+import {SearchComponent} from './home/search/search.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import {NgxPaginationModule} from 'ngx-pagination' ;
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+
 
   ],
   declarations: [
@@ -48,7 +51,8 @@ import {NgxPaginationModule} from 'ngx-pagination' ;
     HeaderComponent,
     LoginNRegistrationComponent,
     RecommedationCardComponent,
-    QuestionListComponent
+    QuestionListComponent,
+	SearchComponent
   ],
   providers: [
     AuthGuard,
@@ -57,6 +61,7 @@ import {NgxPaginationModule} from 'ngx-pagination' ;
     UserService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+	SearchService
 
     // provider used to create fake backend
   ]

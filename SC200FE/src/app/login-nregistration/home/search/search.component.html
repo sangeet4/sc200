@@ -1,0 +1,19 @@
+<div class="col">
+<input type="text" (keydown)="search($event)" (click)='openDropDown()' (blur)='closeDropDown()' (keyup.enter)='submit($event)' placeholder="search ..." class=" form-control-lg form-control-borderless input-underline search-bar">
+<div *ngIf='showDropDown'class="search-drop-down">
+<div *ngFor="let challenge of challenges">
+  <div (click)='select(challenge?.id)' class="search-results">
+    <h4>{{ challenge?.challengeTitle }}</h4>
+  <p>{{challenge?.topic}}</p>
+  </div>
+  
+</div>
+
+<div *ngIf="challenges?.length < 1">
+  <hr>
+  <p>
+    No results found :(
+  </p>
+</div>
+</div>
+</div>

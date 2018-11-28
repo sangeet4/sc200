@@ -23,11 +23,7 @@ export class RecommedationCardComponent implements OnInit {
       // console.log(this.challenges);
     })
   }
-  search() {
-    // var http:HttpClient;
-
-
-  }
+  
   attempt(id: string) {
     this.router.navigate(['attempt', id]);
   }

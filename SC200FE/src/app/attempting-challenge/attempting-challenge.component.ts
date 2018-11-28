@@ -22,6 +22,8 @@ export class AttemptingChallengeComponent implements OnInit {
   currentPath: string;
   canNavigateUp = false;
 
+  parentData: string;
+
   constructor(public fileService: FileService, public filesService: FilesService) { }
 
   ngOnInit() {}

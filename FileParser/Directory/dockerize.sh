@@ -1,5 +1,4 @@
 #! /bin/bash
-exit
 cd ..
 docker-compose scale empty-container=1
 docker exec -it empty-container bash

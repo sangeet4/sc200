@@ -6,14 +6,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewFolderDialogComponent } from './modals/new-folder-dialog/new-folder-dialog.component';
 import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component';
 import { NewFileDialogComponent } from './modals/new-file-dialog/new-file-dialog.component';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute,NavigationEnd } from '@angular/router';
 import { FileService } from './file.service';
-import {SelectionModel} from '@angular/cdk/collections';
-import {FlatTreeControl} from '@angular/cdk/tree';
-import {MatTreeFlattener, MatTreeFlatDataSource} from '@angular/material/tree';
-import {of as ofObservable, Observable, BehaviorSubject} from 'rxjs';
+import { SelectionModel } from '@angular/cdk/collections';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { MatTreeFlattener, MatTreeFlatDataSource } from '@angular/material/tree';
+import { of as ofObservable, Observable, BehaviorSubject } from 'rxjs';
 import { FilesService } from '../../files.service';
-
 
 
 /**
@@ -41,31 +40,29 @@ export class ChecklistDatabase {
   dataChange: BehaviorSubject<TodoItemNode[]> = new BehaviorSubject<TodoItemNode[]>([]);
   public url = "http://localhost:8080/file/structure";
   public TREE: string;
-  
-
-  get data(): TodoItemNode[] { return this.dataChange.value; }
 
   constructor(private http: HttpClient, private fileService: FileService) {
     // this.initialize();
   }
 
+  get data(): TodoItemNode[] { return this.dataChange.value; }
+
   initialize() {
     // Build the tree nodes from Json object. The result is a list of `TodoItemNode` with nested
     //     file node as children.
-      
-          this.TREE = this.fileService.getFileStructure().toString();
-          console.log(this.TREE);
-          this.TREE = this.TREE.replace(/'/g,'\"');
-          console.log(this.TREE);
-          this.TREE = JSON.parse(this.TREE);
-          //this.TREE = {'root':{'test':{'ArrayDifference.js' : null, 'ArrayDifference2.js' : null}}, 'test':{'test2':{'ArrayDifference.js' : null}}};
-        
-          const values = this.buildFileTree(this.TREE, 0);
-          // Notify the change.
-          this.dataChange.next(values);
-         // pipe(map(response => response.toString()))
-    
-    }
+    this.TREE = this.fileService.getFileStructure().toString();
+    console.log(this.TREE);
+    this.TREE = this.TREE.replace(/'/g, '\"');
+    console.log(this.TREE);
+    this.TREE = JSON.parse(this.TREE);
+    //this.TREE = {'root':{'test':{'ArrayDifference.js' : null, 'ArrayDifference2.js' : null}}, 'test':{'test2':{'ArrayDifference.js' : null}}};
+
+    const values = this.buildFileTree(this.TREE, 0);
+    // Notify the change.
+    this.dataChange.next(values);
+    // pipe(map(response => response.toString()))
+
+  }
 
   /**
    * Build the file structure tree. The `value` is the Json object, or a sub-tree of a Json object.
@@ -91,7 +88,7 @@ export class ChecklistDatabase {
 
   /** Add an item to to-do list */
   insertItem(parent: TodoItemNode, name: string) {
-    const child = <TodoItemNode>{item: name};
+    const child = <TodoItemNode>{ item: name };
     if (parent.children) {
       parent.children.push(child);
       this.dataChange.next(this.data);
@@ -112,6 +109,7 @@ export class ChecklistDatabase {
 })
 export class DirectoryComponent {
   id: string;
+  count:number=0;
 
   /** Map from flat node to nested node. This helps us finding the nested node to be modified */
   flatNodeMap: Map<TodoItemFlatNode, TodoItemNode> = new Map<TodoItemFlatNode, TodoItemNode>();
@@ -134,8 +132,6 @@ export class DirectoryComponent {
   /** The selection for checklist */
   checklistSelection = new SelectionModel<TodoItemFlatNode>(true /* multiple */);
 
-  
-
   @Input() fileElements: FileElement[];
   @Input() canNavigateUp: string;
   @Input() path: string;
@@ -146,10 +142,11 @@ export class DirectoryComponent {
   @Output() navigatedDown = new EventEmitter<FileElement>();
   @Output() navigatedUp = new EventEmitter();
   @Output() fileAdded = new EventEmitter<{ name: string }>();
+  @Output() clickedFile: EventEmitter<string> = new EventEmitter();
 
-  constructor(public dialog: MatDialog, private router: Router, private fileService: FileService, private database: ChecklistDatabase,private filesService:FilesService, private route:ActivatedRoute) {
+  constructor(public dialog: MatDialog, private router: Router, private fileService: FileService, private database: ChecklistDatabase, private filesService: FilesService, private route: ActivatedRoute) {
     this.treeFlattener = new MatTreeFlattener(this.transformer, this.getLevel,
-    this.isExpandable, this.getChildren);
+      this.isExpandable, this.getChildren);
     this.treeControl = new FlatTreeControl<TodoItemFlatNode>(this.getLevel, this.isExpandable);
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
@@ -158,16 +155,15 @@ export class DirectoryComponent {
     });
   }
 
-  showDirectory() {
-    this.database.initialize();
-  }
-  showTemplate(){
+  // showDirectory() {
+  //   this.database.initialize();
+  // }
+
+  showTemplate() {
     this.filesService.getTemplate().subscribe(data => {
-      this.filesService.allFiles=data['paths'];
-      this.filesService.fileContent=data['contents'];
+      this.filesService.allFiles = data['paths'];
       console.log(data['paths']);
-      console.log(data['contents']);
-    this.database.initialize();
+      this.database.initialize();
     });
   }
 
@@ -175,29 +171,60 @@ export class DirectoryComponent {
     this.elementRemoved.emit(element);
   }
 
+  // showContent(name: string) {
+  //   console.log("showContent method is being called");
+
+  //   this.id = this.route.snapshot.paramMap.get('id');
+  //   var filename = name.split('.');
+  //   //this.router.navigate(['attempt/' + this.id + '/' + filename[1] + '/' + filename[0]]);
+  // }
+
   showContent(name:string){
-    this.id = this.route.snapshot.paramMap.get('id');
+    console.log("content from directory component");
+    // this.filesService.getContentfromUrl(name).subscribe(data=>{
+    //   console.log("data is " ,data );
+    console.log(name);
+    this.clickedFile.emit(name);
+    //this.callOnClicked.emit(null);    //this.fileService.changeMessage(name);
+    //this.fileService.setClickedFileName(name);
+    
+//        var filename = name.split('.');
+//       this.id = this.route.snapshot.paramMap.get('id');
 
-    var filename=name.split('.');
-    // console.log("show content");
-    // console.log(filename);
-    // console.log(this.router);
-    // console.log(this.router.url);
-    this.router.navigate(['attempt/' + this.id +'/'+filename[1]+'/'+filename[0]]);
+//     //   this.filesService.testData="";
+//     //   this.filesService.testData=data['content'];
+     
+//     //   console.log("url from the route");
+//     //   console.log(this.router.url);
+// console.log(this.router.url);
+
+// if(this.count<1){
+//   this.count++;
+//       this.router.navigate(['attempt/' + this.id + '/' + filename[1] + '/' + filename[0]]);
+//       }
+//       else{
+//         this.count++;
+//         console.log(this.count);
+//         this.id=this.route.snapshot.paramMap.get('id');
+
+//       console.log(this.id);
+        
+//       console.log(this.router.url);
+     
+//        //this.router.navigate(['/attempt'+this.id],{)
+//         this.router.navigateByUrl('/attempt/'+this.id+'/'+filename[1]+'/'+filename[0]);
+//       }      
+
   }
 
-  navigate(element: FileElement) {
-
-    if (element.isFolder) {
-      this.navigatedDown.emit(element);
-    } else {
-
-      const names = element.name.split('.');
-      this.router.navigate(['/' + names[1] + '/' + names[0]]);
-
-    }
-
-  }
+  // navigate(element: FileElement) {
+  //   if (element.isFolder) {
+  //     this.navigatedDown.emit(element);
+  //   } else {
+  //     const names = element.name.split('.');
+  //     this.router.navigate(['/' + names[1] + '/' + names[0]]);
+  //   }
+  // }
 
   navigateUp() {
     this.router.navigate(['']);
@@ -227,8 +254,6 @@ export class DirectoryComponent {
       }
     });
   }
-
-
 
   openRenameDialog(element: FileElement) {
     const dialogRef = this.dialog.open(RenameDialogComponent);

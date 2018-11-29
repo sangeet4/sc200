@@ -135,7 +135,7 @@ export class FolderUpload {
       // console.log(fileContent);
       // console.log(this.uploadPaths);
       this.filesServie.StoreFiles(this.uploadPaths, textFiles , fileContent);
-       this.filesServie.DisplayFiles();
+       //this.filesServie.DisplayFiles();
       this.fileService.addUploadedFiles();
       // Read in the image file as a data URL.
       // reader.readAsDataURL(f);

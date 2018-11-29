@@ -20,7 +20,7 @@ export class QuestionListComponent implements OnInit {
        var http:HttpClient;
       // console.log("gggggggggggggggggggggggggggggg");
       //console.log(`hey ${id}`);
-      this.http.get('http://172.23.239.81:8180/challengeAPI/v1/basic').subscribe((res:any)=> {
+      this.http.get('https://35.154.116.88:8080/challenge/challengeAPI/v1/basic').subscribe((res:any)=> {
           console.log("gggggggggggggggggggggggggggggg");
         this.quesList=res;
           console.log("gggggg ", res);

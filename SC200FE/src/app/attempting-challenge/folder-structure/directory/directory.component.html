@@ -21,7 +21,7 @@
   </div>
 </div> -->
 
-<button (click) = "showDirectory()">show</button>
+<!-- <button (click) = "showDirectory()">show</button> -->
 <button (click) = "showTemplate()">showTemplate</button>
 
 
@@ -42,7 +42,7 @@
 
 
 
-<mat-menu #rootMenu="matMenu">
+<!-- <mat-menu #rootMenu="matMenu">
   <ng-template matMenuContent let-element="element">
     <button mat-menu-item [matMenuTriggerFor]="moveToMenu" [matMenuTriggerData]="{self: element}">
       <mat-icon>open_with</mat-icon>
@@ -72,7 +72,7 @@
       <button *ngIf="element.isFolder && element.id !== self.id" mat-menu-item (click)="moveElement(self, element)">{{element.name}}</button>
     </ng-container>
   </ng-template>
-</mat-menu>
+</mat-menu> -->
 
 <!-- directory structure code -->
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
@@ -80,7 +80,7 @@
     <button mat-icon-button disabled></button>
     <mat-checkbox class="checklist-leaf-node"
                   [checked]="checklistSelection.isSelected(node)"
-                  (click) ="showContent(node.item)"
+                  (click)="showContent(node.item)"
                   (change)="checklistSelection.toggle(node);">{{node.item}}</mat-checkbox>
   </mat-tree-node>
 

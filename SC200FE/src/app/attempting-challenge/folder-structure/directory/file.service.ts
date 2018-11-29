@@ -19,23 +19,47 @@ export class FileService implements IFileService {
 
   private TREE:string;
   private map = new Map<string, FileElement>();
+  //private clickedFileName:string;
+  private clickedFileName = new BehaviorSubject("null");
+  currentMessage = this.clickedFileName.asObservable();
+
 
   constructor(private filesService:FilesService,private http:HttpClient) { }
 
+  changeMessage(message: string) {
+    console.log(message);
+    
+    this.clickedFileName.next(message)
+  }
+
+
+  // setClickedFileName(name: string) {
+  //   this.clickedFileName = name;
+  // }
+
+  // getClickedFileName() {
+  //   return this.clickedFileName;
+  // }
   
   getFileStructure(): {} {
     var paths:[string] = this.filesService.allFiles;
-    console.log(this.filesService.allFiles);
+
+   
+   
    var temp = JSON.stringify(this.parsePathArray(paths));
- console.log(temp);
+ 
  return temp;
  }
 
  parsePathArray(paths:[string]){
    var parsed = {};
+   
    for(var i=0;i<paths.length;i++){
 
      var position = parsed;
+
+     if(paths[i]!=null){
+
      var split = paths[i].split('/');
      for(var j = 0; j < split.length; j++) {
          if(split[j] !== "") {
@@ -50,7 +74,9 @@ export class FileService implements IFileService {
              position = position[split[j]];
          }
      }
- }
+    }
+ 
+}
  return parsed;
    
  }
@@ -143,7 +169,7 @@ export class FileService implements IFileService {
     }
   
   }
-  console.log(this.filesService.DisplayFiles());
+  //console.log(this.filesService.DisplayFiles());
    //need to remove duplicates in the fileElements_array;
    this.fileElements_array=this.remove_duplicates(this.fileElements_array);
    for(let i=0;i<this.fileElements_array.length;i++){

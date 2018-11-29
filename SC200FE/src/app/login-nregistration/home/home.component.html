@@ -8,7 +8,7 @@
     </div>
     <div class="navbar-expand ml-auto navbar-nav">
       <div class="navbar-nav">
-  
+        <app-search (datafromchild)="setSearchText($event)"></app-search>
        <div> <p class=" btn btn-success my-3 my-sm-1">Hi {{currentUser.username}}!</p>  
         </div> 
         <!-- <p><a [routerLink]="['/attempt']" class="btn btn-outline-success my-3 my-sm-1" >Attempt</a>
@@ -22,4 +22,31 @@
       </div>
     </div>
   </nav>
-  <app-recommedation-card [name]="currentUser.username"></app-recommedation-card>
+  <div *ngIf='result'>
+
+
+    <div class="card col-md-12" *ngFor="let challenge of result ">
+      <div class="card-block">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Title : {{ challenge?.challengeTitle }}</mat-card-title>
+
+          </mat-card-header>
+          <mat-card-content>
+            <p>Level:{{challenge?.level}}</p>
+            <p>Description : {{challenge?.challengeStamp}}</p>
+
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color='primary' (click)="attempt(challenge?.challengeId)">Attempt Challenge</button>
+             
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+
+</div>
+<app-recommedation-card *ngIf= "result?.length <1" [name]="currentUser.username" >
+
+</app-recommedation-card>
+  

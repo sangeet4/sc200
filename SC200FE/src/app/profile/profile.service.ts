@@ -8,7 +8,7 @@ import { Profile } from './profile';
 })
 export class ProfileService {
 
-  public baseUrl = 'http://35.154.116.88:8185/sc200/userProfile/';
+  public baseUrl = 'https://35.154.116.88:8080/profile/sc200/userProfile/';
 
   constructor(private http: HttpClient) { }
 

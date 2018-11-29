@@ -19,10 +19,10 @@ export class AttemptViewComponent implements OnInit {
     //console.log(this.id)
     var http:HttpClient;
     //console.log(`hey ${id}`);
-    this.http.get('http://172.23.239.81:8180/challengeAPI/v1/'+this.id).subscribe((res:any)=> {
+    this.http.get('https://35.154.116.88:8080/challenge/challengeAPI/v1/'+this.id).subscribe((res:any)=> {
       console.log("inside the sub");
         this.completechallenge1=res;
-        console.log("gggggg ", res);
+        
         
   
     })

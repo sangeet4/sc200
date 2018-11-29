@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.io.File;
+
 import java.util.ArrayList;
 
 @RestController
@@ -30,7 +31,7 @@ public class FileController {
     public String createDirectoryLayer(@RequestBody @Valid Files file) throws IOException {
 
             try {
-                System.out.println(file.toString());
+                System.out.println(fileService.toString());
                 String a = fileService.parseFile(file);
                 return a;
             }

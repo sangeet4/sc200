@@ -7,8 +7,10 @@ const routes: Routes = [
   {path: '', component: AttemptingChallengeComponent,
   children: [
     // {path: '' , component : AttemptingChallengeComponent },
-    {path: ':file/:name' , component : EditorComponent}
-  ]}
+    {path: ':file/:name' , component : EditorComponent,pathMatch:"full"}
+  ],
+  runGuardsAndResolvers:"always",
+}
 ];
 
 @NgModule({

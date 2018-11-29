@@ -12,7 +12,7 @@
     <description>Demo project for Spring Boot</description>
 
     <modules>
-        <module>ZuulGateway</module>
+        <module>zuulgateway</module>
         <module>ConfigServer</module>
         <module>EurekaRegistry</module>
         <module>ChallengeCreator</module>

@@ -1,6 +1,7 @@
 package com.sc200.controller;
 
 
+import com.sc200.domain.CustomFileContent;
 import com.sc200.domain.Directory;
 import com.sc200.domain.Files;
 import com.sc200.service.FileService;
@@ -41,7 +42,7 @@ public class FileController {
             }
 
     }
-    @PostMapping()
+    @PostMapping("/struct")
     public ResponseEntity<?> getDirectoryStructure(@RequestBody @Valid String folderName) throws  IOException{
 
         ResponseEntity responseEntity;
@@ -52,18 +53,30 @@ public class FileController {
             Directory directory = new Directory(fileService.getPaths(),fileService.getContents());
 
             ArrayList<String> temp = directory.getContents();
+            System.out.println("from controller");
+
             for(int i=0;i<temp.size();i++){
                 if(temp.get(i)==null){
                     temp.remove(i);
                 }
             }
-
             ArrayList<String> temp1 = directory.getPaths();
+            for(int i=0;i<temp1.size()-1;i++){
+                for(int j=i+1;j<temp1.size();j++){
+                    if(temp1.get(i)==temp1.get(j)){
+                        temp1.set(j,null);
+                    }
+
+                }
+            }
+
+
             for(int i=0;i<temp1.size();i++){
                 if(temp1.get(i)==null){
                     temp1.remove(i);
                 }
             }
+
            Directory directory1 = new Directory(temp1,temp);
             System.out.println(directory1.toString());
 
@@ -72,12 +85,25 @@ public class FileController {
         }
         catch (Exception e){
 
-            fileService.setPathsAndContent(new File(folderName));
+            //fileService.setPathsAndContent(new File(folderName));
             Directory directory = new Directory(fileService.getPaths(),fileService.getContents());
             responseEntity = new ResponseEntity<String>(e.getMessage() , HttpStatus.BAD_REQUEST);
         }
 
         return  responseEntity;
+    }
+    @PostMapping("/content")
+    public ResponseEntity<?> getFileContent(@RequestBody @Valid String path) throws IOException{
+        CustomFileContent content = new CustomFileContent();
+        ResponseEntity responseEntity;
+        try{
+            content.setContent(fileService.customFileReader(path));
+             responseEntity = new ResponseEntity<CustomFileContent>(content,HttpStatus.OK);
+        }
+        catch (Exception e){
+            responseEntity = new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+        }
+        return responseEntity;
     }
   
 }

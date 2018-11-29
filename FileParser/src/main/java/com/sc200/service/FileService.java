@@ -15,6 +15,8 @@ public interface FileService {
 
     public boolean createFile(Files file) throws IOException;
 
+    public String customFileReader(String path) throws IOException;
+
 
     public ArrayList<String> getPaths();
 

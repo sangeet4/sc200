@@ -11,10 +11,7 @@ import com.sc200.domain.Files;
 public class FileServiceImpl implements FileService {
 
     private ArrayList<String> paths = new ArrayList<String>();
-
     private ArrayList<String> contents = new ArrayList<String>();
-
-
     private int i;
 
     public String parseFile(Files files) throws IOException {
@@ -26,7 +23,6 @@ public class FileServiceImpl implements FileService {
         if (createDirectories(directory) && createFile(files)) {
             return "Successfully Created";
         } else {
-
             recursiveDelete(new File(directory1));
             if (createDirectories(directory) && createFile(files)) {
                 return "Successfully Created";
@@ -87,132 +83,6 @@ public class FileServiceImpl implements FileService {
 
     }
 
-//    public String createTree() {
-//        String[] strings = {"a/b/d/c/HelloWorld.java" , "c/HelloWorld.java" , "a/d/e/HelloWorld.java" };
-//
-//        Directory directory = new Directory( "root" , new ArrayList<>());
-//
-//        Directory parent = directory;
-//        Directory oldParent = directory;
-//        ArrayList<Directory> allCurrent = parent.value;
-//        //        Directory current = allCurrent.get(0);
-//        Directory toBeAdded;
-//        String parentString = new String();
-//        String directoryString = new String();
-//        String[] subStrings1 = strings[0].split("/");
-//        toBeAdded = PathToTree(subStrings1);
-//        directory.value.add(toBeAdded);
-////        System.out.println(directory.toString());
-//        for(int j = 1; j<strings.length;j++)
-//        {
-//
-//            parent = directory;
-//            String[] subStrings = strings[j].split("/");
-////            System.out.println(strings[j]);
-//            toBeAdded = PathToTree(subStrings);
-//            boolean a = true;
-//            while(a){
-////                System.out.println("11");
-//                for(int k=0;k<allCurrent.size();k++)
-//                {
-////                    System.out.println(k);
-////                    System.out.println("first"+allCurrent.get(k).key+"in end");
-////                    System.out.println("second"+toBeAdded.key+"in end");
-//                    if(allCurrent.get(k).key.equals(toBeAdded.key))
-//                    {
-////                        System.out.println("hello");
-//                        oldParent = parent;
-//                        parent = allCurrent.get(k);
-//                        allCurrent = parent.value;
-////                        System.out.println(parent.key);
-////                        System.out.println(toBeAdded.toString() + "ssjn");
-//                        toBeAdded = toBeAdded.value.get(0);
-////                        System.out.println(toBeAdded.toString());
-//                        //   directory.value.add(parent);
-//                        break;
-//                    }
-//                    else
-//                    {
-//
-////                        System.out.println("third:"+toBeAdded.toString() + "in else");
-//                        parent.value.add(toBeAdded);
-////                        System.out.println("Directory inside loop : " + directory.value.get(1));
-////                        System.out.println("Parent inside loop : " + parent.value.get(1));
-//                        a=false;
-////                        System.out.println(directory.toString() + "1111");
-//
-////                        System.out.println(parent.toString() );
-//
-//                        break;
-//
-//                    }
-//
-//                }
-////                System.out.println("loop ended");
-//
-////                System.out.println(directory.toString() + "3");
-////                if(parent == directory)
-////                {
-////                    parent.value.add(toBeAdded);
-////                }
-//            }
-//            parentString = parent.toString();
-//            directoryString = directory.toString();
-////            System.out.println("Parent : " + parent.toString());
-////            System.out.println("Directory : " + directory.toString());
-////            directory.value.add(parent);
-////            System.out.println("");
-//            directoryString.replace(oldParent.toString() , parentString);
-//
-//        }
-//
-//
-////        Gson gson = new Gson();
-////        String json = gson.toJson(directory);
-////        System.out.println("ended");
-//        //
-//
-//
-////        System.out.println(directoryString );
-////        Gson gson = new Gson();
-////        String json = gson.toJson(directory);
-////        System.out.println(json);
-//
-//        directoryString = "{'" + directoryString;
-//        directoryString = directoryString.replaceAll("\\[", "':{'");
-//        directoryString = directoryString.replaceAll("]" , "'}'");
-//        directoryString = directoryString.replaceAll(" :" , "' : '");
-//        directoryString = directoryString.replaceAll("''" , "");
-//        directoryString = directoryString.replaceAll(", " , ", '");
-//        directoryString = directoryString.replaceAll("}}'" , "}}");
-//        directoryString = directoryString.replaceAll("' null'" , "null");
-//        directoryString = directoryString.substring(0,directoryString.length()-2);
-//
-//        int leftbraces = 0;
-//        int rightbraces = 0;
-//
-//        for(int l=0;l<directoryString.length();l++)
-//        {
-//            if(directoryString.charAt(l)=='{')
-//            {
-//                leftbraces++;
-//            }
-//            else if(directoryString.charAt(l)=='}')
-//            {
-//                rightbraces++;
-//            }
-//        }
-//
-//        for(int l=0;l<leftbraces-rightbraces;l++){
-//            directoryString = directoryString + "}";
-//        }
-//
-//        System.out.println(directoryString);
-//
-//
-//
-//        return directoryString;
-//    }
 //
 
     public ArrayList<String> getPaths() {
@@ -226,8 +96,7 @@ public class FileServiceImpl implements FileService {
     @Override
     public void setPathsAndContent(File dir) {
 
-        this.contents = new ArrayList<String>();
-        this.paths = new ArrayList<String>();
+
         String pattern = ".java"; //for example ".java"
         String pattern1 = ".yml";
         String pattern2 = ".properties";
@@ -237,59 +106,82 @@ public class FileServiceImpl implements FileService {
         String pattern6 = ".ts";
         String pattern7 = ".json";
 
+        System.out.println(dir);
+
 
         File listFile[] = dir.listFiles();
+        System.out.println(listFile[0]);
+        System.out.println("check");
+
 
         String path[] = new String[listFile.length];
         String content[] = new String[listFile.length];
         if(listFile != null) {
             for(int i=0; i<listFile.length; i++) {
-                if(listFile[i].isDirectory()) {
-                    setPathsAndContent(listFile[i]);
-                } else {
-                    if(listFile[i].getName().endsWith(pattern) || listFile[i].getName().endsWith(pattern1) || listFile[i].getName().endsWith(pattern2) || listFile[i].getName().endsWith(pattern3) || listFile[i].getName().endsWith(pattern4) || listFile[i].getName().endsWith(pattern5) || listFile[i].getName().endsWith(pattern6) || listFile[i].getName().endsWith(pattern7) )
-                    {
-                        try{
-                            content[i] = readFile(listFile[i].getPath());
+                System.out.println(listFile[i]);
+                if (listFile[i] != null) {
+                    if (listFile[i].isDirectory()) {
+                       // path[i]=listFile[i].getPath();
+                        setPathsAndContent(listFile[i]);
+                    } else {
+                        if (listFile[i].getName().endsWith(pattern) || listFile[i].getName().endsWith(pattern1) || listFile[i].getName().endsWith(pattern2) || listFile[i].getName().endsWith(pattern3) || listFile[i].getName().endsWith(pattern4) || listFile[i].getName().endsWith(pattern5) || listFile[i].getName().endsWith(pattern6) || listFile[i].getName().endsWith(pattern7)) {
+                            try {
+                                content[i] = readFile(listFile[i].getPath());
+                            } catch (Exception e) {
+                                System.out.println("bshfjbdj");
+                            }
+                            path[i] = listFile[i].getPath();
                         }
-                        catch (Exception e)
-                        {
-                            System.out.println("bshfjbdj");
-                        }
-                        path[i] = listFile[i].getPath();
                     }
                 }
             }
 
-
         }
-
-//        for(int i=0;i<path.length;i++){
-//        System.out.println(path[i]);}
-
-
-
-
         for(int i=0; i<listFile.length; i++) {
 
             if(path[i] !="null") {
 
-                this.paths.add(path[i]);
+                paths.add(path[i]);
 
             }
         }
-
-
-
-
-
-
         for(int i=0; i<listFile.length; i++) {
 
             if(content[i]!=null){
-            this.contents.add(content[i]);}
+            contents.add(content[i]);}
         }
 
+
+    }
+    @Override
+    public  String customFileReader(String path) throws IOException {
+        File f = new File(path);
+        String everything = "";
+        System.out.println(f);
+        System.out.println(f.isDirectory());
+        BufferedReader br = null;
+        if (f.isFile()) {
+            try {
+                br = new BufferedReader(new FileReader(f));
+                StringBuilder sb = new StringBuilder();
+                String line = br.readLine();
+
+                while (line != null) {
+                    sb.append(line);
+                    sb.append(System.lineSeparator());
+                    line = br.readLine();
+                }
+
+                everything = sb.toString();
+                System.out.println(everything);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }finally {
+                br.close();
+            }
+        }
+        return everything;
     }
 
 

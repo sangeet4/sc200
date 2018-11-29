@@ -11,17 +11,17 @@ import java.io.PrintWriter;
 public class WriteFile {
 
 	public static void main(String[] args) {
-		String filePath = args[0];
+		String filePath = "docker-compose.yml";
 		String text = "\n" +
-				"  " + args[1] + "-" + args[2] + ":\n" +
-				"    image: " + args[1] + "-" + args[2] + "\n" +
-				"    build: ./" + args[1] +"/" + args[2] +"/\n" +
+				"  " + args[0] + "-" + args[1] + ":\n" +
+				"    image: " + args[0] + "-" + args[1] + "\n" +
+				"    build: ./" + args[0] +"/" + args[1] +"/\n" +
 				"    network_mode: host\n" +
-				"    container_name: " + args[1] + "-" + args[2] + "\n" +
+				"    container_name: " + args[0] + "-" + args[1] + "\n" +
 				"    ports:\n" +
-				"      - " + args[3] + ":" + args[3] + "\n" +
+				"      - " + args[2] + ":" + args[2] + "\n" +
 				"    expose:\n" +
-				"      - " + args[3] + "\n" +
+				"      - " + args[2] + "\n" +
 				"\n";
 		File file = new File(filePath);
 		FileWriter fr = null;

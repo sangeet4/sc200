@@ -1,4 +1,0 @@
-localhost: '35.154.116.88:9092'
-#serverport:'8090'
-server:
-  port: 8190

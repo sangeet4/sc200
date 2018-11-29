@@ -93,10 +93,36 @@ public class UserProfileServiceImpl implements UserProfileService {
             UserProfile userProfile = userProfileRepository.findById(id).get();
 
             List<Challenge> attemptedChallenge = userProfile.getChallengeAttempted();
-            attemptedChallenge.add(challenge);
-            userProfile.setChallengeCreated(attemptedChallenge);
-            UserProfile userProfile2 = userProfileRepository.save(userProfile);
-            return userProfile2;
+
+            boolean alreadyPresent = false;
+            boolean needToUpdate = true;
+            for(int i=0; i<attemptedChallenge.size(); i++){ //checking if the challenge is already attempted or not
+                if(attemptedChallenge.get(i).getChallengeId() == challenge.getChallengeId()){
+                    if(attemptedChallenge.get(i).getChallengeScore() < challenge.getChallengeScore()){   //when score generated is more than already registered score
+                        attemptedChallenge.get(i).setChallengeScore(challenge.getChallengeScore());
+                        userProfile.setScore(userProfile.getScore() + (challenge.getChallengeScore() - attemptedChallenge.get(i).getChallengeScore())); //update global score of user when new generated score of challenge is more
+                        alreadyPresent = true;
+                        break;
+                    }
+                    else{   // when score generated is less than already present score
+                        alreadyPresent = true;
+                        needToUpdate = false;
+                        break;
+                    }
+                }
+            }
+            if(alreadyPresent == false) {
+                attemptedChallenge.add(challenge);
+                userProfile.setScore(userProfile.getScore() + challenge.getChallengeScore());   //add challenge score to global score when attempted challenge was not already attempted
+            }
+            if(needToUpdate == true) {
+                userProfile.setChallengeAttempted(attemptedChallenge);
+                UserProfile userProfile2 = userProfileRepository.save(userProfile);
+                return userProfile2;
+            }
+            else{
+                return userProfile;
+            }
         }
         else{
             throw new UserProfileNotFoundException("userProfile-controller.noUser");

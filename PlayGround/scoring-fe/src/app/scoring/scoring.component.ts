@@ -70,12 +70,9 @@ export class ScoringComponent implements OnInit {
 
   sendToProfile() {
     this.profile = new Profile(this.detail.challengeId, this.detail.challengeTitle, this.detail.userId, this.detail.value);
-    if (this.value === this.detail.maxScore) {
-      this.scoringService.sendToProfile(this.profile)
-        .subscribe(data => {
-          console.log(data);
-        });
-    }
+    this.scoringService.sendToProfile(this.profile)
+      .subscribe(data => {
+        console.log(data);
+      });
   }
-
 }

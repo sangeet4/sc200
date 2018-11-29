@@ -1,3 +1,4 @@
-FROM maven:3.6.0-jdk-8
+FROM alpine:3.6
 WORKDIR usr/app
-RUN exit
+CMD ping google.com
+

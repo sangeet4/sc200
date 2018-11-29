@@ -1,0 +1,12 @@
+version:  '2'
+services:
+  empty-container:
+    image: empty-container
+    build: ./
+    network_mode: host
+    container_name: empty-container
+    ports:
+      - 8188:8188
+    expose:
+      - 8188
+

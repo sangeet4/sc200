@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM openjdk-8:jdk
 WORKDIR usr/app
-CMD ping google.com
+CMD mvn test
 

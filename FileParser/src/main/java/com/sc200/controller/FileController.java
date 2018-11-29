@@ -43,6 +43,7 @@ public class FileController {
             }
 
     }
+
     @PostMapping("/struct")
     public ResponseEntity<?> getDirectoryStructure(@RequestBody @Valid String folderName) throws  IOException{
 
@@ -91,6 +92,7 @@ public class FileController {
 
         return  responseEntity;
     }
+
     @PostMapping("/content")
     public ResponseEntity<?> getFileContent(@RequestBody @Valid String path) throws IOException{
         CustomFileContent content = new CustomFileContent();
@@ -104,5 +106,5 @@ public class FileController {
         }
         return responseEntity;
     }
-  
+
 }

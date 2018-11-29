@@ -11,4 +11,8 @@ import lombok.ToString;
 @ToString
 public class CustomFileContent {
     private String content;
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 }

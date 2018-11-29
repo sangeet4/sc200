@@ -28,12 +28,12 @@ public class CompileServiceImpl implements CompileService {
             String relativePath =  this.fileParserService.findRelativePath(file);
             String fileName =  this.fileParserService.findFileName(file);
 
-            String[] command = {"/bin/bash", "dockerize.sh"};
+            String[] command = {"/bin/bash", "dockerize.sh" , "a" , "b" , "1"};
             ProcessBuilder p = new ProcessBuilder(command);
-	    System.out.println(p.toString());
-	    Process p2 = p.start();
+    	    Process p2 = p.start();
             BufferedReader br = new BufferedReader(new InputStreamReader(p2.getInputStream()));
             String line;
+            System.out.println("hello");
             while ((line = br.readLine()) != null) {
 
                 System.out.println(line);

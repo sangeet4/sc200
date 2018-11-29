@@ -155,9 +155,9 @@ export class DirectoryComponent {
     });
   }
 
-  // showDirectory() {
-  //   this.database.initialize();
-  // }
+   showDirectory() {
+     this.database.initialize();
+  }
 
   showTemplate() {
     this.filesService.getTemplate().subscribe(data => {

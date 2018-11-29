@@ -1,4 +1,4 @@
-host: http://172.23.239.131:9092
+host: 35.154.116.88:9092
 server:
     port: 8187
 spring:

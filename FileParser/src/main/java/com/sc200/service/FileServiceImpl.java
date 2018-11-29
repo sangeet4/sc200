@@ -27,7 +27,7 @@ public class FileServiceImpl implements FileService {
             if (createDirectories(directory) && createFile(files)) {
                 return "Successfully Created";
             } else {
-                return "Directory already exists";
+                return "Some Error";
             }
         }
     }
@@ -105,6 +105,8 @@ public class FileServiceImpl implements FileService {
         String pattern5 = ".js";
         String pattern6 = ".ts";
         String pattern7 = ".json";
+        String pattern8 = ".md";
+        String pattern9 = ".txt";
 
         System.out.println(dir);
 
@@ -124,7 +126,7 @@ public class FileServiceImpl implements FileService {
                        // path[i]=listFile[i].getPath();
                         setPathsAndContent(listFile[i]);
                     } else {
-                        if (listFile[i].getName().endsWith(pattern) || listFile[i].getName().endsWith(pattern1) || listFile[i].getName().endsWith(pattern2) || listFile[i].getName().endsWith(pattern3) || listFile[i].getName().endsWith(pattern4) || listFile[i].getName().endsWith(pattern5) || listFile[i].getName().endsWith(pattern6) || listFile[i].getName().endsWith(pattern7)) {
+                        if (listFile[i].getName().endsWith(pattern) || listFile[i].getName().endsWith(pattern1) || listFile[i].getName().endsWith(pattern2) || listFile[i].getName().endsWith(pattern3) || listFile[i].getName().endsWith(pattern4) || listFile[i].getName().endsWith(pattern5) || listFile[i].getName().endsWith(pattern6) || listFile[i].getName().endsWith(pattern7) || listFile[i].getName().endsWith(pattern8) || listFile[i].getName().endsWith(pattern9)) {
                             try {
                                 content[i] = readFile(listFile[i].getPath());
                             } catch (Exception e) {
@@ -209,63 +211,6 @@ public class FileServiceImpl implements FileService {
             return "Error";
         }
     }
-
-
-
-//    public Directory PathToTree(String[] subString) {
-//
-//
-//        this.i = subString.length;
-//        Directory prevNode = new Directory(subString[subString.length-1] , null);
-//
-//        for (int i = subString.length - 2; i >= 0; i--)
-//        {
-////            System.out.println(subString[i]);
-//            Directory node = new Directory(subString[i], new ArrayList<>());
-//            node.value.add(prevNode);
-//            prevNode = node;
-//        }
-//
-//        return prevNode;
-//    }
-
-
-
-//    public static class Directory {
-//
-//        String key;
-//        ArrayList<Directory> value;
-//
-//        public Directory(String key , ArrayList<Directory> value)
-//        {
-//            this.key = key;
-//            this.value = value;
-//        }
-//
-//        @Override
-//        public String toString() {
-//            if(this.value==null)
-//            {
-//                return this.key + " : "  + this.value;
-//            }
-//            String a = "";
-//            a = a + this.key + this.value.toString() ;
-//            return a;
-//        }
-//
-//    }
-//
-//    public  String replaceLast(String string, String toReplace, String replacement) {
-//        int pos = string.lastIndexOf(toReplace);
-//        if (pos > -1) {
-//            return string.substring(0, pos)
-//                    + replacement
-//                    + string.substring(pos + toReplace.length(), string.length());
-//        } else {
-//            return string;
-//        }
-//    }
-
 
 }
 

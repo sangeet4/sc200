@@ -1,3 +1,4 @@
-FROM maven:3.6.0-jdk-8
+FROM openjdk-8:jdk
 WORKDIR usr/app
-RUN exit
+CMD mvn test
+

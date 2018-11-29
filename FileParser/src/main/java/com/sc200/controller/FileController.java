@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.io.File;
-
 import java.util.ArrayList;
 
 @RestController
@@ -29,12 +28,14 @@ public class FileController {
     }
 
     @PostMapping(value = "/create")
-    public String createDirectoryLayer(@RequestBody @Valid Files file) throws IOException {
+    public String createDirectoryLayer(@RequestBody @Valid Files[] file) throws IOException {
 
             try {
-                System.out.println(fileService.toString());
-                String a = fileService.parseFile(file);
-                return a;
+	            	for(int i=0;i<file.length;i++)
+		            {
+                        String a = fileService.parseFile(file[i]);
+		            }
+		            return "Succesfully Created";
             }
             catch(Exception e)
             {
@@ -42,6 +43,7 @@ public class FileController {
             }
 
     }
+
     @PostMapping("/struct")
     public ResponseEntity<?> getDirectoryStructure(@RequestBody @Valid String folderName) throws  IOException{
 
@@ -53,8 +55,6 @@ public class FileController {
             Directory directory = new Directory(fileService.getPaths(),fileService.getContents());
 
             ArrayList<String> temp = directory.getContents();
-            System.out.println("from controller");
-
             for(int i=0;i<temp.size();i++){
                 if(temp.get(i)==null){
                     temp.remove(i);
@@ -92,6 +92,7 @@ public class FileController {
 
         return  responseEntity;
     }
+
     @PostMapping("/content")
     public ResponseEntity<?> getFileContent(@RequestBody @Valid String path) throws IOException{
         CustomFileContent content = new CustomFileContent();
@@ -105,5 +106,5 @@ public class FileController {
         }
         return responseEntity;
     }
-  
+
 }

@@ -76,7 +76,7 @@ public class UserController {
         return responseEntity;
     }
 
-    @PostMapping(value = "user/login")
+    @PostMapping(value = "user")
     public UserToken login(@RequestBody User login) throws ServletException {
 
         String jwtToken = "";

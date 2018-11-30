@@ -28,7 +28,7 @@ public class CompileServiceImpl implements CompileService {
             String relativePath =  this.fileParserService.findRelativePath(file);
             String fileName =  this.fileParserService.findFileName(file);
 
-            String[] command = {"/bin/bash", "dockerize.sh" , file.path , "Dockerfile" , "1"};
+            String[] command = {"/bin/bash", "dockerize.sh" , relativePath , fileName  , "1"};
             ProcessBuilder p = new ProcessBuilder(command);
     	    Process p2 = p.start();
             BufferedReader br = new BufferedReader(new InputStreamReader(p2.getInputStream()));

@@ -24,6 +24,7 @@ public class WriteFile {
 				"      - " + args[2] + "\n" +
 				"    volumes:\n" +
                                 "      -  /var/run/docker.sock:/var/run/docker.sock\n" +
+				"      -  /usr/app1/" + args[0] + "/" + args[1] + ":/usr/app" +
 				"\n";
 		File file = new File(filePath);
 		FileWriter fr = null;

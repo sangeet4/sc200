@@ -1,1 +1,32 @@
-dockerize.sh: line 6: docker-compose: command not found
+Building a-challengecreator
+Step 1/3 : FROM maven:3.6.0
+ ---> ce22ba6526c6
+Step 2/3 : WORKDIR /usr/app
+ ---> Running in 84427d1c4758
+Removing intermediate container 84427d1c4758
+ ---> cac8d8cecce6
+Step 3/3 : CMD mvn clean package test
+ ---> Running in c82c5c43bb57
+Removing intermediate container c82c5c43bb57
+ ---> 7a53e01d6506
+Successfully built 7a53e01d6506
+Successfully tagged a-challengecreator:latest
+Creating a-challengecreator ... 
+[1A[2KCreating a-challengecreator ... [32mdone[0m[1BAttaching to a-challengecreator
+[36ma-challengecreator    |[0m [INFO] Scanning for projects...
+[36ma-challengecreator    |[0m [ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[36ma-challengecreator    |[0m [FATAL] Non-resolvable parent POM for com.stackroute:challenge-creator:0.0.1-SNAPSHOT: Could not find artifact com.stackroute:SC200:pom:0.0.1-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 14, column 10
+[36ma-challengecreator    |[0m  @ 
+[36ma-challengecreator    |[0m [ERROR] The build could not read 1 project -> [Help 1]
+[36ma-challengecreator    |[0m [ERROR]   
+[36ma-challengecreator    |[0m [ERROR]   The project com.stackroute:challenge-creator:0.0.1-SNAPSHOT (/usr/app/pom.xml) has 1 error
+[36ma-challengecreator    |[0m [ERROR]     Non-resolvable parent POM for com.stackroute:challenge-creator:0.0.1-SNAPSHOT: Could not find artifact com.stackroute:SC200:pom:0.0.1-SNAPSHOT and 'parent.relativePath' points at wrong local POM @ line 14, column 10 -> [Help 2]
+[36ma-challengecreator    |[0m [ERROR] 
+[36ma-challengecreator    |[0m [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[36ma-challengecreator    |[0m [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[36ma-challengecreator    |[0m [ERROR] 
+[36ma-challengecreator    |[0m [ERROR] For more information about the errors and possible solutions, please read the following articles:
+[36ma-challengecreator    |[0m [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+[36ma-challengecreator    |[0m [ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/UnresolvableModelException
+[36ma-challengecreator exited with code 1
+[0m

@@ -1,4 +1,17 @@
-:host {
+.container {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.row {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+
+/* :host {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -28,4 +41,4 @@
   .spacer {
     flex: 1 1 auto;
   }
-  
+   */

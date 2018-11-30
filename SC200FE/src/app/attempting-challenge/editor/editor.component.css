@@ -1,1 +1,5 @@
-monaco-editor { margin-top:200px ;height: 500px; display:block; }
+monaco-editor {
+  height: 90vh;
+  display: block;
+  width: 100vw;
+}

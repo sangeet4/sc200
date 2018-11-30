@@ -1,4 +1,4 @@
-FROM openjdk:10
+FROM openjdk:8
 
 ADD ./target/zuulgateway-0.0.1-SNAPSHOT.jar /usr/src/zuulgateway-0.0.1-SNAPSHOT.jar
 EXPOSE 8081

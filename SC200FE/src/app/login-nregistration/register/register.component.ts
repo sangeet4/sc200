@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
     onSubmit() {
         this.registerForm.value.username = this.registerForm.value.email;
         this.submitted = true;
-        console.log(this.registerForm.value);
+
 
         // stop here if form is invalid
         if (this.registerForm.invalid) {

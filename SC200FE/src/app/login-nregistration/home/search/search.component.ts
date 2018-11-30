@@ -29,7 +29,7 @@ export class SearchComponent implements OnInit {
   this.searchService.findByText(this.searchText)
   .subscribe(
     data => {
-    console.log("data in service",data);
+   
       this.challenges = data;
     
 });
@@ -54,7 +54,7 @@ submit($event){
       
     this.results =true;
         this.datafromchild.emit(this.searchText);
-        // console.log("ffhgjhj");
+      
 }
 select(id: string){
   this.router.navigate(['attempt',id]);

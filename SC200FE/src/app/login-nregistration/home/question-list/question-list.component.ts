@@ -18,19 +18,18 @@ export class QuestionListComponent implements OnInit {
    
       
        var http:HttpClient;
-      // console.log("gggggggggggggggggggggggggggggg");
+     
       //console.log(`hey ${id}`);
       this.http.get('https://35.154.116.88:8080/challenge/challengeAPI/v1/basic').subscribe((res:any)=> {
-          console.log("gggggggggggggggggggggggggggggg");
+         
         this.quesList=res;
-          console.log("gggggg ", res);
+       
           
     
       })
   }
 
   View(id:string){
-    console.log("gghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhg");
     this.router.navigate(['attempt',id]);
   }
 

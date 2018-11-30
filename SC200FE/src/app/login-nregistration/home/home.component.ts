@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     }
     setSearchText(par: string){
         this.searchText = par;
-        console.log(this.searchText);
+       
         this.searchService.findByText(this.searchText)
         .subscribe(
         results =>{

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://35.154.116.88:8081/'
+  apiUrl: 'https://sc200-zuul.stackroute.in/'
 };
 
 /*

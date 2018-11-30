@@ -24,16 +24,13 @@ public class CompileServiceImpl implements CompileService {
         int i=0;
 
         try{
-            System.out.println("start excution......");
             String relativePath =  this.fileParserService.findRelativePath(file);
             String fileName =  this.fileParserService.findFileName(file);
-
-            String[] command = {"/bin/bash", "dockerize.sh" , file.path , "Dockerfile" , "1"};
+            String[] command = {"/bin/bash", "dockerize.sh" , relativePath , fileName , "1"};
             ProcessBuilder p = new ProcessBuilder(command);
     	    Process p2 = p.start();
             BufferedReader br = new BufferedReader(new InputStreamReader(p2.getInputStream()));
             String line;
-            System.out.println("hello");
             while ((line = br.readLine()) != null) {
 
                 System.out.println(line);
@@ -41,7 +38,6 @@ public class CompileServiceImpl implements CompileService {
                 i++;
                 
             }
-            System.out.println("ending excution......");
         }
         catch(Exception e)
         {
@@ -53,8 +49,6 @@ public class CompileServiceImpl implements CompileService {
     @Override
     public void clone(String url) throws IOException{
         try{
-            System.out.println("started execution");
-            System.out.println("github url: "+url);
             String[] command = {"/bin/bash","clonescript.sh",url};
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             Process process = processBuilder.start();

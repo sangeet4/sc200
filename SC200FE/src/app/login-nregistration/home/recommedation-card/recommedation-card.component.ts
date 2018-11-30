@@ -20,7 +20,6 @@ export class RecommedationCardComponent implements OnInit {
   ngOnInit() {
     this.http.get('https://35.154.116.88:8080/secure/api/v1/challenge/recommendation/' + this.name).subscribe((res: any) => {
       this.challenges = res;
-      // console.log(this.challenges);
     })
   }
   

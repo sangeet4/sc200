@@ -2,7 +2,7 @@ ribbon:
     eureka:
         enabled: false
 server:
-
+    port: 8081
     ssl:
         key-store-type: PKCS12
         key-store: keystore.p12

@@ -46,11 +46,9 @@ export class UpdateProfileComponent implements OnInit {
     this.profile.lastName = this.updateForm.value.lastName;
     this.profile.username = this.updateForm.value.userName;
     this.profile.contactNumber = this.updateForm.value.contactNumber;
-    console.log(this.profile);
+    
     this.profileService.updateProfile(this.profile.email, this.profile)
       .subscribe(data => {
-        // console.log(data);
-        console.log('PUT Successful');
       });
     alert('The form was updated');
   }

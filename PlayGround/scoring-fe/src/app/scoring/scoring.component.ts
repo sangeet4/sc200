@@ -14,26 +14,21 @@ export class ScoringComponent implements OnInit {
   detail: any;
   receivedData;
   myField = '';
-  score: number;
   value: number;
   profile: Profile;
   percent;
+  showFlag = false;
   constructor(private scoringService: ScoringService, private compilationService: CompilationService) { }
 
   ngOnInit() {
     this.compilationService.receiveHtml('hgjhj')
       .subscribe(data => {
         this.receivedData = data;
-        // console.log(data);
         this.render();
         this.sendToProfile();
+        this.showFlag = true;
       });
     console.log(this.detail);
-    // if (this.detail.solved === 0) {
-    //   this.score = 0;
-    // } else {
-    //   this.score = 100;
-    // }
   }
 
   retry() {
@@ -46,7 +41,7 @@ export class ScoringComponent implements OnInit {
 
   render() {
     let i = 1;
-    while (this.receivedData[i] !== '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">') {i++;}
+    while (this.receivedData[i] !== '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">') { i++; }
     let j = 1;
     while (i < this.receivedData.length) {
       if (this.receivedData[i] === '</html>') {
@@ -61,18 +56,19 @@ export class ScoringComponent implements OnInit {
         console.log(this.percent);
         this.value = this.percent * this.detail.maxScore / 100;
         console.log(this.value);
+
       }
       i++;
       j++;
     }
-    // console.log(this.myField);
   }
 
   sendToProfile() {
     this.profile = new Profile(this.detail.challengeId, this.detail.challengeTitle, this.detail.userId, this.detail.value);
-    this.scoringService.sendToProfile(this.profile)
-      .subscribe(data => {
-        console.log(data);
-      });
+      this.scoringService.sendToProfile(this.profile)
+        .subscribe(data => {
+          console.log(data);
+        });
   }
+
 }

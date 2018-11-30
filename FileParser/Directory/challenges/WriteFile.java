@@ -15,13 +15,15 @@ public class WriteFile {
 		String text = "\n" +
 				"  " + args[0] + "-" + args[1] + ":\n" +
 				"    image: " + args[0] + "-" + args[1] + "\n" +
-				"    build: ./" + args[0] +"/" + args[1] +"/\n" +
+				"    build: ./challenges/" + args[0] +"/" + args[1] +"/\n" +
 				"    network_mode: host\n" +
 				"    container_name: " + args[0] + "-" + args[1] + "\n" +
 				"    ports:\n" +
 				"      - " + args[2] + ":" + args[2] + "\n" +
 				"    expose:\n" +
 				"      - " + args[2] + "\n" +
+				"    volumes:\n" +
+                                "      -  /var/run/docker.sock:/var/run/docker.sock\n" +
 				"\n";
 		File file = new File(filePath);
 		FileWriter fr = null;

@@ -3,11 +3,11 @@ ribbon:
         enabled: false
 server:
     port: 8081
-    ssl:
-        key-store-type: PKCS12
-        key-store: keystore.p12
-        key-store-password: moviedb
-        key-alias: tomcat
+    # ssl:
+    #     key-store-type: PKCS12
+    #     key-store: keystore.p12
+    #     key-store-password: moviedb
+    #     key-alias: tomcat
 zuul:
     routes:
         login:
@@ -42,8 +42,8 @@ zuul:
 
 
 
-security:
-    require-ssl: false
+# security:
+#     require-ssl: false
 
 management:
     security:

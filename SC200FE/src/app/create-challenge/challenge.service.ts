@@ -2,13 +2,14 @@ import { QuestDetail } from './quest-detail';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChallengeService {
 
-  public baseUrl = 'http://35.154.116.88:8080/challenge/challengeAPI/v1';
+  public baseUrl = environment.apiUrl+'challenge/challengeAPI/v1';
 
   constructor(private http: HttpClient) { }
 

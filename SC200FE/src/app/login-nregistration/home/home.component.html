@@ -1,44 +1,62 @@
 ﻿
-<nav class="navbar navbar-dark bg-dark mb-5">
-    <!-- <a class="navbar-brand" href="/">Sc200</a> -->
-    <div class="navbar-expand mr-auto">
-       <div class="navbar-nav">
-        
-      </div> 
+
+    <header>
+    
+    
+   
+  <nav class="navbar navbar-expand-lg mynavbar navbar-dark justify-content-center">
+    <div class="navbar-brand">
+      <img src="../../../assets/text-boxes.png"class="logoimage">
     </div>
-    <div class="navbar-expand ml-auto navbar-nav">
-      <div class="navbar-nav">
-        <app-search (datafromchild)="setSearchText($event)"></app-search>
-       <div> <p class=" btn btn-success my-3 my-sm-1">Hi {{currentUser.username}}!</p>  
-        </div> 
-        <!-- <p><a [routerLink]="['/attempt']" class="btn btn-outline-success my-3 my-sm-1" >Attempt</a>
-        </p> -->
-        <p><a [routerLink]="['/challenge/add']" class="btn btn-outline-success my-3 my-sm-1" >Create Challenge</a>
-        </p>   
-        <p><a [routerLink]="['/profile', currentUser.username]" class="btn btn-outline-success my-3 my-sm-1" >User Profile</a>
-        </p>
-        <p><a [routerLink]="['/login']"class="btn btn-outline-success my-2 my-sm-1">Log Out</a></p>
-         
-      </div>
+    <br>
+    
+  
+  
+    <div class="collapse navbar-collapse"
+         [ngClass]="{ 'show': navbarOpen }">
+      <ul class="navbar-nav mr-auto col-md-12 navlist">
+        <li class="nav-item col-md-6" >
+          <app-search (datafromchild)="setSearchText($event)"></app-search>
+        </li>
+  
+        <li class="nav-item  justify-content-center" id="links">
+          <a [routerLink]="['/challenge/add']" class="nav-link" >Create Challenge</a>
+        </li>
+        <li class="nav-item links1 justify-content-center">
+          <a [routerLink]="['/profile', currentUser.username]" class="nav-link " >Profile</a>
+        </li>
+        <li class="nav-item  justify-content-center" id="logout">
+          <a [routerLink]="['/login']"class="nav-link">LogOut</a>
+         </li>
+      </ul>
+      
     </div>
+    <button class="navbar-toggler" type="button"
+            (click)="toggleNavbar()">
+            
+      <span class="navbar-toggler-icon"></span>
+    </button>
   </nav>
+</header>
+<div class="jumbotron">
+  <div class="container-fluid">
   <div *ngIf='result'>
 
 
-    <div class="card col-md-12" *ngFor="let challenge of result ">
+    <div class="card col-md-6" *ngFor="let challenge of result ">
       <div class="card-block">
         <mat-card>
           <mat-card-header>
-            <mat-card-title>Title : {{ challenge?.challengeTitle }}</mat-card-title>
+            <mat-card-title>Title : {{ challenge.challengeTitle }}</mat-card-title>
 
           </mat-card-header>
           <mat-card-content>
-            <p>Level:{{challenge?.level}}</p>
-            <p>Description : {{challenge?.challengeStamp}}</p>
+            <p>Level:{{challenge.level}}</p>
+            <p>Description : {{challenge.challengeStamp}}</p>
 
           </mat-card-content>
           <mat-card-actions>
-            <button mat-raised-button color='primary' (click)="attempt(challenge?.challengeId)">Attempt Challenge</button>
+            <button mat-raised-button color='primary' (click)="attempt(challenge.challengeId)">Attempt Challenge</button>
              
           </mat-card-actions>
         </mat-card>
@@ -46,7 +64,8 @@
     </div>
 
 </div>
-<app-recommedation-card *ngIf= "result?.length <1" [name]="currentUser.username" >
+<app-recommedation-card *ngIf= "result?.length <1" [name]="currentUser.username" ></app-recommedation-card>
+<app-question-list *ngIf= "result?.length <1"></app-question-list>
+</div>
+</div>
 
-</app-recommedation-card>
-  

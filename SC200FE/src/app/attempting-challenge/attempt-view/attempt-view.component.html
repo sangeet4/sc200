@@ -13,10 +13,10 @@
 
 <div class="topic">
   <div layout="row" layout-sm="column">
-    <div flex>
+    <div >
         <h1>Topic: {{completechallenge1.topic}}  </h1>
     </div>
-    <div flex>
+    <div >
         <h4>Max score:{{completechallenge1.maxScore}}</h4>
     </div>
   </div>
@@ -29,42 +29,31 @@
   
 <div class="card col-md-12" >
   <div class="card-block">
-      <mat-card>
-          <mat-card-header>
-           <!-- <mat-card-title> Topic:{{completechallenge.topic}}</mat-card-title> -->
-           
-          
-           <!-- <img src="{{movie.poster_path}}" alt="image not found"> -->
-           </mat-card-header>
-           <mat-card-content>
+      
              <div class="description">
                
-             <mat-list-item><h3>Complete Description : </h3><br>
-               {{completechallenge1.challengeStatement}}</mat-list-item><br>
+             <div><h3>Complete Description : </h3><br>
+               {{completechallenge1.challengeStatement}}</div><br>
             
           </div>
-             <mat-divider></mat-divider>
-            </mat-card-content>
-          <mat-card-content>
-              <mat-list-item><h3>Constraint:</h3><br>
-                {{completechallenge1.constraints}}</mat-list-item><br>
-              <mat-divider></mat-divider>
-          </mat-card-content>
-        <mat-card-content>
-              <mat-list-item><h3>Input format:</h3>
-                <br>{{completechallenge1.inputFormat}}</mat-list-item><br>
-              <mat-divider></mat-divider>
+            
+          
+              <div><h3>Constraint:</h3><br>
+                {{completechallenge1.constraints}}</div><br>
+              
+          
+                      <div><h3>Input format:</h3>
+                <br>{{completechallenge1.inputFormat}}</div><br>
+             
         
-        </mat-card-content>
-      <mat-card-content>
-             <mat-list-item><h3>Output format:</h3><br>
-              {{completechallenge1.outputFormat}}</mat-list-item><br>
-             <mat-divider></mat-divider>
-      </mat-card-content>
+       
+     
+             <div><h3>Output format:</h3><br>
+              {{completechallenge1.outputFormat}}</div><br>
+    
             
             
-             <!-- <button class="mat-button" mat-button  type="submit" (click)="solve()">Solve Challenge</button> -->
-             </mat-card>
+             
              </div>
              </div>
 

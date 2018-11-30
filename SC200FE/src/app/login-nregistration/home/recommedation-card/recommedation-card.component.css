@@ -1,28 +1,46 @@
 .card {
-    min-width: 400px;
+    
     width:100%;
-    padding-top : 10px;
+    padding : 10px;
+    text-align: center;
+    margin-bottom: 2rem;
   }
   
-.card-block{
+.card-body{
   width: 100%;
+  text-align: center;
+  
 }
   .card {
    /* // background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
     background-size: cover;
   }
-  /* .mat-button{
-    padding-right: 60px;
-    background-color: cornflowerblue;
-  } */
-h1{
+ 
+.headtitle{
+
   text-align: center;
+  font-size: 4vw;
+  
+   /* font-family: 'Dancing Script', cursive; */
+   font-family: 'Lobster', cursive;
+  /* font-family: 'Amatic SC', cursive; */
+  /* font-family: 'Libre Barcode 39 Extended', cursive;    */
+  
+}
+.tagline{
+  text-align: center;
+  font-size: 2vw;
+  font-family: 'Libre Barcode 39 Extended', cursive; 
+}
+.jumbotron{
+  padding: 0;
 }
 
-mat-card-content > p{
+.card-text{
   margin-left: 1em;
 }
 
-mat-card-actions {
-  padding-left: 1em;
+
+ * {
+    font-size: 1rem;
 }

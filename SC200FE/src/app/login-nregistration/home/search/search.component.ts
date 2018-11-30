@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SearchService } from '../search.service';
 import { Subject, from } from 'rxjs';
 import{Router} from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -10,10 +11,12 @@ import{Router} from '@angular/router';
 })
 export class SearchComponent implements OnInit {
   challenges;
+  searchForm:FormGroup;
   searchText: string;
   showDropDown =false;
   results =false;
   result;
+  
   @Output() datafromchild = new EventEmitter<string>();
   constructor(private searchService: SearchService,private router: Router) { }
 
@@ -29,7 +32,7 @@ export class SearchComponent implements OnInit {
   this.searchService.findByText(this.searchText)
   .subscribe(
     data => {
-   
+    console.log("data in service",data);
       this.challenges = data;
     
 });
@@ -49,19 +52,30 @@ openDropDown(){
     
 });
 }
+onSubmit(){
+  this.showDropDown =false;
+      
+  this.results =true;
+      this.datafromchild.emit(this.searchText);
+  
+}
 submit($event){
     this.showDropDown =false;
       
     this.results =true;
         this.datafromchild.emit(this.searchText);
-      
+        // console.log("ffhgjhj");
 }
 select(id: string){
-  this.router.navigate(['attempt',id]);
+  console.log("deepu");
+  
 }
 ngOnInit() {
   this.showDropDown =false;
   this.results =false;
+  this.searchForm =new FormGroup({
+    searchText:new FormControl()
+  })
   
 }
 }

@@ -1,23 +1,36 @@
-.search-drop-down {
+ .search-drop-down {
     position: absolute;
-    /* width: 50%; */
-    width :100%;
+     width: 50%;
+    
     max-height: 300px;
     overflow-y: auto;
     z-index: 10;
-    background-color: #F6F6F6;
+    background-color: rgb(59, 58, 58);
     font-family: sans-serif;
-    opacity: 0.98;
+    color: white;
+    opacity: 0.85;
 }
+.form1 {
+    padding: 0%;
+    margin: 0%;
+}
+
 .search-bar {
-    min-width: 348px;
-    text-indent: 30px;
+    min-width: 12rem;
+    text-indent: 0rem;
     box-sizing: border-box;
+    font-family: sans-serif;
+    color:gray;
+    margin-right: 0.5em;
 }
 .search-results {
     padding: 10px;
+     font-family: sans-serif;
+    color: white;
 }
 
 .search-results:hover {
     background: #707070;
-}
+    font-family: sans-serif;
+    color: white;
+} 

@@ -7,7 +7,9 @@ import { AlertService, UserService } from '../_services';
 
 @Component({
     selector: 'app-register',
-    templateUrl: 'register.component.html'})
+    templateUrl: 'register.component.html',
+    styleUrls: ['./register.component.css']    
+})
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
@@ -39,7 +41,7 @@ export class RegisterComponent implements OnInit {
     onSubmit() {
         this.registerForm.value.username = this.registerForm.value.email;
         this.submitted = true;
-
+        console.log(this.registerForm.value);
 
         // stop here if form is invalid
         if (this.registerForm.invalid) {
@@ -52,7 +54,7 @@ export class RegisterComponent implements OnInit {
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
+                    this.router.navigate(['/logout']);
                 },
                 error => {
                     this.alertService.error(error);

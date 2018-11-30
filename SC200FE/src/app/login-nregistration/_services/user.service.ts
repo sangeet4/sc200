@@ -8,11 +8,14 @@ import { User } from '../_models';
 export class UserService {
     constructor(private http: HttpClient) { }
 
-  
+    
 
     register(user: User) {
-        return this.http.post(`https://35.154.116.88:8080/profile/api/v1/user/add`, user);
+        return this.http.post(environment.apiUrl+`register/api/v1/user/add`, user);
     }
 
+    // update(user: User) {
+    //     return this.http.put(`${environment.apiUrl}/users/` + user.id, user);
+    // }
 
 }

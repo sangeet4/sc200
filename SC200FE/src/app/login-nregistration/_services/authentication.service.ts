@@ -9,7 +9,7 @@ export class AuthenticationService {
     constructor(private http: HttpClient) { }
 
     login(username: string, password: string) {
-        return this.http.post<any>(`https://35.154.116.88:8080/login/user`, { username: username, password: password })
+        return this.http.post<any>(environment.apiUrl+`login/user`, { username: username, password: password })
             .pipe(map(data => {
                 // login successful if there's a jwt token in the response
                 if (data && data.token) {

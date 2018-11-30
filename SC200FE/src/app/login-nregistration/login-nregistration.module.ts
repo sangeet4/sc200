@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AlertComponent } from './_directives';
 import { AuthGuard } from './_guards';
@@ -24,6 +25,7 @@ import { QuestionListComponent } from './home/question-list/question-list.compon
 import {NgxPaginationModule} from 'ngx-pagination' ;
 import {SearchService} from './home/search.service';
 import {SearchComponent} from './home/search/search.component';
+import { from } from 'rxjs';
 @NgModule({
   imports: [
     CommonModule,
@@ -40,6 +42,7 @@ import {SearchComponent} from './home/search/search.component';
     MatIconModule,
     MatListModule,
     NgxPaginationModule,
+    NgbModule.forRoot()
 
 
   ],
@@ -55,15 +58,18 @@ import {SearchComponent} from './home/search/search.component';
 	SearchComponent
   ],
   providers: [
+    
     AuthGuard,
     AlertService,
     AuthenticationService,
     UserService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-	SearchService
+  SearchService
+  
 
     // provider used to create fake backend
-  ]
+  ],
+  bootstrap: [HomeComponent]
 })
 export class LoginNRegistrationModule { }

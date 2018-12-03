@@ -19,9 +19,27 @@ export class FileService implements IFileService {
 
   private TREE:string;
   private map = new Map<string, FileElement>();
+  //private clickedFileName:string;
+  private clickedFileName = new BehaviorSubject("null");
+  currentMessage = this.clickedFileName.asObservable();
+
 
   constructor(private filesService:FilesService,private http:HttpClient) { }
 
+  changeMessage(message: string) {
+    console.log(message);
+    
+    this.clickedFileName.next(message)
+  }
+
+
+  // setClickedFileName(name: string) {
+  //   this.clickedFileName = name;
+  // }
+
+  // getClickedFileName() {
+  //   return this.clickedFileName;
+  // }
   
   getFileStructure(): {} {
     var paths:[string] = this.filesService.allFiles;

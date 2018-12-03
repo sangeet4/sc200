@@ -6,7 +6,6 @@ import { containsElement } from '@angular/animations/browser/src/render/shared';
 import { MonacoFile } from 'ngx-monaco';
 import { FileElement } from './folder-structure/directory/model/file-element';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -28,8 +27,8 @@ export class FilesService {
   sendContent = "";
   files: [string];
   // url = "http://35.154.116.88:8182/";
-  url = environment.apiUrl+"file";
-  url1 = environment.apiUrl+"/compile";
+  url = "http://localhost:8182/";
+  url1 = "http://35.154.116.88:8183/compile";
   newurl: string = "";
   httpresponse;
 

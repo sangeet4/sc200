@@ -1,9 +1,11 @@
 <app-attempt-view></app-attempt-view>
-<div style="display: flex"><folder-upload></folder-upload></div>
+<div>
+  <folder-upload></folder-upload>
+</div>
 <br />
-<div class="container">
+<div class="container" >
   <div class="row">
-    <div class="col-xl-auto structure">
+    <div class="col-xl-auto structure" >
       <app-directory
         [fileElements]="fileElements | async"
         [path]="currentPath"
@@ -15,10 +17,9 @@
         (navigatedUp)="navigateUp()"
         (elementRenamed)="renameElement($event)"
         (elementMoved)="moveElement($event)"
+        (clickedFile)="parentData = $event"
       ></app-directory>
     </div>
-    <div class="col-8 editor">
-      <app-editor [fileName]="parentData"></app-editor>
-    </div>
+    <div class="col-8 editor"><app-editor [fileName]="parentData"></app-editor></div>
   </div>
 </div>

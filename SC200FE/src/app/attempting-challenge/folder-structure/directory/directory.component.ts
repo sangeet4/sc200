@@ -13,7 +13,6 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlattener, MatTreeFlatDataSource } from '@angular/material/tree';
 import { of as ofObservable, Observable, BehaviorSubject } from 'rxjs';
 import { FilesService } from '../../files.service';
-import { environment } from 'src/environments/environment';
 
 
 /**
@@ -39,7 +38,7 @@ export class TodoItemFlatNode {
 @Injectable()
 export class ChecklistDatabase {
   dataChange: BehaviorSubject<TodoItemNode[]> = new BehaviorSubject<TodoItemNode[]>([]);
-  public url = environment.apiUrl+"file/structure";
+  public url = "http://localhost:8080/file/structure";
   public TREE: string;
 
   constructor(private http: HttpClient, private fileService: FileService) {
@@ -143,6 +142,7 @@ export class DirectoryComponent {
   @Output() navigatedDown = new EventEmitter<FileElement>();
   @Output() navigatedUp = new EventEmitter();
   @Output() fileAdded = new EventEmitter<{ name: string }>();
+  @Output() clickedFile: EventEmitter<string> = new EventEmitter();
 
   constructor(public dialog: MatDialog, private router: Router, private fileService: FileService, private database: ChecklistDatabase, private filesService: FilesService, private route: ActivatedRoute) {
     this.treeFlattener = new MatTreeFlattener(this.transformer, this.getLevel,
@@ -155,9 +155,9 @@ export class DirectoryComponent {
     });
   }
 
-  // showDirectory() {
-  //   this.database.initialize();
-  // }
+   showDirectory() {
+     this.database.initialize();
+  }
 
   showTemplate() {
     this.filesService.getTemplate().subscribe(data => {
@@ -183,30 +183,37 @@ export class DirectoryComponent {
     console.log("content from directory component");
     // this.filesService.getContentfromUrl(name).subscribe(data=>{
     //   console.log("data is " ,data );
-       var filename = name.split('.');
-      this.id = this.route.snapshot.paramMap.get('id');
+    console.log(name);
+    this.clickedFile.emit(name);
+    //this.callOnClicked.emit(null);    //this.fileService.changeMessage(name);
+    //this.fileService.setClickedFileName(name);
+    
+//        var filename = name.split('.');
+//       this.id = this.route.snapshot.paramMap.get('id');
 
-    //   this.filesService.testData="";
-    //   this.filesService.testData=data['content'];
+//     //   this.filesService.testData="";
+//     //   this.filesService.testData=data['content'];
      
-    //   console.log("url from the route");
-    //   console.log(this.router.url);
-console.log(this.router.url);
+//     //   console.log("url from the route");
+//     //   console.log(this.router.url);
+// console.log(this.router.url);
 
-if(this.count<1){
-  this.count++;
-      this.router.navigate(['attempt/' + this.id + '/' + filename[1] + '/' + filename[0]]);
-      }
-      else{
-        this.count++;
-        console.log(this.count);
-        this.id=this.route.snapshot.paramMap.get('id');
+// if(this.count<1){
+//   this.count++;
+//       this.router.navigate(['attempt/' + this.id + '/' + filename[1] + '/' + filename[0]]);
+//       }
+//       else{
+//         this.count++;
+//         console.log(this.count);
+//         this.id=this.route.snapshot.paramMap.get('id');
+
+//       console.log(this.id);
         
-      console.log(this.router.url);
+//       console.log(this.router.url);
      
-       //this.router.navigate(['/attempt'+this.id],{)
-        this.router.navigateByUrl('/attempt/'+this.id+'/'+filename[1]+'/'+filename[0]);
-      }      
+//        //this.router.navigate(['/attempt'+this.id],{)
+//         this.router.navigateByUrl('/attempt/'+this.id+'/'+filename[1]+'/'+filename[0]);
+//       }      
 
   }
 

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient } from '@angular/common/http';
 import { Routes } from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-attempt-view',
@@ -20,7 +19,7 @@ export class AttemptViewComponent implements OnInit {
     //console.log(this.id)
     var http:HttpClient;
     //console.log(`hey ${id}`);
-    this.http.get(environment.apiUrl+'challenge/challengeAPI/v1/'+this.id).subscribe((res:any)=> {
+    this.http.get('https://35.154.116.88:8080/challenge/challengeAPI/v1/'+this.id).subscribe((res:any)=> {
       console.log("inside the sub");
         this.completechallenge1=res;
         

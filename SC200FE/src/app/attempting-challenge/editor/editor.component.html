@@ -4,5 +4,8 @@
   (fileChange)="onFileChange($event)"
   id="editor"
 ></monaco-editor>
-<button (click)="onClick()">Save</button> <button (click)="Run()">Run</button>
+<button (click)="saveCode()">Save</button>
+<button (click)="compileCode()">compile</button>
+<button (click)="changeCode()">changeCode</button>
 <p>{{ httpResponse }}</p>
+<h2>{{fileName}}</h2>

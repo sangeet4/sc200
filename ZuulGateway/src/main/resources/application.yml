@@ -7,10 +7,10 @@ server:
 zuul:
     routes:
         login:
-            path: /login/**
+            
             url: http://localhost:8184
-        registration:
-            path: /register/**
+        register:
+            
             url:  http://localhost:8181
         challenge:
             url:  http://localhost:8180
@@ -18,7 +18,7 @@ zuul:
              path: /secure/**
              url:  http://localhost:8186
         profile:
-            path: /profile/**
+            
             url:  http://localhost:8185
         fileparser:
             path: /file/**

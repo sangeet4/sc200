@@ -5,7 +5,7 @@ export class Profile {
     firstName: string;
     lastName: string;
     username: string;
-    contactNumber: string;
+    phone: number;
     score: number;
     ranking: number;
     challengeAttempted: Challenge[];

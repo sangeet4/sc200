@@ -23,7 +23,7 @@ export class UpdateProfileComponent implements OnInit {
       firstName : [this.profile.firstName, [Validators.required]],
       lastName : [this.profile.lastName, Validators.required],
       userName : [this.profile.username, Validators.required],
-      contactNumber : [this.profile.contactNumber, [Validators.required, Validators.pattern('^[0-9]{10}$')]]
+      contactNumber : [this.profile.phone, [Validators.required, Validators.pattern('^[0-9]{10}$')]]
     });
   }
 
@@ -42,10 +42,11 @@ export class UpdateProfileComponent implements OnInit {
       console.log('PUT Failed');
       return;
     }
+    console.log(this.updateForm.value);
     this.profile.firstName = this.updateForm.value.firstName;
     this.profile.lastName = this.updateForm.value.lastName;
     this.profile.username = this.updateForm.value.userName;
-    this.profile.contactNumber = this.updateForm.value.contactNumber;
+    this.profile.phone = this.updateForm.value.contactNumber;
     console.log(this.profile);
     this.profileService.updateProfile(this.profile.email, this.profile)
       .subscribe(data => {

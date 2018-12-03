@@ -1,4 +1,4 @@
-host: '35.154.116.88:9092'
+host: 'http://localhost:9092'
 server:
     port: 8187
 spring:

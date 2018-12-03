@@ -46,7 +46,7 @@ export class EditorComponent implements OnInit, OnChanges {
   }
 
   changeContentOfEditor() {
-    this.filesService.getContentfromUrl(this.fileName).subscribe(data => {
+    this.filesService.GetContent(this.fileName).subscribe(data => {
       
       console.log("file uri is ", this.file.uri);
       this.file = {

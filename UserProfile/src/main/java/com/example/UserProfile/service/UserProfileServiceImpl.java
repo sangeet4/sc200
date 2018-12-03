@@ -35,13 +35,12 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
     @Override
     public UserProfile saveUserProfile(UserProfile userProfile) throws UserProfileAlreadyExitsException {
+
         if(userProfileRepository.existsById(userProfile.getEmail())){
            // logger.info("exception ocuured");
             throw new UserProfileAlreadyExitsException("userProfile-service.userExist");
         }
-
-
-        UserProfile saveuserProfile= userProfileRepository.save(userProfile);
+        UserProfile saveuserProfile = userProfileRepository.save(userProfile);
 
         return saveuserProfile;
     }

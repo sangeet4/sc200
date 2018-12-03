@@ -43,7 +43,10 @@ public class UserProfileController {
                   responseEntity = new ResponseEntity<String>("userProfile.saveUser", HttpStatus.CREATED);
               }
               catch(UserProfileAlreadyExitsException e){
-                  responseEntity = new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
+                  responseEntity = new ResponseEntity<String>(e.getMessage(),HttpStatus.NOT_IMPLEMENTED);
+              }
+              catch (Exception ex){
+                  responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.NOT_IMPLEMENTED);
               }
 
         return responseEntity;

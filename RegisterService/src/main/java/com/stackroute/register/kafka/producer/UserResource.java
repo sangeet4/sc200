@@ -12,7 +12,7 @@ public class UserResource {
     @Autowired
     private KafkaTemplate<String, User> kafkaTemplate;
 
-    private static final String TOPIC = "userProfile2";
+    private static final String TOPIC = "userProfile";
       public void putIntoTopic(User user){
           kafkaTemplate.send(TOPIC,user);
           System.out.println("we have executted send");

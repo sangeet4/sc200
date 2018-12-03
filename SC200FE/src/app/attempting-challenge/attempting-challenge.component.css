@@ -1,14 +1,18 @@
-.container, .row {
+.container1, .row {
   margin: 0;
   padding: 0;
   border: 0;
-  width: 100vw;
+  width: 100%;
 }
 
-.structure   {
+.structure {
+  overflow-y: scroll
+}
+
+/* .structure   {
     margin: 0;
   padding: 0;
-  max-width: 20vw;
+  width: 20%;
   height: 90vh;
   overflow-y: scroll;
 }
@@ -16,10 +20,15 @@
 .editor {
     margin: 0;
   padding: 0;
-  width: 70vw;
-}
+  width: 80%;
+} */
 
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
+}
+
+.outer{
+  width: 100%;
+  padding: 1em;
 }

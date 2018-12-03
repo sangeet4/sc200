@@ -1,8 +1,7 @@
 .card {
     min-width: 400px;
     width:100%;
-    padding-top : 10px;
-    
+    padding: 0;
   }
   
   .card {
@@ -10,6 +9,7 @@
     background-size: cover;
     
   }
+
   .mat-button{
     padding-right: 60px;
     background-color: cornflowerblue;
@@ -39,6 +39,10 @@
  h1{
     font-family:  Helvetica;
      /* color:red; */
+ }
+
+ .outer1{
+     margin: 1em;
  }
 
 

@@ -65,7 +65,9 @@ export class FilesService {
 
     this.newurl = this.GetFilePath(file.uri);
     console.log(this.newurl);
-    return this.http.post(this.url1, this.newurl, httpOptions);
+    return this.http.post(this.url1, "a/challengecreator", httpOptions);
+
+    // return this.http.post(this.url1, this.newurl, httpOptions);
 
   }
   getTemplate() {

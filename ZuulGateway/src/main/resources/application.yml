@@ -28,7 +28,7 @@ zuul:
             url: http://localhost:8185
         compilation:
             path: /compile/**
-            url: http://localhost:8183
+            url: http://localhost:8183/compile/
         scoring:
             path: /score/**
             url: http://localhost:8189

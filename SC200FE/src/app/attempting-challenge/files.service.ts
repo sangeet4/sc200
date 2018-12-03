@@ -28,7 +28,7 @@ export class FilesService {
   files: [string];
   // url = "http://35.154.116.88:8182/";
   url = environment.apiUrl;
-  url1 = environment.apiUrl + "/compile";
+  url1 = environment.apiUrl + "compile";
   newurl: string = "";
   httpresponse;
 
@@ -62,7 +62,7 @@ export class FilesService {
   }
   getTemplate() {
     console.log("into the get template func");
-    return this.http.post(this.url + "file/struct", "src/", httpOptions);
+    return this.http.post(this.url + "file/struct", "challenges/", httpOptions);
   }
   getRepsoitory(url: string) {
     return this.http.post(this.url1 + "/clone", url);

@@ -2,7 +2,6 @@ com/stackroute/register/domain/User.class
 com/stackroute/register/kafka/producer/UserResource.class
 com/stackroute/register/exceptions/NoSuchUserException.class
 com/stackroute/register/service/RegisterService.class
-com/stackroute/register/kafka/consumer/KafkaConfiguration.class
 com/stackroute/register/exceptions/UserNameExistsException.class
 com/stackroute/register/RegisterNewApplication.class
 com/stackroute/register/exceptions/NullDetailsException.class

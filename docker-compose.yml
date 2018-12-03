@@ -124,7 +124,7 @@ services:
     expose:
       - 8182
     volumes:
-            - '/data-docker/sc200/FileParser/Directory:/usr/app1'
+            - '../Directory:/usr/app1'
 
   compilation-demo:
     image: compilation:v1
@@ -137,7 +137,7 @@ services:
     expose:
       - 8183
     volumes:
-            - '/data-docker/sc200/FileParser/Directory:/usr/app1'
+            - '../Directory:/usr/app1'
             - '/usr/bin/docker:/usr/bin/docker'
             - '/var/run/docker.sock:/var/run/docker.sock'
             - '/usr/local/bin/docker-compose:/usr/local/bin/docker-compose'
@@ -180,7 +180,7 @@ services:
      - "7474:7474"
      - "7687:7687"
     volumes:
-     - './neo4j-data:/data'
+     - '../neo4j-data:/data'
 
 
   recommendation:

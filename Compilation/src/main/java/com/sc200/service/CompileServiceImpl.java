@@ -49,11 +49,10 @@ public class CompileServiceImpl implements CompileService {
     @Override
     public void clone(String url) throws IOException{
         try{
-            String[] command = {"/bin/bash","clonescript.sh",url};
+            String[] command = { "/bin/bash","clonescript.sh" , url };
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             Process process = processBuilder.start();
-
-            System.out.println("cloned the repository");
+	    System.out.println("cloned the repository");
         }
         catch (Exception ex){
             ex.printStackTrace();

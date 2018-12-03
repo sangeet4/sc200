@@ -1,9 +1,0 @@
-com/sc200/service/CompileService.class
-com/sc200/domain/File.class
-com/sc200/service/FileParserService.class
-com/sc200/controller/CompilerController.class
-com/sc200/service/CompileServiceImpl.class
-com/sc200/domain/File$FileBuilder.class
-com/sc200/CompilationApplication.class
-com/sc200/configuration/WebConfiguration.class
-com/sc200/service/FileParserServiceImpl.class

@@ -8,30 +8,30 @@ zuul:
     routes:
         login:
             path: /login/**
-            url: http://35.154.116.88:8184
+            url: http://localhost:8184
         registration:
             path: /register/**
-            url: http://35.154.116.88:8181
+            url:  http://localhost:8181
         challenge:
-            url: http://35.154.116.88:8180
+            url:  http://localhost:8180
         recommendation:
              path: /secure/**
-             url: http://35.154.116.88:8186
+             url:  http://localhost:8186
         profile:
             path: /profile/**
-            url: http://35.154.116.88:8185
+            url:  http://localhost:8185
         fileparser:
             path: /file/**
-            url: http://35.154.116.88:8182
+            url: http://localhost:8182
         voting:
             path: /vote/**
-            url: http://35.154.116.88:8185
+            url: http://localhost:8185
         compilation:
             path: /compile/**
-            url: http://35.154.116.88:8183
+            url: http://localhost:8183
         scoring:
             path: /score/**
-            url: http://35.154.116.88:8189
+            url: http://localhost:8189
 
 
 # The format used for the keystore

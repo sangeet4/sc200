@@ -46,17 +46,14 @@ export class EditorComponent implements OnInit, OnChanges {
   }
 
   changeContentOfEditor() {
-    this.filesService.GetContent(this.fileName).subscribe(data => {
-      
-      console.log("file uri is ", this.file.uri);
-      this.file = {
-        ...this.file,
-        content: data["content"],
-        uri: this.fileName
-      }
-      // this.file.content = data["content"];
-      // this.file.uri = this.fileName;
-    });
+    console.log("file uri is ", this.file.uri);
+    this.file = {
+      ...this.file,
+      content: this.filesService.GetContent(this.fileName),
+      uri: this.fileName
+    };
+    // this.file.content = data["content"];
+    // this.file.uri = this.fileName;
   }
   onFileChange(file: MonacoFile) {
     this.content = this.file.content;

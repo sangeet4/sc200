@@ -13,7 +13,7 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlattener, MatTreeFlatDataSource } from '@angular/material/tree';
 import { of as ofObservable, Observable, BehaviorSubject } from 'rxjs';
 import { FilesService } from '../../files.service';
-
+import { environment } from '../../../../environments/environment';
 
 /**
  * Node for to-do item
@@ -38,7 +38,7 @@ export class TodoItemFlatNode {
 @Injectable()
 export class ChecklistDatabase {
   dataChange: BehaviorSubject<TodoItemNode[]> = new BehaviorSubject<TodoItemNode[]>([]);
-  public url = "http://localhost:8080/file/structure";
+  public url = environment.apiUrl + 'file/structure';
   public TREE: string;
 
   constructor(private http: HttpClient, private fileService: FileService) {

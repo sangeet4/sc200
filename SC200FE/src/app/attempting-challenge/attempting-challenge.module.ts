@@ -21,7 +21,7 @@ import { FolderUpload } from './comp/folder_upload';
 import { EditorComponent } from './editor/editor.component';
 import { FilesService } from './files.service';
 import { AttemptViewComponent } from './attempt-view/attempt-view.component';
-import { MatListModule } from '@angular/material';
+import { MatListModule, MatChipsModule } from '@angular/material';
 @NgModule({
   imports: [
     CommonModule,
@@ -40,7 +40,8 @@ import { MatListModule } from '@angular/material';
     CdkTreeModule,
     HttpClientModule,
     MonacoEditorModule.forRoot(),
-    MatListModule
+    MatListModule,
+    MatChipsModule
   ],
   declarations: [
     AttemptingChallengeComponent,

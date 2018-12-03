@@ -12,12 +12,10 @@
       matTreeNodePadding
     >
       <button mat-icon-button disabled></button>
-      <mat-checkbox
-        class="checklist-leaf-node"
-        [checked]="checklistSelection.isSelected(node)"
+      <a mat-button color='primary'
         (click)="showContent(node.item)"
         (change)="checklistSelection.toggle(node)"
-        >{{ node.item }}</mat-checkbox
+        >{{ node.item }}</a
       >
     </mat-tree-node>
 
@@ -45,11 +43,9 @@
           {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
         </mat-icon>
       </button>
-      <mat-checkbox
-        [checked]="descendantsAllSelected(node)"
-        [indeterminate]="descendantsPartiallySelected(node)"
+      <a mat-button
         (change)="todoItemSelectionToggle(node)"
-        >{{ node.item }}</mat-checkbox
+        >{{ node.item }}</a
       >
       <button mat-icon-button (click)="addNewItem(node)">
         <mat-icon>add</mat-icon>

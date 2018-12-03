@@ -1,3 +1,6 @@
+<mat-chip-list *ngIf="fileName">
+  <mat-chip selected>{{fileName}}</mat-chip>
+</mat-chip-list>
 <monaco-editor
   [options]="options"
   [file]="file"

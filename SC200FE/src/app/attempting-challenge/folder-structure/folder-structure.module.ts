@@ -12,7 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTreeModule, MatCheckboxModule } from '@angular/material';
+import { MatTreeModule, MatCheckboxModule, MatButtonToggleModule } from '@angular/material';
 @NgModule({
   imports: [
     CommonModule,
@@ -29,7 +29,8 @@ import { MatTreeModule, MatCheckboxModule } from '@angular/material';
     FlexLayoutModule,
     MatCardModule,
     MatTreeModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatButtonToggleModule
   ],
   exports: [DirectoryComponent],
   providers: [FileService],

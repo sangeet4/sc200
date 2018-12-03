@@ -10,7 +10,7 @@ zuul:
             
             url: http://localhost:8184
         register:
-            
+            path: /register/**
             url:  http://localhost:8181
         challenge:
             url:  http://localhost:8180

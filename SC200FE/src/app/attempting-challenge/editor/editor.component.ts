@@ -58,11 +58,6 @@ export class EditorComponent implements OnInit, OnChanges {
       // this.file.uri = this.fileName;
     });
   }
-  changeCode() {
-    console.log("changeCode is being called");
-    this.file.uri="hello"
-    this.file.content = "hey its working now";
-  }
   onFileChange(file: MonacoFile) {
     this.content = this.file.content;
     console.log(this.content);

@@ -23,7 +23,7 @@ public class KafkaConfigurationProd {
         Map<String, Object> config = new HashMap<>();
 
         config.put(JsonSerializer.ADD_TYPE_INFO_HEADERS, false);
-        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "35.154.116.88:9092");
+        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "http://localhost:9092");
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return new DefaultKafkaProducerFactory<>(config);
@@ -39,7 +39,7 @@ public class KafkaConfigurationProd {
         Map<String, Object> config = new HashMap<>();
 
         config.put(JsonSerializer.ADD_TYPE_INFO_HEADERS, false);
-        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "35.154.116.88:9092");
+        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "http://localhost:9092");
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
         return new DefaultKafkaProducerFactory<>(config);

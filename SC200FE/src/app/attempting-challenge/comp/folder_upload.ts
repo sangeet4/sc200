@@ -1,4 +1,5 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import { ChecklistDatabase } from './../folder-structure/directory/directory.component';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { FilesService } from '../files.service'
 import { FileService } from '../folder-structure/directory/file.service';
 import { Router } from '@angular/router';
@@ -10,11 +11,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./folder_upload.css']
 })
 export class FolderUpload {
+
+  @Input()
+  userName: string;
+
+  @Input()
+  challengeId: string;
+
   
   canDropFolder = typeof DataTransferItem.prototype.webkitGetAsEntry === 'function';
   uploadPaths = [];
   
-  constructor(private cdr: ChangeDetectorRef , private filesServie : FilesService,private fileService:FileService , private router: Router) {}
+  constructor(private cdr: ChangeDetectorRef , private filesServie : FilesService,private fileService:FileService , private router: Router, private database: ChecklistDatabase) {}
   
   dragenter(event) {
     // indicates valid drop data
@@ -52,7 +60,18 @@ export class FolderUpload {
 
   clone(url:string){
     console.log(url);
-    this.filesServie.getRepsoitory(url);
+    this.filesServie.getRepsoitory(url, this.userName, this.challengeId)
+    .subscribe(data=>{
+      if (data['results'] === 'cloned the repository') {
+        this.filesServie.getTemplate('challenges/' + this.userName + '/' + this.challengeId)
+        .subscribe(data1 => {
+          this.filesServie.allFiles = data1['paths'];
+          console.log(data['paths']);
+          this.database.initialize();
+        });
+      }
+    });
+
   }
 
   filesPicked(files) {

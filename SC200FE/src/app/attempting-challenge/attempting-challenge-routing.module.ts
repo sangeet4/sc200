@@ -8,8 +8,9 @@ const routes: Routes = [
   // children: [
   //   // {path: '' , component : AttemptingChallengeComponent },
   //   {path: ':file/:name' , component : EditorComponent,pathMatch:"full"}
+    // {path: 'results', loadChildren: '../scoring/scoring.module/#ScoringModule' }
   // ],
-  runGuardsAndResolvers:"always",
+  runGuardsAndResolvers: 'always',
 }
 ];
 

@@ -13,6 +13,8 @@ import { Browser } from "protractor";
 })
 export class EditorComponent implements OnInit, OnChanges {
   @Input() fileName: string;
+  @Input() userName: string;
+  @Input() challengeId: string;
   count: number = 0;
   content = "hi";
   httpResponse;
@@ -68,15 +70,16 @@ export class EditorComponent implements OnInit, OnChanges {
     // var a =this.file.uri;
     // var b = this.file.content;
     // var file : any[];
-    this.filesService.SaveFile(this.file).subscribe();
+    this.filesService.setContent(this.file.uri, this.file.content);
+    this.filesService.SaveFile(this.userName, this.challengeId).subscribe();
   }
   public compileCode() {
     //console.log(this.file.uri , this.file.content);
     // var a =this.file.uri;
     // var b = this.file.content;
     // var file : any[];
-
-    this.filesService.RunFile(this.file).subscribe(data => {
+    this.saveCode();
+    this.filesService.RunFile(this.userName, this.challengeId).subscribe(data => {
       this.httpResponse = data;
       console.log(this.httpResponse);
       console.log(data);

@@ -38,11 +38,18 @@ public class CompilerController {
     public void createDirectoryLayer(@Payload @Valid String path, @DestinationVariable("sessionId") String sessionId) throws IOException {
         System.out.println("socket request invoked");
         ResponseEntity responseEntity;
+        String response = null;
         path = path.replaceAll("\"" , "");
         File file = new File(path);
         try{
             ArrayList<String> output = compileService.runFile(file);
-            responseEntity = new ResponseEntity<ArrayList<String>>(output , HttpStatus.OK);
+            for (int i=output.size();i>=0;i--) {
+                if(output.get(i).contains("BUILD SUCCESS") || output.get(i).contains("BUILD FAILURE") ) {
+                    response = output.get(i);
+                    break;
+                }
+            }
+            responseEntity = new ResponseEntity<String>(response , HttpStatus.OK);
             this.template.convertAndSend("/results/" + sessionId, responseEntity);
         }
         catch (Exception e){

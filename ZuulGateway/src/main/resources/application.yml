@@ -10,7 +10,7 @@ zuul:
             
             url: http://localhost:8184
         register:
-            path: /register/**
+           
             url:  http://localhost:8181
         challenge:
             url:  http://localhost:8180
@@ -20,8 +20,8 @@ zuul:
         profile:
             
             url:  http://localhost:8185
-        fileparser:
-            path: /file/**
+        file:
+           
             url: http://localhost:8182
         voting:
             path: /vote/**

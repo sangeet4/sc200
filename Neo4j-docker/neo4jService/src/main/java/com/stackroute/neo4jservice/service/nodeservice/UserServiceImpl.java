@@ -43,12 +43,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean checkForUserExistence(User user) {
-        return ((boolean)userRepository.existsById(user.getId()));
+        return ((boolean)userRepository.existsById(user.getUserId()));
 
     }
 
     @Override
     public User searchById(User user) {
-        return (User)userRepository.findById(user.getId()).get();
+        return (User)userRepository.findById(user.getUserId()).get();
     }
 }

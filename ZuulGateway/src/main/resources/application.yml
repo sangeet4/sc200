@@ -14,8 +14,8 @@ zuul:
             url:  http://localhost:8181
         challenge:
             url:  http://localhost:8180
-        recommendation:
-             path: /secure/**
+        secure:
+             
              url:  http://localhost:8186
         profile:
             
@@ -23,14 +23,14 @@ zuul:
         file:
            
             url: http://localhost:8182
-        voting:
-            path: /vote/**
+        vote:
+           
             url: http://localhost:8185
-        compilation:
-            path: /compile/**
+        compile:
+            
             url: http://localhost:8183/compile/
-        scoring:
-            path: /score/**
+        score:
+            
             url: http://localhost:8189
 
 

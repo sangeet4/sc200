@@ -1,8 +1,0 @@
-server:
-    port: 8186
-spring:
-    data:
-        neo4j:
-            password: rootUntitled Folder
-            uri: bolt://localhost
-            username: neo4j

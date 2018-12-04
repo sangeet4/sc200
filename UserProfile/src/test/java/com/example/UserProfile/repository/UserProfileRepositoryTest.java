@@ -50,14 +50,14 @@ public class UserProfileRepositoryTest {
     }
 
     @Test
-    public void testSaveMovie(){
+    public void testSaveUser(){
         userProfileRepository.save(user);
         UserProfile fetchUserProfile = userProfileRepository.findById(user.getEmail()).get();
         Assert.assertEquals("user1",fetchUserProfile.getUsername());
     }
 
     @Test
-    public void testSaveMovieFailure(){
+    public void testSaveUserFailure(){
         userProfileRepository.save(user);
         UserProfile fetchUserProfile = userProfileRepository.findById(user.getEmail()).get();
         Assert.assertEquals(user,fetchUserProfile);
@@ -66,7 +66,7 @@ public class UserProfileRepositoryTest {
     @Test
     public void testGetallUserProfile(){
         UserProfile user1 = new UserProfile("1@gmail.com","first","last","user1","20-07-1996",9087654321L,12.3,7,"java",null,null,null,null);
-        UserProfile user2 = new UserProfile("2@gmail.com","first","last","user2","20-07-1996",9087654321L,12.3,7,"java",null,null,null,null);
+        UserProfile user2 = new UserProfile("2@gmail.com","second","last","user2","20-07-1997",9087654301L,12.9,4,"java",null,null,null,null);
         userProfileRepository.save(user1);
         userProfileRepository.save(user2);
         List<UserProfile> fetchUserProfileList = userProfileRepository.findAll();
@@ -76,7 +76,7 @@ public class UserProfileRepositoryTest {
     @Test
     public void testUpdateUserProfilebyId(){
         UserProfile user1 = new UserProfile("1@gmail.com","first","last","user1","20-07-1996",9087654321L,12.3,7,"java",null,null,null,null);
-        UserProfile user2 = new UserProfile("2@gmail.com","first","last","user2","20-07-1996",9087654321L,12.3,7,"java",null,null,null,null);
+        UserProfile user2 = new UserProfile("2@gmail.com","second","last","user2","20-07-1997",9087654301L,12.9,4,"java",null,null,null,null);
 
         userProfileRepository.save(user1);
         userProfileRepository.save(user2);
@@ -97,7 +97,7 @@ public class UserProfileRepositoryTest {
     @Test
     public void testDeleteUserProfile(){
         UserProfile user1 = new UserProfile("1@gmail.com","first","last","user1","20-07-1996",9087654321L,12.3,7,"java",null,null,null,null);
-        UserProfile user2 = new UserProfile("2@gmail.com","first","last","user2","20-07-1996",9087654321L,12.3,7,"java",null,null,null,null);
+        UserProfile user2 = new UserProfile("2@gmail.com","second","last","user2","20-07-1997",9087654301L,12.9,4,"java",null,null,null,null);
         userProfileRepository.save(user1);
         userProfileRepository.save(user2);
         userProfileRepository.deleteById("1@gmail.com");

@@ -100,7 +100,7 @@ public class UserProfileServiceImplTest {
             UserProfile user1 = new UserProfile("1@gmail.com","first","last","user1","20-07-1996",9087654321L,12.3,7,"java",null,null,null,null);
             when(userProfileRepository.save(user1)).thenReturn(user1);
             UserProfile savedUserProfile1 = userProfileService.saveUserProfile(user1);
-            UserProfile user2 = new UserProfile("2@gmail.com","first","last","user2","20-07-1996",9087654321L,12.3,7,"java",null,null,null,null);
+            UserProfile user2 = new UserProfile("2@gmail.com","second","last","user2","20-07-1997",9087654301L,12.9,4,"java",null,null,null,null);
             when(userProfileRepository.save(user2)).thenReturn(user2);
             UserProfile savedUserProfile2 = userProfileService.saveUserProfile(user2);
             List<UserProfile> newList = new ArrayList<>();

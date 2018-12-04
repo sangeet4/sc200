@@ -107,6 +107,7 @@ public class UserProfileControllerTest {
 
 
 
+
     @Test
     public void getUserbyId() throws Exception {
         when(userService.searchUserProfileById("1@gmail.com")).thenReturn(user);

@@ -19,7 +19,7 @@ public class ZuulgatewayApplication {
 	@Bean
 	public FilterRegistrationBean jwtFilter() {
 		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-		registrationBean.addUrlPatterns("/secure/*");
+		registrationBean.addUrlPatterns("/secure/**");
 		registrationBean.addUrlPatterns("/challenge/**");
 		registrationBean.addUrlPatterns("/profile/**");
 		registrationBean.addUrlPatterns("/vote/**");

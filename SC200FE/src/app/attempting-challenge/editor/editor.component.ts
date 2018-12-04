@@ -5,6 +5,10 @@ import { ActivatedRoute } from "@angular/router";
 import { FilesService } from "../files.service";
 import { File } from "../folder-structure/directory/model/file";
 import { Browser } from "protractor";
+import * as Stomp from "stompjs";
+import * as SockJS from "sockjs-client";
+import { environment } from "./../../../environments/environment";
+
 
 @Component({
   selector: "app-editor",
@@ -16,6 +20,10 @@ export class EditorComponent implements OnInit, OnChanges {
   count: number = 0;
   content = "hi";
   httpResponse;
+  stompClient  = null;
+  sessionId: String;
+  //socketUrl = environment.apiUrl + "compile";
+  socketUrl = "http://localhost:8183/socket"
 
   title = "app";
   options = {
@@ -45,6 +53,27 @@ export class EditorComponent implements OnInit, OnChanges {
     this.changeContentOfEditor();
   }
 
+  initializeWebSocketConnection() {
+    const ws = new SockJS(this.socketUrl);
+    this.stompClient = Stomp.over(ws);
+    const that = this;
+    //connect to service using stompclinet
+    this.stompClient.connect({}, function(frame) {
+      that.sessionId = /\/([^\/]+)\/websocket/.exec(ws._transport.url)[1];
+      that.stompClient.subscribe("/results/" + that.sessionId, (message) => {
+        if ( message.body ) {
+          console.log(message.body);
+          that.httpResponse = message.body;
+        }
+      });
+      that.stompClient.subscribe("/chat/errors/" + that.sessionId,(message) => {
+        if (message.body) {
+          console.log(message.body);
+        }
+      });
+    });
+  }
+
   changeContentOfEditor() {
     console.log("file uri is ", this.file.uri);
     this.file = {
@@ -71,42 +100,20 @@ export class EditorComponent implements OnInit, OnChanges {
     this.filesService.SaveFile(this.file).subscribe();
   }
   public compileCode() {
-    //console.log(this.file.uri , this.file.content);
-    // var a =this.file.uri;
-    // var b = this.file.content;
-    // var file : any[];
+    //send the data to the compilation service using sockets
+    // that.stompClient.send("/app/send/message"+that.sessionId,{},that.filesService.GetFilePath(this.file.uri));
+    this.stompClient.send("/app/send/message"+this.sessionId,{},"a/challengecreator");
 
-    this.filesService.RunFile(this.file).subscribe(data => {
-      this.httpResponse = data;
-      console.log(this.httpResponse);
-      console.log(data);
-    });
+    
+    // this.filesService.RunFile(this.file).subscribe(data => {
+    //   this.httpResponse = data;
+    //   console.log(this.httpResponse);
+    //   console.log(data);
+    // });
   }
   public showResults() {
     console.log(this.httpResponse);
   }
 }
 
-// changeContent() {
-//   if (this.count < 2) {
-//     this.count++;
-//     // this.file.content = "hidgfss";
-//   } else {
-//     this.count++;
-//     this.file.content = this.content;
-//     console.log(
-//       "HI changeContent is being called ->>>>>>>>>>>>>>>>>>>>>>>>>>.",
-//       this.file.content
-//     );
-//     this.filesService.getContentfromUrl(this.fileName).subscribe(data => {
-//       this.file.uri = this.fileName;
-//       console.log(this.file.uri);
-//       // this.file.content="";
-//       // this.content="";
-//       // this.content = data['content'];
-//       this.file.content = data["content"];
-//       console.log(this.file.content);
-//       this.content = this.file.content;
-//     });
-//   }
-// }
+

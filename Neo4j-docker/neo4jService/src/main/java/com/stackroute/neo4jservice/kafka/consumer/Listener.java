@@ -30,11 +30,11 @@ public class Listener {
     }
 
 
-        @KafkaListener(topics = "test5", containerFactory = "userKafkaListenerFactory")
-        public void consumeJsonfromCreateChallenge(@Payload Challenge challenge) {
+    //     @KafkaListener(topics = "test5", containerFactory = "userKafkaListenerFactory")
+    //     public void consumeJsonfromCreateChallenge(@Payload Challenge challenge) {
 
-            System.out.println("create challenge json success");
+    //         System.out.println("create challenge json success");
 
 
-    }
+    // }
 }

@@ -48,22 +48,19 @@ public class RegisterController {
         String message = env.getProperty("user-controller.saveUser");
         try
         {
-            System.out.println(user.toString());
-            //calling method in kafka/producer to send data into kafka topic
+
             userResource.putIntoTopic(user);
             registerService.saveUser(user);
 
-            System.out.println(user.toString());
+
             responseEntity = new ResponseEntity<String>(message, HttpStatus.CREATED);
 
         } catch (UserNameExistsException ex){
-            System.out.println("Error 1");
+
             logger.error(ex.getMessage());
             responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.NOT_IMPLEMENTED);
+
         } catch (Exception ex){
-            System.out.println("Error 2");
-//            logger.error(ex.getMessage());
-            System.out.println(ex);
             responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.NOT_IMPLEMENTED);
 
         }

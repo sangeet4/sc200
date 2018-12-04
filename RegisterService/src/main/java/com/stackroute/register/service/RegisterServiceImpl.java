@@ -37,7 +37,7 @@ public class RegisterServiceImpl implements RegisterService {
             throw new UserNameExistsException(message);
         }
         User savedUser = userRepository.save(user);
-        //check for null and user exist exception
+
         return savedUser;
     }
     @Override

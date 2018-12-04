@@ -1,5 +1,6 @@
+host: 'http://localhost:9092'
 server:
-    port: 8186
+    port: 8187
 spring:
     data:
         neo4j:

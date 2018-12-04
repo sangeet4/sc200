@@ -3,6 +3,6 @@ server:
 spring:
     data:
         neo4j:
-            password: root
+            password: rootUntitled Folder
             uri: bolt://localhost
             username: neo4j

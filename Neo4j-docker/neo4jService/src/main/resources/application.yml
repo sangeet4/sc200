@@ -1,9 +1,0 @@
-host: 'http://localhost:9092'
-server:
-    port: 8187
-spring:
-    data:
-        neo4j:
-            password: root
-            uri: bolt://localhost
-            username: neo4j

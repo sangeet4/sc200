@@ -35,7 +35,7 @@ management:
             enabled: true
         web:
             exposure:
-                include: *
+                include: "*"
         prometheus:
             enabled: true
     metrics:

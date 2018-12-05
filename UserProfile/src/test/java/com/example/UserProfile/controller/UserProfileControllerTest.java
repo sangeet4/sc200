@@ -60,6 +60,7 @@ public class UserProfileControllerTest {
         user = new UserProfile();
         user.setChallengeCreated(null);
         user.setEmail("1@gmail.com");
+        user.setUserId("null");
         user.setChallengeUpvoted(null);
         user.setChallengeAttempted(null);
         user.setChallengeDownvoted(null);

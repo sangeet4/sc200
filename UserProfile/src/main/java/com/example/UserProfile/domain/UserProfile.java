@@ -29,6 +29,7 @@ public class UserProfile {
 
     @Id
     private String email;
+    private String userId;
     private String firstName;
     private String lastName;
     private String username;

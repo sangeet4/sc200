@@ -1,4 +1,4 @@
-import { ChecklistDatabase } from './../folder-structure/directory/directory.component';
+// import { ChecklistDatabase } from './../folder-structure/directory/directory.component';
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { FilesService } from '../files.service'
 import { FileService } from '../folder-structure/directory/file.service';
@@ -22,7 +22,7 @@ export class FolderUpload {
   canDropFolder = typeof DataTransferItem.prototype.webkitGetAsEntry === 'function';
   uploadPaths = [];
   
-  constructor(private cdr: ChangeDetectorRef , private filesServie : FilesService,private fileService:FileService , private router: Router, private database: ChecklistDatabase) {}
+  constructor(private cdr: ChangeDetectorRef , private filesServie : FilesService,private fileService:FileService , private router: Router) {}
   
   dragenter(event) {
     // indicates valid drop data
@@ -60,17 +60,17 @@ export class FolderUpload {
 
   clone(url:string){
     console.log(url);
-    this.filesServie.getRepsoitory(url, this.userName, this.challengeId)
-    .subscribe(data=>{
-      if (data['results'] === 'cloned the repository') {
-        this.filesServie.getTemplate('challenges/' + this.userName + '/' + this.challengeId)
-        .subscribe(data1 => {
-          this.filesServie.allFiles = data1['paths'];
-          console.log(data['paths']);
-          this.database.initialize();
-        });
-      }
-    });
+    // this.filesServie.getRepsoitory(url, this.userName, this.challengeId)
+    // .subscribe(data=>{
+    //   if (data['results'] === 'cloned the repository') {
+    //     this.filesServie.getTemplate('challenges/' + this.userName + '/' + this.challengeId)
+    //     .subscribe(data1 => {
+    //       this.filesServie.allFiles = data1['paths'];
+    //       console.log(data['paths']);
+    //       this.database.initialize();
+    //     });
+    //   }
+    // });
 
   }
 

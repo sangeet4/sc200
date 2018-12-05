@@ -11,18 +11,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
-
+import com.example.UserProfile.kafka.producer.UserResource;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class KafkaConsumer {
 
-@Autowired
-   public UserProfileRepository userProfileRepository;
+    public UserProfileRepository userProfileRepository;
+    public UserProfileService userProfileService;
+    private UserResource userResource;
 
-@Autowired
-public UserProfileService userProfileService;
+    public KafkaConsumer() {
+    }
+
+    @Autowired
+    public KafkaConsumer(UserProfileRepository userProfileRepository, UserProfileService userProfileService, UserResource userResource) {
+        this.userProfileRepository=userProfileRepository;
+        this.userProfileService=userProfileService;
+        this.userResource=userResource;
+    }
 
 
     @KafkaListener(topics = "test5", groupId = "group_id6", containerFactory = "userKafkaListenerFactory")
@@ -53,6 +61,8 @@ public UserProfileService userProfileService;
     public void consumeJsonfromRegService(@Payload UserProfile userProfile) {
 
         System.out.println("Consumed JSON Message of UserProfile from RegService: " + userProfile);
+        userResource.putIntoTopic(userProfile);
+
       userProfileRepository.save(userProfile);
 
 

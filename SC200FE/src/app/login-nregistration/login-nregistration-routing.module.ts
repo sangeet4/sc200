@@ -1,3 +1,5 @@
+import { RegisterComponent } from './register/register.component';
+import { Component } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -7,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginNRegistrationComponent } from './login-nregistration.component';
 
 const routes: Routes = [
+  {path: 'register',  component: RegisterComponent},
   {path: '', component: LoginNRegistrationComponent,
   children: [
     { path: '', component: HomeComponent, canActivate: [AuthGuard]},

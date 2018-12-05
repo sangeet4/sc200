@@ -33,6 +33,10 @@ export class AttemptingChallengeComponent implements OnInit {
   completechallenge;
   userName;
   dataToScoring: ScoringModel;
+  navbarOpen = false;
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private shareService: ShareService, private router: Router) { }
 
@@ -45,6 +49,8 @@ export class AttemptingChallengeComponent implements OnInit {
     this.userName = JSON.parse(localStorage.getItem('currentUser')).username;
     console.log(this.userName);
   }
+
+ 
 
   submit() {
     this.dataToScoring = new ScoringModel(

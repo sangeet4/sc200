@@ -159,7 +159,7 @@ public class FileServiceImpl implements FileService {
     public  String customFileReader(String path) throws IOException {
         File f = new File(path);
         String everything = "";
-        System.out.println(f);
+        System.out.println(f + " hello ");
         System.out.println(f.isDirectory());
         BufferedReader br = null;
         if (f.isFile()) {

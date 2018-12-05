@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/compile")
 public class CompilerController {
 

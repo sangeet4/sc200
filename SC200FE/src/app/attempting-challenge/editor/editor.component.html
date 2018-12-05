@@ -1,0 +1,12 @@
+<mat-chip-list *ngIf="fileName">
+  <mat-chip selected>{{fileName}}</mat-chip>
+</mat-chip-list>
+<monaco-editor
+  [options]="options"
+  [file]="file"
+  (fileChange)="onFileChange($event)"
+  id="editor"
+></monaco-editor>
+<button (click)="saveCode()">Save</button>
+<button (click)="compileCode()">compile</button>
+<p>{{ httpResponse }}</p>

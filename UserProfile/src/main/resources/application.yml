@@ -1,0 +1,32 @@
+server:
+    port: 8185
+
+
+userProfile-controller:
+    saveUser: '"successfully saved user"'
+    deleteUser: '"successfully deleted user"'
+    updateUser: '" successfully updated user"'
+    noUser: '"no user with such id"'
+
+userProfile-service:
+    userExist: '"user already exists with such id"'
+    management.endpoint.metrics.enabled=true
+    management.endpoints.web.exposure.include=*
+    management.endpoint.prometheus.enabled=true
+    management.metrics.export.prometheus.enabled=true
+management:
+    endpoint:
+        metrics:
+            enabled: true
+        web:
+            exposure:
+                include: *
+        prometheus:
+            enabled: true
+    metrics:
+        export:
+            prometheus:
+                enabled: true
+
+
+

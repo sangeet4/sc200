@@ -5,6 +5,7 @@ import com.example.UserProfile.domain.Challenge;
 import com.example.UserProfile.domain.UserId;
 import com.example.UserProfile.domain.UserProfile;
 import com.example.UserProfile.exception.UserProfileNotFoundException;
+import com.example.UserProfile.kafka.producer.UserResource;
 import com.example.UserProfile.repository.UserProfileRepository;
 import com.example.UserProfile.service.UserProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,19 @@ import java.util.List;
 @Service
 public class KafkaConsumer {
 
-@Autowired
-   public UserProfileRepository userProfileRepository;
+    public UserProfileRepository userProfileRepository;
+    public UserProfileService userProfileService;
+    private UserResource userResource;
 
-@Autowired
-public UserProfileService userProfileService;
+    public KafkaConsumer() {
+    }
 
+    @Autowired
+    public KafkaConsumer(UserProfileRepository userProfileRepository, UserProfileService userProfileService, UserResource userResource) {
+        this.userProfileRepository=userProfileRepository;
+        this.userProfileService=userProfileService;
+        this.userResource=userResource;
+    }
 
     @KafkaListener(topics = "test5", groupId = "group_id6", containerFactory = "userKafkaListenerFactory")
     public void consumeJson(@Payload UserProfile user) {
@@ -37,24 +45,22 @@ public UserProfileService userProfileService;
     public void consumeJsonFromChallengeService(@Payload Challenge challenge) {
 
         System.out.println("Consumed JSON Message of challenge: " + challenge);
-       System.out.println("filtered data is "+challenge.getChallengeId());
-
-       try {
-
+        System.out.println("filtered data is "+challenge.getChallengeId());
+        try {
            UserProfile userProfile = userProfileService.searchUserProfileById(challenge.getUserId());
            userProfileService.updateCreateChallengeToProfileById(challenge.getUserId(),challenge);
 
-       }
-       catch (UserProfileNotFoundException ex){
+        }
+        catch (UserProfileNotFoundException ex){
            ex.printStackTrace();
-       }
+        }
   }
-  @KafkaListener(topics = "userProfile", groupId = "group_id8", containerFactory = "registrationKafkaListenerFactory")
+
+    @KafkaListener(topics = "userProfile", groupId = "group_id9", containerFactory = "registrationKafkaListenerFactory")
     public void consumeJsonfromRegService(@Payload UserProfile userProfile) {
-
-        System.out.println("Consumed JSON Message of UserProfile from RegService: " + userProfile);
+      System.out.println("Consumed JSON Message of UserProfile from RegService: " + userProfile);
+      userResource.putIntoTopic(userProfile);
       userProfileRepository.save(userProfile);
-
 
     }
 
@@ -78,11 +84,9 @@ public UserProfileService userProfileService;
     }
 
     // add the kafka topic for both upvoted and downvoted challenges
-
     @KafkaListener(topics="votingTopic",groupId = "group_id10",containerFactory = "votingKafkaListenerFactory")
     public void consumeJsonFromVotingService(@Payload Challenge challenge){
         try{
-
             if(challenge.isFlag()) {
                 UserProfile userProfile = userProfileService.searchUserProfileById(challenge.getUserId());
                 userProfileService.updateUpvoteChallengeToProfileById(challenge.getUserId(), challenge);
@@ -96,7 +100,5 @@ public UserProfileService userProfileService;
             ex.printStackTrace();
         }
     }
-
-
 
 }

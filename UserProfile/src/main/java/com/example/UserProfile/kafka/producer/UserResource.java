@@ -17,11 +17,10 @@ public class UserResource {
     private static final String TOPIC = "test5";
     private static final String TOPIC2 = "test-challenge";
 
-
-
-
     public void putIntoTopic(UserProfile user){
         System.out.println("inside putIntotOPIC "+user);
+        String userId = user.getEmail();
+        user.setUserId(userId);
         kafkaTemplate.send(TOPIC,user);
         System.out.println("we have executted send topic");
     }

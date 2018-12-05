@@ -82,6 +82,7 @@ public class KafkaConsumer {
 
         System.out.println("Consumed JSON Message of UserProfile from RegService: " + userProfile);
         userProfile.setUserId(userProfile.getEmail());
+
       userProfileRepository.save(userProfile);
         userResource.putIntoTopic(userProfile);
     }

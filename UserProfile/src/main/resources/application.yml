@@ -10,4 +10,20 @@ userProfile-controller:
 
 userProfile-service:
     userExist: '"user already exists with such id"'
+   
+management:
+    endpoint:
+        metrics:
+            enabled: true
+        web:
+            exposure:
+                include: "*"
+        prometheus:
+            enabled: true
+    metrics:
+        export:
+            prometheus:
+                enabled: true
+
+
 

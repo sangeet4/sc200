@@ -11,6 +11,9 @@ alerting:
     - targets:
       # - alertmanager:9093
 
+tls_config:
+   insecure_skip_verify: true
+
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
   # - "first_rules.yml"

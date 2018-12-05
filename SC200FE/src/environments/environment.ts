@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://sc200-zuul.stackroute.in/'
+  apiUrl: 'http://sc200-zuul.stackroute.in/'
 };
 
 /*

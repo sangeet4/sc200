@@ -3,8 +3,16 @@
     flex-direction: column;
     align-items: center;
     margin-top: 1em;
+    height:26em;
+    opacity: 2.8;;
+   
+    
 }
 
 .profile-container > *{
     width: 90%;
+}
+
+body{
+    background-color: aliceblue;
 }

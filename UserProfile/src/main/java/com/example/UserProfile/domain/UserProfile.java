@@ -1,7 +1,6 @@
 package com.example.UserProfile.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
@@ -18,12 +17,18 @@ import java.util.List;
 //@RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
-@JsonIgnoreProperties
+
 public class UserProfile {
+
+
+
+
+
+
+
 
     @Id
     private String email;
-    private String userId;
     private String firstName;
     private String lastName;
     private String username;
@@ -36,5 +41,7 @@ public class UserProfile {
     private List<Challenge> challengeCreated;
     private List<Challenge> challengeUpvoted;
     private List<Challenge> challengeDownvoted;
+
+
 
 }

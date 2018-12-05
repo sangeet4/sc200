@@ -31,7 +31,7 @@ import org.neo4j.ogm.annotation.Property;
 
 
     public String getChallengeId() {
-        return id;
+        return challengeId;
     }
 
     public void setChallengeId(String challengeId){

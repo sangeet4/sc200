@@ -1,4 +1,3 @@
-
   <div class="jumbotron ">
     <p class="headtitle">
       Welcome to {{ title }}!
@@ -18,7 +17,7 @@
             <div class="card-body">
                 <p class="card-text"><strong>Level : </strong>{{challenge.level}}</p>
                 <p class="card-text"><strong>Description : </strong> <br>  {{challenge.challengeStamp}}</p>
-              <button mat-raised-button color='primary' (click)="attempt(challenge.id)">Attempt Challenge</button>
+              <button mat-raised-button color='primary' (click)="attempt(challenge.challengeId)">Attempt Challenge</button>
             </div>
 
             <!-- <div class="card col-md-12 " >

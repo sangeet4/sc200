@@ -226,12 +226,14 @@ services:
     - "3000:3000"
     volumes:
     - /var/lib/grafana
+    network_mode: host
     links:
     - prometheus
     image: grafana/grafana
   prometheus:
     ports:
     - "9090:9090"
+    network_mode: host
     volumes:
     - ./prometheus.yml:/etc/prometheus/prometheus.yml
     command:

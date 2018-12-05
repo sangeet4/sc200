@@ -17,7 +17,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/file")
 public class FileController {
 

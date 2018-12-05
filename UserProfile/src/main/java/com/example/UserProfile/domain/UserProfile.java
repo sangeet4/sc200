@@ -10,7 +10,7 @@ import com.example.UserProfile.domain.Challenge;
 import java.util.Arrays;
 import java.util.List;
 
-@Document(collection="userProfile1")
+
 
 @Data
 @NoArgsConstructor

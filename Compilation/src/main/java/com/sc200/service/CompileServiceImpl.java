@@ -49,7 +49,8 @@ public class CompileServiceImpl implements CompileService {
     @Override
     public void clone(String url) throws IOException{
         try{
-            String[] command = { "/bin/bash","clonescript.sh" , url };
+            String[] strings = url.split("$");
+            String[] command = { "/bin/bash","clonescript.sh",strings[0],strings[1],strings[2]};
             ProcessBuilder processBuilder = new ProcessBuilder(command);
             Process process = processBuilder.start();
 	    System.out.println("cloned the repository");

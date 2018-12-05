@@ -10,7 +10,7 @@ import org.neo4j.ogm.annotation.Relationship;
     public class User{
 
         @Id
-        private String id;
+        private String userId;
 
 
 
@@ -19,8 +19,8 @@ import org.neo4j.ogm.annotation.Relationship;
         @Property
         private String preferredLang;
 
-        public User(String id,String name, String preferredLang) {
-            this.id=id;
+        public User(String userId,String name, String preferredLang) {
+            this.userId=userId;
             this.name = name;
             this.preferredLang = preferredLang;
         }
@@ -29,12 +29,12 @@ import org.neo4j.ogm.annotation.Relationship;
 
         }
 
-    public String getId() {
-        return id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -56,7 +56,7 @@ import org.neo4j.ogm.annotation.Relationship;
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
+                "id='" + userId+ '\'' +
                 ", name='" + name + '\'' +
                 ", preferredLang='" + preferredLang + '\'' +
                 '}';

@@ -10,17 +10,14 @@ userProfile-controller:
 
 userProfile-service:
     userExist: '"user already exists with such id"'
-    management.endpoint.metrics.enabled=true
-    management.endpoints.web.exposure.include=*
-    management.endpoint.prometheus.enabled=true
-    management.metrics.export.prometheus.enabled=true
+   
 management:
     endpoint:
         metrics:
             enabled: true
         web:
             exposure:
-                include: *
+                include: "*"
         prometheus:
             enabled: true
     metrics:

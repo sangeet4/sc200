@@ -1,13 +1,13 @@
 <div class="quest-container">
   <form class="quest-container" [formGroup]="questDesc" (ngSubmit)="onSubmit()">
-    <!-- <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline">
       <mat-label>Challenge Id</mat-label>
       <input type="text" matInput placeholder="Challenge Id" class="form-control" id="id" formControlName="id" [readonly]="readOnlyFlag"
         required>
       <mat-error *ngIf="id.invalid && (id.dirty || id.touched)">
         Challenge Id shouldn't be null.
       </mat-error>
-    </mat-form-field> -->
+    </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Challenge Title</mat-label>
       <input matInput type="text" placeholder="Challenge Title" formControlName="challengeTitle" required>

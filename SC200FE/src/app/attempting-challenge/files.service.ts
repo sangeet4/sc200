@@ -45,22 +45,27 @@ export class FilesService {
 
   // }
 
-  SaveFile(challengeId, userId) {
-    const saveBody = new Save(userId, challengeId, this.textFiles, this.fileContent);
-    return this.http.post(this.url + "file/create", saveBody, httpOptions);
+  SaveFile(file: MonacoFile) {
+    this.newurl = this.GetFilePath(file.uri);
+    file.uri = this.newurl;
+
+    console.log(file);
+    return this.http.post(this.url + "file/create", file, httpOptions);
   }
 
-  RunFile(userId, challengeId) {
-    return this.http.post(this.url1, userId + '/' + challengeId, httpOptions);
+  RunFile(file) {
+    this.newurl = this.GetFilePath(file.uri);
+    console.log(this.newurl);
+    return this.http.post(this.url1, "a/challengecreator", httpOptions);
 
     // return this.http.post(this.url1, this.newurl, httpOptions);
   }
-  getTemplate(challengeId: string) {
+  getTemplate() {
     console.log("into the get template func");
-    return this.http.post(this.url + "file/struct", challengeId, httpOptions);
+    return this.http.post(this.url + "file/struct", "challenges/", httpOptions);
   }
-  getRepsoitory(url: string, userName: string, challengeId: string) {
-    return this.http.post(this.url1 + "/clone", url + '$' + userName + '$' + challengeId);
+  getRepsoitory(url: string) {
+    return this.http.post(this.url1 + "/clone", url);
   }
 
   setPaths(data) {
@@ -87,15 +92,10 @@ export class FilesService {
     return this.http.post(this.url + "file/content", path);
   }
 
-  setContent(fileName, data) {
-    let index;
-    for (let i = 0; i < this.textFiles.length; i++) {
-      //console.log(this.textFiles[i]);
-      if (fileName === this.textFiles[i]) {
-        index = i;
-        this.fileContent[index] = data;
-      }
-    }
+  setContent(data) {
+    this.fileContent = data;
+    console.log("from set content func");
+    console.log(this.fileContent);
   }
 
   showResponse() {
@@ -124,19 +124,5 @@ export class FilesService {
         return this.files[i];
       }
     }
-  }
-}
-
-export class Save {
-  userId: string;
-  challengeId: string;
-  textFile: string[];
-  fileContent: string[];
-
-  constructor(uid, cid, txt, file) {
-    this.userId = uid;
-    this.challengeId = cid;
-    this.textFile = txt;
-    this.fileContent = file;
   }
 }

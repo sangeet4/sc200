@@ -143,8 +143,6 @@ export class DirectoryComponent {
   @Output() navigatedUp = new EventEmitter();
   @Output() fileAdded = new EventEmitter<{ name: string }>();
   @Output() clickedFile: EventEmitter<string> = new EventEmitter();
-  @Input() userName: string;
-  @Input() challengeId: string;
 
   constructor(public dialog: MatDialog, private router: Router, private fileService: FileService, private database: ChecklistDatabase, private filesService: FilesService, private route: ActivatedRoute) {
     this.treeFlattener = new MatTreeFlattener(this.transformer, this.getLevel,
@@ -162,8 +160,7 @@ export class DirectoryComponent {
   }
 
   showTemplate() {
-    console.log(this.challengeId + ' ' + this.userName);
-    this.filesService.getTemplate("Template/" + this.challengeId).subscribe(data => {
+    this.filesService.getTemplate().subscribe(data => {
       this.filesService.allFiles = data['paths'];
       console.log(data['paths']);
       this.database.initialize();

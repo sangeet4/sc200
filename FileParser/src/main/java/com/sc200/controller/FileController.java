@@ -4,7 +4,6 @@ package com.sc200.controller;
 import com.sc200.domain.CustomFileContent;
 import com.sc200.domain.Directory;
 import com.sc200.domain.Files;
-import com.sc200.domain.Request;
 import com.sc200.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,13 +28,12 @@ public class FileController {
     }
 
     @PostMapping(value = "/create")
-    public String createDirectoryLayer(@RequestBody @Valid Request request) throws IOException {
+    public String createDirectoryLayer(@RequestBody @Valid Files[] file) throws IOException {
 
             try {
-	            	for(int i=0;i<request.getTextFile().size();i++)
+	            	for(int i=0;i<file.length;i++)
 		            {
-		                Files file = new Files(request.getTextFile().get(i) , request.getFileContents().get(i) , "java");
-                        String a = fileService.parseFile(file);
+                        String a = fileService.parseFile(file[i]);
 		            }
 		            return "Succesfully Created";
             }

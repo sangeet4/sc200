@@ -38,16 +38,13 @@ public class ConceptServiceImpl implements ConceptService {
     }
 
     @Override
-    public Concept searchConceptByName(String name)
-         // throws ConceptNotFoundException
-          {
-      //if (conceptRepository.findByName(name) != null) {
+    public Concept searchConceptByName(String name) throws ConceptNotFoundException {
+        if (conceptRepository.findByName(name) != null) {
             Concept searchedConcept = conceptRepository.findByName(name);
 
             return searchedConcept;
-       //
-     //else
-          //throw new ConceptNotFoundException("Concept Not Found");
+        } else
+            throw new ConceptNotFoundException("Concept Not Found");
 
     }
 //    List<Concept> conceptList=conceptRepository.getAllConcepts();

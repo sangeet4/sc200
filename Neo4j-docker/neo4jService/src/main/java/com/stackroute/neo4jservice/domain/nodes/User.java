@@ -9,8 +9,7 @@ import java.util.List;
 public class User{
 
     @Id
-    private String userId;
-
+    private String id;
     @Property
     private String name;
     @Property
@@ -34,8 +33,8 @@ public class User{
         this.lastName = lastName;
     }
 
-    public User(String userId, String name, String preferredLang) {
-        this.userId=userId;
+    public User(String id, String name, String preferredLang) {
+        this.id=id;
         this.name = name;
         this.preferredLang = preferredLang;
     }
@@ -65,18 +64,18 @@ public class User{
         this.preferredLang = preferredLang;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getId() {
+        return id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "userId='" + userId + '\'' +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", preferredLang='" + preferredLang + '\'' +
                 ", challengeA=" + challengeA +

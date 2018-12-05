@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
         }
  
       );
+      this.searchText="";
       this.result = '';
     }
     attempt(id: string) {

@@ -90,5 +90,4 @@ import java.util.Map;
             factory.setMessageConverter(new StringJsonMessageConverter());
             return factory;
         }
-
 }

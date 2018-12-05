@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.apache.commons.lang3.math.NumberUtils.min;
-
 @Service
 public class RecommendationServiceImpl implements RecommendationService {
     ChallengeRepository challengeRepository;
@@ -28,7 +26,6 @@ public class RecommendationServiceImpl implements RecommendationService {
         List<Challenge> attemptedSolvedChallengeList=challengeRepository.getAttemptedSolvedChallenges(name);
         //System.out.println("..............................." + attemptedSolvedChallengeList);
         List<Challenge> recommendedChallengeList=new ArrayList<Challenge>();
-        List<Challenge>recommendedChallengeList1=new ArrayList<Challenge>();
         System.out.println("..............................." + attemptedSolvedChallengeList);
 
         if(attemptedSolvedChallengeList.size()==0)
@@ -39,11 +36,7 @@ public class RecommendationServiceImpl implements RecommendationService {
                 recommendedChallengeList.add(challengeRepository.getBasicUnattemptedChallenges1().get(i));
 
             }
-           // return recommendedChallengeList;
-            for(int j=0;j<min(5,recommendedChallengeList.size());j++){
-                recommendedChallengeList1.add(recommendedChallengeList.get(j));
-            }
-            return recommendedChallengeList1;
+            return recommendedChallengeList;
         }
        else {
 
@@ -78,10 +71,6 @@ public class RecommendationServiceImpl implements RecommendationService {
             }
         }
 
-        //return recommendedChallengeList;
-        for(int j=0;j<min(5,recommendedChallengeList.size());j++){
-            recommendedChallengeList1.add(recommendedChallengeList.get(j));
-        }
-        return recommendedChallengeList1;
+        return recommendedChallengeList;
     }
 }

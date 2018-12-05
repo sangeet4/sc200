@@ -60,14 +60,14 @@ public class PostController {
         // Concept concept = repo.getConcept("name");
         String conceptName=data.getConceptName();
 
-       // try {
+        try {
             searchedConcept = conceptService.searchConceptByName(conceptName);
 
-       // }
-        //catch(ConceptNotFoundException e)
-      //  {
-           // responseEntity=new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
-    //}
+        }
+        catch(ConceptNotFoundException e)
+        {
+            responseEntity=new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
+        }
         // create a type relation to connect two nodes concept and challange
         TypeRelation tr = new TypeRelation();
         tr.setChallenge(data.getChallenge());

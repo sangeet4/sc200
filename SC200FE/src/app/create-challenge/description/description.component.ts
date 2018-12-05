@@ -24,12 +24,6 @@ export class DescriptionComponent implements OnInit {
   @Input()
   flag: number;
 
-  @Input()
-  questId;
-
-  @Input()
-  userName;
-
   ngOnInit() {
     console.log(this.quest2send);
     console.log(this.flag);
@@ -37,8 +31,7 @@ export class DescriptionComponent implements OnInit {
       this.readOnlyFlag = true;
     }
     this.questDesc = this.fb.group({
-      id : [this.quest2send.id],
-      userName : [this.quest2send.id],
+      id : [this.quest2send.id, [Validators.required]],
       challengeTitle : [this.quest2send.challengeTitle, [Validators.required]],
       challengeDescription : [this.quest2send.challengeDescription, [Validators.required]],
       challengeStatement : [this.quest2send.challengeStatement, [Validators.required]],
@@ -90,8 +83,6 @@ export class DescriptionComponent implements OnInit {
 
   onSubmit() {
     if (this.flag === 1) {
-      this.questDesc.value.id = this.questId;
-      this.questDesc.value.userName = this.userName;
       if (this.questDesc.invalid) {
         console.log('POST Failed');
         return;

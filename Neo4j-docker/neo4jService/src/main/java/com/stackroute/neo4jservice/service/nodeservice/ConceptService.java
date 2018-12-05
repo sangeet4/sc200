@@ -9,7 +9,6 @@ public interface ConceptService {
     public Concept saveConcept(Concept concept);
     public String deleteConcept(String id);
     public List<Concept> getAllConcepts();
-    public Concept searchConceptByName(String name);
-            //throws ConceptNotFoundException;
+    public Concept searchConceptByName(String name) throws ConceptNotFoundException;
 
 }

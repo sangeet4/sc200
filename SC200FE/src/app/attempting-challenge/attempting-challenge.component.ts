@@ -32,6 +32,7 @@ export class AttemptingChallengeComponent implements OnInit {
   private id: string;
   completechallenge;
   userName;
+  dockUserName;
   dataToScoring: ScoringModel;
   navbarOpen = false;
   toggleNavbar() {
@@ -48,6 +49,8 @@ export class AttemptingChallengeComponent implements OnInit {
     });
     this.userName = JSON.parse(localStorage.getItem('currentUser')).username;
     console.log(this.userName);
+    this.dockUserName = this.userName.replace(/@/, "-");
+    console.log(this.dockUserName);
   }
 
  

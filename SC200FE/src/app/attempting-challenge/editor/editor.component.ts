@@ -1,12 +1,10 @@
 import { FileService } from "./../folder-structure/directory/file.service";
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { MonacoFile } from "ngx-monaco";
-import { ActivatedRoute } from "@angular/router";
 import { FilesService } from "../files.service";
-import { File } from "../folder-structure/directory/model/file";
-import { Browser } from "protractor";
-import * as Stomp from 'stompjs';
+import * as Stomp from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
+import * as $ from 'jquery';
 
 @Component({
   selector: "app-editor",
@@ -20,9 +18,9 @@ export class EditorComponent implements OnInit, OnChanges {
   count: number = 0;
   content = "hi";
   httpResponse;
-  stompClient  = null;
+  stompClient = null;
   sessionId: String;
-  socketUrl = "http://35.154.116.88:8183/compile"
+  socketUrl = "http://35.154.116.88:8183/compile";
 
   title = "app";
   options = {
@@ -36,14 +34,16 @@ export class EditorComponent implements OnInit, OnChanges {
     content: ""
   };
 
+
   constructor(
     private filesService: FilesService,
     private fileService: FileService
-  ) {}
+  ) {
+    this.initializeWebSocketConnection();
+  }
 
   ngOnInit() {
     console.log("ngOninit evoked --------------->");
-    this.initializeWebSocketConnection();
     //this.file.content = "public class Hello";
     // this.changeContent();
     //this.file.content = this.content;
@@ -58,22 +58,28 @@ export class EditorComponent implements OnInit, OnChanges {
     this.stompClient = Stomp.over(ws);
     const that = this;
     //connect to service using stompclinet
-    this.stompClient.connect({}, function(frame) {
-      that.sessionId = /\/([^\/]+)\/websocket/.exec(ws._transport.url)[1];
-      that.stompClient.subscribe("/results/" + that.sessionId, (message) => {
-        if ( message.body ) {
-          that.httpResponse = JSON.parse(message.body).body;
-          console.log(that.httpResponse);
-        }
-      });
-      that.stompClient.subscribe("/chat/errors/" + that.sessionId,(message) => {
-        if (message.body) {
-          console.log(message.body);
-        }
-      });
-    });
+    this.stompClient.connect(
+      {},
+      function(frame) {
+        console.log("Socket Connection Established");
+        that.sessionId = /\/([^\/]+)\/websocket/.exec(ws._transport.url)[1];
+        that.stompClient.subscribe("/results/" + that.sessionId, message => {
+          if (message.body) {
+            that.httpResponse = JSON.parse(message.body).body;
+            console.log(that.httpResponse);
+          }
+        });
+        that.stompClient.subscribe(
+          "/chat/errors/" + that.sessionId,
+          message => {
+            if (message.body) {
+              console.log(message.body);
+            }
+          }
+        );
+      }
+    );
   }
-
 
   changeContentOfEditor() {
     console.log("file uri is ", this.file.uri);
@@ -107,7 +113,11 @@ export class EditorComponent implements OnInit, OnChanges {
     // var b = this.file.content;
     // var file : any[];
     this.saveCode();
-    this.stompClient.send("/app/send/message/"+this.sessionId,{},this.userName + '/' + this.challengeId);
+    this.stompClient.send(
+      "/app/send/message/" + this.sessionId,
+      {},
+      this.userName + "/" + this.challengeId
+    );
     // this.filesService.RunFile(this.userName, this.challengeId).subscribe(data => {
     //   this.httpResponse = data;
     //   console.log(this.httpResponse);
@@ -118,5 +128,3 @@ export class EditorComponent implements OnInit, OnChanges {
     console.log(this.httpResponse);
   }
 }
-
-

@@ -1,9 +1,35 @@
 .quest-container{
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     align-items: center;
+    margin-top:1em;
+    background-color:beige;
+    margin-left:5rem;
+    margin-right:5rem;
+    height:26rem;
 }
 
 .quest-container > * { 
     width: 90%;
+    
+   
+}
+button{
+    display: block;
+}
+mat-form-field{
+    padding-left:16em;
+}
+
+.challenge{
+    text-align: center;
+}
+
+
+header{
+    background-color: whitesmoke;
+}
+
+ input{
+    margin-left:40%;
 }

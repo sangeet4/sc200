@@ -31,16 +31,17 @@ export class DescriptionComponent implements OnInit {
   userName;
 
   ngOnInit() {
-    console.log(this.quest2send);
-    console.log(this.flag);
+    // console.log(this.quest2send);
+    // console.log(this.flag);
     if (this.flag === 2) {
       this.readOnlyFlag = true;
     }
     this.questDesc = this.fb.group({
-      id : [this.quest2send.id],
-      userName : [this.quest2send.id],
+      challengeId : [this.quest2send.challengeId],
+     // userName:[this.quest2send.userId],
+      userId : [this.quest2send.userId],
       challengeTitle : [this.quest2send.challengeTitle, [Validators.required]],
-      challengeDescription : [this.quest2send.challengeDescription, [Validators.required]],
+      challengeStamp : [this.quest2send.challengeStamp, [Validators.required]],
       challengeStatement : [this.quest2send.challengeStatement, [Validators.required]],
       inputFormat : [this.quest2send.inputFormat, [Validators.required]],
       constraints : [this.quest2send.constraints, [Validators.required]],
@@ -58,11 +59,11 @@ export class DescriptionComponent implements OnInit {
     });
   }
 
-  get id() {return this.questDesc.get('id'); }
+  get id() {return this.questDesc.get('challengeId'); }
 
   get title() { return this.questDesc.get('challengeTitle'); }
 
-  get desc() { return this.questDesc.get('challengeDescription'); }
+  get desc() { return this.questDesc.get('challengeStamp'); }
 
   get stat() { return this.questDesc.get('challengeStatement'); }
 
@@ -90,8 +91,9 @@ export class DescriptionComponent implements OnInit {
 
   onSubmit() {
     if (this.flag === 1) {
-      this.questDesc.value.id = this.questId;
-      this.questDesc.value.userName = this.userName;
+      console.log(this.questDesc);
+      this.questDesc.value.challengeId = this.questId;
+      this.questDesc.value.userId = this.userName;
       if (this.questDesc.invalid) {
         console.log('POST Failed');
         return;
@@ -109,7 +111,7 @@ export class DescriptionComponent implements OnInit {
         return;
       }
       console.log(this.questDesc.value);
-      this.questService.updateChallenge(this.quest2send.id, this.questDesc.value)
+      this.questService.updateChallenge(this.quest2send.challengeId, this.questDesc.value)
         .subscribe(data => {
           console.log(data);
           console.log('PUT Successful');

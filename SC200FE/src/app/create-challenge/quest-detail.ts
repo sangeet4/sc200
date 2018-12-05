@@ -1,8 +1,8 @@
 export class QuestDetail {
-    id: string;
+    challengeId: string;
     userId: string;
     challengeTitle: string;
-    challengeDescription: string;
+    challengeStamp: string;
     challengeStatement: string;
     inputFormat: string;
     constraints: string;
@@ -17,10 +17,10 @@ export class QuestDetail {
     rating: number;
 
     constructor() {
-        this.id = '';
+        this.challengeId = '';
         this.userId = '';
         this.challengeTitle = '';
-        this.challengeDescription = '';
+        this.challengeStamp = '';
         this.challengeStatement = '';
         this.inputFormat = '';
         this.constraints = '';

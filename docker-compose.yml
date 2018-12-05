@@ -227,8 +227,6 @@ services:
     volumes:
     - /var/lib/grafana
     network_mode: host
-    links:
-    - prometheus
     image: grafana/grafana
   prometheus:
     ports:

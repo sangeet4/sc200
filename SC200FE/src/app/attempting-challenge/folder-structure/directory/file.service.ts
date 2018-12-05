@@ -232,21 +232,21 @@ export class FileService implements IFileService {
 
 
 
-  getStructureOnInit(){
+  // getStructureOnInit(){
 
-    this.filesService.getTemplate().subscribe(data=>{
+  //   this.filesService.getTemplate().subscribe(data=>{
       
-      this.filesService.setPaths(data['paths']); 
-      this.filesService.setContent(data['contents']);
-      console.log("1232");
-      this.addUploadedFiles();
+  //     this.filesService.setPaths(data['paths']); 
+  //     this.filesService.setContent(data['contents']);
+  //     console.log("1232");
+  //     this.addUploadedFiles();
       
-  });
-  console.log("dkv");
-  console.log("1232");
-  return this.querySubject.asObservable();
+  // });
+  // console.log("dkv");
+  // console.log("1232");
+  // return this.querySubject.asObservable();
  
-  }
+  // }
 
   remove_duplicates(fileElements_array:FileElement[]){
     var fileElements_array2:FileElement[] = [];

@@ -5,6 +5,8 @@ import { ActivatedRoute } from "@angular/router";
 import { FilesService } from "../files.service";
 import { File } from "../folder-structure/directory/model/file";
 import { Browser } from "protractor";
+import * as Stomp from 'stompjs';
+import * as SockJS from 'sockjs-client';
 
 @Component({
   selector: "app-editor",
@@ -13,9 +15,14 @@ import { Browser } from "protractor";
 })
 export class EditorComponent implements OnInit, OnChanges {
   @Input() fileName: string;
+  @Input() userName: string;
+  @Input() challengeId: string;
   count: number = 0;
   content = "hi";
   httpResponse;
+  stompClient  = null;
+  sessionId: String;
+  socketUrl = "http://35.154.116.88:8183/compile"
 
   title = "app";
   options = {
@@ -36,6 +43,7 @@ export class EditorComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     console.log("ngOninit evoked --------------->");
+    this.initializeWebSocketConnection();
     //this.file.content = "public class Hello";
     // this.changeContent();
     //this.file.content = this.content;
@@ -44,6 +52,28 @@ export class EditorComponent implements OnInit, OnChanges {
     console.log("ngOnChanges evoked---------------> ");
     this.changeContentOfEditor();
   }
+
+  initializeWebSocketConnection() {
+    const ws = new SockJS(this.socketUrl);
+    this.stompClient = Stomp.over(ws);
+    const that = this;
+    //connect to service using stompclinet
+    this.stompClient.connect({}, function(frame) {
+      that.sessionId = /\/([^\/]+)\/websocket/.exec(ws._transport.url)[1];
+      that.stompClient.subscribe("/results/" + that.sessionId, (message) => {
+        if ( message.body ) {
+          that.httpResponse = JSON.parse(message.body).body;
+          console.log(that.httpResponse);
+        }
+      });
+      that.stompClient.subscribe("/chat/errors/" + that.sessionId,(message) => {
+        if (message.body) {
+          console.log(message.body);
+        }
+      });
+    });
+  }
+
 
   changeContentOfEditor() {
     console.log("file uri is ", this.file.uri);
@@ -68,45 +98,25 @@ export class EditorComponent implements OnInit, OnChanges {
     // var a =this.file.uri;
     // var b = this.file.content;
     // var file : any[];
-    this.filesService.SaveFile(this.file).subscribe();
+    this.filesService.setContent(this.file.uri, this.file.content);
+    this.filesService.SaveFile(this.userName, this.challengeId).subscribe();
   }
   public compileCode() {
     //console.log(this.file.uri , this.file.content);
     // var a =this.file.uri;
     // var b = this.file.content;
     // var file : any[];
-
-    this.filesService.RunFile(this.file).subscribe(data => {
-      this.httpResponse = data;
-      console.log(this.httpResponse);
-      console.log(data);
-    });
+    this.saveCode();
+    this.stompClient.send("/app/send/message/"+this.sessionId,{},this.userName + '/' + this.challengeId);
+    // this.filesService.RunFile(this.userName, this.challengeId).subscribe(data => {
+    //   this.httpResponse = data;
+    //   console.log(this.httpResponse);
+    //   console.log(data);
+    // });
   }
   public showResults() {
     console.log(this.httpResponse);
   }
 }
 
-// changeContent() {
-//   if (this.count < 2) {
-//     this.count++;
-//     // this.file.content = "hidgfss";
-//   } else {
-//     this.count++;
-//     this.file.content = this.content;
-//     console.log(
-//       "HI changeContent is being called ->>>>>>>>>>>>>>>>>>>>>>>>>>.",
-//       this.file.content
-//     );
-//     this.filesService.getContentfromUrl(this.fileName).subscribe(data => {
-//       this.file.uri = this.fileName;
-//       console.log(this.file.uri);
-//       // this.file.content="";
-//       // this.content="";
-//       // this.content = data['content'];
-//       this.file.content = data["content"];
-//       console.log(this.file.content);
-//       this.content = this.file.content;
-//     });
-//   }
-// }
+

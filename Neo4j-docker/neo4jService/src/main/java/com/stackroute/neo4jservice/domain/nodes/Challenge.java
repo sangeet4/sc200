@@ -2,6 +2,7 @@ package com.stackroute.neo4jservice.domain.nodes;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.oracle.webservices.internal.api.message.PropertySet;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
@@ -10,16 +11,22 @@ import org.neo4j.ogm.annotation.Relationship;
 @NodeEntity
 public class Challenge {
 
-    @Property
+
     @Id
-    private String id;
+    private String challengeId;
     @Property
     private String title;
     @Property
     private double level;
     @Property
     private String challengeStamp;
+    @Property
     private String challengeTitle;
+    @Property
+    private String topic;
+    @Property
+    private String userId;
+
 
     public String getChallengeTitle() {
         return challengeTitle;
@@ -27,6 +34,14 @@ public class Challenge {
 
     public void setChallengeTitle(String challengeTitle) {
         this.challengeTitle = challengeTitle;
+    }
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+       //
+        this.topic=topic;
     }
 
     @JsonIgnore
@@ -36,19 +51,29 @@ public class Challenge {
 
     }
 
-    public Challenge(String id, String title, double level, String challengeStamp) {
-        this.id = id;
-        this.title=title;
+    public Challenge(String challengeId, String challengeTitle, double level, String challengeStamp ,String topic,String userId) {
+        this.challengeId = challengeId;
+        this.challengeTitle=challengeTitle;
         this.level = level;
         this.challengeStamp = challengeStamp;
+        this.topic=topic;
+        this.userId=userId;
+    }
+    public String getUserId() {
+        return userId;
     }
 
-    public String getId() {
-        return id;
+    public void setUserId(String userId)
+    {
+        this.userId = userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getChallengeId() {
+        return challengeId;
+    }
+
+    public void setChallengeId(String challengeId) {
+        this.challengeId = challengeId;
     }
 
     public String getTitle() {
@@ -57,6 +82,9 @@ public class Challenge {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+    public void setChallengeStamp(String challengeStamp){
+        this.challengeStamp=challengeStamp;
     }
 
     public double getLevel() {
@@ -78,9 +106,14 @@ public class Challenge {
     @Override
     public String toString() {
         return "Challenge{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
+                "challengeId='" + challengeId + '\'' +
+                ",topic='" + topic +'\''+
+                ", challengeTitle='" + challengeTitle + '\'' +
+                ", Title='" + title + '\'' +
+
                 ", level=" + level +
+                ", userId=" + userId +
+
                 ", challengeStamp='" + challengeStamp + '\'' +
                 '}';
     }

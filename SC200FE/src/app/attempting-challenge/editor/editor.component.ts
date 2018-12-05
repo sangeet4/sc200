@@ -5,8 +5,8 @@ import { ActivatedRoute } from "@angular/router";
 import { FilesService } from "../files.service";
 import { File } from "../folder-structure/directory/model/file";
 import { Browser } from "protractor";
-import * as Stomp from "stompjs";
-import * as SockJS from "sockjs-client";
+import * as Stomp from 'stompjs';
+import * as SockJS from 'sockjs-client';
 
 @Component({
   selector: "app-editor",

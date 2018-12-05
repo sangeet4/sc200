@@ -1,5 +1,5 @@
 #host: http://172.23.239.131:9092
-host: '172.23.239.131:9092'
+host: 'localhost:9092'
 server:
     port: 8187
 spring:

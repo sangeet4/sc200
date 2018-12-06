@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 
 public class Request {
@@ -24,19 +25,5 @@ public class Request {
 
     private ArrayList<String> fileContent;
 
-    public ArrayList<String> getFileContents() {
-        return fileContent;
-    }
-
-    public ArrayList<String> getTextFile() {
-        return textFile;
-    }
-
-    public String getChallengeId() {
-        return challengeId;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
+  
 }

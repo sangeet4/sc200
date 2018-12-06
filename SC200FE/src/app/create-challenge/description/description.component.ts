@@ -13,6 +13,7 @@ export class DescriptionComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private questService: ChallengeService, private router: Router) {}
 
+  tab: number = 1;
   availbLang = [ 'Java', 'Python', 'C', 'Cpp', 'Javascript' ];
   readOnlyFlag = false;
 

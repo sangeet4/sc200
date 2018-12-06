@@ -4,6 +4,27 @@
     align-items: center;
 }
 
-.quest-container > * { 
+.quest-container{ 
+    width: 100%;
+}
+
+button{
+    margin-bottom: 6em;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+mat-tab-group{
     width: 90%;
+}
+
+h4{
+    text-align: center;
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
 }

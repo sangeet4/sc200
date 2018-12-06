@@ -1,39 +1,81 @@
+/*footer{*/
+/*    position:fixed;*/
+/*  bottom:0;*/
+/*  left:0;*/
+/*  width: 100%;*/
+/*     background-color:black;*/
+/*     color: aliceblue;*/
+/*  }*/
+/*  body{*/
+/*     background-color:gray;*/
+/*  }*/
+/*  .jumbo{*/
+/*     padding-bottom: 0rem;*/
+  
+/*     background-size:cover;*/
+/*  }*/
+/*  .facebook-item{*/
+/*     background:darkblue;*/
+/*     border-radius: 50%;*/
+/*  }*/
+/*  .twitter-item{*/
+/*     background: lightseagreen;*/
+/*     border-radius: 50%*/
+/*  }*/
+/*  .google-item{*/
+/*     background: orangered;*/
+/*     border-radius: 50%*/
+/*  }*/
+/*  .linkedin-item{*/
+/*     background: darkviolet;*/
+/*     border-radius: 50%*/
+/*  }*/
+/*  a{*/
+/*      text-decoration: none;*/
+/*  }*/
+/*  i{*/
+/*     color: aliceblue;*/
+  
+/*  }*/
+
 footer{
-    position:fixed;
-  bottom:0;
-  left:0;
-  width: 100%;
-     background-color:black;
-     color: aliceblue;
-  }
-  body{
-     background-color:gray;
-  }
-  .jumbo{
-     padding-bottom: 0rem;
-  
-     background-size:cover;
-  }
-  .facebook-item{
-     background:darkblue;
-     border-radius: 50%;
-  }
-  .twitter-item{
-     background: lightseagreen;
-     border-radius: 50%
-  }
-  .google-item{
-     background: orangered;
-     border-radius: 50%
-  }
-  .linkedin-item{
-     background: darkviolet;
-     border-radius: 50%
-  }
-  a{
-      text-decoration: none;
-  }
-  i{
-     color: aliceblue;
-  
-  }
+   position:fixed;
+   padding-top: 1rem;
+ bottom:0;
+ left:0;
+ width: 100%;
+ background: linear-gradient(to top, #ffffff 2%, #181818 50%);
+    color: aliceblue;
+    z-index: 1;
+ }
+ body{
+    background-image: url("../assets/img/homebg.jpg");
+ }
+ .jumbo{
+    padding-bottom: 0rem;
+
+    background-size:cover;
+ }
+ .facebook-item{
+    background:darkblue;
+    border-radius: 50%;
+ }
+ .twitter-item{
+    background: lightseagreen;
+    border-radius: 50%
+ }
+ .google-item{
+    background: orangered;
+    border-radius: 50%
+ }
+ .linkedin-item{
+    background: darkviolet;
+    border-radius: 50%
+ }
+ a{
+     text-decoration: none;
+ }
+ i{
+    color: aliceblue;
+
+ }

@@ -64,46 +64,4 @@ public class UserProfileRepositoryTest {
         Assert.assertEquals(user,fetchUserProfile);
     }
 
-    @Test
-    public void testGetallUserProfile(){
-        UserProfile user1 = new UserProfile("1@gmail.com","null","first","last","user1","20-07-1996",9087654321L,12.3,7,"java",null,null,null,null);
-        UserProfile user2 = new UserProfile("2@gmail.com","null","second","last","user2","20-07-1997",9087654301L,12.9,4,"java",null,null,null,null);
-        userProfileRepository.save(user1);
-        userProfileRepository.save(user2);
-        List<UserProfile> fetchUserProfileList = userProfileRepository.findAll();
-        Assert.assertEquals("user2",fetchUserProfileList.get(0).getUsername());
-    }
-
-    @Test
-    public void testUpdateUserProfilebyId(){
-        UserProfile user1 = new UserProfile("1@gmail.com","null","first","last","user1","20-07-1996",9087654321L,12.3,7,"java",null,null,null,null);
-        UserProfile user2 = new UserProfile("2@gmail.com","null","second","last","user2","20-07-1997",9087654301L,12.9,4,"java",null,null,null,null);
-
-        userProfileRepository.save(user1);
-        userProfileRepository.save(user2);
-        UserProfile temp = userProfileRepository.findById("1@gmail.com").get();
-       // System.out.println(temp);
-        temp.setFirstName("newFirst");
-        //System.out.println(temp);
-        userProfileRepository.save(temp);
-        List<UserProfile> fetchUserProfileList = userProfileRepository.findAll();
-        for(int i=0;i<fetchUserProfileList.size();i++){
-            System.out.println(fetchUserProfileList.get(i));
-        }
-
-
-        Assert.assertEquals("newFirst",fetchUserProfileList.get(1).getFirstName());
-    }
-
-    @Test
-    public void testDeleteUserProfile(){
-        UserProfile user1 = new UserProfile("1@gmail.com","null,","first","last","user1","20-07-1996",9087654321L,12.3,7,"java",null,null,null,null);
-        UserProfile user2 = new UserProfile("2@gmail.com","null","second","last","user2","20-07-1997",9087654301L,12.9,4,"java",null,null,null,null);
-        userProfileRepository.save(user1);
-        userProfileRepository.save(user2);
-        userProfileRepository.deleteById("1@gmail.com");
-        List<UserProfile> fetchUserProfileList = userProfileRepository.findAll();
-        Assert.assertEquals("user2",fetchUserProfileList.get(0).getUsername());
-
-    }
 }

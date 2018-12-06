@@ -10,7 +10,6 @@ import org.apache.commons.lang.text.StrBuilder;
 @Data
 @AllArgsConstructor
 @Builder
-@NoArgsConstructor
 public class Files {
 
     private String uri;

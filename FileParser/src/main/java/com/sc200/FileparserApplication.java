@@ -11,12 +11,5 @@ public class FileparserApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(FileparserApplication.class, args);
-		FileServiceImpl impl = new FileServiceImpl();
-		try {
-			impl.parseFile(new Files());
-		}catch (Exception e)
-		{
-
-		}
-	}
+}
 }

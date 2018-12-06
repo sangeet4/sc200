@@ -1,27 +1,54 @@
-.jumbotron{
-    background-image: url("../../../assets/img/login-bg.jpg");
-   padding: 0;
-   background-size:cover;
+/*.jumbotron{*/
+/*    background-image: url("../../../assets/img/login-bg.jpg");*/
+/*   padding: 0;*/
+/*   background-size:cover;*/
    /* background-size: 100% auto;
  */
+/*}*/
+/*  body{*/
+/*    background-image: url("../../../assets/img/login-bg.jpg");*/
+/*   background:no-repeat;*/
+/*background-size: cover;}*/
+
+
+
+/*@media(min-width:680px){*/
+
+/*   .loginbox{*/
+/*       margin-top:4rem!important;*/
+/*   }*/
+/*}*/
+/*.logoimage{*/
+/*   max-width: 10rem;*/
+/*   max-height: 6rem;*/
+/*}*/
+/*.mynavbar {*/
+/*           background: linear-gradient(to bottom, #d6d6d5d3 25%, #69bcca 70%);*/
+/*       }*/
+
+.jumbotron{
+   background-image: url("../../../assets/img/login-bg.jpg");
+  padding: 0;
+  padding-top:1rem;
+  background-size: cover;
+  /* background-size: 100% auto;
+*/
 }
-  body{
-    background-image: url("../../../assets/img/login-bg.jpg");
-   background:no-repeat;
-background-size: cover;}
+
 
 
 
 @media(min-width:680px){
 
-   .loginbox{
-       margin-top:4rem!important;
-   }
+  .loginbox{
+      margin-top:3rem!important;
+      padding-bottom: 6rem!important;
+  }
 }
 .logoimage{
-   max-width: 10rem;
-   max-height: 6rem;
+  max-width: 10rem;
+  max-height: 6rem;
 }
 .mynavbar {
-           background: linear-gradient(to bottom, #d6d6d5d3 25%, #69bcca 70%);
-       }
+          background: linear-gradient(to bottom, #d6d6d5d3 25%, #69bcca 70%);
+      }

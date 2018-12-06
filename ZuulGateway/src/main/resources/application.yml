@@ -29,7 +29,7 @@ zuul:
             url: http://localhost:8185
         compile:
             
-            url: http://localhost:8183/compile/
+            url: http://localhost:8183
         score:
             
             url: http://localhost:8189

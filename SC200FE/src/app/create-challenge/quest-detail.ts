@@ -1,4 +1,3 @@
-Collapse 
 export class QuestDetail {
    challengeId: string;
    userId: string;

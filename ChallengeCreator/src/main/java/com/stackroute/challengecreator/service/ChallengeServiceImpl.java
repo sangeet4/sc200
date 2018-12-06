@@ -238,8 +238,12 @@ public class ChallengeServiceImpl implements ChallengeService {
     @Override
     public void addChallengeObjL4(ChallengeObjL4 challengeObjL4) {
 
-        if (!challengeRepositoryL4.existsById(challengeObjL4.getChallengeId())){
-            challengeRepositoryL4.save(challengeObjL4);
+        try {
+            if (!challengeRepositoryL4.existsById(challengeObjL4.getChallengeId())) {
+                challengeRepositoryL4.save(challengeObjL4);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

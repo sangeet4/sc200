@@ -29,7 +29,7 @@ public class ChallengeController {
     private String exceptionMessage="";
 
     @Autowired
-    ChallengeResource challengeResource;
+    private ChallengeResource challengeResource;
 
     @Autowired
     public ChallengeController(ChallengeService challengeService) {
@@ -82,6 +82,27 @@ public class ChallengeController {
 
         }
         catch (TopicNotFoundException tne){
+            System.out.println(tne.getStackTrace());
+        }
+
+        return responseEntity;
+    }
+
+    @GetMapping(value="suggestion/basic")
+    public ResponseEntity<?> getChallengeSuggestion(){
+        ResponseEntity responseEntity=null;
+        System.out.println("in get mapping");
+        try {
+            List<Challenge> challengeList= challengeService.getAllChallengesBasic();
+            System.out.println(challengeList.size());
+            List<Challenge> suggestion=new ArrayList<>();
+            int n=challengeList.size()>10?10:challengeList.size();
+            suggestion=challengeList.subList(0,n);
+            responseEntity=new ResponseEntity<List<Challenge>>(suggestion, HttpStatus.OK);
+            System.out.println("returned auto complete challenges");
+
+        }
+        catch (Exception tne){
             System.out.println(tne.getStackTrace());
         }
 

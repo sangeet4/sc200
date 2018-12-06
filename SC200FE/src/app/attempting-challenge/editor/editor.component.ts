@@ -66,7 +66,8 @@ export class EditorComponent implements OnInit, OnChanges {
         that.sessionId = /\/([^\/]+)\/websocket/.exec(ws._transport.url)[1];
         that.stompClient.subscribe("/results/" + that.sessionId, message => {
           if (message.body) {
-            that.httpResponse = JSON.parse(message.body).body;
+           // that.httpResponse = JSON.parse(message.body).body;
+           that.httpResponse = message.body;
             console.log(that.httpResponse);
           }
         });

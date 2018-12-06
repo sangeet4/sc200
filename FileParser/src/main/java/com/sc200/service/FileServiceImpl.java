@@ -14,39 +14,39 @@ public class FileServiceImpl implements FileService {
     private ArrayList<String> contents = new ArrayList<String>();
     private int i;
 
-    public String parseFile(Files files) throws IOException {
+    public String parseFile(Files files , String userName , String challengeId) throws IOException {
         int lastIndex = files.getUri().lastIndexOf("/");
-        String directory = files.getUri().substring(lastIndex , files.getUri().length()-1);
-        System.out.println("111111111111111" + directory );
+        String directory = files.getUri().substring(lastIndex , files.getUri().length());
         int firstIndex = files.getUri().indexOf("/");
         String directory1 = files.getUri().substring(0, firstIndex);
-
         if (createDirectories(directory) && createFile(files)) {
             return "Successfully Created";
-        } else {
+        }else{
 
-            recursiveDelete(new File(directory1));
-
-            return directory;
-//            if (createDirectories(directory) && createFile(files)) {
-//                return "Successfully Created";
-//            } else {
-//                return "Some Error";
-//            }
+            recursiveDelete(new File(directory1) , userName , challengeId);
+                    if (createDirectories(directory) && createFile(files)) {
+                return "Successfully Created";
+            } else {
+                return "Some Error";
+            }
         }
     }
 
-        public static void recursiveDelete(File file) {
+        public static void recursiveDelete(File file , String userName , String challengeId) {
             //to end the recursive loop
             if (!file.exists())
                 return;
 
             //if directory, go inside and call recursively
-            if (file.isDirectory()) {
-                for (File f : file.listFiles()) {
-                    //call recursively
-                    recursiveDelete(f);
+            if (file.isDirectory() && file.getPath().matches("challenges/" + challengeId + "/" + userName)) {
+                    for (File f : file.listFiles()) {
+                        //call recursively
+                        recursiveDelete(f , userName , challengeId);
                 }
+            }
+            else
+            {
+                return;
             }
             //call delete to delete files and empty directory
             file.delete();

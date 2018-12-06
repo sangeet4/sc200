@@ -3,12 +3,14 @@ package com.sc200.domain;
 import lombok.Builder;
 import lombok.Data;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang.text.StrBuilder;
 
 
 @Data
 @AllArgsConstructor
 @Builder
+@NoArgsConstructor
 public class Files {
 
     private String uri;

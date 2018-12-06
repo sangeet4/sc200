@@ -40,7 +40,7 @@ public class FileController {
                 String directory1 = request.getTextFile().get(i).substring(firstIndex, request.getTextFile().get(i).length()-1);
                   //      System.out.println(directory1);
                 Files file = new Files("challenges/" + request.getChallengeId() + "/" + request.getUserId() + "/" + directory1 , request.getFileContent().get(i) , "java");
-                                String a = fileService.parseFile(file);
+                                String a = fileService.parseFile(file , request.getChallengeId() , request.getUserId());
 		            }
 		            return "Succesfully Created";
             }

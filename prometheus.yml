@@ -83,67 +83,67 @@ scrape_configs:
 
 
 - job_name: 'Challenge-Creator'
-  metrics_path: 'actuator/prometheus'
+  metrics_path: '/actuator/prometheus'
   scrape_interval: 5s
   static_configs:
   - targets: ['localhost:8180']
 
 - job_name: 'Register'
-  metrics_path: 'actuator/prometheus'
+  metrics_path: '/actuator/prometheus'
   scrape_interval: 5s
   static_configs:
   - targets: ['localhost:8181']
 
 - job_name: 'File-Parser'
-  metrics_path: 'actuator/prometheus'
+  metrics_path: '/actuator/prometheus'
   scrape_interval: 5s
   static_configs:
   - targets: ['localhost:8182']
 
 - job_name: 'Compilation'
-  metrics_path: 'actuator/prometheus'
+  metrics_path: '/actuator/prometheus'
   scrape_interval: 5s
   static_configs:
   - targets: ['localhost:8183']
 
 - job_name: 'Authentication'
-  metrics_path: 'actuator/prometheus'
+  metrics_path: '/actuator/prometheus'
   scrape_interval: 5s
   static_configs:
   - targets: ['localhost:8184']
 
 - job_name: 'User-Profile'
-  metrics_path: 'actuator/prometheus'
+  metrics_path: '/actuator/prometheus'
   scrape_interval: 5s
   static_configs:
   - targets: ['localhost:8185']
 
 - job_name: 'Recommendation'
-  metrics_path: 'actuator/prometheus'
+  metrics_path: '/actuator/prometheus'
   scrape_interval: 5s
   static_configs:
   - targets: ['localhost:8186']
 
 - job_name: 'Ontology'
-  metrics_path: 'actuator/prometheus'
+  metrics_path: '/actuator/prometheus'
   scrape_interval: 5s
   static_configs:
   - targets: ['localhost:8187']
 
 - job_name: 'Empty-Container'
-  metrics_path: 'actuator/prometheus'
+  metrics_path: '/actuator/prometheus'
   scrape_interval: 5s
   static_configs:
   - targets: ['localhost:8188']
 
 - job_name: 'Scoring'
-  metrics_path: 'actuator/prometheus'
+  metrics_path: '/actuator/prometheus'
   scrape_interval: 5s
   static_configs:
   - targets: ['localhost:8189']
 
 - job_name: 'Voting'
-  metrics_path: 'actuator/prometheus'
+  metrics_path: '/actuator/prometheus'
   scrape_interval: 5s
   static_configs:
   - targets: ['localhost:8190']

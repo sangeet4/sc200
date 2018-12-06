@@ -1,15 +1,7 @@
 <h2>Challenges Upvoted</h2>
 <div class="card" *ngFor="let chal of profile.challengeUpvoted">
     <div class="card-header">{{chal.challengeTitle}}</div>
-    <div class="card-body">
-        <p class="card=text"><strong>Challenge upvoted by : {{chal.userId}}</strong></p>
-    </div>
-</div>
-
 <h2 id="second">Challenges Downvoted</h2>
 <div class="card" *ngFor="let chal of profile.challengeDownvoted">
     <div class="card-header">{{chal.challengeTitle}}</div>
-    <div class="card-body">
-        <p class="card=text"><strong>Challenge downvoted by : {{chal.userId}}</strong></p>
-    </div>
 </div>

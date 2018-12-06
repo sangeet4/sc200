@@ -16,7 +16,7 @@ export class EditorComponent implements OnInit, OnChanges {
   @Input() userName: string;
   @Input() challengeId: string;
   count: number = 0;
-  content = "hi";
+  content = "";
   httpResponse;
   stompClient = null;
   sessionId: String;
@@ -101,7 +101,11 @@ export class EditorComponent implements OnInit, OnChanges {
 
   public saveCode() {
     console.log(this.content);
-    this.file.content = this.content;
+    //this.file.content = this.content;
+    this.file ={
+       ...this.file,
+       content: this.content
+     }
     console.log(this.file.uri, this.file.content);
     // var a =this.file.uri;
     // var b = this.file.content;

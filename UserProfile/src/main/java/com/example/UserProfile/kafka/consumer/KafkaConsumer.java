@@ -44,18 +44,34 @@ public class KafkaConsumer {
     @KafkaListener(topics = "test-challenge", groupId = "group_id7", containerFactory = "challengeKafkaListenerFactory")
     public void consumeJsonFromChallengeService(@Payload Challenge challenge) {
 
-        System.out.println("Consumed JSON Message of challenge: " + challenge);
-       System.out.println("filtered data is "+challenge.getChallengeId());
+        Challenge challenge1= new Challenge();
+        challenge1.setChallengeScore(challenge.getMaxScore());
+        challenge1.setChallengeId(challenge.getChallengeId());
+        challenge1.setChallengeTitle(challenge.getChallengeTitle());
+        challenge1.setUserId(challenge.getUserId());
 
-       try {
+        String userId=challenge.getUserId();
+        try {
+            userProfile = userProfileService.searchUserProfileById(userId);
+            if(userProfile.getChallengeCreated()==null){
+                List<Challenge> challenges = new ArrayList<>();
+                challenges.add(challenge1);
+                userProfile.setChallengeCreated(challenges);
+            }
+            else{
+                List<Challenge> challenges = userProfile.getChallengeCreated();
+                challenges.add(challenge1);
+                userProfile.setChallengeCreated(challenges);
+            }
+            userProfileRepository.save(userProfile);
+        }
 
-           UserProfile userProfile = userProfileService.searchUserProfileById(challenge.getUserId());
-           userProfileService.updateCreateChallengeToProfileById(challenge.getUserId(),challenge);
+        catch (UserProfileNotFoundException ex){
+            ex.printStackTrace();
+        }
 
-       }
-       catch (UserProfileNotFoundException ex){
-           ex.printStackTrace();
-       }
+        System.out.println(userProfile.getChallengeCreated());
+              userProfileRepository.save(userProfile);
   }
   @KafkaListener(topics = "userProfile", groupId = "group_id8", containerFactory = "registrationKafkaListenerFactory")
     public void consumeJsonfromRegService(@Payload UserProfile userProfile) {

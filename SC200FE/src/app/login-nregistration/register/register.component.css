@@ -39,7 +39,6 @@
 } */
 .register{
     width: auto;
-    opacity: 0.8;
 
 }
 form input{
@@ -66,7 +65,6 @@ input{
 }
 
 form{
-    / *background: url('../register/assets/img/form_bg.png') -100px -10px;*/
     height: 150%;
     /* padding-bottom: 8rem; */
 }

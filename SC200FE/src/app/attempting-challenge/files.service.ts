@@ -27,7 +27,7 @@ export class FilesService {
   sendContent = "";
   files: [string];
   // url = "http://35.154.116.88:8182/";
-  url = environment.apiUrl;
+  url = environment.apiUrl + "file/";
   url1 = environment.apiUrl + "compile";
   newurl: string = "";
   httpresponse;

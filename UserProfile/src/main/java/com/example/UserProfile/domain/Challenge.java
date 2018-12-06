@@ -17,6 +17,7 @@ public class Challenge {
    public  String challengeTitle;
    public double challengeScore;
    public boolean flag;
+   public double maxScore;
 
 
 }

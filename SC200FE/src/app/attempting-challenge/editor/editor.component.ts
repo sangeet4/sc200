@@ -21,7 +21,7 @@ export class EditorComponent implements OnInit, OnChanges {
   httpResponse;
   stompClient = null;
   sessionId: String;
-  socketUrl = environment.apiUrl;
+  socketUrl = environment.apiUrl+"compile/compile";
 
   title = "app";
   options = {

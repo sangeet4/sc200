@@ -16,15 +16,16 @@ public class FileServiceImpl implements FileService {
 
     public String parseFile(Files files) throws IOException {
         int lastIndex = files.getUri().lastIndexOf("/");
-        String directory = files.getUri().substring(0, lastIndex);
+        String directory = files.getUri().substring(lastIndex , files.getUri().length()-1);
         int firstIndex = files.getUri().indexOf("/");
         String directory1 = files.getUri().substring(0, firstIndex);
 
-        if (createFile(files)) {
+        if (createDirectories(directory) && createFile(files)) {
             return "Successfully Created";
         } else {
-            recursiveDelete(new File(files.getUri()));
-            if (createFile(files)) {
+            return directory;
+            recursiveDelete(new File(directory1));
+            if (createDirectories(directory) && createFile(files)) {
                 return "Successfully Created";
             } else {
                 return "Some Error";

@@ -84,7 +84,7 @@ public class UserProfileController {
         return responseEntity;
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> updateuserProfileById(@Valid@RequestBody UserProfile userProfile ,@PathVariable("id") String id){
         ResponseEntity responseEntity;
        try {

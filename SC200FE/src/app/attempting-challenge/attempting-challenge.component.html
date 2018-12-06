@@ -1,7 +1,7 @@
 <body>
     <nav class="navbar navbar-expand-lg mynavbar navbar-dark justify-content-center">
     <div class="navbar-brand">
-    <a [routerLink]="['../../Home']"> <img src="../../../assets/text-boxes.png" class="logoimage"></a>
+    <a [routerLink]="['../../']"> <img src="../../../assets/text-boxes.png" class="logoimage"></a>
    </div>
     <br>
     
@@ -22,7 +22,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
   </nav>
-<app-attempt-view [completechallenge1]="completechallenge"></app-attempt-view>
+
+<div class="jumbotron">
+    <app-attempt-view [completechallenge1]="completechallenge"></app-attempt-view>
 <div class="outer">
   <div><folder-upload></folder-upload></div>
   <br />
@@ -54,6 +56,7 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-outline-primary" mat-flat-button type="submit" (click)="submit()">Submit!</button>
+  <button class="btn btn-success" mat-flat-button type="submit" (click)="submit()">Submit!</button>
+</div>
 </div>
 </body>

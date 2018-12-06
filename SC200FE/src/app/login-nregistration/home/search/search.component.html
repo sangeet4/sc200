@@ -13,9 +13,9 @@
       </form>
     <div *ngIf='showDropDown' class="search-drop-down">
         <div *ngFor="let challenge of challenges"> 
-          <div  (click)="select(challenge.challengeId)" class="search-results">
-            <h4 >{{ challenge?.challengeTitle }}</h4>
-          <p>{{challenge?.topic}}</p>
+          <div  (click)="select(challenge.challengeId)" class="search-results row">
+            <h4 class="text1 col-md-7">{{ challenge?.challengeTitle }}</h4>
+          <p *ngIf="challenge" class=" text2 col-md-5"> in {{challenge?.topic}}</p>
           </div>
           
         </div>

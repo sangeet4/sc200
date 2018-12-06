@@ -1,6 +1,10 @@
+.logoimage{
+    max-width: 10rem;
+    max-height: 6rem;
+ }
 @media(min-width:992px){
    .mynavbar {
-       background: linear-gradient(to bottom, #ffffff 15%, #181818 70%);
+       background: linear-gradient(to bottom, #ffffff 25%, #181818 90%);
    }
 
    #links .nav-link {

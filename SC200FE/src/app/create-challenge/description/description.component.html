@@ -1,14 +1,15 @@
+<body>
 <header>
   <nav class="navbar navbar-expand-lg mynavbar navbar-dark justify-content-center">
     <div class="navbar-brand">
       <a [routerLink]="['../../']"> <img src="../../../assets/text-boxes.png" class="logoimage"></a>
     </div>
 
-    <a [routerLink]="['../logout']"><button>Logout</button></a>
+    <a [routerLink]="['../logout']"><button class="btn btn-outline-primary">Logout</button></a>
   </nav>
 </header>
-
-<h4>Complete the following steps to POST a challenge :)</h4>
+<div class="jumbotron">
+<h4 class="title">Complete the following steps to POST a challenge :)</h4>
 
 <form class="quest-container" [formGroup]="questDesc">
   <!-- <mat-form-field appearance="outline">
@@ -52,7 +53,7 @@
 
 
       <div>
-          <button mat-button (click)="tab=2">Next</button>
+          <button mat-raised-button color="primary" (click)="tab=2">Next</button>
         </div>
 
     </mat-tab>
@@ -93,9 +94,9 @@
         </mat-error>
       </mat-form-field>
 
-      <div>
-          <button mat-button (click)="tab=3">Next</button>
-          <button mat-button (click)="tab=1">Back</button>
+      <div> 
+          <button mat-raised-button color="primary" style="margin:0.2rem;" (click)="tab=3">Next</button>
+          <button mat-raised-button color="primary" style="margin:0.2rem;" (click)="tab=1">Back</button>
           
         </div>
 
@@ -167,8 +168,8 @@
         </mat-error>
       </mat-form-field>
       <div>
-          <button mat-button (click)="tab=4">Next</button>
-          <button mat-button (click)="tab=2">Back</button>
+          <button mat-raised-button color="primary" style="margin:0.2rem;" (click)="tab=4">Next</button>
+          <button mat-raised-button color="primary" style="margin:0.2rem;"  (click)="tab=2">Back</button>
           
         </div>
     </mat-tab>
@@ -220,7 +221,7 @@
       </mat-form-field>
 
       <div>
-          <button mat-button (click)="tab=3">Back</button>
+          <button mat-raised-button color="primary" (click)="tab=3">Back</button>
         </div>
 <div class="submit">
         <button *ngIf="flag==1" mat-raised-button color="primary" type="submit" (click)="onSubmit()" [disabled]="!questDesc.valid">Submit</button>
@@ -229,3 +230,5 @@
     </mat-tab>
   </mat-tab-group>
 </form>
+</div>
+</body>

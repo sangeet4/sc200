@@ -18,12 +18,12 @@
         <module>ChallengeCreator</module>
         <module>RegisterService</module>
         <module>FileParser</module>
-	<module>Compilation</module>
-	<module>AuthenticationService</module>
-	<module>UserProfile</module>
-	<module>Neo4j-docker</module> 
-	<module>Scoring</module>
-	<module>VotingService</module>
+		<module>Compilation</module>
+		<module>AuthenticationService</module>
+		<module>UserProfile</module>
+		<module>Neo4j-docker</module> 
+		<module>Scoring</module>
+		<module>VotingService</module>
     </modules>
 
     <parent>

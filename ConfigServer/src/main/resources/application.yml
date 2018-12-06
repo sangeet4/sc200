@@ -1,6 +1,22 @@
 management:
     security:
-        enabled: false
+        enabled: 'false'
+    endpoint:
+        metrics:
+            enabled: 'true'
+        prometheus:
+            enabled: 'true'
+
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+    metrics:
+        export:
+            prometheus:
+                enabled: 'true'
+
+
 server:
     port: 8092
 eureka:         #tells about the Eureka server details and its refresh time

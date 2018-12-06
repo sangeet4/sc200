@@ -1,9 +1,9 @@
-<mat-card *ngFor="let chal of profile.challengeCreated">
-  <mat-card-header>  
-  <mat-card-title>{{chal.challengeName}}</mat-card-title>
-</mat-card-header>
-    <mat-card-actions>
-      <button mat-stroked-button [routerLink]="['../../challenge/update', chal.challengeId]">Update Challenge</button>
-    </mat-card-actions>
-  </mat-card>
+<div class="card" *ngFor="let chal of profile.challengeCreated">
+    <div class="card-header">{{chal.challengeTitle}}</div>
+    <div class="card-body">
+        <p class="card=text"><strong>Challenge created by : {{chal.userId}}</strong></p>
+        <p class="card-text"><strong>Challenge max score : {{chal.maxScore}}</strong></p>
+    </div>
+</div>
+
   

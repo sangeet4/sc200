@@ -1,12 +1,17 @@
 <h2>Challenges Upvoted</h2>
-<mat-card *ngFor="let chal of profile.challengeUpvoted">
-  <mat-card-header>
-  <mat-card-title>{{chal.challengeName}}</mat-card-title>
-</mat-card-header>
-</mat-card>
+<div class="card" *ngFor="let chal of profile.challengeUpvoted">
+    <div class="card-header">{{chal.challengeTitle}}</div>
+    <div class="card-body">
+        <p class="card=text"><strong>Challenge upvoted by : {{chal.userId}}</strong></p>
+        
+    </div>
+</div>
+
 <h2 id="second">Challenges Downvoted</h2>
-<mat-card *ngFor="let chal of profile.challengeDownvoted">
-  <mat-card-header>
-  <mat-card-title>{{chal.challengeName}}</mat-card-title>
-</mat-card-header>
-</mat-card>
+<div class="card" *ngFor="let chal of profile.challengeDownvoted">
+    <div class="card-header">{{chal.challengeTitle}}</div>
+    <div class="card-body">
+        <p class="card=text"><strong>Challenge downvoted by : {{chal.userId}}</strong></p>
+        
+    </div>
+</div>

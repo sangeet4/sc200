@@ -7,6 +7,8 @@ export class Profile {
     username: string;
     phone: number;
     score: number;
+    userId:string;
+    dateOfBirth:string;
     ranking: number;
     challengeAttempted: Challenge[];
     challengeCreated: Challenge[];

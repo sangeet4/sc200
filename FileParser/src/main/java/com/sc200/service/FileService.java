@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public interface FileService {
 
-    public String parseFile(Files file) throws IOException;
+    public String parseFile(Files file , String userName , String challengeId) throws IOException;
 
     public boolean createDirectories(String path);
 

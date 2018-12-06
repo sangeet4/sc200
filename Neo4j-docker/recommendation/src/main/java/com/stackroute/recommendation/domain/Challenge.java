@@ -11,7 +11,7 @@ import org.neo4j.ogm.annotation.Property;
 
     @Property
         @Id
-        private String id;
+        private String challengeId;
         @Property
         private String title;
         @Property
@@ -19,8 +19,8 @@ import org.neo4j.ogm.annotation.Property;
         @Property
         private String challengeStamp;
 
-    public Challenge(String id, String title, double level, String challengeStamp) {
-        this.id = id;
+    public Challenge(String challengeId, String title, double level, String challengeStamp) {
+        this.challengeId = challengeId;
         this.title = title;
         this.level = level;
         this.challengeStamp = challengeStamp;
@@ -30,12 +30,12 @@ import org.neo4j.ogm.annotation.Property;
     }
 
 
-    public String getId() {
-        return id;
+    public String getChallengeId() {
+        return challengeId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setChallengeId(String challengeId){
+        this.challengeId = challengeId;
     }
 
     public String getTitle() {
@@ -66,7 +66,7 @@ import org.neo4j.ogm.annotation.Property;
     @Override
     public String toString() {
         return "Challenge{" +
-                "id='" + id + '\'' +
+                "id='" + challengeId + '\'' +
                 ", title='" + title + '\'' +
                 ", level=" + level +
                 ", challengeStamp='" + challengeStamp + '\'' +

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule, MatSelectModule, MatButtonModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatSelectModule, MatButtonModule, MatInputModule, MatTabsModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 
 import { DescriptionComponent } from './description/description.component';
@@ -21,7 +21,8 @@ import { CreateChallengeRoutingModule } from './create-challenge-routing.module'
     MatSelectModule,
     MatButtonModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTabsModule
   ],
   declarations: [
     DescriptionComponent,

@@ -78,10 +78,6 @@ scrape_configs:
 #   - targets: ['localhost:9092']
 
 
-
-
-
-
 - job_name: 'Challenge-Creator'
   metrics_path: '/actuator/prometheus'
   scrape_interval: 5s

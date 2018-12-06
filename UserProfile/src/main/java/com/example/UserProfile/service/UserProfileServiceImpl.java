@@ -190,12 +190,14 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Override
     public UserProfile  updateuserProfileById(String id,UserProfile userProfile1) throws UserProfileNotFoundException{
 
+        List<Challenge> attemptedChallenge = new ArrayList<Challenge>();
+        List<Challenge> createdChallenge = new ArrayList<Challenge>();
+        List<Challenge> upvotedChallenge = new ArrayList<Challenge>();
+        List<Challenge> downvotedChallenge = new ArrayList<Challenge>();
+
         if(userProfileRepository.existsById(id)) {
+
             UserProfile userProfile = userProfileRepository.findById(id).get();
-
-
-
-
 
             userProfile.setFirstName(userProfile1.getFirstName());
             userProfile.setLastName(userProfile1.getLastName());
@@ -205,38 +207,22 @@ public class UserProfileServiceImpl implements UserProfileService {
             userProfile.setScore(userProfile1.getScore());
             userProfile.setDateOfBirth(userProfile1.getDateOfBirth());
             userProfile.setPreferredLang(userProfile1.getPreferredLang());
-
-            //need to get the list already present and then add the new one
-
-            List<Challenge> attemptedChallenge = userProfile.getChallengeAttempted();
-            attemptedChallenge.add(userProfile1.getChallengeAttempted().get(0));
-            userProfile.setChallengeAttempted(attemptedChallenge);
-
-            List<Challenge> createdChallenge = userProfile.getChallengeCreated();
-            createdChallenge.add(userProfile1.getChallengeCreated().get(0));
-            userProfile.setChallengeCreated(createdChallenge);
-
-
-
-            List<Challenge> upvotedChallenge = userProfile.getChallengeUpvoted();
-            upvotedChallenge.add(userProfile1.getChallengeUpvoted().get(0));
-            userProfile.setChallengeUpvoted(upvotedChallenge);
-
-
-            List<Challenge> downvotedChallenge = userProfile.getChallengeDownvoted();
-            upvotedChallenge.add(userProfile1.getChallengeDownvoted().get(0));
-            userProfile.setChallengeUpvoted(downvotedChallenge);
-
-
-
-
-
-            UserProfile userProfile2 = userProfileRepository.save(userProfile);
+            userProfile.setUserId(userProfile1.getUserId());
+            userProfile.setEmail(userProfile1.getEmail());
+            userProfile.setChallengeCreated(userProfile1.getChallengeCreated());
+            userProfile.setChallengeUpvoted(userProfile1.getChallengeUpvoted());
+            userProfile.setChallengeDownvoted(userProfile1.getChallengeDownvoted());
+            userProfile.setChallengeAttempted(userProfile1.getChallengeAttempted());
+            userProfileRepository.delete(userProfile);
+            UserProfile userProfile2= userProfileRepository.save(userProfile);
+            System.out.println(userProfile2);
             return userProfile2;
+
         }
         else{
             throw new UserProfileNotFoundException("userProfile-controller.noUser");
         }
+    }
     }
 
 

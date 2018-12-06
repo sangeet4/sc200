@@ -28,54 +28,54 @@ scrape_configs:
   static_configs:
   - targets: ['localhost:9090']
 
-- job_name: 'Zuul'
+# - job_name: 'Zuul'
 
-  metrics_path: '/actuator/prometheus'
-  scrape_interval: 5s
-  static_configs:
-  - targets: ['localhost:8081']
+#   metrics_path: '/actuator/prometheus'
+#   scrape_interval: 5s
+#   static_configs:
+#   - targets: ['localhost:8081']
 
-- job_name: 'Eureka'
+# - job_name: 'Eureka'
 
-  metrics_path: '/actuator/prometheus'
-  scrape_interval: 5s
-  static_configs:
-  - targets: ['localhost:8091']
+#   metrics_path: '/actuator/prometheus'
+#   scrape_interval: 5s
+#   static_configs:
+#   - targets: ['localhost:8091']
 
-- job_name: 'Config-server'
+# - job_name: 'Config-server'
 
-  metrics_path: '/actuator/prometheus'
-  scrape_interval: 5s
-  static_configs:
-  - targets: ['localhost:8092']
+#   metrics_path: '/actuator/prometheus'
+#   scrape_interval: 5s
+#   static_configs:
+#   - targets: ['localhost:8092']
 
-- job_name: 'Mysql'
+# - job_name: 'Mysql'
 
-  metrics_path: '/actuator/prometheus'
-  scrape_interval: 5s
-  static_configs:
-  - targets: ['localhost:3306']
+#   metrics_path: '/actuator/prometheus'
+#   scrape_interval: 5s
+#   static_configs:
+#   - targets: ['localhost:3306']
 
-- job_name: 'Mongo'
+# - job_name: 'Mongo'
 
-  metrics_path: '/actuator/prometheus'
-  scrape_interval: 5s
-  static_configs:
-  - targets: ['localhost:27017']
+#   metrics_path: '/actuator/prometheus'
+#   scrape_interval: 5s
+#   static_configs:
+#   - targets: ['localhost:27017']
 
-- job_name: 'Zookeeper'
+# - job_name: 'Zookeeper'
 
-  metrics_path: '/actuator/prometheus'
-  scrape_interval: 5s
-  static_configs:
-  - targets: ['localhost:2181']
+#   metrics_path: '/actuator/prometheus'
+#   scrape_interval: 5s
+#   static_configs:
+#   - targets: ['localhost:2181']
 
-- job_name: 'Kafka'
+# - job_name: 'Kafka'
 
-  metrics_path: '/actuator/prometheus'
-  scrape_interval: 5s
-  static_configs:
-  - targets: ['localhost:9092']
+#   metrics_path: '/actuator/prometheus'
+#   scrape_interval: 5s
+#   static_configs:
+#   - targets: ['localhost:9092']
 
 
 

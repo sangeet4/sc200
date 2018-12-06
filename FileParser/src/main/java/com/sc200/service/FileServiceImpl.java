@@ -17,13 +17,15 @@ public class FileServiceImpl implements FileService {
     public String parseFile(Files files) throws IOException {
         int lastIndex = files.getUri().lastIndexOf("/");
         String directory = files.getUri().substring(lastIndex , files.getUri().length()-1);
+        System.out.println("111111111111111" + directory );
         int firstIndex = files.getUri().indexOf("/");
         String directory1 = files.getUri().substring(0, firstIndex);
 
         if (createDirectories(directory) && createFile(files)) {
             return "Successfully Created";
         } else {
-//            return directory;
+
+            return directory;
 //            recursiveDelete(new File(directory1));
 //            if (createDirectories(directory) && createFile(files)) {
 //                return "Successfully Created";

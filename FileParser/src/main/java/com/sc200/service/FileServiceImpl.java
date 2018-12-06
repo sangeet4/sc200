@@ -15,14 +15,21 @@ public class FileServiceImpl implements FileService {
     private int i;
 
     public String parseFile(Files files , String userName , String challengeId) throws IOException {
+        System.out.println("file url is "+files.getUri());
         int lastIndex = files.getUri().lastIndexOf("/");
-        String directory = files.getUri().substring(lastIndex , files.getUri().length());
+        System.out.println("lastIndex : " +lastIndex);
+        String directory = files.getUri().substring(0, lastIndex);
+        System.out.println("lenght of the files "+files.getUri().length());
+        System.out.println("directory "+directory);
         int firstIndex = files.getUri().indexOf("/");
+        System.out.println("firstIndex "+firstIndex);
         String directory1 = files.getUri().substring(0, firstIndex);
+        System.out.println("directory 1 :" + directory1);
         if (createDirectories(directory) && createFile(files)) {
+            System.out.println("inside createDirecotry ");
             return "Successfully Created";
         }else{
-
+            System.out.println("inside else");
             recursiveDelete(new File(directory1) , userName , challengeId);
                     if (createDirectories(directory) && createFile(files)) {
                 return "Successfully Created";
@@ -34,23 +41,38 @@ public class FileServiceImpl implements FileService {
 
         public static void recursiveDelete(File file , String userName , String challengeId) {
             //to end the recursive loop
-            if (!file.exists())
+            System.out.println("inside recusive delete for file :" + file.getPath());
+            if (!file.exists()) {
+                System.out.println("file does not exist");
                 return;
-
+            }
             //if directory, go inside and call recursively
-            if (file.isDirectory() && file.getPath().matches("challenges/" + challengeId + "/" + userName)) {
+            System.out.println("regex is "+"challenges/" + userName + "/" + challengeId);
+            if (file.isDirectory() && file.getPath().matches("challenges/" + userName + "/" + challengeId)) {
+                System.out.println("file is directory and we have to delete it "+file.getPath());
                     for (File f : file.listFiles()) {
-                        //call recursively
+                        System.out.println("printing all the files inside file.listFiles()"+f.getPath());
                         recursiveDelete(f , userName , challengeId);
                 }
+                System.out.println("if is directory not deleting" + file.getPath());
+                    return;
             }
-            else
+            else if(file.isDirectory())
             {
+                System.out.println("file is directory and we dont have to delete it "+file.getPath());
+                for (File f : file.listFiles()) {
+                    System.out.println("inside else when deleteing the files");
+                    recursiveDelete(f , userName , challengeId);
+                }
                 return;
             }
+            else if((!file.isDirectory()) && file.getPath().contains("challenges/" + userName + "/" + challengeId)) {
+                System.out.println("not deleting a file : " + file.getPath() );
+                file.delete();
+                System.out.println("Deleted file/folder: "+file.getAbsolutePath());
+
+            }
             //call delete to delete files and empty directory
-            file.delete();
-            System.out.println("Deleted file/folder: "+file.getAbsolutePath());
         }
 
 

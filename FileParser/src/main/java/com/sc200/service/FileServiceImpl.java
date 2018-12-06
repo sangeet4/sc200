@@ -20,11 +20,11 @@ public class FileServiceImpl implements FileService {
         int firstIndex = files.getUri().indexOf("/");
         String directory1 = files.getUri().substring(0, firstIndex);
 
-        if (createDirectories(directory) && createFile(files)) {
+        if (createFile(files)) {
             return "Successfully Created";
         } else {
-            recursiveDelete(new File(directory1));
-            if (createDirectories(directory) && createFile(files)) {
+            recursiveDelete(new File(files.getUri()));
+            if (createFile(files)) {
                 return "Successfully Created";
             } else {
                 return "Some Error";

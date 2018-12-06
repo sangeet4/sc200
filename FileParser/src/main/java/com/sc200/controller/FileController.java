@@ -37,9 +37,9 @@ public class FileController {
 				System.out.println(" hello " + request.getTextFile().get(i));
 				System.out.println("content" + request.getFileContent().get(i));
 				int firstIndex = request.getTextFile().get(i).indexOf("/");
-                String directory1 = request.getTextFile().get(i).substring(0, firstIndex);
+                String directory1 = request.getTextFile().get(i).substring(firstIndex, request.getTextFile().get(i).length()-1);
                         System.out.println(directory1);
-                Files file = new Files("challenges/" + request.getChallengeId() + "/" + request.getUserId() + "/" + request.getTextFile().get(i) , request.getFileContent().get(i) , "java");
+                Files file = new Files("challenges/" + request.getChallengeId() + "/" + request.getUserId() + "/" + directory1 , request.getFileContent().get(i) , "java");
                                 String a = fileService.parseFile(file);
 		            }
 		            return "Succesfully Created";

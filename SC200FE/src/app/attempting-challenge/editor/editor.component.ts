@@ -55,9 +55,7 @@ export class EditorComponent implements OnInit, OnChanges {
   }
 
   initializeWebSocketConnection() {
-    const ws = new SockJS(this.socketUrl,{
-      transport:["wss","https"]
-    });
+    const ws = new SockJS(this.socketUrl);
     this.stompClient = Stomp.over(ws);
     const that = this;
     //connect to service using stompclinet

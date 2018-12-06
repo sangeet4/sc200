@@ -44,7 +44,22 @@ zuul:
 
 management:
     security:
-        enabled: false  #disable the spring security on the management endpoints like /env, /refresh etc.
+        enabled: 'false'
+    endpoint:
+        metrics:
+            enabled: 'true'
+        prometheus:
+            enabled: 'true'
+
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+    metrics:
+        export:
+            prometheus:
+                enabled: 'true'
+
 
 logging:
     level:

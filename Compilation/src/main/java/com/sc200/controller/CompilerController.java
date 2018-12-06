@@ -44,7 +44,7 @@ public class CompilerController {
         try{
             ArrayList<String> output = compileService.runFile(file);
             for (int i=output.size();i>=0;i--) {
-                if(output.get(i).contains("BUILD SUCCESS") || output.get(i).contains("BUILD FAILURE") ) {
+                if(output.get(i).contains("BUILD SUCCESS") || output.get(i).contains("BUILD FAILURE") || output.get(i).contains("Error")) {
                     response = output.get(i);
                     break;
                 }

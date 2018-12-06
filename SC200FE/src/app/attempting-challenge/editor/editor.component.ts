@@ -3,7 +3,7 @@ import { FileService } from "./../folder-structure/directory/file.service";
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { MonacoFile } from "ngx-monaco";
 import { FilesService } from "../files.service";
-import * as Stomp from '@stomp/stompjs';
+import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import * as $ from 'jquery';
 
@@ -21,7 +21,7 @@ export class EditorComponent implements OnInit, OnChanges {
   httpResponse;
   stompClient = null;
   sessionId: String;
-  socketUrl = environment.apiUrl+"compile/compile";
+  socketUrl = "http://35.154.116.88:8183/compile";
 
   title = "app";
   options = {

@@ -52,7 +52,7 @@ footer{
     background-image: url("../assets/img/homebg.jpg");
  }
  .jumbo{
-    padding-bottom: 0rem;
+    padding-bottom: 5rem;
 
     background-size:cover;
  }

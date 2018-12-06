@@ -17,7 +17,7 @@ export class EditorComponent implements OnInit, OnChanges {
   @Input() userName: string;
   @Input() challengeId: string;
   count: number = 0;
-  content = "hi";
+  content = "";
   httpResponse;
   stompClient = null;
   sessionId: String;

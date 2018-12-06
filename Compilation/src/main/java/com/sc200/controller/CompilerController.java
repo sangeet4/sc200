@@ -33,9 +33,9 @@ public class CompilerController {
         this.template = template;
     }
 
-    @PostMapping()
-    //@MessageMapping("/send/message/{sessionId}")
-    public ResponseEntity<?> createDirectoryLayer(@RequestBody @Valid String path) throws IOException {
+    //@PostMapping()
+    @MessageMapping("/send/message/{sessionId}")
+    public void createDirectoryLayer(@Payload @Valid String path, @DestinationVariable("sessionId") String sessionId) throws IOException {
         System.out.println("socket request invoked");
         ResponseEntity responseEntity;
         String response = null;
@@ -50,14 +50,14 @@ public class CompilerController {
                 }
             }
             responseEntity = new ResponseEntity<String>(response , HttpStatus.OK);
-            //this.template.convertAndSend("/results/" + sessionId, responseEntity);
+            this.template.convertAndSend("/results/" + sessionId, responseEntity);
         }
         catch (Exception e){
             ArrayList<String> output = compileService.runFile(file);
             responseEntity = new ResponseEntity<String>(e.getMessage() , HttpStatus.BAD_REQUEST);
-            //this.template.convertAndSend("/results/" + sessionId, e.getMessage());
+            this.template.convertAndSend("/results/" + sessionId, e.getMessage());
         }
-       return responseEntity;
+//        return responseEntity;
     }
 
     @MessageExceptionHandler

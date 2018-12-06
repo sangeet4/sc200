@@ -25,7 +25,7 @@ public class Request {
     private ArrayList<String> fileContent;
 
     public ArrayList<String> getFileContents() {
-        return fileContents;
+        return fileContent;
     }
 
     public ArrayList<String> getTextFile() {

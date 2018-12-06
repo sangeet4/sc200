@@ -36,7 +36,7 @@ public class FileController {
 		            {
 				System.out.println(" hello " + request.getTextFile().get(i));
 				System.out.println("content" + request.getFileContent().get(i));
-		                Files file = new Files(request.getTextFile().get(i) , request.getFileContent().get(i) , "java");
+		                Files file = new Files("challenges/" + request.getUserId() + "/" + request.getChallengeId() + "/" + request.getTextFile().get(i) , request.getFileContent().get(i) , "java");
                                 String a = fileService.parseFile(file);
 		            }
 		            return "Succesfully Created";

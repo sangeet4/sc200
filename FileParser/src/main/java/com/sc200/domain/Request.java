@@ -25,5 +25,19 @@ public class Request {
 
     private ArrayList<String> fileContent;
 
-  
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getChallengeId() {
+        return challengeId;
+    }
+
+    public ArrayList<String> getTextFile() {
+        return textFile;
+    }
+
+    public ArrayList<String> getFileContent() {
+        return fileContent;
+    }
 }

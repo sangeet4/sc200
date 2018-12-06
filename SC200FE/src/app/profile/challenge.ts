@@ -3,4 +3,5 @@ export class Challenge {
     challengeTitle: string;
     challengeScore:number;
     maxScore:number;
+    userId:string;
 }

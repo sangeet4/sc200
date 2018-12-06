@@ -16,19 +16,23 @@
 <!-- <h1>Select a folder to upload</h1> -->
 
 
- <div>
-  <input
-    #folderInput
-    type="file"
-    (change)="filesPicked(folderInput.files)"
-    webkitDirectory
-  >
-</div> 
+<!-- <div>-->
+<!--  <input-->
+<!--    #folderInput-->
+<!--    type="file"-->
+<!--    (change)="filesPicked(folderInput.files)"-->
+<!--    webkitDirectory-->
+<!--  >-->
+<!--</div> -->
 
-<div >
-  <input #giturl type="url" placeholder="Github url">
-  <button (click)="clone(giturl.value)" type="submit">Clone</button>
+<div class="filechoose col-md-6" >
+ <input
+   #folderInput
+   type="file"
+   (change)="filesPicked(folderInput.files)"
+   webkitDirectory style="margin: 0.8rem;" >
 </div>
+
 
 <!-- 
 <div *ngIf="uploadPaths.length > 0">Upload Data

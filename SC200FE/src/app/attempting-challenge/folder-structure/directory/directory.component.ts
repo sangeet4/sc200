@@ -51,9 +51,9 @@ export class ChecklistDatabase {
     // Build the tree nodes from Json object. The result is a list of `TodoItemNode` with nested
     //     file node as children.
     this.TREE = this.fileService.getFileStructure().toString();
-    console.log(this.TREE);
+    //console.log(this.TREE);
     this.TREE = this.TREE.replace(/'/g, '\"');
-    console.log(this.TREE);
+    //console.log(this.TREE);
     this.TREE = JSON.parse(this.TREE);
     //this.TREE = {'root':{'test':{'ArrayDifference.js' : null, 'ArrayDifference2.js' : null}}, 'test':{'test2':{'ArrayDifference.js' : null}}};
 

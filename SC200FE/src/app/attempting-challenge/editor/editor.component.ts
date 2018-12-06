@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { FileService } from "./../folder-structure/directory/file.service";
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { MonacoFile } from "ngx-monaco";
@@ -16,11 +17,11 @@ export class EditorComponent implements OnInit, OnChanges {
   @Input() userName: string;
   @Input() challengeId: string;
   count: number = 0;
-  content = "";
+  content = "hi";
   httpResponse;
   stompClient = null;
   sessionId: String;
-  socketUrl = "http://35.154.116.88:8183/compile";
+  socketUrl = environment.apiUrl;
 
   title = "app";
   options = {
@@ -54,8 +55,8 @@ export class EditorComponent implements OnInit, OnChanges {
   }
 
   initializeWebSocketConnection() {
-    const ws = new SockJS(this.socketUrl, {
-        transport: ["wss", "https"]
+    const ws = new SockJS(this.socketUrl,{
+      transport:["wss","https"]
     });
     this.stompClient = Stomp.over(ws);
     const that = this;
@@ -101,11 +102,7 @@ export class EditorComponent implements OnInit, OnChanges {
 
   public saveCode() {
     console.log(this.content);
-    //this.file.content = this.content;
-    this.file ={
-       ...this.file,
-       content: this.content
-     }
+    this.file.content = this.content;
     console.log(this.file.uri, this.file.content);
     // var a =this.file.uri;
     // var b = this.file.content;

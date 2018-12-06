@@ -8,12 +8,13 @@ import { FileElement } from "./folder-structure/directory/model/file-element";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    "Content-Type": "application/json",
-    Authorization: "my-auth-token"
-  })
-};
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//     "Content-Type": "application/json",
+//     Authorization: "my-auth-token"
+//   })
+// };
+
 @Injectable({
   providedIn: "root"
 })
@@ -26,9 +27,9 @@ export class FilesService {
   testData = "";
   sendContent = "";
   files: [string];
-  // url = "http://35.154.116.88:8182/";
-  url = environment.apiUrl + "file/";
-  url1 = environment.apiUrl + "compile";
+  url1 = "http://35.154.116.88:8183/compile";
+  url = environment.apiUrl;
+  //url1 = environment.apiUrl + "compile";
   newurl: string = "";
   httpresponse;
 
@@ -46,18 +47,21 @@ export class FilesService {
   // }
 
   SaveFile(challengeId, userId) {
-    const saveBody = new Save(userId, challengeId, this.textFiles, this.fileContent);
-    return this.http.post(this.url + "file/create", saveBody, httpOptions);
+    var temp = this.GetAllFiles();
+    console.log(temp);
+    const saveBody = new Save(userId, challengeId, temp, this.fileContent);
+
+    return this.http.post(this.url + "file/create", saveBody);
   }
 
   RunFile(userId, challengeId) {
-    return this.http.post(this.url1, userId + '/' + challengeId, httpOptions);
+    return this.http.post(this.url1, userId + '/' + challengeId);
 
     // return this.http.post(this.url1, this.newurl, httpOptions);
   }
   getTemplate(challengeId: string) {
     console.log("into the get template func");
-    return this.http.post(this.url + "file/struct", challengeId, httpOptions);
+    return this.http.post(this.url + "file/struct", challengeId);
   }
   getRepsoitory(url: string, userName: string, challengeId: string) {
     return this.http.post(this.url1 + "/clone", url + '$' + userName + '$' + challengeId);

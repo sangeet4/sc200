@@ -207,8 +207,10 @@ export class FolderUpload {
   }
 
 //need to send a http request
-  public onCLick(){
-    //this.router.navigate(['/a']);
-    this.fileService.addUploadedFiles();
-  }
+  // public onCLick(){
+  //   //this.router.navigate(['/a']);
+  //   this.fileService.addUploadedFiles();
+  //   this.filesServie.GetAllFiles();
+  //   console.log(this.filesServie.textFiles);
+  // }
 }

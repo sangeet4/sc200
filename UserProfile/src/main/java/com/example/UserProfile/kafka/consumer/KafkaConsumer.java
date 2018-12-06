@@ -50,7 +50,7 @@ public class KafkaConsumer {
         challenge1.setChallengeId(challenge.getChallengeId());
         challenge1.setChallengeTitle(challenge.getChallengeTitle());
         challenge1.setUserId(challenge.getUserId());
-        challenge1.setMaxScore(challenge.getMaxScore);
+        challenge1.setMaxScore(challenge.getMaxScore());
 
         String userId=challenge.getUserId();
         try {

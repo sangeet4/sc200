@@ -19,3 +19,21 @@ usercontroller:
         exception3: please fill in username and password
         exception4: user email not found
         exception5: Invalid Login.Please check your username and password
+management:
+    security:
+        enabled: 'false'
+    endpoint:
+        metrics:
+            enabled: 'true'
+        prometheus:
+            enabled: 'true'
+
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+    metrics:
+        export:
+            prometheus:
+                enabled: 'true'
+

@@ -22,7 +22,7 @@ public class Request {
 
     private ArrayList<String> textFile;
 
-    private ArrayList<String> fileContents;
+    private ArrayList<String> fileContent;
 
     public ArrayList<String> getFileContents() {
         return fileContents;

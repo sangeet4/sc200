@@ -24,12 +24,12 @@ public class FileServiceImpl implements FileService {
             return "Successfully Created";
         } else {
             return directory;
-            recursiveDelete(new File(directory1));
-            if (createDirectories(directory) && createFile(files)) {
-                return "Successfully Created";
-            } else {
-                return "Some Error";
-            }
+//            recursiveDelete(new File(directory1));
+//            if (createDirectories(directory) && createFile(files)) {
+//                return "Successfully Created";
+//            } else {
+//                return "Some Error";
+//            }
         }
     }
 

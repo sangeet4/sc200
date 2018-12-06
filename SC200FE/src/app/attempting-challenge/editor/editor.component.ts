@@ -103,7 +103,7 @@ export class EditorComponent implements OnInit, OnChanges {
     //this.file.content = this.content;
     this.file = {
         ...this.file,
-        content: this.content;
+        content: this.content
     }
     console.log(this.file.uri, this.file.content);
     // var a =this.file.uri;

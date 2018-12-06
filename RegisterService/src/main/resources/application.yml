@@ -28,3 +28,21 @@ user-service:
     impl:
         nouserEx: '"no such users exist"'
         usernameEx: '"user name already exists"'
+management:
+    security:
+        enabled: 'false'
+    endpoint:
+        metrics:
+            enabled: 'true'
+        prometheus:
+            enabled: 'true'
+
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+    metrics:
+        export:
+            prometheus:
+                enabled: 'true'
+

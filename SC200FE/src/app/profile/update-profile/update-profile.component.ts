@@ -114,3 +114,4 @@ export class UpdateProfileComponent implements OnInit {
      });
    alert('The form was updated');
  }
+}

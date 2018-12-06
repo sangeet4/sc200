@@ -43,7 +43,7 @@ import org.neo4j.ogm.annotation.Property;
     }
 
     public void setChallengeTitle(String challengeTitle) {
-        this.challengeTitle= challengeTitle
+        this.challengeTitle= challengeTitle;
     }
 
     public double getLevel() {

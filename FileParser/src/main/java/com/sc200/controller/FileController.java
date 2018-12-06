@@ -35,6 +35,7 @@ public class FileController {
 	            	for(int i=0;i<request.getTextFile().size();i++)
 		            {
 				System.out.println(" hello " + request.getTextFile().get(i));
+				System.out.println("content" + request.getFileContent().get(i));
 		                Files file = new Files(request.getTextFile().get(i) , request.getFileContents().get(i) , "java");
                                 String a = fileService.parseFile(file);
 		            }

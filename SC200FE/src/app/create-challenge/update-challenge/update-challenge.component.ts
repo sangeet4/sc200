@@ -13,15 +13,15 @@ export class UpdateChallengeComponent implements OnInit {
   constructor(private challengeService: ChallengeService, private route: ActivatedRoute) { }
 
   quest: QuestDetail;
-  questId: number;
+  questId: string;
   flag = 2;
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      const id = parseInt(params.get('id'), 10);
+      const id = params.get('id');
       this.questId = id;
     } );
-    this.challengeService.getChallengeById(this.questId.toString())
+    this.challengeService.getChallengeById(this.questId)
       .subscribe(data => {
         this.quest = data;
         console.log(this.quest);

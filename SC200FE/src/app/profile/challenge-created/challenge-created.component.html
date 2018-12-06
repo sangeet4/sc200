@@ -1,6 +1,6 @@
 <mat-card *ngFor="let chal of profile.challengeCreated">
   <mat-card-header>  
-  <mat-card-title>{{chal.challengeName}}</mat-card-title>
+  <mat-card-title>{{chal.challengeTitle}}</mat-card-title>
 </mat-card-header>
     <mat-card-actions>
       <button mat-stroked-button [routerLink]="['../../challenge/update', chal.challengeId]">Update Challenge</button>

@@ -40,7 +40,7 @@ public class RecommendationServiceImpl implements RecommendationService {
 
             }
            // return recommendedChallengeList;
-            for(int j=0;j<min(5,recommendedChallengeList.size());j++){
+            for(int j=0;j<min(3,recommendedChallengeList.size());j++){
                 recommendedChallengeList1.add(recommendedChallengeList.get(j));
             }
             return recommendedChallengeList1;
@@ -79,7 +79,7 @@ public class RecommendationServiceImpl implements RecommendationService {
         }
 
         //return recommendedChallengeList;
-        for(int j=0;j<min(5,recommendedChallengeList.size());j++){
+        for(int j=0;j<min(3,recommendedChallengeList.size());j++){
             recommendedChallengeList1.add(recommendedChallengeList.get(j));
         }
         return recommendedChallengeList1;

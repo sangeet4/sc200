@@ -1,4 +1,3 @@
-
 <div >
     <form [formGroup]="searchForm" class="form-inline form1" (ngSubmit)="onSubmit()"> 
       <div class="form-group">
@@ -23,9 +22,9 @@
         
         <div *ngIf="challenges?.length < 1">
           
-          <h4>
-            No results found :(
-          </h4>
+          <h4 class="noresult">
+           <strong>OOPS :( "0" results found</strong>
+         </h4>
         </div>
         </div>
         </div>

@@ -90,9 +90,13 @@ public class UserProfileServiceImpl implements UserProfileService {
     public UserProfile updateAttemptChallengeToProfileById(String id,Challenge challenge) throws  UserProfileNotFoundException{
         if(userProfileRepository.existsById(id)){
             UserProfile userProfile = userProfileRepository.findById(id).get();
-
-            List<Challenge> attemptedChallenge = userProfile.getChallengeAttempted();
-
+            List<Challenge> attemptedChallenge = new ArrayList<Challenge>();
+           if(userProfile.getChallengeAttempted()!=null){
+               List<Challenge> chall_attempt = userProfile.getChallengeAttempted();
+               for(int i=0;i<chall_attempt.size();i++){
+                   attemptedChallenge.add(chall_attempt.get(i));
+               }
+           }
             boolean alreadyPresent = false;
             boolean needToUpdate = true;
             for(int i=0; i<attemptedChallenge.size(); i++){ //checking if the challenge is already attempted or not
@@ -134,8 +138,14 @@ public class UserProfileServiceImpl implements UserProfileService {
     public UserProfile updateUpvoteChallengeToProfileById(String id,Challenge challenge) throws  UserProfileNotFoundException{
         if(userProfileRepository.existsById(id)){
             UserProfile userProfile = userProfileRepository.findById(id).get();
-
-            List<Challenge> upvotedChallenge = userProfile.getChallengeUpvoted();
+            List<Challenge> upvotedChallenge = new ArrayList<Challenge>();
+            if(userProfile.getChallengeUpvoted()!=null){
+                List<Challenge> temp = userProfile.getChallengeUpvoted();
+                for(int i=0;i<temp.size();i++){
+                    upvotedChallenge.add(temp.get(i));
+                }
+                
+            }
             upvotedChallenge.add(challenge);
             userProfile.setChallengeCreated(upvotedChallenge);
             UserProfile userProfile2 = userProfileRepository.save(userProfile);
@@ -153,7 +163,13 @@ public class UserProfileServiceImpl implements UserProfileService {
         if(userProfileRepository.existsById(id)){
             UserProfile userProfile = userProfileRepository.findById(id).get();
 
-            List<Challenge> downvotedChallenge = userProfile.getChallengeDownvoted();
+            List<Challenge> downvotedChallenge = new ArrayList<Challenge>();
+            if(userProfile.getChallengeDownvoted()!=null){
+                List<Challenge> temp = userProfile.getChallengeDownvoted();
+                for(int i=0;i<temp.size();i++){
+                    downvotedChallenge.add(temp.get(i));
+                }
+            }
             downvotedChallenge.add(challenge);
             userProfile.setChallengeCreated(downvotedChallenge);
             UserProfile userProfile2 = userProfileRepository.save(userProfile);

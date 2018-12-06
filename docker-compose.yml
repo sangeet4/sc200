@@ -111,7 +111,32 @@ services:
       - 8181:8181
     expose:
       - 8181
-
+  scoring-demo:    
+   image:  scoring:v1
+   build:  Scoring/
+   restart:  always
+   network_mode:  host
+   container_name:  scoring
+   depends_on:
+     - kafka
+   ports:
+     -  8189:8189
+   expose:
+     -  8189
+     
+  voting-demo:    
+   image:  voting:v1
+   build:  VotingService/
+   restart:  always
+   network_mode:  host
+   container_name:  voting
+   depends_on:
+     - mongodb
+     - kafka
+   ports:
+     -  8190:8190
+   expose:
+     -  8190
 
   file-parser-demo:
     image: file-parser:v1

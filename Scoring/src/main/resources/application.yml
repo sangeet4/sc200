@@ -6,7 +6,7 @@ server:
   port: 8189
 
 kafka:
-  ip: 'http://localhost:9092'
+  ip: 'localhost:9092'
   topic: 'scoreTOPIC'
 
 logging:

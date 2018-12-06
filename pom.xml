@@ -22,6 +22,8 @@
 	<module>AuthenticationService</module>
 	<module>UserProfile</module>
 	<module>Neo4j-docker</module> 
+	<module>Scoring</module>
+	<module>VotingService</module>
     </modules>
 
     <parent>

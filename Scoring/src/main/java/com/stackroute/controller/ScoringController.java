@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/results")
+@RequestMapping(value = "")
 @CrossOrigin
 public class ScoringController {
     private static final Logger logger = LoggerFactory.getLogger(ScoringController.class);

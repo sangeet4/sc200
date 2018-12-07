@@ -48,7 +48,7 @@ public class FileServiceImpl implements FileService {
             }
             //if directory, go inside and call recursively
             System.out.println("regex is "+"challenges/" + userName + "/" + challengeId);
-            if (file.isDirectory() && file.getPath().matches("challenges/" + userName + "/" + challengeId)) {
+            if (file.isDirectory() && file.getPath().contains("challenges/" + userName + "/" + challengeId)) {
                 System.out.println("file is directory and we have to delete it "+file.getPath());
                     for (File f : file.listFiles()) {
                         System.out.println("printing all the files inside file.listFiles()"+f.getPath());

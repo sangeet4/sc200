@@ -126,11 +126,11 @@ scrape_configs:
   static_configs:
   - targets: ['localhost:8187']
 
-- job_name: 'Empty-Container'
-  metrics_path: '/actuator/prometheus'
-  scrape_interval: 5s
-  static_configs:
-  - targets: ['localhost:8188']
+# - job_name: 'Empty-Container'
+#   metrics_path: '/actuator/prometheus'
+#   scrape_interval: 5s
+#   static_configs:
+#   - targets: ['localhost:8188']
 
 - job_name: 'Scoring'
   metrics_path: '/actuator/prometheus'

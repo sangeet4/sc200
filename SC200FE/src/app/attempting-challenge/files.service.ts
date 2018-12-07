@@ -51,7 +51,7 @@ export class FilesService {
     console.log(temp);
     const saveBody = new Save(userId, challengeId, temp, this.fileContent);
 
-    return this.http.post(this.url + "file/create", saveBody);
+     return this.http.post(this.url + "file/create", saveBody,{responseType:"text"});
   }
 
   RunFile(userId, challengeId) {

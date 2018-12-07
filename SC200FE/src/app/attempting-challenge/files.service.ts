@@ -48,8 +48,9 @@ export class FilesService {
 
   SaveFile(challengeId, userId) {
     var temp = this.GetAllFiles();
+    var temp1=this.textFiles;
     console.log(temp);
-    const saveBody = new Save(userId, challengeId, temp, this.fileContent);
+    const saveBody = new Save(userId, challengeId, temp1, this.fileContent,temp);
 
      return this.http.post(this.url + "file/create", saveBody,{responseType:"text"});
   }
@@ -136,11 +137,13 @@ export class Save {
   challengeId: string;
   textFile: string[];
   fileContent: string[];
+  filepaths:string[];
 
-  constructor(uid, cid, txt, file) {
+  constructor(uid, cid, txt, file,filepath) {
     this.userId = uid;
     this.challengeId = cid;
     this.textFile = txt;
     this.fileContent = file;
+    this.filepaths=filepath;
   }
 }

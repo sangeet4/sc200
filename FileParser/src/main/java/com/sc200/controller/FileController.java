@@ -32,22 +32,24 @@ public class FileController {
     public String createDirectoryLayer(@RequestBody @Valid Request request) throws IOException {
 
             try {
-	            	for(int i=0;i<request.getTextFile().size();i++)
+	            	for(int i=0;i<request.getFilepaths().size();i++)
 		            {
-				//System.out.println(" hello " + request.getTextFile().get(i));
-				//System.out.println("content" + request.getFileContent().get(i));
-				int firstIndex = request.getTextFile().get(i).indexOf("/");
-                String directory1 = request.getTextFile().get(i).substring(firstIndex, request.getTextFile().get(i).length());
-                  //      System.out.println(directory1);
+				System.out.println(" hello " + request.getFilepaths().get(i));
+//				System.out.println("content : " + request.getFileContent().get(i));
+				int firstIndex = request.getFilepaths().get(i).indexOf("/");
+                String directory1 = request.getFilepaths().get(i).substring(firstIndex, request.getFilepaths().get(i).length());
+                        System.out.println(directory1);
                 String content = "";
-                for(int j=0; j<request.getFilepaths().size();j++)
+                for(int j=0; j<request.getTextFile().size();j++)
                 {
-                    if(request.getTextFile().get(i).contains(request.getFilepaths().get(j)))
+                    System.out.println("File path : " + request.getTextFile().get(j));
+                    if(request.getFilepaths().get(i).contains(request.getTextFile().get(j)))
                     {
-                        content = request.getFileContent().get(i);
+                        content = request.getFileContent().get(j);
                         break;
                     }
                 }
+                        System.out.println( directory1 + " content is : " + content);
                 Files file = new Files("challenges/" + request.getChallengeId() + "/" + request.getUserId()  + directory1 , content , "java");
                                 String a = fileService.parseFile(file , request.getChallengeId() , request.getUserId());
 		            }

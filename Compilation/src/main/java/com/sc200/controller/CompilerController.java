@@ -46,7 +46,18 @@ public class CompilerController {
             for (int i=output.size()-1;i>=0;i--) {
                 if(output.get(i).contains("BUILD SUCCESS") || output.get(i).contains("BUILD FAILURE") || output.get(i).contains("Error") || output.get(i).contains("ERROR")) {
                     response = output.get(i);
-                    break;
+                    String res= "";
+                    if(response.contains("BUILD")){
+                    int index=response.indexOf("BUILD");
+                    res=response.substring(index,index+13);
+                    }
+        else{ 
+            if(response.contains("ERROR")){
+                res="ERROR";
+               }
+           }
+           response = res;
+              break;
                 }
             }
             responseEntity = new ResponseEntity<String>(response , HttpStatus.OK);

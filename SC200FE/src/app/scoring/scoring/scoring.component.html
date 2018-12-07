@@ -6,9 +6,9 @@
 <mat-card>
   <mat-card-content>
     <h3>Score :</h3>
-    <h4 *ngIf="percent">{{value}} / {{detail.maxScore}}</h4>
-    <mat-progress-bar *ngIf="!percent" mode="buffer"></mat-progress-bar>
-    <mat-progress-bar *ngIf="percent" mode="determinate" [value]="percent"></mat-progress-bar>  
+    <h4 *ngIf="detail">{{value}} / {{detail.challengeScore}}</h4>
+    <mat-progress-bar *ngIf="!detail" mode="buffer"></mat-progress-bar>
+    <mat-progress-bar *ngIf="detail" mode="determinate" [value]="percent"></mat-progress-bar>  
   </mat-card-content>
 </mat-card>
 <mat-card>

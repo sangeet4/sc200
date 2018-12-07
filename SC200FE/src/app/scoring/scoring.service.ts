@@ -1,4 +1,4 @@
-import { ScoringModel as Profile} from './../scoring-model';
+import { Score } from './score';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ export class ScoringService {
 
   constructor(private http: HttpClient) { }
 
-  sendToProfile(profile: Profile): Observable<any> {
+  sendToProfile(profile: Score): Observable<any> {
     return this.http.post(this.baseUrl, profile);
   }
 }

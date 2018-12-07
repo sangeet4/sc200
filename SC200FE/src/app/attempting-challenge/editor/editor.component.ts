@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { FileService } from "./../folder-structure/directory/file.service";
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
@@ -6,6 +7,8 @@ import { FilesService } from "../files.service";
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import * as $ from 'jquery';
+import { ScoringModel } from 'src/app/scoring-model';
+import { ShareService } from 'src/app/share.service';
 
 @Component({
   selector: "app-editor",
@@ -16,6 +19,8 @@ export class EditorComponent implements OnInit, OnChanges {
   @Input() fileName: string;
   @Input() userName: string;
   @Input() challengeId: string;
+  @Input() completechallenge;
+  @Input() uid: string;   //  not for docker
   count: number = 0;
   content = "";
   httpResponse;
@@ -35,10 +40,14 @@ export class EditorComponent implements OnInit, OnChanges {
     content: ""
   };
 
+  dataToScoring: ScoringModel;
+  flag: number = 0;
 
   constructor(
     private filesService: FilesService,
-    private fileService: FileService
+    private fileService: FileService,
+    private shareService: ShareService, 
+    private router: Router
   ) {
     this.initializeWebSocketConnection();
   }
@@ -69,6 +78,12 @@ export class EditorComponent implements OnInit, OnChanges {
            that.httpResponse = JSON.parse(message.body).body;
            //that.httpResponse = message.body;
             console.log(that.httpResponse);
+            if(that.httpResponse == "BUILD SUCCESS") {
+              that.flag = 1;
+            }
+            else {
+              that.flag = 0;
+            }
           }
         });
         that.stompClient.subscribe(
@@ -133,5 +148,13 @@ export class EditorComponent implements OnInit, OnChanges {
   }
   public showResults() {
     console.log(this.httpResponse);
+  }
+
+  submit() {
+    this.dataToScoring = new ScoringModel(
+      this.completechallenge.challengeId, this.completechallenge.challengeTitle, this.uid, this.completechallenge.maxScore, this.flag);
+    this.shareService.setValue(this.dataToScoring);
+    console.log('inside onSubmit');
+    this.router.navigate(['../../results']);
   }
 }

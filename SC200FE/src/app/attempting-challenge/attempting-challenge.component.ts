@@ -33,13 +33,12 @@ export class AttemptingChallengeComponent implements OnInit {
   completechallenge;
   userName;
   dockUserName;
-  dataToScoring: ScoringModel;
   navbarOpen = false;
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
   }
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private shareService: ShareService, private router: Router) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -51,16 +50,6 @@ export class AttemptingChallengeComponent implements OnInit {
     console.log(this.userName);
     this.dockUserName = this.userName.replace(/@/, "-");
     console.log(this.dockUserName);
-  }
-
- 
-
-  submit() {
-    this.dataToScoring = new ScoringModel(
-      this.completechallenge.challengeId, this.completechallenge.challengeTitle, this.userName, this.completechallenge.maxScore);
-    this.shareService.setValue(this.dataToScoring);
-    console.log('inside onSubmit');
-    this.router.navigate(['../../results']);
   }
 
 }

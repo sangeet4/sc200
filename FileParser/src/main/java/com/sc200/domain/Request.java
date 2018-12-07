@@ -25,6 +25,8 @@ public class Request {
 
     private ArrayList<String> fileContent;
 
+    private ArrayList<String> filepaths;
+
     public String getUserId() {
         return userId;
     }
@@ -40,4 +42,9 @@ public class Request {
     public ArrayList<String> getFileContent() {
         return fileContent;
     }
+
+    public ArrayList<String> getFilepaths() {
+        return filepaths;
+    }
+    
 }

@@ -18,21 +18,21 @@
 /*       margin-top:4rem!important;*/
 /*   }*/
 /*}*/
-/*.logoimage{*/
-/*   max-width: 10rem;*/
-/*   max-height: 6rem;*/
-/*}*/
+
 /*.mynavbar {*/
 /*           background: linear-gradient(to bottom, #d6d6d5d3 25%, #69bcca 70%);*/
 /*       }*/
 
-.jumbotron{
-   background-image: url("../../../assets/img/login-bg.jpg");
-  padding: 0;
-  padding-top:1rem;
-  background-size: cover;
+body{
+   background-image: url("../../../assets/img/login.gif");
+ 
+  
   /* background-size: 100% auto;
 */
+}
+.logoimage{
+  max-width: 8rem;
+  max-height:4rem;
 }
 
 
@@ -50,5 +50,5 @@
   max-height: 6rem;
 }
 .mynavbar {
-          background: linear-gradient(to bottom, #d6d6d5d3 25%, #69bcca 70%);
+  background: linear-gradient(to bottom, #01b30a6c 25%, #3e4242 70%);
       }

@@ -20,9 +20,12 @@
 .navbar-dark .navbar-nav .nav-link:hover{
    color: #afabab;
 }
-.jumbotron{
+body{
+  background-image: url("../../../assets/img/temp6.jpeg");
+}
+.jumbo{
    padding-top: 7rem;
-   background-image: url("../../../assets/img/homebg.jpg");
+   
 }
 @media(max-width:991px ){
 .mynavbar {

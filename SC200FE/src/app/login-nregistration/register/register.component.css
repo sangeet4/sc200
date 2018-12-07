@@ -13,12 +13,26 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     cursor: auto;
 }
+h4{
+    color: whitesmoke;
+    font-family: 'Lobster', cursive;
+}
+
+.logoimage{
+    max-width: 10rem;
+    max-height: 6rem;
+  }
 .jumbotron{
-    background-image:url("../../../assets/img/main_bg.jpeg");
-    background-size: 100% auto;
+    background-image:url("../../../assets/img/login.gif");
+   
     position: relative;
     padding-top:0;
+    margin: 0!important;
     
+}
+#container{
+    background-image: url("../../../assets/img/regis.jpg");
+
 }
 .card-body{
     padding-bottom: 0!important;
@@ -29,11 +43,11 @@
     
 }
 .card-header{
-    opacity: 0.4;
+    opacity: 0.85;
     color:black;
 }
 .mynavbar {
-    background: linear-gradient(to bottom, #d6d6d5d3 25%, #69bcca 70%);
+    background: linear-gradient(to bottom, #01b30a6c 25%, #3e4242 70%);
 }
 /* form{
     background-color: transparent;

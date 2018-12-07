@@ -39,17 +39,19 @@ export class FilesService {
     this.fileContent = fileContent;
   }
 
-  // DisplayFiles(){
-  //   console.log(this.textFiles);
-  //   console.log(this.fileContent);
-  //   console.log(this.allFiles);
+   DisplayFiles(){
+     console.log(this.textFiles);
+     console.log(this.fileContent);
+     console.log(this.allFiles);
 
-  // }
+   }
 
   SaveFile(challengeId, userId) {
     var temp = this.GetAllFiles();
     var temp1=this.textFiles;
     console.log(temp);
+    console.log(temp1);
+    this.DisplayFiles();
     const saveBody = new Save(userId, challengeId, temp1, this.fileContent,temp);
 
      return this.http.post(this.url + "file/create", saveBody,{responseType:"text"});

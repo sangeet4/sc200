@@ -13,8 +13,7 @@ public interface ChallengeRepository extends MongoRepository<Challenge,String> {
 
     //Added for Search
     // @Query("{ 'topic' :{$regex : ?0} }")
-    // @Query(value = "{'topic': {$regex : '^?0$', $options: 'i'}}")
-    @Query("{ 'topic' :{$regex : ?0} }")
+    @Query(value = "{'topic': {$regex : '^?0$', $options: 'i'}}")
     public List<Challenge> getChallengeByTopicReg(@Param("topic") String topic);
     @Query("{ 'topic' : ?0 }")
     public List<Challenge> getChallengeByTopic(@Param("topic") String topic);

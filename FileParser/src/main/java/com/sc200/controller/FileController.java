@@ -42,9 +42,10 @@ public class FileController {
                 String content = "";
                 for(int j=0; j<request.getFilepaths().size();j++)
                 {
-                    if(request.getTextFile().get(i).contains(request.getFilepaths().get(i)))
+                    if(request.getTextFile().get(i).contains(request.getFilepaths().get(j)))
                     {
                         content = request.getFileContent().get(i);
+                        break;
                     }
                 }
                 Files file = new Files("challenges/" + request.getChallengeId() + "/" + request.getUserId()  + directory1 , content , "java");

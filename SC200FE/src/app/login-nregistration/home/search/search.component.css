@@ -1,6 +1,6 @@
 .search-drop-down {
    position: absolute;
-    width: 50%;
+    width: 75%;
 
    max-height: 300px;
    overflow-y: auto;

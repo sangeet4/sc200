@@ -12,7 +12,7 @@ public interface ChallengeRepository extends Neo4jRepository<Challenge,String> {
     @Query(("Match(challenge:Challenge) where challenge.level=1 return challenge"))
     List<Challenge>getBasicUnattemptedChallenges1();
 
-    @Query ("Match (challenge:Challenge)-[r:isAttemptedBy]->(u:User) where u.userId={name} and r.score=0" +
+    @Query ("Match (challenge:Challenge)-[r:isAttemptedBy]->(u:User) where u.userId={name} and r.score=0 " +
             "return challenge")
     ///and status is solved
     List<Challenge> getAttemptedSolvedChallenges(@Param("name") String name);
@@ -22,7 +22,7 @@ public interface ChallengeRepository extends Neo4jRepository<Challenge,String> {
     //Get me the basic level challenges which is neither attempted by the same user nor posted by him
     List<Challenge> getBasicUnattemptedChallenges(@Param("name") String name);
     ///Get me the basic level challenges which are attempted by the user and unsolved
-    @Query ("Match (challenge:Challenge)-[r:isAttemptedBy]->(u:User) where u.userId={name} and r.score=0" +
+    @Query ("Match (challenge:Challenge)-[r:isAttemptedBy]->(u:User) where u.userId={name} and r.score=0 " +
             "return challenge")
     List<Challenge>  getBasicUnsolvedChallenge(@Param("name") String name);
 

@@ -19,6 +19,8 @@ export class ScoringComponent implements OnInit {
   profile: Score;
   percent;
   showFlag = false;
+  count: number = 0;
+
   constructor(private scoringService: ScoringService, 
     // private compilationService: CompilationService, 
     private shareService: ShareService,
@@ -29,6 +31,7 @@ export class ScoringComponent implements OnInit {
     .subscribe(data => {
       this.detail = data;
       console.log(this.detail);
+      this.count = this.count + 1;
       if(this.detail.solved === 1){
         this.value = this.detail.challengeScore;
         this.percent = 100;
@@ -37,7 +40,9 @@ export class ScoringComponent implements OnInit {
         this.value = 0;
         this.percent = 0;
       }
-      this.sendToProfile();
+      if(this.count === 1){
+        this.sendToProfile();
+      }
       this.showFlag = true;
     });
     // this.compilationService.receiveHtml('hgjhj')
@@ -48,6 +53,12 @@ export class ScoringComponent implements OnInit {
     //     this.showFlag = true;
     //   });
     // console.log(this.detail);
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    
   }
 
   retry() {

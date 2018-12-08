@@ -14,7 +14,7 @@ public class VotingResource {
     private KafkaTemplate<String, Voting> kafkaTemplate;
 
     private static final String TOPIC = "votingTopic";
-    private static final String TOPIC2 = "votingtestchallenge";
+    // private static final String TOPIC2 = "votingtestchallenge";
 
 
 
@@ -22,7 +22,7 @@ public class VotingResource {
     public void putIntoTopic(Voting voting){
         System.out.println("inside putIntotOPIC "+voting);
         kafkaTemplate.send(TOPIC,voting);
-        kafkaTemplate.send(TOPIC2,voting);
+        // kafkaTemplate.send(TOPIC2,voting);
         System.out.println("we have executted send topic");
     }
 

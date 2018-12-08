@@ -89,7 +89,7 @@ public class KafkaConsumer {
 
     //need to add kafka listener for scoring service
 
-    @KafkaListener(topics = "scoringTopic",groupId = "group_id9",containerFactory ="scoringKafkaListenerFactory")
+    @KafkaListener(topics = "scoreTOPIC",groupId = "group_id9",containerFactory ="scoringKafkaListenerFactory")
     public void consumeJsonFromScoringService(@Payload Challenge challenge) {
 
         System.out.println("Consumed JSON Message of challenge: " + challenge);

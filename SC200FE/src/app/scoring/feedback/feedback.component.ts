@@ -24,6 +24,7 @@ export class FeedbackComponent implements OnInit {
   upvote() {
     if (this.alreadyClicked === 0) {
       this.alreadyClicked = 1;
+      console.log(this.voting);
       this.votingService.upVote(this.voting)
         .subscribe(data => {
           console.log(data);

@@ -10,8 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Profile {
-    private String userId;
     private String challengeId;
     private String challengeTitle;
-    private double questScore;
+    private String userId;
+    private double challengeScore;
+    private double maxScore;
+    private String status;
 }

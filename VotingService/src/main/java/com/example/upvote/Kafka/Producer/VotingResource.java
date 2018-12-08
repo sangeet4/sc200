@@ -13,7 +13,7 @@ public class VotingResource {
     @Autowired
     private KafkaTemplate<String, Voting> kafkaTemplate;
 
-    private static final String TOPIC = "votingtestuserprofile";
+    private static final String TOPIC = "votingTopic";
     private static final String TOPIC2 = "votingtestchallenge";
 
 

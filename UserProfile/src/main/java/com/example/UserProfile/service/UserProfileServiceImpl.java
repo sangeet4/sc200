@@ -147,7 +147,7 @@ public class UserProfileServiceImpl implements UserProfileService {
                 
             }
             upvotedChallenge.add(challenge);
-            userProfile.setChallengeCreated(upvotedChallenge);
+            userProfile.setChallengeUpvoted(upvotedChallenge);
             UserProfile userProfile2 = userProfileRepository.save(userProfile);
             return userProfile2;
         }
@@ -171,7 +171,7 @@ public class UserProfileServiceImpl implements UserProfileService {
                 }
             }
             downvotedChallenge.add(challenge);
-            userProfile.setChallengeCreated(downvotedChallenge);
+            userProfile.setChallengeDownvoted(downvotedChallenge);
             UserProfile userProfile2 = userProfileRepository.save(userProfile);
             return userProfile2;
         }

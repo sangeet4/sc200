@@ -100,7 +100,7 @@ public class UserProfileServiceImpl implements UserProfileService {
             boolean alreadyPresent = false;
             boolean needToUpdate = true;
             for(int i=0; i<attemptedChallenge.size(); i++){ //checking if the challenge is already attempted or not
-                if(attemptedChallenge.get(i).getChallengeId() == challenge.getChallengeId()){
+                if(attemptedChallenge.get(i).getChallengeId().equals(challenge.getChallengeId())){
                     if(attemptedChallenge.get(i).getChallengeScore() < challenge.getChallengeScore()){   //when score generated is more than already registered score
                         attemptedChallenge.get(i).setChallengeScore(challenge.getChallengeScore());
                         userProfile.setScore(userProfile.getScore() + (challenge.getChallengeScore() - attemptedChallenge.get(i).getChallengeScore())); //update global score of user when new generated score of challenge is more

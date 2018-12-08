@@ -49,6 +49,9 @@ body{
   max-width: 10rem;
   max-height: 6rem;
 }
+.navbar{
+    padding:0;
+}
 .mynavbar {
   background: linear-gradient(to bottom, #01b30a6c 25%, #3e4242 70%);
       }

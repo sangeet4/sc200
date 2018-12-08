@@ -41,7 +41,7 @@ public class VotingServiceImpl implements VotingService {
                 voting.alreadyVoted.add(voting1.getUserId());
               //  voting.setAlreadyVoted(voting1.getAlreadyVoted());
                 System.out.println("hello");
-                voting.setCheck(1);
+                voting.setFlag(true);
                 //voting.setChecking(voting1.getUserId());
 
                 Voting voting2 = votingRepository.save(voting);
@@ -74,7 +74,7 @@ public class VotingServiceImpl implements VotingService {
             voting2.setChallengeId(voting1.getChallengeId());
             voting2.alreadyVoted.add(voting1.getUserId());
             voting2.setChallengeTitle(voting1.getChallengeTitle());
-            voting2.setCheck(1);
+            voting2.setFlag(true);
            // voting2.setAlreadyVoted(voting2.getAlreadyVoted());
            Voting voting3= votingRepository.save(voting2);
            votingResource.putIntoTopic(voting2);
@@ -108,7 +108,7 @@ public class VotingServiceImpl implements VotingService {
                 voting.alreadyVoted.add(voting1.getUserId());
                 voting.setChallengeTitle(voting1.getChallengeTitle());
                // voting.setAlreadyVoted(voting1.getAlreadyVoted());
-                voting.setCheck(0);
+                voting.setFlag(false);
                 votingResource.putIntoTopic(voting);
 
                 Voting voting2 = votingRepository.save(voting);
@@ -135,7 +135,7 @@ public class VotingServiceImpl implements VotingService {
             voting2.setChallengeId(voting1.getChallengeId());
             voting2.alreadyVoted.add(voting1.getUserId());
             voting2.setChallengeTitle(voting1.getChallengeTitle());
-            voting2.setCheck(0);
+            voting2.setFlag(false);
            // voting2.setAlreadyVoted(voting2.getAlreadyVoted());
             votingRepository.save(voting2);
             votingResource.putIntoTopic(voting2);

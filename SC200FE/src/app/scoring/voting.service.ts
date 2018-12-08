@@ -12,11 +12,11 @@ export class VotingService {
   public baseUrl = environment.apiUrl + 'vote/';
   constructor(private http: HttpClient) { }
 
-  upVote(voting: Voting): Observable<any> {
+  upVote(voting: Voting) {
     return this.http.put(this.baseUrl + 'upvoting', voting);
   }
 
-  downVote(voting: Voting): Observable<any> {
+  downVote(voting: Voting) {
     return this.http.put(this.baseUrl + 'downvoting', voting);
   }
 

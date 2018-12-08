@@ -27,7 +27,7 @@ public class Voting {
     public int upvotes;
     public int downvotes;
      public  String userId;//
-     public int check;
+     public boolean flag;
     public  List<String> alreadyVoted = new ArrayList<String>();
 //    public Votitrng() {
 //    }

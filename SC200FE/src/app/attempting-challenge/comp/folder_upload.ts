@@ -110,12 +110,6 @@ export class FolderUpload {
     // Loop through the FileList and render image files as thumbnails.
     for (var i = 0, f; f = files[i]; i++) {
 
-      //console.log(f);
-      // Only process image files.
-      if (!f.type.match('text.*')) {
-        continue;
-      }
- 
       textFiles.push(f.name);
 
       var reader = new FileReader();

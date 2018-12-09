@@ -159,6 +159,7 @@ export class DirectoryComponent {
 
    showDirectory() {
      this.database.initialize();
+     this.fileService.DisplayFiles();
   }
 
   showTemplate() {

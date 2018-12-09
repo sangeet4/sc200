@@ -45,17 +45,17 @@ export class FilesService {
 
   SaveFile(challengeId, userId) {
     const saveBody = new Save(userId, challengeId, this.textFiles, this.fileContent);
-    return this.http.post(this.url + "file/create", saveBody);
+    return this.http.post(this.url + "file/create", saveBody, httpOptions);
   }
 
   RunFile(userId, challengeId) {
-    return this.http.post(this.url1, userId + '/' + challengeId);
+    return this.http.post(this.url1, userId + '/' + challengeId, httpOptions);
 
     // return this.http.post(this.url1, this.newurl, httpOptions);
   }
   getTemplate(challengeId: string) {
     console.log("into the get template func");
-    return this.http.post(this.url + "file/struct", challengeId);
+    return this.http.post(this.url + "file/struct", challengeId, httpOptions);
   }
   getRepsoitory(url: string, userName: string, challengeId: string) {
     return this.http.post(this.url1 + "/clone", url + '$' + userName + '$' + challengeId);

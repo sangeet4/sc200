@@ -165,6 +165,7 @@ export class DirectoryComponent {
     console.log(this.challengeId + ' ' + this.userName);
     this.filesService.getTemplate("Template/" + this.challengeId).subscribe(data => {
       this.filesService.allFiles = data['paths'];
+      this.filesService.allFiles = data['contents'];
       console.log(data['paths']);
       this.database.initialize();
     });

@@ -1,17 +1,20 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { HttpHeaders } from "@angular/common/http";
+import { File } from "./folder-structure/directory/model/file";
+import { containsElement } from "@angular/animations/browser/src/render/shared";
+import { MonacoFile } from "ngx-monaco";
+import { FileElement } from "./folder-structure/directory/model/file-element";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 
 // const httpOptions = {
 //   headers: new HttpHeaders({
 //     "Content-Type": "application/json",
-//     'Access-Control-Allow-Headers': 'Cache-Control',
-//     'Access-Control-Allow-Methods': 'GET',
 //     Authorization: "my-auth-token"
 //   })
 // };
+
 @Injectable({
   providedIn: "root"
 })
@@ -24,9 +27,9 @@ export class FilesService {
   testData = "";
   sendContent = "";
   files: [string];
-  // url = "http://35.154.116.88:8182/";
-  url = environment.apiUrl;
-  url1 = environment.apiUrl + "compile";
+  url1 = "http://35.154.116.88:8183/compile";
+  url = environment.apiUrl+"file/";
+  //url1 = environment.apiUrl + "compile";
   newurl: string = "";
   httpresponse;
 
@@ -36,26 +39,32 @@ export class FilesService {
     this.fileContent = fileContent;
   }
 
-  // DisplayFiles(){
-  //   console.log(this.textFiles);
-  //   console.log(this.fileContent);
-  //   console.log(this.allFiles);
+   DisplayFiles(){
+     console.log(this.textFiles);
+     console.log(this.fileContent);
+     console.log(this.allFiles);
 
-  // }
+   }
 
   SaveFile(challengeId, userId) {
-    const saveBody = new Save(userId, challengeId, this.textFiles, this.fileContent);
-    return this.http.post(this.url + "file/create", saveBody, httpOptions);
+    var temp = this.GetAllFiles();
+    var temp1=this.textFiles;
+    console.log(temp);
+    console.log(temp1);
+    this.DisplayFiles();
+    const saveBody = new Save(userId, challengeId, temp1, this.fileContent,temp);
+
+     return this.http.post(this.url + "file/create", saveBody,{responseType:"text"});
   }
 
   RunFile(userId, challengeId) {
-    return this.http.post(this.url1, userId + '/' + challengeId, httpOptions);
+    return this.http.post(this.url1, userId + '/' + challengeId);
 
     // return this.http.post(this.url1, this.newurl, httpOptions);
   }
   getTemplate(challengeId: string) {
     console.log("into the get template func");
-    return this.http.post(this.url + "file/struct", challengeId, httpOptions);
+    return this.http.post(this.url + "file/struct", challengeId);
   }
   getRepsoitory(url: string, userName: string, challengeId: string) {
     return this.http.post(this.url1 + "/clone", url + '$' + userName + '$' + challengeId);
@@ -130,11 +139,13 @@ export class Save {
   challengeId: string;
   textFile: string[];
   fileContent: string[];
+  filepaths:string[];
 
-  constructor(uid, cid, txt, file) {
+  constructor(uid, cid, txt, file,filepath) {
     this.userId = uid;
     this.challengeId = cid;
     this.textFile = txt;
     this.fileContent = file;
+    this.filepaths=filepath;
   }
 }

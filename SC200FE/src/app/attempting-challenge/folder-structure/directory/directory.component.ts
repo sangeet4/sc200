@@ -41,7 +41,7 @@ export class ChecklistDatabase {
   public url = environment.apiUrl + 'file/structure';
   public TREE: string;
 
-  constructor(private http: HttpClient, private fileService: FileService , private filesService: FilesService) {
+  constructor(private http: HttpClient, private fileService: FileService) {
     // this.initialize();
   }
 
@@ -159,7 +159,7 @@ export class DirectoryComponent {
 
    showDirectory() {
      this.database.initialize();
-     this.filesService.DisplayFiles();
+     this.fileService.DisplayFiles();
   }
 
   showTemplate() {

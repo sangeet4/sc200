@@ -167,7 +167,6 @@ export class DirectoryComponent {
       this.filesService.allFiles = data['paths'];
       this.filesService.allFiles = data['contents'];
       console.log(data['paths']);
-      console.log(data['contents']);
       this.database.initialize();
     });
   }

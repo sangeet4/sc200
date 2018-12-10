@@ -158,7 +158,7 @@ services:
     container_name: compilation
     network_mode: host
     ports:
-      - 8183:8183
+      - 0.0.0.0:8183:8183
     expose:
       - 8183
     volumes:
